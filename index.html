@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Coşkun Parlar - CV</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLpA+o/vI0FpC8a+4/uLp6rXn5i5S4X3A6Vz9XfL6f2vA3f6b+9c8k1F5c3oO3yA3z4v4k5lA6V7a6uQ5" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Renk değişkenleri tanımlaması */
         :root {
@@ -13,15 +14,15 @@
             --container-bg: #161b22;
             --container-border: #30363d;
             --primary-color: #58a6ff;
-            --secondary-color: #29e99a; /* Koyu Mod için yeni renk */
+            --secondary-color: #29e99a;
             --info-bg: #21262d;
             --hover-bg: #282f38;
             --sub-text-color: #8b949e;
-            --bullet-color: #29e99a; /* Koyu Mod için yeni renk */
+            --bullet-color: #29e99a;
             --tooltip-bg: #58a6ff;
             --tooltip-text: #0d1117;
             --link-color: #58a6ff;
-            --link-hover-color: #29e99a; /* Koyu Mod için yeni renk */
+            --link-hover-color: #29e99a;
         }
 
         /* Açık mod renkleri */
@@ -31,23 +32,22 @@
             --container-bg: #ffffff;
             --container-border: #d0d7de;
             --primary-color: #0366d6;
-            --secondary-color: #00824b; /* Açık Mod için yeni renk */
+            --secondary-color: #00824b;
             --info-bg: #f3f4f6;
             --hover-bg: #ebedf0;
             --sub-text-color: #57606a;
-            --bullet-color: #00824b; /* Açık Mod için yeni renk */
+            --bullet-color: #00824b;
             --tooltip-bg: #0366d6;
             --tooltip-text: #ffffff;
             --link-color: #0366d6;
-            --link-hover-color: #00824b; /* Açık Mod için yeni renk */
+            --link-hover-color: #00824b;
         }
 
         /* Genel ayarlar */
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 20px;
             line-height: 1.6;
@@ -272,6 +272,15 @@
             margin-bottom: 10px;
             text-align: center;
             transition: color 0.3s;
+            display: flex; /* Simge ve metni aynı satırda tutmak için */
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .skill-category h4 i {
+            color: var(--secondary-color);
+            font-size: 1.25rem;
+            transition: color 0.3s;
         }
         
         .skill-category ul {
@@ -447,7 +456,7 @@
         
         .animated-section.hidden {
             opacity: 0;
-            transform: translateY(20px); /* Aşağıdan yukarıya kayarak gelme efekti */
+            transform: translateY(20px);
         }
 
         /* Responsive */
@@ -565,70 +574,49 @@
 
         <hr />
 
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLpA+o/vI0FpC8a+4/uLp6rXn5i5S4X3A6Vz9XfL6f2vA3f6b+9c8k1F5c3oO3yA3z4v4k5lA6V7a6uQ5" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        /* CSS kodlarınız */
-        .skill-category h4 {
-            /* Simge ve metin için flexbox kullan */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px; /* Simge ve metin arası boşluk */
-        }
-        .skill-category h4 i {
-            color: var(--secondary-color);
-            font-size: 1.25rem;
-            transition: color 0.3s;
-        }
-    </style>
-</head>
-<body>
-    <div class="animated-section">
-        <div class="section-title">Yetenekler</div>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h4><i class="fas fa-shield-alt"></i> Network & Security</h4>
-                <ul>
-                    <li data-tooltip="FortiGate, Mikrotik ve pfSense üzerinde güvenlik duvarı ve VPN yönetimi">FortiGate, Mikrotik, pfSense</li>
-                    <li data-tooltip="IPsec ve PPTP protokolleri ile site-to-site ve client-to-site VPN yapılandırmaları">VPN (IPsec, PPTP)</li>
-                    <li data-tooltip="DHCP, DNS ve TCP/IP gibi temel ağ servislerinin konfigürasyonu ve sorun giderme">DHCP, DNS, TCP/IP</li>
-                    <li data-tooltip="LAN/WAN topolojilerinin tasarımı, kurulumu ve yönetimi">LAN/WAN</li>
-                    <li data-tooltip="Uç nokta güvenliği için Kaspersky Endpoint Security yönetimi">Kaspersky Endpoint Security</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h4><i class="fas fa-server"></i> Sistem & Sanallaştırma</h4>
-                <ul>
-                    <li data-tooltip="vSphere, ESXi ve vCenter platformlarında sanal altyapı kurulumu ve yönetimi">VMware (vSphere, ESXi, vCenter)</li>
-                    <li data-tooltip="Hyper-V ve Proxmox sanallaştırma ortamlarının kurulumu ve bakımı">Hyper-V, Proxmox</li>
-                    <li data-tooltip="Active Directory, GPO ve DNS servisleri dahil Windows Server yönetimi">Windows Server (AD, GPO, DNS)</li>
-                    <li data-tooltip="Bulut tabanlı altyapı çözümleri için Microsoft Azure ve AWS servislerinin kullanımı">Microsoft Azure, AWS</li>
-                    <li data-tooltip="Uygulama sanallaştırması ve konteyner yönetimi için Docker">Docker</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h4><i class="fas fa-database"></i> Veritabanı & Yazılım</h4>
-                <ul>
-                    <li data-tooltip="MS SQL Server ve MySQL veritabanı kurulumu, yönetimi ve optimizasyonu">SQL Server MS, MySQL</li>
-                    <li data-tooltip="Finansal işlem platformları MetaTrader 4 & 5'in kurulumu, konfigürasyonu ve performansı">MetaTrader 4 & 5</li>
-                    <li data-tooltip="Office 365 hizmetleri ve Zoho CRM'in yönetimi ve entegrasyonu">Office 365, Zoho CRM</li>
-                    <li data-tooltip="Proje yönetimi ve destek talepleri için Atlassian JIRA kullanımı">Atlassian JIRA</li>
-                    <li data-tooltip="Kurumsal yedekleme ve replikasyon çözümü Veeam'in yönetimi">Veeam Backup & Replication</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h4><i class="fas fa-hdd"></i> Depolama & Yedekleme</h4>
-                <ul>
-                    <li data-tooltip="HPE, Dell, NetApp ve IBM gibi kurumsal depolama sistemlerinin yönetimi">HPE, Dell, NetApp, IBM</li>
-                    <li data-tooltip="NAS (Network Attached Storage) cihazları QNAP ve Synology'nin kurulum ve yönetimi">QNAP, Synology NAS</li>
-                    <li data-tooltip="Acronis, Veeam ve Arcserve gibi yedekleme çözümlerinin uygulanması ve denetlenmesi">Acronis, Veeam, Arcserve</li>
-                </ul>
+        <div class="animated-section">
+            <div class="section-title">Yetenekler</div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4><i class="fas fa-shield-alt"></i> Network & Security</h4>
+                    <ul>
+                        <li data-tooltip="FortiGate, Mikrotik ve pfSense üzerinde güvenlik duvarı ve VPN yönetimi">FortiGate, Mikrotik, pfSense</li>
+                        <li data-tooltip="IPsec ve PPTP protokolleri ile site-to-site ve client-to-site VPN yapılandırmaları">VPN (IPsec, PPTP)</li>
+                        <li data-tooltip="DHCP, DNS ve TCP/IP gibi temel ağ servislerinin konfigürasyonu ve sorun giderme">DHCP, DNS, TCP/IP</li>
+                        <li data-tooltip="LAN/WAN topolojilerinin tasarımı, kurulumu ve yönetimi">LAN/WAN</li>
+                        <li data-tooltip="Uç nokta güvenliği için Kaspersky Endpoint Security yönetimi">Kaspersky Endpoint Security</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-server"></i> Sistem & Sanallaştırma</h4>
+                    <ul>
+                        <li data-tooltip="vSphere, ESXi ve vCenter platformlarında sanal altyapı kurulumu ve yönetimi">VMware (vSphere, ESXi, vCenter)</li>
+                        <li data-tooltip="Hyper-V ve Proxmox sanallaştırma ortamlarının kurulumu ve bakımı">Hyper-V, Proxmox</li>
+                        <li data-tooltip="Active Directory, GPO ve DNS servisleri dahil Windows Server yönetimi">Windows Server (AD, GPO, DNS)</li>
+                        <li data-tooltip="Bulut tabanlı altyapı çözümleri için Microsoft Azure ve AWS servislerinin kullanımı">Microsoft Azure, AWS</li>
+                        <li data-tooltip="Uygulama sanallaştırması ve konteyner yönetimi için Docker">Docker</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-database"></i> Veritabanı & Yazılım</h4>
+                    <ul>
+                        <li data-tooltip="MS SQL Server ve MySQL veritabanı kurulumu, yönetimi ve optimizasyonu">SQL Server MS, MySQL</li>
+                        <li data-tooltip="Finansal işlem platformları MetaTrader 4 & 5'in kurulumu, konfigürasyonu ve performansı">MetaTrader 4 & 5</li>
+                        <li data-tooltip="Office 365 hizmetleri ve Zoho CRM'in yönetimi ve entegrasyonu">Office 365, Zoho CRM</li>
+                        <li data-tooltip="Proje yönetimi ve destek talepleri için Atlassian JIRA kullanımı">Atlassian JIRA</li>
+                        <li data-tooltip="Kurumsal yedekleme ve replikasyon çözümü Veeam'in yönetimi">Veeam Backup & Replication</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-hdd"></i> Depolama & Yedekleme</h4>
+                    <ul>
+                        <li data-tooltip="HPE, Dell, NetApp ve IBM gibi kurumsal depolama sistemlerinin yönetimi">HPE, Dell, NetApp, IBM</li>
+                        <li data-tooltip="NAS (Network Attached Storage) cihazları QNAP ve Synology'nin kurulum ve yönetimi">QNAP, Synology NAS</li>
+                        <li data-tooltip="Acronis, Veeam ve Arcserve gibi yedekleme çözümlerinin uygulanması ve denetlenmesi">Acronis, Veeam, Arcserve</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-
-    </body>
         
         <hr />
         
@@ -703,7 +691,7 @@
                 </ul>
             </div>
             <div class="experience-item">
-                <h4>System and Network Administrator & Team Leader</h4>
+                <h4>System and Network Admin & Team Leader</h4>
                 <div class="job-title">CYBER-FINTECH</div>
                 <div class="job-duration">Ağustos 2020 - Eylül 2022</div>
                 <ul>
@@ -738,7 +726,7 @@
                 </ul>
             </div>
             <div class="experience-item">
-                <h4>Infrastructure Specialist - Support Team Leader</h4>
+                <h4>Information Technologies - Support Team Leader</h4>
                 <div class="job-title">GKFX FINANCIAL SERVICES LTD. ŞTİ.</div>
                 <div class="job-duration">Haziran 2016 - Şubat 2018</div>
                 <ul>
@@ -751,7 +739,7 @@
                 </ul>
             </div>
             <div class="experience-item">
-                <h4>IT Operations Specialist</h4>
+                <h4>Information Technologies - Support Operations Specialist</h4>
                 <div class="job-title">BOYNER HOLDİNG / BEYMEN MAĞAZACILIK A.Ş.</div>
                 <div class="job-duration">Şubat 2015 - Haziran 2016</div>
                 <ul>
@@ -764,7 +752,7 @@
                 </ul>
             </div>
             <div class="experience-item">
-                <h4>IT Technician</h4>
+                <h4>Bilgi İşlem Teknisyeni</h4>
                 <div class="job-title">IŞIK ÜNİVERSİTESİ / Bilgi İşlem Daire Başkanlığı</div>
                 <div class="job-duration">Ocak 2012 - Eylül 2014</div>
                 <ul>
@@ -818,7 +806,6 @@
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
 
-        // Tema ayarını localStorage'dan yükle
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme) {
             body.classList.add(currentTheme);
@@ -847,26 +834,25 @@
             }
         });
 
-        // Animasyonlar için Intersection Observer
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.animated-section');
             const observerOptions = {
-                root: null, // viewport'u kök olarak kullan
+                root: null,
                 rootMargin: '0px',
-                threshold: 0.1 // %10'u görünür olduğunda tetikle
+                threshold: 0.1
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.remove('hidden');
-                        observer.unobserve(entry.target); // Animasyon bir kez oynasın
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
             sections.forEach(section => {
-                section.classList.add('hidden'); // Başlangıçta tüm bölümleri gizle
+                section.classList.add('hidden');
                 observer.observe(section);
             });
         });
