@@ -1,69 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, inital-scale=1">
-    <link href="main.css" rel="textBody" type="text/css" />
-<title>CP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coşkun Parlar - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        /* Genel ayarlar */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        #textBody {
+            max-width: 900px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.7);
+        }
+        h2 {
+            font-weight: 700;
+            font-size: 2.4rem;
+            margin: 15px 0 10px;
+            color: #61dafb;
+            text-align: center;
+            letter-spacing: 1.2px;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #333;
+            margin: 30px 0;
+        }
+        p {
+            margin: 8px 0;
+        }
+        span.label-title {
+            color: #ff6f61;
+            font-weight: 600;
+        }
+        /* Link stili */
+        a {
+            color: #61dafb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #21a1f1;
+            text-decoration: underline;
+        }
+        /* Liste stilleri */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            background: #292929;
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 6px;
+            box-shadow: 0 0 5px rgba(97,218,251,0.3);
+            font-size: 1rem;
+        }
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            #textBody {
+                padding: 20px 20px;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            ul li {
+                font-size: 0.9rem;
+                padding: 10px 14px;
+            }
+        }
+        /* Resim ayarları */
+        .profile-pic {
+            display: block;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border: 3px solid #61dafb;
+            box-shadow: 0 0 12px #61dafb;
+        }
+        /* Başlıklar */
+        .section-title {
+            color: #61dafb;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #61dafb;
+            padding-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        /* Kişisel bilgiler satır düzeni */
+        .personal-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 40px;
+            justify-content: center;
+        }
+        .personal-info div {
+            min-width: 160px;
+        }
+    </style>
 </head>
 <body>
     <div id="textBody">
-        <br>
-        <br>
-	<br>
-	<center>
-		<img src="https://coskunparlar.github.io/img/photo.jpg" alt="img!" width="400" height="400"/>
-		<br/>
-		<h2>COŞKUN PARLAR</h2>
-	</center>
-		<hr/>
-        <br>
-        <p><span style="font-size:120%;color:blue;line-height:50px;">PERSONAL DETAILS:</span></p>
-        <p><span style="font-size:100%;color:red">Adres:</span> <span style="font-size:100%;">Eyüp/İstanbul</span></p>
-        <p><span style="font-size:100%;color:red">Telefon:</span> <span style="font-size:100%;">905546072885</span></p>
-        <p class="navigation__item">
-            <a href="mailto:parlarcoskun@gmail.com" title="email">
-                <i class='social iconfont icon-email'></i>
-                <span class="label">Email: parlarcoskun@gmail.com</span>
-            </a>
-        </p>
-        <p><span style="font-size:100%;color:red">Dogum Tarihi:</span> <span style="font-size:100%;">10.11.1990</span></p>
-        <p><span style="font-size:100%;color:red">Medeni Durum:</span> <span style="font-size:100%;">Evli</span></p>
-        <p><span style="font-size:100%;color:red">Askerlik Durum:</span> <span style="font-size:100%;">Tamamlandı (27/04/2019) </span></p>
-        <p><span style="font-size:100%;color:red">Ehliyet:</span> <span style="font-size:100%;">A ve B / 2010</span></p>
-        <p><span style="font-size:100%;color:red">Languages:</span> <span style="font-size:100%;">English / Intermediate</span></p>
-	    <hr/>
-        <p><span style="font-size:120%;color:blue;line-height:50px;">EDUCATION:</span></p>
-        <p><span style="font-size:100%;color:red">Lisans Egitimi / Yılları:</span></p>
-        <p><span style="font-size:100%;">İst.Üni.AUZEF,Coğrafya / 2015 </span></p>
-        <p><span style="font-size:100%;color:red">Ön Lisans Egitimi / Yılları:</span></p>
-        <p><span style="font-size:100%;">Namık Kemal Üni. Teknik Bilimler MYO, Elektronik Teknolojisi / 2009</span></p>
-        <p><span style="font-size:100%;color:red">Lise Egitimi / Yılları:</span></p>
-        <p><span style="font-size:100%;">Şişli Mesleki Ve Teknik Anadolu Lisesi / 2004 - 2007</span></p>
-	    <hr/>
-	<p><span style="font-size:120%;color:blue;line-height:50px;">EXPERIENCE:</span></p>
-	    <br/>
-	    <br/>
-	    <br/>
-		<br/>
-        <div style="text-align:center;font-size:120%;width:100%">Ocak-2025 / Devam Etmekteyim : DESTEK YATIRIM MENKUL DEGERLER AŞ. </div>
-        <div style="text-align:center;font-size:120%;width:100%">Sistem ve Network Yöneticisi</div>
-        <div style="margin:auto;font-size:100%;width:75%">
-            <ul>
-                <li> MetaTrader 5 platformunun tam kapsamlı yönetimi; sembol, spread, swap, markup, komisyon, minimum ve maksimum lot, fiyat adımları (tick size), işlem saatleri, emir türleri gibi tüm finansal parametrelerin eksiksiz yapılandırılması ve optimize edilmesi </li>
-                <li> MetaTrader 5 platformunda plugin yönetimi; eklentilerin kurulumu, konfigürasyonu ve performans takibinin sağlanması </li>
-                <li> SPK ve TSPB düzenlemelerine tam uyumlu platform konfigürasyonu ve sürekli güncellenen düzenleyici standartlara uygunluk </li>
-                <li> TSPB raporlama süreçlerinin takibi, ilgili veri ve dokümantasyonun hazırlanması ve düzenleyici kurumlara zamanında iletilmesi </li>
-                <li> Likidite sağlayıcılar (LP) ile teknik ve operasyonel entegrasyonların yönetilmesi; piyasa veri akışlarının ve fiyat derinliğinin optimize edilmesi </li>
-                <li> CFD, vadeli işlemler, Spot ve FX dahil olmak üzere tüm türev ve finansal ürünlerin teknik yapılandırması, işlem koşullarının yönetimi ve operasyonel desteğinin sağlanması </li>
-                <li> Risk yönetimi çerçevesinde dinamik fiyatlama stratejilerinin geliştirilmesi ve piyasa koşullarına göre finansal parametrelerin güncellenmesi </li>
-				<li> İşlem koşullarına göre özel komisyon ve ücret politikalarının planlanması, yapılandırılması ve yönetimi </li>
-				<li> MT5 platformunda farklı müşteri segmentlerine özel ürün ve fiyatlandırma gruplarının oluşturulması ve yönetilmesi </li>
-				<li> Platform yönetim araçları kullanılarak performans takibi yapılması, detaylı raporların hazırlanması ve teknik sorunların çözümü için koordinasyon sağlanması </li>
-				<li> Platform, plugin ve LP anlaşmalarının yürütülmesi; ödeme süreçlerinin yönetilmesi ve bütçe kontrolü </li>
-				<li> Finansal piyasa altyapısı ve işlem sistemlerinin etkin ve güvenli çalışması için sürekli iyileştirme ve otomasyon çözümleri geliştirilmesi </li>
-            </ul>
+        <center>
+            <img src="https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/photo.jpg" alt="Coşkun Parlar" class="profile-pic" />
+            <h2>COŞKUN PARLAR</h2>
+        </center>
+
+        <hr />
+
+        <div class="section-title">PERSONAL DETAILS</div>
+        <div class="personal-info">
+            <div><span class="label-title">Adres:</span> Eyüp / İstanbul</div>
+            <div><span class="label-title">Telefon:</span> +90 554 607 2885</div>
+            <div><span class="label-title">Email:</span> <a href="mailto:parlarcoskun@gmail.com">parlarcoskun@gmail.com</a></div>
+            <div><span class="label-title">Doğum Tarihi:</span> 10.11.1990</div>
+            <div><span class="label-title">Medeni Durum:</span> Evli</div>
+            <div><span class="label-title">Askerlik:</span> Tamamlandı (27/04/2019)</div>
+            <div><span class="label-title">Ehliyet:</span> A ve B / 2010</div>
+            <div><span class="label-title">Diller:</span> İngilizce (Orta)</div>
         </div>
+
+        <hr />
+
+        <div class="section-title">EDUCATION</div>
+        <p><strong>Lisans:</strong> İstanbul Üniversitesi AUZEF, Coğrafya / 2015</p>
+        <p><strong>Ön Lisans:</strong> Namık Kemal Üniversitesi, Teknik Bilimler MYO, Elektronik Teknolojisi / 2009</p>
+        <p><strong>Lise:</strong> Şişli Mesleki ve Teknik Anadolu Lisesi / 2004 - 2007</p>
+
+        <hr />
+
+        <div class="section-title">EXPERIENCE</div>
+
+        <div style="text-align:center; font-weight:600; margin-bottom: 8px;">
+            Ocak 2025 - Günümüz<br />
+            DESTEK YATIRIM MENKUL DEĞERLER A.Ş.<br />
+            Sistem ve Network Yöneticisi
+        </div>
+        <ul>
+            <li>MetaTrader 5 platformunun tam kapsamlı yönetimi; sembol, spread, swap, markup, komisyon, minimum ve maksimum lot, fiyat adımları (tick size), işlem saatleri, emir türleri gibi tüm finansal parametrelerin eksiksiz yapılandırılması ve optimize edilmesi</li>
+            <li>MetaTrader 5 platformunda plugin yönetimi; eklentilerin kurulumu, konfigürasyonu ve performans takibinin sağlanması</li>
+            <li>SPK ve TSPB düzenlemelerine tam uyumlu platform konfigürasyonu ve sürekli güncellenen düzenleyici standartlara uygunluk</li>
+            <li>TSPB raporlama süreçlerinin takibi, ilgili veri ve dokümantasyonun hazırlanması ve düzenleyici kurumlara zamanında iletilmesi</li>
+            <li>Likidite sağlayıcılar (LP) ile teknik ve operasyonel entegrasyonların yönetilmesi; piyasa veri akışlarının ve fiyat derinliğinin optimize edilmesi</li>
+            <li>CFD, vadeli işlemler, spot ve FX dahil olmak üzere tüm türev ve finansal ürünlerin teknik yapılandırması, işlem koşullarının yönetimi ve operasyonel desteğinin sağlanması</li>
+            <li>Risk yönetimi çerçevesinde dinamik fiyatlama stratejilerinin geliştirilmesi ve piyasa koşullarına göre finansal parametrelerin güncellenmesi</li>
+            <li>İşlem koşullarına göre özel komisyon ve ücret politikalarının planlanması, yapılandırılması ve yönetimi</li>
+            <li>MT5 platformunda farklı müşteri segmentlerine özel ürün ve fiyatlandırma gruplarının oluşturulması ve yönetilmesi</li>
+            <li>Platform yönetim araçları kullanılarak performans takibi yapılması, detaylı raporların hazırlanması ve teknik sorunların çözümü için koordinasyon sağlanması</li>
+            <li>Platform, plugin ve LP anlaşmalarının yürütülmesi; ödeme süreçlerinin yönetilmesi ve bütçe kontrolü</li>
+            <li>Finansal piyasa altyapısı ve işlem sistemlerinin etkin ve güvenli çalışması için sürekli iyileştirme ve otomasyon çözümleri geliştirilmesi</li>
+        </ul>
+    </div>
         <br>
 	    <br/>
            <div style="text-align:center;font-size:120%;width:100%">Aralık-2023 / Ocak-2025 : Trive Financial Services Ltd. </div>
