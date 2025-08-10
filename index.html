@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Coşkun Parlar - CV</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQa96TOeYsmz3m57Hl3gS5Jb1yG555N3lQG30x+4c5oX3/eA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Renk değişkenleri tanımlaması */
         :root {
@@ -14,15 +13,15 @@
             --container-bg: #161b22;
             --container-border: #30363d;
             --primary-color: #58a6ff;
-            --secondary-color: #29e99a;
+            --secondary-color: #29e99a; /* Koyu Mod için yeni renk */
             --info-bg: #21262d;
             --hover-bg: #282f38;
             --sub-text-color: #8b949e;
-            --bullet-color: #29e99a;
+            --bullet-color: #29e99a; /* Koyu Mod için yeni renk */
             --tooltip-bg: #58a6ff;
             --tooltip-text: #0d1117;
             --link-color: #58a6ff;
-            --link-hover-color: #29e99a;
+            --link-hover-color: #29e99a; /* Koyu Mod için yeni renk */
         }
 
         /* Açık mod renkleri */
@@ -32,22 +31,23 @@
             --container-bg: #ffffff;
             --container-border: #d0d7de;
             --primary-color: #0366d6;
-            --secondary-color: #00824b;
+            --secondary-color: #00824b; /* Açık Mod için yeni renk */
             --info-bg: #f3f4f6;
             --hover-bg: #ebedf0;
             --sub-text-color: #57606a;
-            --bullet-color: #00824b;
+            --bullet-color: #00824b; /* Açık Mod için yeni renk */
             --tooltip-bg: #0366d6;
             --tooltip-text: #ffffff;
             --link-color: #0366d6;
-            --link-hover-color: #00824b;
+            --link-hover-color: #00824b; /* Açık Mod için yeni renk */
         }
 
         /* Genel ayarlar */
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+                Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 20px;
             line-height: 1.6;
@@ -272,15 +272,6 @@
             margin-bottom: 10px;
             text-align: center;
             transition: color 0.3s;
-            display: flex; /* Simge ve metni aynı satırda tutmak için */
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .skill-category h4 i {
-            color: var(--secondary-color);
-            font-size: 1.25rem;
-            transition: color 0.3s;
         }
         
         .skill-category ul {
@@ -456,7 +447,7 @@
         
         .animated-section.hidden {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(20px); /* Aşağıdan yukarıya kayarak gelme efekti */
         }
 
         /* Responsive */
@@ -578,7 +569,7 @@
             <div class="section-title">Yetenekler</div>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h4><i class="fas fa-shield-alt"></i> Network & Security</h4>
+                    <h4>Network & Security</h4>
                     <ul>
                         <li data-tooltip="FortiGate, Mikrotik ve pfSense üzerinde güvenlik duvarı ve VPN yönetimi">FortiGate, Mikrotik, pfSense</li>
                         <li data-tooltip="IPsec ve PPTP protokolleri ile site-to-site ve client-to-site VPN yapılandırmaları">VPN (IPsec, PPTP)</li>
@@ -588,7 +579,7 @@
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h4><i class="fas fa-server"></i> Sistem & Sanallaştırma</h4>
+                    <h4>Sistem & Sanallaştırma</h4>
                     <ul>
                         <li data-tooltip="vSphere, ESXi ve vCenter platformlarında sanal altyapı kurulumu ve yönetimi">VMware (vSphere, ESXi, vCenter)</li>
                         <li data-tooltip="Hyper-V ve Proxmox sanallaştırma ortamlarının kurulumu ve bakımı">Hyper-V, Proxmox</li>
@@ -598,7 +589,7 @@
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h4><i class="fas fa-database"></i> Veritabanı & Yazılım</h4>
+                    <h4>Veritabanı & Yazılım</h4>
                     <ul>
                         <li data-tooltip="MS SQL Server ve MySQL veritabanı kurulumu, yönetimi ve optimizasyonu">SQL Server MS, MySQL</li>
                         <li data-tooltip="Finansal işlem platformları MetaTrader 4 & 5'in kurulumu, konfigürasyonu ve performansı">MetaTrader 4 & 5</li>
@@ -608,7 +599,7 @@
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h4><i class="fas fa-hdd"></i> Depolama & Yedekleme</h4>
+                    <h4>Depolama & Yedekleme</h4>
                     <ul>
                         <li data-tooltip="HPE, Dell, NetApp ve IBM gibi kurumsal depolama sistemlerinin yönetimi">HPE, Dell, NetApp, IBM</li>
                         <li data-tooltip="NAS (Network Attached Storage) cihazları QNAP ve Synology'nin kurulum ve yönetimi">QNAP, Synology NAS</li>
@@ -691,7 +682,7 @@
                 </ul>
             </div>
             <div class="experience-item">
-                <h4>System and Network Admin & Team Leader</h4>
+                <h4>System and Network Administrator & Team Leader</h4>
                 <div class="job-title">CYBER-FINTECH</div>
                 <div class="job-duration">Ağustos 2020 - Eylül 2022</div>
                 <ul>
@@ -726,7 +717,7 @@
                 </ul>
             </div>
             <div class="experience-item">
-                <h4>Information Technologies - Support Team Leader</h4>
+                <h4>Infrastructure Specialist - Support Team Leader</h4>
                 <div class="job-title">GKFX FINANCIAL SERVICES LTD. ŞTİ.</div>
                 <div class="job-duration">Haziran 2016 - Şubat 2018</div>
                 <ul>
@@ -739,7 +730,7 @@
                 </ul>
             </div>
             <div class="experience-item">
-                <h4>Information Technologies - Support Operations Specialist</h4>
+                <h4>IT Operations Specialist</h4>
                 <div class="job-title">BOYNER HOLDİNG / BEYMEN MAĞAZACILIK A.Ş.</div>
                 <div class="job-duration">Şubat 2015 - Haziran 2016</div>
                 <ul>
@@ -752,7 +743,7 @@
                 </ul>
             </div>
             <div class="experience-item">
-                <h4>Bilgi İşlem Teknisyeni</h4>
+                <h4>IT Technician</h4>
                 <div class="job-title">IŞIK ÜNİVERSİTESİ / Bilgi İşlem Daire Başkanlığı</div>
                 <div class="job-duration">Ocak 2012 - Eylül 2014</div>
                 <ul>
@@ -806,6 +797,7 @@
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
 
+        // Tema ayarını localStorage'dan yükle
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme) {
             body.classList.add(currentTheme);
@@ -834,25 +826,26 @@
             }
         });
 
+        // Animasyonlar için Intersection Observer
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.animated-section');
             const observerOptions = {
-                root: null,
+                root: null, // viewport'u kök olarak kullan
                 rootMargin: '0px',
-                threshold: 0.1
+                threshold: 0.1 // %10'u görünür olduğunda tetikle
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.remove('hidden');
-                        observer.unobserve(entry.target);
+                        observer.unobserve(entry.target); // Animasyon bir kez oynasın
                     }
                 });
             }, observerOptions);
 
             sections.forEach(section => {
-                section.classList.add('hidden');
+                section.classList.add('hidden'); // Başlangıçta tüm bölümleri gizle
                 observer.observe(section);
             });
         });
