@@ -565,49 +565,70 @@
 
         <hr />
 
-        <div class="animated-section">
-            <div class="section-title">Yetenekler</div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Network & Security</h4>
-                    <ul>
-                        <li data-tooltip="FortiGate, Mikrotik ve pfSense üzerinde güvenlik duvarı ve VPN yönetimi">FortiGate, Mikrotik, pfSense</li>
-                        <li data-tooltip="IPsec ve PPTP protokolleri ile site-to-site ve client-to-site VPN yapılandırmaları">VPN (IPsec, PPTP)</li>
-                        <li data-tooltip="DHCP, DNS ve TCP/IP gibi temel ağ servislerinin konfigürasyonu ve sorun giderme">DHCP, DNS, TCP/IP</li>
-                        <li data-tooltip="LAN/WAN topolojilerinin tasarımı, kurulumu ve yönetimi">LAN/WAN</li>
-                        <li data-tooltip="Uç nokta güvenliği için Kaspersky Endpoint Security yönetimi">Kaspersky Endpoint Security</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h4>Sistem & Sanallaştırma</h4>
-                    <ul>
-                        <li data-tooltip="vSphere, ESXi ve vCenter platformlarında sanal altyapı kurulumu ve yönetimi">VMware (vSphere, ESXi, vCenter)</li>
-                        <li data-tooltip="Hyper-V ve Proxmox sanallaştırma ortamlarının kurulumu ve bakımı">Hyper-V, Proxmox</li>
-                        <li data-tooltip="Active Directory, GPO ve DNS servisleri dahil Windows Server yönetimi">Windows Server (AD, GPO, DNS)</li>
-                        <li data-tooltip="Bulut tabanlı altyapı çözümleri için Microsoft Azure ve AWS servislerinin kullanımı">Microsoft Azure, AWS</li>
-                        <li data-tooltip="Uygulama sanallaştırması ve konteyner yönetimi için Docker">Docker</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h4>Veritabanı & Yazılım</h4>
-                    <ul>
-                        <li data-tooltip="MS SQL Server ve MySQL veritabanı kurulumu, yönetimi ve optimizasyonu">SQL Server MS, MySQL</li>
-                        <li data-tooltip="Finansal işlem platformları MetaTrader 4 & 5'in kurulumu, konfigürasyonu ve performansı">MetaTrader 4 & 5</li>
-                        <li data-tooltip="Office 365 hizmetleri ve Zoho CRM'in yönetimi ve entegrasyonu">Office 365, Zoho CRM</li>
-                        <li data-tooltip="Proje yönetimi ve destek talepleri için Atlassian JIRA kullanımı">Atlassian JIRA</li>
-                        <li data-tooltip="Kurumsal yedekleme ve replikasyon çözümü Veeam'in yönetimi">Veeam Backup & Replication</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h4>Depolama & Yedekleme</h4>
-                    <ul>
-                        <li data-tooltip="HPE, Dell, NetApp ve IBM gibi kurumsal depolama sistemlerinin yönetimi">HPE, Dell, NetApp, IBM</li>
-                        <li data-tooltip="NAS (Network Attached Storage) cihazları QNAP ve Synology'nin kurulum ve yönetimi">QNAP, Synology NAS</li>
-                        <li data-tooltip="Acronis, Veeam ve Arcserve gibi yedekleme çözümlerinin uygulanması ve denetlenmesi">Acronis, Veeam, Arcserve</li>
-                    </ul>
-                </div>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLpA+o/vI0FpC8a+4/uLp6rXn5i5S4X3A6Vz9XfL6f2vA3f6b+9c8k1F5c3oO3yA3z4v4k5lA6V7a6uQ5" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* CSS kodlarınız */
+        .skill-category h4 {
+            /* Simge ve metin için flexbox kullan */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Simge ve metin arası boşluk */
+        }
+        .skill-category h4 i {
+            color: var(--secondary-color);
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-section">
+        <div class="section-title">Yetenekler</div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4><i class="fas fa-shield-alt"></i> Network & Security</h4>
+                <ul>
+                    <li data-tooltip="FortiGate, Mikrotik ve pfSense üzerinde güvenlik duvarı ve VPN yönetimi">FortiGate, Mikrotik, pfSense</li>
+                    <li data-tooltip="IPsec ve PPTP protokolleri ile site-to-site ve client-to-site VPN yapılandırmaları">VPN (IPsec, PPTP)</li>
+                    <li data-tooltip="DHCP, DNS ve TCP/IP gibi temel ağ servislerinin konfigürasyonu ve sorun giderme">DHCP, DNS, TCP/IP</li>
+                    <li data-tooltip="LAN/WAN topolojilerinin tasarımı, kurulumu ve yönetimi">LAN/WAN</li>
+                    <li data-tooltip="Uç nokta güvenliği için Kaspersky Endpoint Security yönetimi">Kaspersky Endpoint Security</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-server"></i> Sistem & Sanallaştırma</h4>
+                <ul>
+                    <li data-tooltip="vSphere, ESXi ve vCenter platformlarında sanal altyapı kurulumu ve yönetimi">VMware (vSphere, ESXi, vCenter)</li>
+                    <li data-tooltip="Hyper-V ve Proxmox sanallaştırma ortamlarının kurulumu ve bakımı">Hyper-V, Proxmox</li>
+                    <li data-tooltip="Active Directory, GPO ve DNS servisleri dahil Windows Server yönetimi">Windows Server (AD, GPO, DNS)</li>
+                    <li data-tooltip="Bulut tabanlı altyapı çözümleri için Microsoft Azure ve AWS servislerinin kullanımı">Microsoft Azure, AWS</li>
+                    <li data-tooltip="Uygulama sanallaştırması ve konteyner yönetimi için Docker">Docker</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-database"></i> Veritabanı & Yazılım</h4>
+                <ul>
+                    <li data-tooltip="MS SQL Server ve MySQL veritabanı kurulumu, yönetimi ve optimizasyonu">SQL Server MS, MySQL</li>
+                    <li data-tooltip="Finansal işlem platformları MetaTrader 4 & 5'in kurulumu, konfigürasyonu ve performansı">MetaTrader 4 & 5</li>
+                    <li data-tooltip="Office 365 hizmetleri ve Zoho CRM'in yönetimi ve entegrasyonu">Office 365, Zoho CRM</li>
+                    <li data-tooltip="Proje yönetimi ve destek talepleri için Atlassian JIRA kullanımı">Atlassian JIRA</li>
+                    <li data-tooltip="Kurumsal yedekleme ve replikasyon çözümü Veeam'in yönetimi">Veeam Backup & Replication</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-hdd"></i> Depolama & Yedekleme</h4>
+                <ul>
+                    <li data-tooltip="HPE, Dell, NetApp ve IBM gibi kurumsal depolama sistemlerinin yönetimi">HPE, Dell, NetApp, IBM</li>
+                    <li data-tooltip="NAS (Network Attached Storage) cihazları QNAP ve Synology'nin kurulum ve yönetimi">QNAP, Synology NAS</li>
+                    <li data-tooltip="Acronis, Veeam ve Arcserve gibi yedekleme çözümlerinin uygulanması ve denetlenmesi">Acronis, Veeam, Arcserve</li>
+                </ul>
             </div>
         </div>
+    </div>
+
+    </body>
         
         <hr />
         
