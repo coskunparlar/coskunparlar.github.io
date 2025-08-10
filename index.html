@@ -4,402 +4,591 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Coşkun Parlar - CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <style>
         /* Genel ayarlar */
         body {
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: #0d1117;
+            color: #c9d1d9;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
                 Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 20px;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        #textBody {
-            max-width: 1200px;
-            margin: auto;
-            background: #1e1e1e;
-            padding: 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.7);
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #161b22;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid #30363d;
         }
-        h2 {
-            font-weight: 700;
-            font-size: 2.4rem;
-            margin: 15px 0 10px;
-            color: #61dafb;
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: #58a6ff;
+            font-weight: 600;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
             text-align: center;
-            letter-spacing: 1.2px;
+            margin-bottom: 5px;
         }
+
+        .subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #8b949e;
+            margin-bottom: 20px;
+        }
+
         hr {
             border: none;
-            border-top: 1px solid #333;
+            border-top: 1px solid #30363d;
             margin: 30px 0;
         }
+
         p {
             margin: 8px 0;
         }
-        span.label-title {
-            color: #ff6f61;
-            font-weight: 600;
+
+        .section-title {
+            color: #58a6ff;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #58a6ff;
+            padding-bottom: 5px;
+            letter-spacing: 1px;
         }
-        /* Link stili */
-        a {
-            color: #61dafb;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #21a1f1;
-            text-decoration: underline;
-        }
-        /* Liste stilleri */
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        ul li {
-            background: #292929;
-            margin-bottom: 10px;
-            padding: 12px 18px;
-            border-radius: 6px;
-            box-shadow: 0 0 5px rgba(97,218,251,0.3);
-            font-size: 1rem;
-        }
-        /* Responsive */
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            #textBody {
-                padding: 20px 20px;
-            }
-            h2 {
-                font-size: 1.8rem;
-            }
-            ul li {
-                font-size: 0.9rem;
-                padding: 10px 14px;
-            }
-        }
-        /* Resim ayarları */
+
+        /* Profil Resmi */
         .profile-pic {
             display: block;
             margin: 0 auto 15px;
             border-radius: 50%;
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
-            border: 3px solid #61dafb;
-            box-shadow: 0 0 12px #61dafb;
+            border: 3px solid #58a6ff;
+            box-shadow: 0 0 15px #58a6ff;
         }
-        /* Başlıklar */
-        .section-title {
-            color: #61dafb;
-            font-weight: 700;
-            font-size: 1.5rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #61dafb;
-            padding-bottom: 5px;
-            letter-spacing: 1px;
-        }
-        /* Kişisel bilgiler satır düzeni */
+
+        /* Kişisel Bilgiler */
         .personal-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px 40px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            text-align: center;
         }
-        .personal-info div {
-            min-width: 160px;
+
+        .personal-info-item {
+            background-color: #21262d;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .personal-info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .label-title {
+            color: #ff7b72;
+            font-weight: 500;
+        }
+
+        .personal-info-item a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        .personal-info-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Deneyim Bölümü */
+        .experience-item, .education-item {
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 3px solid #58a6ff;
+        }
+
+        .experience-item h4 {
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+            color: #c9d1d9;
+        }
+
+        .experience-item .job-title {
+            font-size: 1rem;
+            color: #8b949e;
+            margin-bottom: 5px;
+        }
+        
+        .experience-item .job-duration {
+            font-size: 0.9rem;
+            color: #8b949e;
+            margin-bottom: 15px;
+        }
+
+        .experience-item ul, .education-item ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .experience-item ul li {
+            position: relative;
+            background: #21262d;
+            padding: 12px 15px 12px 30px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background 0.2s;
+        }
+
+        .experience-item ul li:hover {
+            background: #282f38;
+        }
+
+        .experience-item ul li::before {
+            content: '•';
+            color: #ff7b72;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 15px;
+        }
+
+        /* Eğitim Bölümü */
+        .education-item h4 {
+            font-size: 1.15rem;
+            margin-bottom: 5px;
+            color: #c9d1d9;
+        }
+
+        .education-item p {
+            margin: 5px 0;
+            color: #8b949e;
+        }
+        
+        /* Skills Bölümü */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-category {
+            background-color: #21262d;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .skill-category h4 {
+            color: #ff7b72;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .skill-category ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .skill-category ul li {
+            padding: 5px 0;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #8b949e;
+            padding-top: 20px;
+            border-top: 1px solid #30363d;
+        }
+        
+        .footer a {
+            color: #58a6ff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: #ff7b72;
+            text-decoration: underline;
+        }
+        
+        .linkedin-icon {
+            vertical-align: middle;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+            .experience-item, .education-item {
+                padding-left: 15px;
+            }
+            .experience-item ul li::before {
+                left: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="textBody">
-        <center>
-            <img src="https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/photo.jpg" alt="Coşkun Parlar" class="profile-pic" />
-            <h2>COŞKUN PARLAR</h2>
-        </center>
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/photo.jpg" alt="Coşkun Parlar" class="profile-pic" />
+        <h1>COŞKUN PARLAR</h1>
+        <p class="subtitle">Sistem ve Network Yöneticisi</p>
 
         <hr />
 
-        <div class="section-title">PERSONAL DETAILS</div>
+        <div class="section-title">Kişisel Bilgiler</div>
         <div class="personal-info">
-            <div><span class="label-title">Adres:</span> Eyüp / İstanbul</div>
-            <div><span class="label-title">Telefon:</span> +90 554 607 2885</div>
-            <div><span class="label-title">Email:</span> <a href="mailto:parlarcoskun@gmail.com">parlarcoskun@gmail.com</a></div>
-            <div><span class="label-title">Doğum Tarihi:</span> 10.11.1990</div>
-            <div><span class="label-title">Medeni Durum:</span> Evli</div>
-            <div><span class="label-title">Askerlik:</span> Tamamlandı (27/04/2019)</div>
-            <div><span class="label-title">Ehliyet:</span> A ve B / 2010</div>
-            <div><span class="label-title">Diller:</span> İngilizce (Orta)</div>
+            <div class="personal-info-item">
+                <span class="label-title">Adres:</span> Eyüp / İstanbul
+            </div>
+            <div class="personal-info-item">
+                <span class="label-title">Telefon:</span> +90 554 607 2885
+            </div>
+            <div class="personal-info-item">
+                <span class="label-title">Email:</span> <a href="mailto:parlarcoskun@gmail.com">parlarcoskun@gmail.com</a>
+            </div>
+            <div class="personal-info-item">
+                <span class="label-title">Doğum Tarihi:</span> 10.11.1990
+            </div>
+            <div class="personal-info-item">
+                <span class="label-title">Medeni Durum:</span> Evli
+            </div>
+            <div class="personal-info-item">
+                <span class="label-title">Askerlik:</span> Tamamlandı
+            </div>
+            <div class="personal-info-item">
+                <span class="label-title">Ehliyet:</span> A ve B / 2010
+            </div>
+            <div class="personal-info-item">
+                <span class="label-title">Diller:</span> İngilizce (Orta)
+            </div>
         </div>
 
         <hr />
 
-        <div class="section-title">EDUCATION</div>
-        <p><strong>Lisans:</strong> İstanbul Üniversitesi AUZEF, Coğrafya / 2015</p>
-        <p><strong>Ön Lisans:</strong> Namık Kemal Üniversitesi, Teknik Bilimler MYO, Elektronik Teknolojisi / 2009</p>
-        <p><strong>Lise:</strong> Şişli Mesleki ve Teknik Anadolu Lisesi / 2004 - 2007</p>
+        <div class="section-title">Eğitim</div>
+        <div class="education-item">
+            <h4>Lisans:</h4>
+            <p>İstanbul Üniversitesi AUZEF, Coğrafya / 2015</p>
+        </div>
+        <div class="education-item">
+            <h4>Ön Lisans:</h4>
+            <p>Namık Kemal Üniversitesi, Teknik Bilimler MYO, Elektronik Teknolojisi / 2009</p>
+        </div>
+        <div class="education-item">
+            <h4>Lise:</h4>
+            <p>Şişli Mesleki ve Teknik Anadolu Lisesi / 2004 - 2007</p>
+        </div>
 
         <hr />
 
-        <div class="section-title">EXPERIENCE</div>
+        <div class="section-title">Deneyim</div>
 
-        <div style="text-align:center; font-weight:600; margin-bottom: 8px;">
-            	Ocak 2025 - Günümüz<br />
-            	DESTEK YATIRIM MENKUL DEĞERLER A.Ş.<br />
-            	Sistem ve Network Yöneticisi
+        <div class="experience-item">
+            <h4>Sistem ve Network Yöneticisi</h4>
+            <div class="job-title">DESTEK YATIRIM MENKUL DEĞERLER A.Ş.</div>
+            <div class="job-duration">Ocak 2025 - Günümüz</div>
+            <ul>
+                <li>MetaTrader 5 platformunun tam kapsamlı yönetimi; sembol, spread, swap, markup, komisyon, minimum ve maksimum lot, fiyat adımları (tick size), işlem saatleri, emir türleri gibi tüm finansal parametrelerin eksiksiz yapılandırılması ve optimize edilmesi</li>
+                <li>MetaTrader 5 platformunda plugin yönetimi; eklentilerin kurulumu, konfigürasyonu ve performans takibinin sağlanması</li>
+                <li>SPK ve TSPB düzenlemelerine tam uyumlu platform konfigürasyonu ve sürekli güncellenen düzenleyici standartlara uygunluk</li>
+                <li>TSPB raporlama süreçlerinin takibi, ilgili veri ve dokümantasyonun hazırlanması ve düzenleyici kurumlara zamanında iletilmesi</li>
+                <li>Likidite sağlayıcılar (LP) ile teknik ve operasyonel entegrasyonların yönetilmesi; piyasa veri akışlarının ve fiyat derinliğinin optimize edilmesi</li>
+                <li>CFD, vadeli işlemler, spot ve FX dahil olmak üzere tüm türev ve finansal ürünlerin teknik yapılandırması, işlem koşullarının yönetimi ve operasyonel desteğinin sağlanması</li>
+                <li>Risk yönetimi çerçevesinde dinamik fiyatlama stratejilerinin geliştirilmesi ve piyasa koşullarına göre finansal parametrelerin güncellenmesi</li>
+                <li>İşlem koşullarına göre özel komisyon ve ücret politikalarının planlanması, yapılandırılması ve yönetimi</li>
+                <li>MT5 platformunda farklı müşteri segmentlerine özel ürün ve fiyatlandırma gruplarının oluşturulması ve yönetilmesi</li>
+                <li>Platform yönetim araçları kullanılarak performans takibi yapılması, detaylı raporların hazırlanması ve teknik sorunların çözümü için koordinasyon sağlanması</li>
+                <li>Platform, plugin ve LP anlaşmalarının yürütülmesi; ödeme süreçlerinin yönetimi ve bütçe kontrolü</li>
+                <li>Finansal piyasa altyapısı ve işlem sistemlerinin etkin ve güvenli çalışması için sürekli iyileştirme ve otomasyon çözümleri geliştirilmesi</li>
+            </ul>
         </div>
-        <ul>
-            <li>MetaTrader 5 platformunun tam kapsamlı yönetimi; sembol, spread, swap, markup, komisyon, minimum ve maksimum lot, fiyat adımları (tick size), işlem saatleri, emir türleri gibi tüm finansal parametrelerin eksiksiz yapılandırılması ve optimize edilmesi</li>
-            <li>MetaTrader 5 platformunda plugin yönetimi; eklentilerin kurulumu, konfigürasyonu ve performans takibinin sağlanması</li>
-            <li>SPK ve TSPB düzenlemelerine tam uyumlu platform konfigürasyonu ve sürekli güncellenen düzenleyici standartlara uygunluk</li>
-            <li>TSPB raporlama süreçlerinin takibi, ilgili veri ve dokümantasyonun hazırlanması ve düzenleyici kurumlara zamanında iletilmesi</li>
-            <li>Likidite sağlayıcılar (LP) ile teknik ve operasyonel entegrasyonların yönetilmesi; piyasa veri akışlarının ve fiyat derinliğinin optimize edilmesi</li>
-            <li>CFD, vadeli işlemler, spot ve FX dahil olmak üzere tüm türev ve finansal ürünlerin teknik yapılandırması, işlem koşullarının yönetimi ve operasyonel desteğinin sağlanması</li>
-            <li>Risk yönetimi çerçevesinde dinamik fiyatlama stratejilerinin geliştirilmesi ve piyasa koşullarına göre finansal parametrelerin güncellenmesi</li>
-            <li>İşlem koşullarına göre özel komisyon ve ücret politikalarının planlanması, yapılandırılması ve yönetimi</li>
-            <li>MT5 platformunda farklı müşteri segmentlerine özel ürün ve fiyatlandırma gruplarının oluşturulması ve yönetilmesi</li>
-            <li>Platform yönetim araçları kullanılarak performans takibi yapılması, detaylı raporların hazırlanması ve teknik sorunların çözümü için koordinasyon sağlanması</li>
-            <li>Platform, plugin ve LP anlaşmalarının yürütülmesi; ödeme süreçlerinin yönetilmesi ve bütçe kontrolü</li>
-            <li>Finansal piyasa altyapısı ve işlem sistemlerinin etkin ve güvenli çalışması için sürekli iyileştirme ve otomasyon çözümleri geliştirilmesi</li>
-        </ul>
+
+        <div class="experience-item">
+            <h4>Platform Engineer</h4>
+            <div class="job-title">Trive Financial Services Ltd.</div>
+            <div class="job-duration">Aralık 2023 - Ocak 2025</div>
+            <ul>
+                <li>Migration projeleri ve Hypervisor yönetimi</li>
+                <li>MetaTrader 4 & 5 platformlarının kurulumu, yönetimi ve optimizasyonu</li>
+                <li>Sunucu kurulumu, yapılandırma, bakım ve performans iyileştirme</li>
+                <li>Günlük sistem, güvenlik ve yedekleme operasyonlarının yürütülmesi</li>
+                <li>Donanım/yazılım arızalarında hızlı onarım ve kurtarma süreçleri</li>
+                <li>İşletim sistemi, yazılım ve güvenlik güncellemelerinin yönetimi</li>
+                <li>Geographic Information System (GIS) altyapı ve varlık yönetim sistemleri için yazılım konfigürasyonu</li>
+                <li>Operasyonel prosedür ve teknik dokümantasyonun hazırlanması</li>
+                <li>Otomasyon ve verimlilik odaklı sistem yönetimi çözümlerinin geliştirilmesi</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h4>Cloud Engineer</h4>
+            <div class="job-title">Vodafone Telekomünikasyon A.Ş.</div>
+            <div class="job-duration">Şubat 2023 - Aralık 2023</div>
+            <ul>
+                <li>VMware altyapı yönetimi: vCenter, NSX, vRealize Operations (vROps), Cloud Director ve Cloud Director Availability platformlarının yönetimi</li>
+                <li>Yüksek erişilebilirlik ve kaynak optimizasyonu: vSphere High Availability (HA) ve Distributed Resource Scheduler (DRS) yapılandırma ve yönetimi</li>
+                <li>Sürüm güncellemeleri: ESXi, vCenter, vROps ve ilgili VMware bileşenlerinin versiyon güncellemelerinin uygulanması</li>
+                <li>Donanım güncellemeleri: Storage sistemleri, host sunucular ve diğer fiziksel bileşenlerin firmware güncellemelerinin yapılması</li>
+                <li>Bulut geçiş projeleri: On-Premise ⇆ Cloud migration projelerinin planlanması ve yürütülmesi</li>
+                <li>Veri koruma ve felaket kurtarma: Veeam Backup & Replication yapılandırmaları, Failover – Failback operasyonlarının uygulanması</li>
+                <li>Depolama yönetimi: SAN/NAS depolama çözümlerinin yönetimi ve optimizasyonu</li>
+                <li>Hypervisor ortamları: Sanallaştırma altyapısının yönetimi, kapasite planlaması ve performans iyileştirmeleri</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h4>Cloud Systems Administrator</h4>
+            <div class="job-title">Radore Data Center A.Ş.</div>
+            <div class="job-duration">Eylül 2022 - Şubat 2023</div>
+            <ul>
+                <li>Sunucu altyapısı: HPE, Dell ve Blade server sistemlerinin kurulumu, yapılandırılması ve yönetimi</li>
+                <li>Sanallaştırma platformları: VMware ESXi, vCenter, Hyper-V, Proxmox ve Nutanix ortamlarının kurulumu ve yönetimi</li>
+                <li>Barındırma hizmetleri: Hosting, domain ve SSL sertifika yönetimi</li>
+                <li>Uygulama yönetimi: Office 365 ve Plesk kontrol panellerinin yönetimi</li>
+                <li>Depolama çözümleri: HPE Primera 3PAR C630, NetApp 2620, IBM TS3100, HPE MSA 1040/2060 gibi storage sistemlerinin kurulumu ve yönetimi</li>
+                <li>NAS çözümleri: QNAP ve Synology ürünlerinin kurulumu ve yönetimi</li>
+                <li>Ağ güvenliği: FortiGate, pfSense ve Mikrotik firewall/router cihazlarının kurulumu ve yönetimi</li>
+                <li>Sistem izleme: Zabbix, PRTG, SolarWinds ve ManageEngine OpManager ile altyapı izleme ve performans yönetimi</li>
+                <li>Yedekleme & Felaket kurtarma: Veeam, vRanger, Acronis ve Arcserve çözümlerinin yönetimi</li>
+                <li>İletişim altyapısı: VoIP sistemler (FreePBX, 3CX) ve NVR güvenlik sistemlerinin yönetimi</li>
+                <li>Ar-Ge: Teknolojik gelişmelerin araştırılması, test edilmesi ve mevcut altyapıya entegrasyonu</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h4>System and Network Admin & Team Leader</h4>
+            <div class="job-title">CYBER-FINTECH</div>
+            <div class="job-duration">Ağustos 2020 - Eylül 2022</div>
+            <ul>
+                <li>Finans sektöründeki müşterilere 7/24 kesintisiz sistem desteği sağlamak</li>
+                <li>Tüm teknik mimarinin tasarımı, kurulumu, konfigürasyonu ve operasyonel yönetimi</li>
+                <li>Fiziksel sunucu (Dedicated Server) kurulumu, RAID yapılandırması, Hot Spare konfigürasyonu, iDRAC ve ILO yönetimi</li>
+                <li>VMware vSphere/ESXi, Hyper-V sanallaştırma ortamlarının kurulumu, konfigürasyonu, optimizasyonu ve yönetimi</li>
+                <li>Microsoft Azure ve AWS üzerinde sistem kurulumu, optimizasyonu ve yönetimi</li>
+                <li>LAN/WAN ağ tasarımı, yönetimi ve optimizasyonu; Firewall sistemleri (FortiGate, pfSense, Mikrotik vb.) kurulumu ve yönetimi</li>
+                <li>DNS yönetimi (GoDaddy, Namecheap; MX, CNAME, TXT, NS kayıtları) ve SSL sertifikalarının (Comodo) oluşturulması, dağıtımı ve yenilenmesi</li>
+                <li>Veeam Backup & Replication projelerinin planlanması, kurulumu ve yönetimi</li>
+                <li>Sistem loglarının düzenli olarak izlenmesi, analizi ve raporlanması; proaktif sorun tespiti ve çözüm geliştirme</li>
+                <li>İzleme ve yönetim sistemleri (Docker üzerinde Zabbix, ManageEngine OpManager) kurulumu ve optimizasyonu</li>
+                <li>MetaTrader 4 & 5 platformlarının kurulumu, yapılandırılması ve yönetimi</li>
+                <li>Windows Server servisleri (Active Directory, DHCP, DNS) kurulumu, yapılandırılması ve yönetimi</li>
+                <li>IP PBX sistemleri ve IP telefon altyapısının kurulumu ve yönetimi</li>
+                <li>Zoho CRM kurulumu, yapılandırılması ve yönetimi</li>
+                <li>Ofis altyapı projeleri (kamera sistemleri, network kabinet, switch, router, access point) tasarımı ve kurulumu</li>
+            </ul>
+        </div>
+        
+        <div class="experience-item">
+            <h4>System and Network Specialist & Support Team Leader</h4>
+            <div class="job-title">MYINVEST DANIŞMANLIK VE İNTERNET SERVİS HİZ. TİC. LTD. ŞTİ.</div>
+            <div class="job-duration">Haziran 2018 - Ağustos 2020</div>
+            <ul>
+                <li>Uzak ofislerin Ipsec/ Site to Site VPN ile network’lerinin haberleşmesini sağlamak</li>
+                <li>Ofis dışı çalışanlar için PPTP/ Client to Site VPN yapısının kurulumu</li>
+                <li>Dış network’ten iç network ağına erişim için Nat işlemleri yapmak</li>
+                <li>HPE 1920S model akıllı switch kurulumları ve yönetimi yapmak</li>
+                <li>Kaspersky Endpoint Security Cloud kurulumu ve yönetimi yapmak</li>
+                <li>Voip sistemler FreePBX yapısı kurulumu ve yönetimi</li>
+                <li>Tüm çalışanlar için yönetilebilir konuşma platformu Slack uygulaması kurulumu ve yönetimi</li>
+                <li>HPE ProLiant DL380 Gen10 üzerine Windows Server 2016 datacenter kurulumu</li>
+                <li>Hyper-V üzerinde DC ,AD, DHCP ve DNS rollerinin yönetimi ve ofis içinde data share ve data backup işleri için File Server yapısı kurulumu ve yönetimi</li>
+                <li>Fiziksel tüm cihazların, disk yapısını Sanal Disk olan (VHDX) yapısına convert ederek, Hyper-V platformuna serverları taşıma işlemlerini yürütmek</li>
+                <li>Hyper-V üzerindeki sunucuların update ve düzenli bakımlarını yapmak ayrıca VEEAM uygulaması ile backup alma işlemleri yürütmek</li>
+                <li>Firewall cihazlarının düzenli olarak Backup’larının alınması</li>
+                <li>Godaddy üzerinde bulunan domain’lerin DNS yönlendirmesi, A kaydı değişikliği, Name Server değişikliği, vb. işlerin yapılması</li>
+                <li>Yeni domain alımı ve alınmış domainlerin expired tarihlerini takip etmek</li>
+                <li>WordPress, Web Hosting ve SSL sertifika yönetiminin yapılması</li>
+                <li>Firma içerisinde çıkan ihtiyaçlara yönelik Hardware ve Software satın alma işlemlerini yönetmek</li>
+                <li>Office 365 Online Exchange yönetimi</li>
+                <li>Domain’lerin TXT veya MX kayıtlarını yöneterek email sunucusu için yönlendirmelerinin yapılması</li>
+                <li>Support ekibi yönetimi</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h4>Information Technologies - Support Team Leader</h4>
+            <div class="job-title">GKFX FINANCIAL SERVICES LTD. ŞTİ.</div>
+            <div class="job-duration">Haziran 2016 - Şubat 2018</div>
+            <ul>
+                <li>Kaspersky Admin Center Kurulumu ve Yönetimini yapmak</li>
+                <li>Ofiste telefon sistemi olarak kullandığımız 3cx sisteminin hem server yönetimi hem de son kullanıcı tarafındaki desteği vermek</li>
+                <li>Active Directory kurulumu ve yönetimini yapmak</li>
+                <li>Exchange server 2013 ve 2016 kullandım</li>
+                <li>macOS ve Windows işletim sistemlerinde yaşanan sorunlara destek sağlamak</li>
+                <li>Mobile cihazlarda da (iOS, Android and Windows) yaşanan sorunlara destek sağlamak</li>
+                <li>Printers, scanners, External cihazların kurulumunu ve desteğini sağlamak</li>
+                <li>TCP/IP - VPN - DHCP - DNS konularında bilgi sahibiyim</li>
+                <li>File server kurulumu ve yönetimini yaptım</li>
+                <li>Güvenlik kapsamında low level format ve backup işlemleri yapmak</li>
+                <li>VIP müşterilere (CEO-CTO-CFO vb.) IT hizmeti sağladım</li>
+                <li>Lokal olarak çalışanlara telefon, uzaktan bağlantı (Rdp, Teamviewer), yada yerinde destek vermek</li>
+                <li>Firmanın diğer ofisleri olan Almanya, İspanya, Çin, İngiltere ülkelerinde ihtiyaç olduğunda ticket üzerinden ya da teamviewer bağlantısı ile destek verilerek sorunun giderilmesi</li>
+                <li>Firma genelinde alınacak IT cihazları için fiyat araştırması yapıp sipariş sürecini başlatıp ürünün tedariğini sağladıktan sonra kurulumu ve desteğini vermek</li>
+                <li>Firma da bulunan cihazların ihtiyaç duyulduğunda servis talebini oluşturup takibini yapmak</li>
+                <li>Ticket üzerinden gelen talepleri sla süresine göre önceliklendirip en kısa sürede çözüm üretmek</li>
+                <li>Atlassian JIRA ürününü kullandım</li>
+                <li>Özel ürünlere ve özel yazılımlara ihtiyaç duyan, Creative ve Development ekipleri gibi departmanların cihaz ve yazılım tedariğini sağlamak ve desteğini vermek</li>
+                <li>Envanterleme yapılması ve yönetilmesi çalışmalarında bulundum</li>
+                <li>Switch, modem, router, access point, kablolama gibi network alanlarındaki sorunları tespit edip gerekli departmana yönlendirilmesi yada sorunun giderilmesi</li>
+                <li>Storage kurulumları, kapasite kontrolleri, hardware update yapılması</li>
+                <li>Visual studio, Visio pro, Ms office ve office 365, Sql server MS, MySQL, MetaTrader 4 ve 5, MetaTrader manager 4 ve 5, Adobe ürünleri vs. birçok yazılımın kurulumu, lisanslanması ve ürünlerin takibi yapılması</li>
+                <li>Acronis ile imaj alınarak bir çok PC'nin kısa sürede kurulumunu gerçekleştirmek</li>
+                <li>Vmware üzerine kurulu makinaların monitör edilmesi ve eğer oluşur ise sorunların en kısa sürede giderilmesi</li>
+                <li>LiveChat support ürünlerinin alımı ve support ekibi yönetilmesi</li>
+            </ul>
+        </div>
+        
+        <div class="experience-item">
+            <h4>Information Technologies - Support Operations Specialist</h4>
+            <div class="job-title">BOYNER HOLDİNG / BEYMEN MAĞAZACILIK A.Ş.</div>
+            <div class="job-duration">Şubat 2015 - Haziran 2016</div>
+            <ul>
+                <li>Şirket içi 200 için PC OS, Office yazılımları ve IT cihazları (PC, printer, scanner, telefon, BlackBerry gibi) desteği sağlamak</li>
+                <li>Destek alınan firmalar nezdinde problem aktarımı, takibi ve gereken lokal uygulamaları yapmak</li>
+                <li>Kurulum ve sistem adaptasyon çalışmaları yapmak</li>
+                <li>Mevcut arızaları takip ederek, tam zamanlı olarak bunlara müdahale etmek</li>
+                <li>Şirket içi network ve yazılımları için help desk hizmeti sağlamak</li>
+                <li>İşletim sistemlerinin ve kurumsal yazılımların (Antivirüs ve yedekleme vb.) bakımı, yazılım güncellemeleri yapmak</li>
+                <li>PC üzerinde temel Network protokolleri konusunda yapılandırma yapılması</li>
+                <li>Uzaktan bağlantı ile şehir içi ve şehir dışında bulunan 82 mağazaya yazılım ve çevre donanım kurlumu desteği sağlamak</li>
+                <li>Microsoft İşletim Sistemleri ve Office Programları kurma ve sorun giderme</li>
+                <li>Kullanıcı çağrılarının Help desk yazılımından takibi</li>
+                <li>Telefon ile gelen çağrıların karşılanması ve çözümlenmesi</li>
+                <li>Yeni kullanıcılar için I.T. prosedür ve talimatlarına bağlı olarak donanım ve yazılım kurulumlarının yapılarak çalışır halde bilgisayarların teslim edilmesi</li>
+                <li>IT bölümünde takip edilen her türlü proje ve raporlama sürecine destek verilmesi</li>
+                <li>Müşteri talep ve şikâyetlerinin kayıt altına alınması, takibi ve ilgili platformlara taşınarak yanıtlanmasına yönelik faaliyetlerin yürütülmesi; gerekli koordinasyonun sağlanması</li>
+                <li>Firma içerisinde çalışanların veya yeni başlayan personele verilecek cihazların envanter kaydı ve kontrolü yapılması</li>
+                <li>Mağazalarda bulunan Samsung tabletlerin yazılımsal ve donanımsal sorunlarına destek verilmesi</li>
+                <li>Mağazalarda bulunan NCR model kasaların donanımsal desteğini verip yazılımsal sorunlarda tedarikçi firmaya kayıt oluşturulup sorun çözümlenene kadar takip edilmesi</li>
+                <li>Mağazalarda bulunan Motorola el terminallerinin yazılımsal desteğini verip donanımsal sorunlarda tedarikçi firmaya gönderilip sürecin takip edilmesi</li>
+                <li>Kullanıcı bilgisayarlarının değişimi ve yenilenmesi esnasında yedekleme işleminin yapılması</li>
+                <li>Acronis ve ghost ile alınan imajların yeniden yüklenmesi veya bu programlar ile imaj alma işleminin yapılması</li>
+            </ul>
+        </div>
+        
+        <div class="experience-item">
+            <h4>Bilgi İşlem Teknisyeni</h4>
+            <div class="job-title">IŞIK ÜNİVERSİTESİ / Bilgi İşlem Daire Başkanlığı</div>
+            <div class="job-duration">Ocak 2012 - Eylül 2014</div>
+            <ul>
+                <li>Windows client işletim sisteminin kurulum ve konfigürasyonu</li>
+                <li>Linux işletim sistemi kurulumu (başlangıç)</li>
+                <li>Printer ve fax vb. çevre donanımların kurulumu</li>
+                <li>Microsoft segmenti ürünlerin (Ms office vb.) kurulumu vb. ihtiyaç bulunan tüm programların kurulumu</li>
+                <li>Akademik ve İdari Kadroların bilgisayar ve çevre donanım sorunlarının giderilmesi</li>
+                <li>Mac ve Bilgisayar laboratuvarlarının kurulumu, yönetimi ve bakım onarımı</li>
+            </ul>
+        </div>
+        
+        <hr />
+        
+        <div class="section-title">Yetenekler</div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Network & Security</h4>
+                <ul>
+                    <li>FortiGate, Mikrotik, pfSense</li>
+                    <li>VPN (IPsec, PPTP)</li>
+                    <li>DHCP, DNS, TCP/IP</li>
+                    <li>LAN/WAN</li>
+                    <li>Kaspersky Endpoint Security</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Sistem & Sanallaştırma</h4>
+                <ul>
+                    <li>VMware (vSphere, ESXi, vCenter)</li>
+                    <li>Hyper-V, Proxmox</li>
+                    <li>Windows Server (AD, GPO, DNS)</li>
+                    <li>Microsoft Azure, AWS</li>
+                    <li>Docker</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Veritabanı & Yazılım</h4>
+                <ul>
+                    <li>SQL Server MS, MySQL</li>
+                    <li>MetaTrader 4 & 5</li>
+                    <li>Office 365, Zoho CRM</li>
+                    <li>Atlassian JIRA</li>
+                    <li>Veeam Backup & Replication</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Depolama & Yedekleme</h4>
+                <ul>
+                    <li>HPE, Dell, NetApp, IBM</li>
+                    <li>QNAP, Synology NAS</li>
+                    <li>Acronis, Veeam, Arcserve</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <a href="https://www.linkedin.com/in/coskun-parlar-411906137/" target="_blank" rel="noopener noreferrer">
+                <svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11.5 20h-3v-11h3v11zm-1.5-12.2c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13 12.2h-3v-5.5c0-1.32-1.2-1.5-1.5-1.5s-1.5.18-1.5 1.5v5.5h-3v-11h3v1.5c.74-1.4 3-1.5 3 1.33v8.17z"/>
+                </svg>
+                LinkedIn Profilim
+            </a>
+            <div style="margin-top: 10px; font-size:12px; color:#6a737d;">
+                &copy; <span id="currentYear"></span> Coşkun PARLAR. Tüm hakları saklıdır.
+            </div>
+            <script>
+                document.getElementById('currentYear').textContent = new Date().getFullYear();
+            </script>
+        </div>
     </div>
-        <br>
-	    <br/>
-		<div style="text-align:center; font-weight:600; margin-bottom: 8px;">
-    			Aralık 2023 - Ocak 2025<br />
-   				Trive Financial Services Ltd.<br />
-    			Platform Engineer
-		</div>
-		<ul style="margin:auto; font-size:100%; width:75%; list-style-position: inside;">
-            <ul>
-                <li> Migration projeleri ve Hypervisor yönetimi </li>
-                <li> MetaTrader 4 & 5 platformlarının kurulumu, yönetimi ve optimizasyonu </li>
-                <li> Sunucu kurulumu, yapılandırma, bakım ve performans iyileştirme </li>
-                <li> Günlük sistem, güvenlik ve yedekleme operasyonlarının yürütülmesi </li>
-                <li> Donanım/yazılım arızalarında hızlı onarım ve kurtarma süreçleri </li>
-                <li> İşletim sistemi, yazılım ve güvenlik güncellemelerinin yönetimi </li>
-                <li> Geographic Information System (GIS) altyapı ve varlık yönetim sistemleri için yazılım konfigürasyonu </li>
-				<li> Operasyonel prosedür ve teknik dokümantasyonun hazırlanması </li>
-				<li> Otomasyon ve verimlilik odaklı sistem yönetimi çözümlerinin geliştirilmesi </li>
-            </ul>
-        </div>
-        <br> 
-	    <hr/>
- 	<div style="text-align:center; font-weight:600; margin-bottom: 8px;">
-    		Şubat 2023 - Aralık 2023<br />
-    		Vodafone Telekomünikasyon AŞ.<br />
-			Cloud Engineer
-	</div>
-		<ul style="margin:auto; font-size:100%; width:75%; list-style-position: inside;">
-            <ul>
-                <li> VMware altyapı yönetimi: vCenter, NSX, vRealize Operations (vROps), Cloud Director ve Cloud Director Availability platformlarının yönetimi </li>
-                <li> Yüksek erişilebilirlik ve kaynak optimizasyonu: vSphere High Availability (HA) ve Distributed Resource Scheduler (DRS) yapılandırma ve yönetimi </li>
-                <li> Sürüm güncellemeleri: ESXi, vCenter, vROps ve ilgili VMware bileşenlerinin versiyon güncellemelerinin uygulanması </li>
-                <li> Donanım güncellemeleri: Storage sistemleri, host sunucular ve diğer fiziksel bileşenlerin firmware güncellemelerinin yapılması </li>
-                <li> Bulut geçiş projeleri: On-Premise ⇆ Cloud migration projelerinin planlanması ve yürütülmesi </li>
-                <li> Veri koruma ve felaket kurtarma: Veeam Backup & Replication yapılandırmaları, Failover – Failback operasyonlarının uygulanması  </li>
-                <li> Depolama yönetimi: SAN/NAS depolama çözümlerinin yönetimi ve optimizasyonu </li>
-                <li> Hypervisor ortamları: Sanallaştırma altyapısının yönetimi, kapasite planlaması ve performans iyileştirmeleri </li>
-            </ul>
-        </div>
-        <br>      
-        <br>
-	<br>
-	    <hr/>
-    <div style="text-align:center; font-weight:600; margin-bottom: 8px;">
-    		Eylül 2022 - Şubat 2023<br />
-   			Radore Data Center AŞ.<br />
-    		Cloud Systems Administrator
-	</div>
-		<ul style="margin:auto; font-size:100%; width:75%; list-style-position: inside;">
-            <ul>
-                <li> Sunucu altyapısı: HPE, Dell ve Blade server sistemlerinin kurulumu, yapılandırılması ve yönetimi </li>
-                <li> Sanallaştırma platformları: VMware ESXi, vCenter, Hyper-V, Proxmox ve Nutanix ortamlarının kurulumu ve yönetimi </li>
-                <li> Barındırma hizmetleri: Hosting, domain ve SSL sertifika yönetimi </li>
-                <li> Uygulama yönetimi: Office 365 ve Plesk kontrol panellerinin yönetimi </li>
-                <li> Depolama çözümleri: HPE Primera 3PAR C630, NetApp 2620, IBM TS3100, HPE MSA 1040/2060 gibi storage sistemlerinin kurulumu ve yönetimi </li>
-                <li> NAS çözümleri: QNAP ve Synology ürünlerinin kurulumu ve yönetimi </li>
-                <li> Ağ güvenliği: FortiGate, pfSense ve Mikrotik firewall/router cihazlarının kurulumu ve yönetimi </li>
-                <li> Sistem izleme: Zabbix, PRTG, SolarWinds ve ManageEngine OpManager ile altyapı izleme ve performans yönetimi</li>
-                <li> Yedekleme & Felaket kurtarma: Veeam, vRanger, Acronis ve Arcserve çözümlerinin yönetimi </li>
-                <li> İletişim altyapısı: VoIP sistemler (FreePBX, 3CX) ve NVR güvenlik sistemlerinin yönetimi </li>
-                <li> Ar-Ge: Teknolojik gelişmelerin araştırılması, test edilmesi ve mevcut altyapıya entegrasyonu </li>
-            </ul>
-        </div> 
-        <br>
-	    <hr/>
-	<div style="text-align:center; font-weight:600; margin-bottom: 8px;">
-   			Ağustos 2020 - Eylül 2022<br />
-    		CYBER-FINTECH<br />
-    		System and Network Admin & Team Leader
-</div>
-<ul style="margin:auto; font-size:100%; width:75%; list-style-position: inside;">
-        <ul>
-            <li> Finans sektöründeki müşterilere 7/24 kesintisiz sistem desteği sağlamak </li>
-            <li> Tüm teknik mimarinin tasarımı, kurulumu, konfigürasyonu ve operasyonel yönetimi </li>
-            <li> Fiziksel sunucu (Dedicated Server) kurulumu, RAID yapılandırması, Hot Spare konfigürasyonu, iDRAC ve ILO yönetimi </li>
-            <li> VMware vSphere/ESXi, Hyper-V sanallaştırma ortamlarının kurulumu, konfigürasyonu, optimizasyonu ve yönetimi </li>
-            <li> Microsoft Azure ve AWS üzerinde sistem kurulumu, optimizasyonu ve yönetimi </li>
-            <li> LAN/WAN ağ tasarımı, yönetimi ve optimizasyonu; Firewall sistemleri (FortiGate, pfSense, Mikrotik vb.) kurulumu ve yönetimi </li>
-            <li> DNS yönetimi (GoDaddy, Namecheap; MX, CNAME, TXT, NS kayıtları) ve SSL sertifikalarının (Comodo) oluşturulması, dağıtımı ve yenilenmesi </li>
-            <li> Veeam Backup & Replication projelerinin planlanması, kurulumu ve yönetimi </li>
-            <li> Sistem loglarının düzenli olarak izlenmesi, analizi ve raporlanması; proaktif sorun tespiti ve çözüm geliştirme </li>
-            <li> İzleme ve yönetim sistemleri (Docker üzerinde Zabbix, ManageEngine OpManager) kurulumu ve optimizasyonu </li>
-            <li> MetaTrader 4 & 5 platformlarının kurulumu, yapılandırılması ve yönetimi </li>
-            <li> Windows Server servisleri (Active Directory, DHCP, DNS) kurulumu, yapılandırılması ve yönetimi </li>
-            <li> IP PBX sistemleri ve IP telefon altyapısının kurulumu ve yönetimi </li>
-            <li> Zoho CRM kurulumu, yapılandırılması ve yönetimi </li>
-            <li> Ofis altyapı projeleri (kamera sistemleri, network kabinet, switch, router, access point) tasarımı ve kurulumu </li>
-        </ul>
-    </div> 
-    <br>
-    <br>
-	    <hr/>
-    <div style="text-align:center; font-weight:600; margin-bottom: 8px;">
-    		Haziran 2018 - Ağustos 2020<br />
-    		MYINVEST DANIŞMANLIK VE İNTERNET SERVİS HİZ. TİC. LTD. ŞTİ.<br />
-    		System and Network Specialist & Support Team Leader
-</div>
-<ul style="margin:auto; font-size:100%; width:75%; list-style-position: inside;">
-        <ul>
-            <li> Uzak ofislerin Ipsec/ Site to Site VPN ile network’lerinin haberleşmesini saglamak </li>
-            <li> Ofis dışı çalışanlar için PPTP/ Client to Site VPN yapısının kurulumu </li>
-            <li> Dış network ‘den iç network ağına erişim için Nat işlemleri yapmak </li>
-            <li> HPE 1920S model akıllı switch kurulumları ve yönetimi yapmak </li>
-            <li> Kaspersky Endpoint Security Cloud kurulumu ve yönetimi yapmak </li>
-            <li> Voip sistemler FreePBX yapısı kurulumu ve yönetimi </li>
-            <li> Tüm çalışanlar için yönetilebilir konuşma platformu Slack uygulaması kurulumu ve yönetimi </li>
-            <li> HPE ProLiant DL380 Gen10 üzerine Windows Server 2016 datacenter kurulumu </li>
-            <li> Hyper-V üzerinde DC ,AD, DHCP ve DNS rollerinin yönetimi ve ofis içinde data share ve data backup işleri için File Server yapısı kurulumu ve yönetimi </li>
-            <li> Fiziksel tüm cihazların, disk yapısını Sanal Disk olan (VHDX) yapısına convert ederek, Hyper-V platformuna serverları taşıma işlemlerini yürütmek </li>
-            <li> Hyper-V üzerindeki sunucuların update ve düzenli bakımlarını yapmak ayrıca VEEAM uygulaması ile backup alma işlemleri yürütmek </li>
-            <li> Firewall cihazlarımızın düzenli olarak Backup’larının alınması </li>
-            <li> Godaddy üzerinde bulunan domain’lerin DNS yönlendirmesi, A kaydı degişikligi, Name Server degişikligi, vb işlerin yapılması </li>
-            <li> Yeni domain alımı ve alınmış domainlerin expired tarihlerini takip etmek </li>
-            <li> WordPress,Web Hosting ve SSL sertifika yönetiminin yapılması </li>
-            <li> Firma içerisinde çıkan ihtiyaçlara yönelik Hardware ve Software satın alma işlemlerini yönetmek </li>
-            <li> Office 365 Online Exchange yönetimi </li>
-            <li> Domain’lerin TXT veya MX kayıtlarını yöneterek email sunucusu için yönlendirmelerinin yapılması </li>
-            <li>Support ekibi yönetimi</li>
-        </ul>
-    </div> 
-    <br>
-    <br>
-    <br>
-	    <hr/>
-    <div style="text-align:center; font-weight:600; margin-bottom: 8px;">
-    			Haziran 2016 - Şubat 2018<br />
-    			GKFX FINANCIAL SERVICES LTD. ŞTİ.<br />
-    			Information Technologies - Support Team Leader
-</div>
-<ul style="margin:auto; font-size:100%; width:75%; list-style-position: inside;">
-            <ul>
-                <li> Kaspersky Admin Center Kurulumu ve Yönetimini yapmak </li>
-                <li> Ofiste telefon sistemi olarak kullandıgımız 3cx sisteminin hem server yönetimi hem de son kullanıcı tarafında ki destegi vermek </li>
-                <li> Active Directory kurulumu ve yönetimini yapmak </li>
-                <li> Exchange server 2013 ve 2016 kullandım </li>
-                <li> macOS ve Windows işletim sistemlerin de yaşanan sorunlara destek saglamak </li>
-                <li> Mobile cihazlarda da (iOS, Android and Windows) yaşanan sorunlara destek saglamak </li>
-                <li> Printers, scanners, External cihazların kurulumunu ve destegini saglamak </li>
-                <li> TCP/IP - VPN - DHCP - DNS konularında bilgi sahibiyim </li>
-                <li> File server kurulumu ve yönetimini yaptım </li>
-                <li> Güvenlik kapsamında low level format ve backup işlemleri yapmak </li>
-                <li> VIP müştere ( CEO-CTO-CFO vb.) it hizmeti sagladım </li>
-                <li> Local olarak çalışanlara telefon,uzaktan baglantı (Rdp. Teamviewer), yada yerinde destek vermek </li>
-                <li> Firmanın diger ofisleri olan Almanya,İspanya,Çin,İngiltere ülkelerin de ihtiyaç oldugun da ticket üzerinden ya da teamviewer baglantısı ile destek verilerek sorunun giderilmesi </li>
-                <li> Firma genelinde alınacak it cihazları için fiyat araştırması yapıp sipariş sürecini başlatıp ürünün tedariğini sagladıktan sonra kurulumu ve destegini vermek </li>
-                <li> Firma da bulunan cihazların ihtiyaç duyuldugun da servis talebini oluşturup takibini yapmak </li>
-                <li> Ticket üzerinden gelen talepleri sla süresine göre önceliklendirip en kısa sürede çözüm üretmek </li>
-                <li> Atlassian JIRA ürününü kullandım </li>
-                <li> Özel ürünlere ve özel yazılımlara ihtiaç duyan, Creative ve Development ekipleri gibi departmanların cihaz ve yazılım tedarigini saglamak ve destegini vermek </li>
-                <li> Envanterleme yapılması ve yönetilmesi çalışmalarında bulundum </li>
-                <li> Switch, modem, router, access point, kablolama gibi network alanlarında ki sorunları tespit edip gerekli departmana yönlendirilmesi yada sorunun giderilmesi </li>
-                <li> Storage kurulumları, kapasite kontrolleri, hardware update yapılması </li>
-                <li> Visual studio, Visio pro, Ms office ve office 365, Sql server MS, MySQL, MetaTrader 4 ve 5, MetaTrader manager 4 ve 5, Adobe ürünleri vs. birçok yazılımın kurulumu, lisanslanması ve ürünlerin takibi yapılması </li>
-                <li> Acronis ile imaj alınarak bir çok pc'nin kısa sürede kurulumunu gerçekleştirmek </li>
-                <li> Vmware üzerine kurulu makinaların monitör edilmesi ve  eger oluşur ise sorunların en kısa sürede giderilmesi </li>
-                <li> LiveChat suppor ürünlerinin alımı ve support ekibi yönetilmesi </li>
-            </ul>
-        </div> 
-        <br>
-        <br>
-        <br>
-	    <hr/>
-    <div style="text-align:center; font-weight:600; margin-bottom: 8px;">
-    			Şubat 2015 - Haziran 2016<br />
-    			BOYNER HOLDİNG / BEYMEN MAĞAZACILIK A.Ş.<br />
-    			Information Technologies - Support Operations Specialist
-</div>
-<ul style="margin:auto; font-size:100%; width:75%; list-style-position: inside;">
-            <ul>
-                <li> Şirket içi 200 için PC OS, Office yazılımları ve IT cihazları (Pc, printer, scanner, telefon, BlackBerry gibi) desteği sağlamak </li>
-                <li> Destek alınan firmalar nezdinde problem aktarımı, takibi ve gereken lokal uygulamaları yapmak </li>
-                <li> Kurulum ve sistem adaptasyon çalışmaları yapmak </li>
-                <li> Mevcut arızaları takip ederek, tam zamanlı olarak bunlara müdahale etmek </li>
-                <li> Şirket içi network ve yazılımları için help desk hizmeti sağlamak </li>
-                <li> İşletim sistemlerinin ve kurumsal yazılımların ( Antivirüs ve yedekleme vb.) bakımı, yazılım güncellemeleri yapmak </li>
-                <li> PC üzerinde temel Network protokolleri konusunda yapılandırma yapılması </li>
-                <li> Uzaktan bağlantı ile şehir içi ve şehir dışında bulunan 82 mağazaya yazılım ve çevre donanım kurlumu desteği sağlamak </li>
-                <li> Microsoft İşletim Sistemleri ve Office Programları kurma ve sorun giderme </li>
-                <li> Kullanıcı çağrılarının Help desk yazılımından takibi </li>
-                <li> Telefon ile gelen çağrıların karşılanması ve çözümlenmesi </li>
-                <li> Yeni kullanıcılar için I.T. prosedür ve talimatlarına bağlı olarak donanım ve yazılım kurulumlarının yapılarak çalışır halde bilgisayarların teslim edilmesi </li>
-                <li> IT bölümünde takip edilen her türlü proje ve raporlama sürecine destek verilmesi </li>
-                <li> Müşteri talep ve şikâyetlerinin kayıt altına alınması, takibi ve ilgili platformlara taşınarak yanıtlanmasına yönelik faaliyetlerin yürütülmesi; gerekli koordinasyonun sağlanması </li>
-                <li> Firma içerisinde çalışanların veya yeni başlayan personele verilecek cihazların envanter kaydı ve kontrolü yapılması </li>
-                <li> Mağazalarda bulunan Samsung tabletlerin yazılımsal ve donanımsal sorunlarına destek verilmesi </li>
-                <li> Mağazalarda bulunan NCR model kasaların donanımsal desteğini verip yazılımsal sorunlarda tedarikçi firmaya kayıt oluşturulup sorun çözümlenene kadar takip edilmesi </li>
-                <li> Mağazalarda bulunan Motorola el terminallerinin yazılımsal desteğini verip donanımsal sorunlarda tedarikçi firmaya gönderilip sürecin takip edilmesi </li>
-                <li> Kullanıcı bilgisayarlarının değişimi ve yenilenmesi esnasında yedekleme işleminin yapılması </li>
-                <li> Acronis ve ghost ile alınan imajların yeniden yüklenmesi veya bu programlar ile imaj alma işleminin yapılması </li>
-            </ul>
-        </div> 
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-	    <hr/>
-    <div style="text-align:center; font-weight:600; margin-bottom: 8px;">
-    			Ocak 2012 - Eylül 2014<br />
-    			IŞIK ÜNİVERSİTESİ / Bilgi İşlem Daire Başkanlığı<br />
-    			Bilgi İşlem Daire Başkanlığı - Bilgi İşlem Teknisyeni
-</div>
-<ul style="margin:auto; font-size:100%; width:75%; list-style-position: inside;">
-            <ul>
-                <li> Windows client işletim sisteminin kurulum ve konfigürasyonu </li>
-                <li> Linux işletim sistemi kurulumu (başlangıç) </li>
-                <li> Printer  ve  fax vb. çevre donanımların kurulumu </li>
-                <li> Microsoft segmenti ürünlerin ( Ms office vb.) kurulumu vb. ihtiyaç bulunan tüm programların kurulumu </li>
-                <li> Akademik ve İdari Kadroların bilgisayar ve çevre donanım sorunlarının giderilmesi </li>
-                <li> Mac ve Bilgisayar laboratuvarlarının kurulumu, yönetimi ve bakım onarımı </li>
-            </ul>
-        </div> 
-        <br>
-        <br>
-        <br>
-        <footer style="background-color:#222; color:#eee; padding:20px 0; text-align:center; font-family:Arial, sans-serif;">
-  <div style="margin-bottom:10px;">
-    <a href="https://www.linkedin.com/in/coskun-parlar-411906137/" target="_blank" rel="noopener noreferrer" 
-       style="color:#0A66C2; text-decoration:none; font-weight:bold; font-size:18px;">
-      <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle; margin-right:6px;" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11.5 20h-3v-11h3v11zm-1.5-12.2c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13 12.2h-3v-5.5c0-1.32-1.2-1.5-1.5-1.5s-1.5.18-1.5 1.5v5.5h-3v-11h3v1.5c.74-1.4 3-1.5 3 1.33v8.17z"/>
-      </svg>
-      LinkedIn Profile
-    </a>
-  </div>
-  <div style="font-size:14px; color:#aaa;">
-    &copy; <span id="currentYear"></span> Coskun PARLAR. All rights reserved.
-  </div>
-  <script>
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-  </script>
-</footer>
 </body>
 </html>
