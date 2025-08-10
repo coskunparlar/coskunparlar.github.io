@@ -6,10 +6,46 @@
     <title>Coşkun Parlar - CV</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <style>
+        /* Renk değişkenleri tanımlaması */
+        :root {
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+            --container-bg: #161b22;
+            --container-border: #30363d;
+            --primary-color: #58a6ff;
+            --secondary-color: #ff7b72;
+            --info-bg: #21262d;
+            --hover-bg: #282f38;
+            --sub-text-color: #8b949e;
+            --bullet-color: #ff7b72;
+            --tooltip-bg: #58a6ff;
+            --tooltip-text: #0d1117;
+            --link-color: #58a6ff;
+            --link-hover-color: #ff7b72;
+        }
+
+        /* Açık mod renkleri */
+        body.light-mode {
+            --bg-color: #f6f8fa;
+            --text-color: #24292f;
+            --container-bg: #ffffff;
+            --container-border: #d0d7de;
+            --primary-color: #0366d6;
+            --secondary-color: #c7100b;
+            --info-bg: #f3f4f6;
+            --hover-bg: #ebedf0;
+            --sub-text-color: #57606a;
+            --bullet-color: #c7100b;
+            --tooltip-bg: #0366d6;
+            --tooltip-text: #ffffff;
+            --link-color: #0366d6;
+            --link-hover-color: #c7100b;
+        }
+
         /* Genel ayarlar */
         body {
-            background-color: #0d1117;
-            color: #c9d1d9;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
                 Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             margin: 0;
@@ -17,23 +53,26 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
-            background: #161b22;
+            background: var(--container-bg);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            border: 1px solid #30363d;
+            border: 1px solid var(--container-border);
+            transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
 
         h1, h2, h3, h4 {
             font-family: 'Poppins', sans-serif;
-            color: #58a6ff;
+            color: var(--primary-color);
             font-weight: 600;
             margin-top: 0;
+            transition: color 0.3s;
         }
 
         h1 {
@@ -45,14 +84,16 @@
         .subtitle {
             font-size: 1.2rem;
             text-align: center;
-            color: #8b949e;
+            color: var(--sub-text-color);
             margin-bottom: 20px;
+            transition: color 0.3s;
         }
 
         hr {
             border: none;
-            border-top: 1px solid #30363d;
+            border-top: 1px solid var(--container-border);
             margin: 30px 0;
+            transition: border-color 0.3s;
         }
 
         p {
@@ -60,13 +101,14 @@
         }
 
         .section-title {
-            color: #58a6ff;
+            color: var(--primary-color);
             font-size: 1.5rem;
             margin-top: 30px;
             margin-bottom: 15px;
-            border-bottom: 2px solid #58a6ff;
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 5px;
             letter-spacing: 1px;
+            transition: color 0.3s, border-color 0.3s;
         }
         
         .profile-pic {
@@ -76,8 +118,9 @@
             width: 150px;
             height: 150px;
             object-fit: cover;
-            border: 3px solid #58a6ff;
-            box-shadow: 0 0 15px #58a6ff;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .personal-info {
@@ -88,12 +131,12 @@
         }
 
         .personal-info-item {
-            background-color: #21262d;
+            background-color: var(--info-bg);
             padding: 15px;
             border-radius: 8px;
-            border: 1px solid #30363d;
+            border: 1px solid var(--container-border);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
         }
 
         .personal-info-item:hover {
@@ -102,16 +145,19 @@
         }
 
         .label-title {
-            color: #ff7b72;
+            color: var(--secondary-color);
             font-weight: 500;
+            transition: color 0.3s;
         }
 
         .personal-info-item a {
-            color: #58a6ff;
+            color: var(--link-color);
             text-decoration: none;
+            transition: color 0.3s;
         }
 
         .personal-info-item a:hover {
+            color: var(--link-hover-color);
             text-decoration: underline;
         }
 
@@ -119,10 +165,11 @@
         .about-me {
             margin-bottom: 20px;
             padding: 15px;
-            background-color: #21262d;
+            background-color: var(--info-bg);
             border-radius: 8px;
-            border: 1px solid #30363d;
+            border: 1px solid var(--container-border);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .about-me p {
@@ -133,25 +180,29 @@
         .experience-item, .education-item {
             margin-bottom: 30px;
             padding-left: 20px;
-            border-left: 3px solid #58a6ff;
+            border-left: 3px solid var(--primary-color);
+            transition: border-color 0.3s;
         }
 
         .experience-item h4 {
             font-size: 1.25rem;
             margin-bottom: 5px;
-            color: #c9d1d9;
+            color: var(--text-color);
+            transition: color 0.3s;
         }
 
         .experience-item .job-title {
             font-size: 1rem;
-            color: #8b949e;
+            color: var(--sub-text-color);
             margin-bottom: 5px;
+            transition: color 0.3s;
         }
         
         .experience-item .job-duration {
             font-size: 0.9rem;
-            color: #8b949e;
+            color: var(--sub-text-color);
             margin-bottom: 15px;
+            transition: color 0.3s;
         }
 
         .experience-item ul, .education-item ul {
@@ -162,39 +213,42 @@
 
         .experience-item ul li {
             position: relative;
-            background: #21262d;
+            background: var(--info-bg);
             padding: 12px 15px 12px 30px;
             margin-bottom: 10px;
             border-radius: 6px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: background 0.2s;
+            transition: background 0.3s;
         }
 
         .experience-item ul li:hover {
-            background: #282f38;
+            background: var(--hover-bg);
         }
 
         .experience-item ul li::before {
             content: '•';
-            color: #ff7b72;
+            color: var(--bullet-color);
             font-weight: bold;
             display: inline-block;
             width: 1em;
             margin-left: -1em;
             position: absolute;
             left: 15px;
+            transition: color 0.3s;
         }
 
         /* Eğitim Bölümü */
         .education-item h4 {
             font-size: 1.15rem;
             margin-bottom: 5px;
-            color: #c9d1d9;
+            color: var(--text-color);
+            transition: color 0.3s;
         }
 
         .education-item p {
             margin: 5px 0;
-            color: #8b949e;
+            color: var(--sub-text-color);
+            transition: color 0.3s;
         }
         
         /* Skills Bölümü */
@@ -205,17 +259,19 @@
         }
 
         .skill-category {
-            background-color: #21262d;
+            background-color: var(--info-bg);
             padding: 20px;
             border-radius: 8px;
-            border: 1px solid #30363d;
+            border: 1px solid var(--container-border);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, border-color 0.3s;
         }
         
         .skill-category h4 {
-            color: #ff7b72;
+            color: var(--secondary-color);
             margin-bottom: 10px;
             text-align: center;
+            transition: color 0.3s;
         }
         
         .skill-category ul {
@@ -224,17 +280,16 @@
             margin: 0;
         }
         
-        /* Yeni CSS Kodları */
         .skill-category ul li {
             position: relative;
             padding: 5px 0;
             text-align: center;
             cursor: help;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s;
         }
 
         .skill-category ul li:hover {
-            background-color: #282f38;
+            background-color: var(--hover-bg);
         }
 
         .skill-category ul li::before {
@@ -243,8 +298,8 @@
             bottom: 100%;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #58a6ff;
-            color: #0d1117;
+            background-color: var(--tooltip-bg);
+            color: var(--tooltip-text);
             text-align: center;
             border-radius: 6px;
             padding: 8px 12px;
@@ -252,7 +307,7 @@
             z-index: 10;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s, color 0.3s;
         }
 
         .skill-category ul li:hover::before {
@@ -271,11 +326,11 @@
             height: 0;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
-            border-top: 5px solid #58a6ff;
+            border-top: 5px solid var(--tooltip-bg);
             z-index: 10;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease, border-top-color 0.3s;
         }
 
         .skill-category ul li:hover::after {
@@ -288,15 +343,18 @@
         .project-item {
             margin-bottom: 20px;
             padding-left: 20px;
-            border-left: 3px solid #ff7b72;
+            border-left: 3px solid var(--secondary-color);
+            transition: border-color 0.3s;
         }
         .project-item h4 {
-            color: #c9d1d9;
+            color: var(--text-color);
             margin-bottom: 5px;
+            transition: color 0.3s;
         }
         .project-info {
             font-size: 0.9rem;
-            color: #8b949e;
+            color: var(--sub-text-color);
+            transition: color 0.3s;
         }
         .project-item ul {
             padding: 0;
@@ -311,7 +369,8 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: #ff7b72;
+            color: var(--secondary-color);
+            transition: color 0.3s;
         }
 
         /* Footer */
@@ -319,13 +378,14 @@
             margin-top: 40px;
             text-align: center;
             font-size: 0.9rem;
-            color: #8b949e;
+            color: var(--sub-text-color);
             padding-top: 20px;
-            border-top: 1px solid #30363d;
+            border-top: 1px solid var(--container-border);
+            transition: color 0.3s, border-top-color 0.3s;
         }
         
         .footer a {
-            color: #58a6ff;
+            color: var(--link-color);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -335,7 +395,7 @@
         }
 
         .footer a:hover {
-            color: #ff7b72;
+            color: var(--link-hover-color);
             text-decoration: underline;
         }
         
@@ -343,6 +403,32 @@
             vertical-align: middle;
             width: 20px;
             height: 20px;
+        }
+        
+        /* Tema değiştirme düğmesi */
+        .theme-toggle-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--info-bg);
+            border: 1px solid var(--container-border);
+            color: var(--text-color);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            line-height: 1; /* Buton içeriğini ortalamak için */
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .theme-toggle-button:hover {
+            background-color: var(--hover-bg);
         }
 
         /* Responsive */
@@ -375,16 +461,21 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
-             /* Responsive tooltip */
             .skill-category ul li::before, .skill-category ul li::after {
                 left: 0;
                 transform: translateX(0);
                 bottom: 100%;
             }
+            .theme-toggle-button {
+                top: 10px;
+                right: 10px;
+            }
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
+    <button id="theme-toggle" class="theme-toggle-button">🌙</button>
+
     <div class="container">
         <img src="https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/photo.jpg" alt="Coşkun Parlar" class="profile-pic" />
         <h1>COŞKUN PARLAR</h1>
@@ -648,7 +739,7 @@
         </div>
         
         <div class="footer">
-            <div style="margin-top: 10px; font-size:12px; color:#6a737d;">
+            <div style="margin-top: 10px; font-size:12px; color: var(--sub-text-color);">
                 &copy; <span id="currentYear"></span> Coşkun PARLAR. Tüm hakları saklıdır.
             </div>
             <script>
@@ -656,5 +747,40 @@
             </script>
         </div>
     </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Sayfa yüklendiğinde kullanıcının tercihini kontrol et
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            if (currentTheme === 'light-mode') {
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        } else {
+            // Varsayılan olarak koyu modu ayarla
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '🌙';
+            localStorage.setItem('theme', 'dark-mode');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light-mode');
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark-mode');
+            }
+        });
+    </script>
 </body>
 </html>
