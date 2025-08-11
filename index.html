@@ -427,7 +427,6 @@
         .theme-toggle-button:hover {
             background-color: var(--hover-bg);
         }
-
         .flag-icon {
             width: 20px;
             height: 20px;
@@ -490,7 +489,7 @@
     <div class="header-buttons">
         <button id="lang-toggle" class="lang-toggle-button">
             <span id="lang-text">EN</span>
-            <img id="flag-icon" class="flag-icon" src="https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/uk_flag.svg" alt="UK Flag">
+            <img id="flag-icon" class="flag-icon" src="" alt="">
         </button>
         <button id="theme-toggle" class="theme-toggle-button">🌙</button>
     </div>
@@ -791,8 +790,13 @@
     </div>
 
     <script>
+        const trFlagSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><path d="M0 0h512v512H0z" fill="#E30A17"/><path d="M266 256c0 62.7-50.7 113.5-113.5 113.5S39 318.7 39 256s50.8-113.5 113.5-113.5c62.7 0 113.5 50.8 113.5 113.5z" fill="#fff"/><path d="M152.5 352a96 96 0 1 0 0-192 96 96 0 0 0 0 192z" fill="#E30A17"/><path d="M211.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z" fill="#fff"/><path d="M259.4 256.4L337.8 284l-25.1 79.5-62.4-53.1-62.4 53.1-25.1-79.5z" fill="#fff"/></svg>`;
+        const ukFlagSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 600 300"><path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/></svg>`;
+
         const content = {
             'tr': {
+                langButtonText: 'EN',
+                langFlag: ukFlagSVG,
                 profileTitle: 'COŞKUN PARLAR',
                 profileSubtitle: 'Sistem ve Network Yöneticisi',
                 aboutTitle: 'Hakkımda',
@@ -992,10 +996,11 @@
                     { name: 'GitHub', url: 'https://github.com/coskunparlar', img: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', alt: 'GitHub Logosu', class: 'github-icon' }
                 ],
                 references: 'Talep üzerine referanslar verilebilir.',
-                copyright: 'Coşkun PARLAR. Tüm hakları saklıdır.',
-                flag: 'https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/uk_flag.svg'
+                copyright: 'Coşkun PARLAR. Tüm hakları saklıdır.'
             },
             'en': {
+                langButtonText: 'TR',
+                langFlag: trFlagSVG,
                 profileTitle: 'COSKUN PARLAR',
                 profileSubtitle: 'System and Network Administrator',
                 aboutTitle: 'About Me',
@@ -1087,7 +1092,7 @@
                         duration: 'February 2023 - December 2023',
                         duties: [
                             'Managed VMware infrastructure, including vCenter, NSX, vRealize Operations (vROps), Cloud Director, and Cloud Director Availability platforms.',
-                            'Configured and managed high availability and resource optimization with vSphere High Availability (HA) and Distributed Resource Scheduler (DRS).',
+                            'Configured and managed high availability and resource optimization with vSphere High Availability (HA) and Distributed Resource Scheduler (D-R-S).',
                             'Applied version updates for ESXi, vCenter, vROps, and other related VMware components.',
                             'Conducted firmware updates for storage systems, host servers, and other physical components.',
                             'Planned and executed on-premise to cloud migration projects.',
@@ -1195,8 +1200,7 @@
                     { name: 'GitHub', url: 'https://github.com/coskunparlar', img: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', alt: 'GitHub Logo', class: 'github-icon' }
                 ],
                 references: 'References will be provided upon request.',
-                copyright: 'Coşkun PARLAR. All rights reserved.',
-                flag: 'https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/tr_flag.svg'
+                copyright: 'Coşkun PARLAR. All rights reserved.'
             }
         };
 
@@ -1220,10 +1224,14 @@
                 const labelSpan = item.querySelector('.label-title');
                 if (labelSpan) {
                     labelSpan.textContent = label + ':';
-                    if (item.querySelector('a')) {
-                        item.querySelector('a').textContent = langData.infoValues[index];
+                    const link = item.querySelector('a');
+                    if (link) {
+                        link.textContent = langData.infoValues[index];
                     } else {
-                        item.childNodes[2].nodeValue = ' ' + langData.infoValues[index];
+                        // This handles the text node after the label
+                        if (item.childNodes[2]) {
+                            item.childNodes[2].nodeValue = ' ' + langData.infoValues[index];
+                        }
                     }
                 }
             });
@@ -1283,24 +1291,18 @@
             // Update footer copyright
             document.querySelector('.footer div').textContent = `© ${new Date().getFullYear()} ${langData.copyright}`;
             
-            // Update flag and button text
+            // Update button text and flag
             const langText = document.getElementById('lang-text');
             const flagIcon = document.getElementById('flag-icon');
-            if (lang === 'tr') {
-                langText.textContent = 'TR';
-                flagIcon.src = 'https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/tr_flag.svg';
-                flagIcon.alt = 'Turkish Flag';
-            } else {
-                langText.textContent = 'EN';
-                flagIcon.src = 'https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/uk_flag.svg';
-                flagIcon.alt = 'UK Flag';
-            }
+            langText.textContent = langData.langButtonText;
+            flagIcon.outerHTML = langData.langFlag.replace('<svg', `<svg id="flag-icon" class="flag-icon"`);
         };
         
         document.addEventListener('DOMContentLoaded', () => {
             const themeToggle = document.getElementById('theme-toggle');
             const langToggle = document.getElementById('lang-toggle');
             const body = document.body;
+            const root = document.documentElement;
 
             // Tema ayarını localStorage'dan yükle
             const currentTheme = localStorage.getItem('theme');
