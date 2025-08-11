@@ -792,61 +792,60 @@ p {
     </div>
 
     <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Tema ayarını localStorage'dan yükle
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
 
-        // Tema ayarını localStorage'dan yükle
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme) {
             body.classList.add(currentTheme);
-            if (currentTheme === 'light-mode') {
-                themeToggle.textContent = '☀️';
-            } else {
-                themeToggle.textContent = '🌙';
-            }
+            themeToggle.textContent = currentTheme === 'light-mode' ? '🌙' : '☀️';
         } else {
+            // Varsayılan tema (karanlık mod)
             body.classList.add('dark-mode');
-            themeToggle.textContent = '🌙';
             localStorage.setItem('theme', 'dark-mode');
+            themeToggle.textContent = '☀️';
         }
 
         themeToggle.addEventListener('click', () => {
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                themeToggle.textContent = '☀️';
-                localStorage.setItem('theme', 'light-mode');
-            } else {
+            if (body.classList.contains('light-mode')) {
                 body.classList.remove('light-mode');
                 body.classList.add('dark-mode');
-                themeToggle.textContent = '🌙';
+                themeToggle.textContent = '☀️';
                 localStorage.setItem('theme', 'dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light-mode');
             }
         });
 
-        // Animasyonlar için Intersection Observer
-        document.addEventListener('DOMContentLoaded', () => {
+        // Sayfa yüklendikten sonra animasyonların tetiklenmesi için gecikme ekliyoruz
+        setTimeout(() => {
             const sections = document.querySelectorAll('.animated-section');
             const observerOptions = {
-                root: null, // viewport'u kök olarak kullan
+                root: null,
                 rootMargin: '0px',
-                threshold: 0.1 // %10'u görünür olduğunda tetikle
+                threshold: 0 // Mobil cihazlarda daha hızlı tetiklenmesi için eşik değeri 0'a çekildi
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.remove('hidden');
-                        observer.unobserve(entry.target); // Animasyon bir kez oynasın
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
 
             sections.forEach(section => {
-                section.classList.add('hidden'); // Başlangıçta tüm bölümleri gizle
+                section.classList.add('hidden');
                 observer.observe(section);
             });
-        });
-    </script>
+        }, 500);
+    });
+</script>
 </body>
 </html>
