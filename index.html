@@ -135,6 +135,7 @@
             border: 1px solid var(--container-border);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
+            word-wrap: break-word; /* Burası eklendi */
         }
 
         .personal-info-item:hover {
@@ -792,7 +793,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const trFlagSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><path d="M0 0h512v512H0z" fill="#E30A17"/><path d="M266 256c0 62.7-50.7 113.5-113.5 113.5S39 318.7 39 256s50.8-113.5 113.5-113.5c62.7 0 113.5 50.8 113.5 113.5z" fill="#fff"/><path d="M152.5 352a96 96 0 1 0 0-192 96 96 0 0 0 0 192z" fill="#E30A17"/><path d="M211.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z" fill="#fff"/><path d="M259.4 256.4L337.8 284l-25.1 79.5-62.4-53.1-62.4 53.1-25.1-79.5z" fill="#fff"/></svg>`;
+            const trFlagSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><path fill="#e30a17" d="M0 0h512v512H0z"/><path fill="#fff" d="M266 256c0 62.7-50.7 113.5-113.5 113.5S39 318.7 39 256s50.8-113.5 113.5-113.5c62.7 0 113.5 50.8 113.5 113.5z"/><path fill="#e30a17" d="M152.5 352a96 96 0 1 0 0-192 96 96 0 0 0 0 192z"/><path fill="#fff" d="M211.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/><path fill="#fff" d="M337.8 284l-25.1 79.5-62.4-53.1-62.4 53.1-25.1-79.5 79.5-25.1 79.5 25.1z"/></svg>`;
             const ukFlagSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 600 300"><path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/></svg>`;
             
             const content = {
@@ -958,9 +959,9 @@
                             duration: 'Haziran 2016 - Şubat 2018',
                             duties: [
                                 'Sistem ve network yönetimi: TCP/IP, VPN, DHCP, DNS gibi ağ protokolleri üzerinde uzmanlaşmak; Active Directory, Exchange Server 2013/2016 ve dosya sunucularını yönetmek.',
-                                'Güvenlik ve destek: Kaspersky Security Center\'ın kurulum ve yönetimini yapmak; veri güvenliği için low-level format ve yedekleme süreçlerini yürütmek.',
+                                'Güvenlik ve destek: Kaspersky Security Center'ın kurulum ve yönetimini yapmak; veri güvenliği için low-level format ve yedekleme süreçlerini yürütmek.',
                                 'Kapsamlı son kullanıcı desteği: macOS, Windows ve mobil cihazlarda (iOS, Android) sorun giderme desteği sunmak; VIP müşterilere öncelikli IT hizmeti sağlamak.',
-                                'Uluslararası destek ve operasyonlar: Uluslararası ofisler için uzaktan bağlantı yoluyla (TeamViewer) teknik sorunları çözmek; Atlassian Jira kullanarak destek taleplerini SLA\'lara göre yönetmek.',
+                                'Uluslararası destek ve operasyonlar: Uluslararası ofisler için uzaktan bağlantı yoluyla (TeamViewer) teknik sorunları çözmek; Atlassian Jira kullanarak destek taleplerini SLA'lara göre yönetmek.',
                                 'Donanım ve yazılım yönetimi: IT donanımı satın alma ve tedarik süreçlerini yürütmek; depolama sistemleri, ağ cihazları ve geniş bir yelpazede (MetaTrader, Adobe, SQL Server vb.) yazılım kurulumlarını ve lisans yönetimini yapmak.',
                                 'Ekip ve envanter yönetimi: IT destek ekibine liderlik etmek; envanter ve servis süreçlerini yönetmek.'
                             ]
@@ -970,7 +971,7 @@
                             company: 'BOYNER HOLDİNG / BEYMEN MAĞAZACILIK A.Ş.',
                             duration: 'Şubat 2015 - Haziran 2016',
                             duties: [
-                                'Help desk ve yerinde destek: Şirket içi 200\'den fazla kullanıcıya PC işletim sistemleri, ofis yazılımları ve BT cihazları için destek sağlamak.',
+                                'Help desk ve yerinde destek: Şirket içi 200'den fazla kullanıcıya PC işletim sistemleri, ofis yazılımları ve BT cihazları için destek sağlamak.',
                                 'Uzaktan destek ve mağaza operasyonları: Şehir içi ve dışında bulunan 82 mağazaya uzaktan bağlantı ile yazılım ve donanım kurulum desteği vermek.',
                                 'Donanım ve yazılım yönetimi: Kurumsal yazılımların (antivirüs, yedekleme) bakım ve güncellemelerini yapmak; yeni kullanıcılar için donanım ve yazılım kurulumlarını yönetmek.',
                                 'Süreç takibi ve raporlama: Kullanıcı çağrılarını ve müşteri şikayetlerini help desk yazılımı üzerinden takip etmek; IT projeleri ve raporlama süreçlerine destek vermek.',
@@ -1161,12 +1162,12 @@
                             company: 'GKFX FINANCIAL SERVICES LTD. STI.',
                             duration: 'June 2016 - February 2018',
                             duties: [
-                                'Expertise in system and network management, focusing on network protocols like TCP/IP, VPN, DHCP, and DNS, while also managing Active Directory, Exchange Server 2013/2016 and file servers.',
-                                'Managed security and support, including the installation and administration of Kaspersky Security Center, and executing low-level formatting and backup procedures for data security.',
-                                'Provided comprehensive end-user support, troubleshooting issues on macOS, Windows, and mobile devices (iOS, Android), and delivering priority IT services to VIP clients.',
-                                'Handled international support and operations, resolving technical issues for international offices remotely (via TeamViewer) and managing support tickets via Atlassian Jira according to SLAs.',
-                                'Managed hardware and software, overseeing IT hardware procurement, and conducting software installations and license management for a wide range of applications (MetaTrader, Adobe, SQL Server, etc.).',
-                                'Led the IT support team and managed inventory and service processes.'
+                                'Sistem ve network yönetimi: TCP/IP, VPN, DHCP, DNS gibi ağ protokolleri üzerinde uzmanlaşmak; Active Directory, Exchange Server 2013/2016 ve dosya sunucularını yönetmek.',
+                                'Güvenlik ve destek: Kaspersky Security Center'ın kurulum ve yönetimini yapmak; veri güvenliği için low-level format ve yedekleme süreçlerini yürütmek.',
+                                'Kapsamlı son kullanıcı desteği: macOS, Windows ve mobil cihazlarda (iOS, Android) sorun giderme desteği sunmak; VIP müşterilere öncelikli IT hizmeti sağlamak.',
+                                'Uluslararası destek ve operasyonlar: Uluslararası ofisler için uzaktan bağlantı yoluyla (TeamViewer) teknik sorunları çözmek; Atlassian Jira kullanarak destek taleplerini SLA'lara göre yönetmek.',
+                                'Donanım ve yazılım yönetimi: IT donanımı satın alma ve tedarik süreçlerini yürütmek; depolama sistemleri, ağ cihazları ve geniş bir yelpazede (MetaTrader, Adobe, SQL Server vb.) yazılım kurulumlarını ve lisans yönetimini yapmak.',
+                                'Ekip ve envanter yönetimi: IT destek ekibine liderlik etmek; envanter ve servis süreçlerini yönetmek.'
                             ]
                         },
                         {
@@ -1174,12 +1175,12 @@
                             company: 'BOYNER HOLDING / BEYMEN RETAIL INC.',
                             duration: 'February 2015 - June 2016',
                             duties: [
-                                'Provided help desk and on-site support to over 200 internal users for PC operating systems, office software, and IT equipment.',
-                                'Delivered remote support for software and hardware installations to 82 local and remote retail stores.',
-                                'Managed hardware and software, maintaining and updating corporate software (antivirus, backup) and handling hardware/software installations for new users.',
-                                'Tracked and reported processes, following up on user calls and customer complaints via help desk software, and assisting with IT projects and reporting.',
-                                'Provided specialized hardware support, troubleshooting software and hardware issues on devices like Samsung tablets, NCR POS systems, and Motorola handheld terminals.',
-                                'Managed backup and imaging, performing backups for user computers during replacements and executing imaging with programs like Acronis and Ghost.'
+                                'Help desk ve yerinde destek: Şirket içi 200'den fazla kullanıcıya PC işletim sistemleri, ofis yazılımları ve BT cihazları için destek sağlamak.',
+                                'Uzaktan destek ve mağaza operasyonları: Şehir içi ve dışında bulunan 82 mağazaya uzaktan bağlantı ile yazılım ve donanım kurulum desteği vermek.',
+                                'Donanım ve yazılım yönetimi: Kurumsal yazılımların (antivirüs, yedekleme) bakım ve güncellemelerini yapmak; yeni kullanıcılar için donanım ve yazılım kurulumlarını yönetmek.',
+                                'Süreç takibi ve raporlama: Kullanıcı çağrılarını ve müşteri şikayetlerini help desk yazılımı üzerinden takip etmek; IT projeleri ve raporlama süreçlerine destek vermek.',
+                                'Özel donanım desteği: Samsung tabletler, NCR kasalar ve Motorola el terminalleri gibi özel donanımların yazılımsal ve donanımsal sorunlarını gidermek.',
+                                'Yedekleme ve imajlama: Kullanıcı bilgisayarlarının yenilenmesi esnasında yedekleme yapmak; Acronis ve Ghost gibi programlarla imaj alma ve yükleme işlemlerini yürütmek.'
                             ]
                         },
                         {
@@ -1187,12 +1188,12 @@
                             company: 'IŞIK UNIVERSITY / Department of Information Technology',
                             duration: 'January 2012 - September 2014',
                             duties: [
-                                'Installed and configured Windows client operating systems.',
-                                'Performed initial installation of Linux operating systems.',
-                                'Installed and configured peripheral hardware such as printers and fax machines.',
-                                'Installed all necessary software, including Microsoft suite products (MS Office, etc.).',
-                                'Resolved computer and peripheral hardware issues for academic and administrative staff.',
-                                'Installed, managed, and maintained Mac and PC computer laboratories.'
+                                'Windows client işletim sisteminin kurulum ve konfigürasyonu',
+                                'Linux işletim sistemi kurulumu (başlangıç)',
+                                'Printer ve fax vb. çevre donanımların kurulumu',
+                                'Microsoft segmenti ürünlerin (Ms office vb.) kurulumu vb. ihtiyaç bulunan tüm programların kurulumu',
+                                'Akademik ve İdari Kadroların bilgisayar ve çevre donanım sorunlarının giderilmesi',
+                                'Mac ve Bilgisayar laboratuvarlarının kurulumu, yönetimi ve bakım onarımı'
                             ]
                         }
                     ],
