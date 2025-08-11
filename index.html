@@ -431,6 +431,7 @@
             width: 20px;
             height: 20px;
             vertical-align: middle;
+            margin-left: 8px; /* Bayrak ile yazı arasına boşluk ekle */
         }
 
         /* Minimal Animasyonlar */
@@ -489,7 +490,8 @@
     <div class="header-buttons">
         <button id="lang-toggle" class="lang-toggle-button">
             <span id="lang-text">EN</span>
-            <img id="flag-icon" class="flag-icon" src="" alt="">
+            <span id="flag-icon-container">
+                </span>
         </button>
         <button id="theme-toggle" class="theme-toggle-button">🌙</button>
     </div>
@@ -1092,7 +1094,7 @@
                         duration: 'February 2023 - December 2023',
                         duties: [
                             'Managed VMware infrastructure, including vCenter, NSX, vRealize Operations (vROps), Cloud Director, and Cloud Director Availability platforms.',
-                            'Configured and managed high availability and resource optimization with vSphere High Availability (HA) and Distributed Resource Scheduler (D-R-S).',
+                            'Configured and managed high availability and resource optimization with vSphere High Availability (HA) and Distributed Resource Scheduler (DRS).',
                             'Applied version updates for ESXi, vCenter, vROps, and other related VMware components.',
                             'Conducted firmware updates for storage systems, host servers, and other physical components.',
                             'Planned and executed on-premise to cloud migration projects.',
@@ -1107,7 +1109,7 @@
                         duration: 'September 2022 - February 2023',
                         duties: [
                             'Installed, configured, and managed server infrastructure from HPE, Dell, and Blade systems.',
-                            'Set up and managed virtualization platforms including VMware ESXi, vCenter, Hyper-V, Proxmox, and Nutanix.',
+                            'Set up and managed virtualization platforms including VMware ESXi, vCenter, Hyper-V, Proxmox and Nutanix.',
                             'Administered hosting services, domains, and SSL certificates.',
                             'Managed applications via Office 365 and Plesk control panels.',
                             'Installed and managed storage solutions such as HPE Primera 3PAR C630, NetApp 2620, IBM TS3100, and HPE MSA 1040/2060.',
@@ -1208,16 +1210,23 @@
             const langData = content[lang];
             if (!langData) return;
         
-            // Update profile section
+            // HTML lang attribute'unu güncelle
+            document.documentElement.lang = lang;
+
+            // Buton metnini ve bayrağı güncelle
+            document.getElementById('lang-text').textContent = langData.langButtonText;
+            document.getElementById('flag-icon-container').innerHTML = lang === 'tr' ? ukFlagSVG : trFlagSVG;
+
+            // Profile bölümünü güncelle
             document.querySelector('.profile-title').textContent = langData.profileTitle;
             document.querySelector('.subtitle').textContent = langData.profileSubtitle;
-            document.querySelector('.section-title').textContent = langData.aboutTitle;
-
-            // Update About Me section
+        
+            // Hakkımda bölümünü güncelle
+            document.querySelector('.animated-section:nth-of-type(2) .section-title').textContent = langData.aboutTitle;
             document.querySelector('.about-me p').textContent = langData.aboutText;
         
-            // Update Personal Info section
-            document.querySelector('.section-title:nth-of-type(2)').textContent = langData.personalInfoTitle;
+            // Kişisel Bilgiler bölümünü güncelle
+            document.querySelector('.animated-section:nth-of-type(3) .section-title').textContent = langData.personalInfoTitle;
             const personalInfoItems = document.querySelectorAll('.personal-info-item');
             langData.infoLabels.forEach((label, index) => {
                 const item = personalInfoItems[index];
@@ -1228,33 +1237,39 @@
                     if (link) {
                         link.textContent = langData.infoValues[index];
                     } else {
-                        // This handles the text node after the label
-                        if (item.childNodes[2]) {
-                            item.childNodes[2].nodeValue = ' ' + langData.infoValues[index];
+                        // Text node'u güncelle
+                        const textNode = item.childNodes[2];
+                        if (textNode) {
+                            textNode.nodeValue = ' ' + langData.infoValues[index];
                         }
                     }
                 }
             });
             
-            // Update Education section
+            // Eğitim bölümünü güncelle
             document.querySelector('section .section-title').textContent = langData.educationTitle;
             const educationItems = document.querySelectorAll('.education-item');
             langData.educationItems.forEach((item, index) => {
-                educationItems[index].querySelector('.education-degree').textContent = item.degree;
-                educationItems[index].querySelector('.education-school').textContent = item.school;
+                if(educationItems[index]) {
+                    educationItems[index].querySelector('.education-degree').textContent = item.degree;
+                    educationItems[index].querySelector('.education-school').textContent = item.school;
+                }
             });
 
-            // Update Skills section
+            // Yetenekler bölümünü güncelle
             document.querySelector('.animated-section:nth-of-type(5) .section-title').textContent = langData.skillsTitle;
-            const skillCategories = document.querySelectorAll('.skill-category h4');
-            Object.values(langData.skillCategories).forEach((category, index) => {
-                skillCategories[index].textContent = category;
+            const skillCategoryTitles = document.querySelectorAll('.skill-category h4');
+            const categoryKeys = Object.keys(langData.skillCategories);
+            categoryKeys.forEach((key, index) => {
+                if (skillCategoryTitles[index]) {
+                    skillCategoryTitles[index].textContent = langData.skillCategories[key];
+                }
             });
         
             const skillListItems = document.querySelectorAll('.skill-category ul li');
             let skillIndex = 0;
-            Object.keys(langData.skills).forEach(categoryKey => {
-                langData.skills[categoryKey].forEach(skill => {
+            categoryKeys.forEach(key => {
+                langData.skills[key].forEach(skill => {
                     if (skillListItems[skillIndex]) {
                         skillListItems[skillIndex].textContent = skill.name;
                         skillListItems[skillIndex].setAttribute('data-tooltip', skill.tooltip);
@@ -1263,7 +1278,7 @@
                 });
             });
         
-            // Update Experience section
+            // Deneyim bölümünü güncelle
             document.querySelector('.animated-section:nth-of-type(6) .section-title').textContent = langData.experienceTitle;
             const experienceItems = document.querySelectorAll('.experience-item');
             langData.experienceItems.forEach((expData, index) => {
@@ -1273,7 +1288,7 @@
                     item.querySelector('.job-title').textContent = expData.company;
                     item.querySelector('.job-duration').textContent = expData.duration;
                     const dutiesList = item.querySelector('ul');
-                    dutiesList.innerHTML = ''; // Clear old duties
+                    dutiesList.innerHTML = ''; // Eski görevleri temizle
                     expData.duties.forEach(duty => {
                         const li = document.createElement('li');
                         li.textContent = duty;
@@ -1282,49 +1297,42 @@
                 }
             });
 
-            // Update Other Links section
+            // Diğer Bağlantılar bölümünü güncelle
             document.querySelector('.animated-section:nth-of-type(7) .section-title').textContent = langData.otherLinksTitle;
             
-            // Update references note
+            // Referans notunu güncelle
             document.querySelector('.references-note').textContent = langData.references;
 
-            // Update footer copyright
+            // Footer copyright'ı güncelle
             document.querySelector('.footer div').textContent = `© ${new Date().getFullYear()} ${langData.copyright}`;
-            
-            // Update button text and flag
-            const langText = document.getElementById('lang-text');
-            const flagIcon = document.getElementById('flag-icon');
-            langText.textContent = langData.langButtonText;
-            flagIcon.outerHTML = langData.langFlag.replace('<svg', `<svg id="flag-icon" class="flag-icon"`);
         };
         
         document.addEventListener('DOMContentLoaded', () => {
             const themeToggle = document.getElementById('theme-toggle');
             const langToggle = document.getElementById('lang-toggle');
             const body = document.body;
-            const root = document.documentElement;
 
             // Tema ayarını localStorage'dan yükle
             const currentTheme = localStorage.getItem('theme');
             if (currentTheme) {
                 body.classList.add(currentTheme);
-                themeToggle.textContent = currentTheme === 'light-mode' ? '🌙' : '☀️';
+                themeToggle.innerHTML = currentTheme === 'light-mode' ? '🌙' : '☀️';
             } else {
                 body.classList.add('dark-mode');
                 localStorage.setItem('theme', 'dark-mode');
-                themeToggle.textContent = '☀️';
+                themeToggle.innerHTML = '☀️';
             }
 
             themeToggle.addEventListener('click', () => {
                 if (body.classList.contains('light-mode')) {
                     body.classList.remove('light-mode');
                     body.classList.add('dark-mode');
-                    themeToggle.textContent = '☀️';
+                    themeToggle.innerHTML = '☀️';
                     localStorage.setItem('theme', 'dark-mode');
                 } else {
                     body.classList.remove('dark-mode');
                     body.classList.add('light-mode');
-                    themeToggle.textContent = '🌙';
+                    themeToggle.innerHTML = '🌙';
                     localStorage.setItem('theme', 'light-mode');
                 }
             });
@@ -1334,7 +1342,7 @@
             updateContent(currentLang);
 
             langToggle.addEventListener('click', () => {
-                const newLang = document.getElementById('lang-text').textContent === 'TR' ? 'en' : 'tr';
+                const newLang = document.documentElement.lang === 'tr' ? 'en' : 'tr';
                 localStorage.setItem('lang', newLang);
                 updateContent(newLang);
             });
