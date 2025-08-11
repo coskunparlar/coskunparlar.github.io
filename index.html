@@ -135,7 +135,7 @@
             border: 1px solid var(--container-border);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
-            word-wrap: break-word; /* Burası eklendi */
+            word-wrap: break-word; 
         }
 
         .personal-info-item:hover {
@@ -432,7 +432,7 @@
             width: 20px;
             height: 20px;
             vertical-align: middle;
-            margin-left: 8px;
+            margin-right: 8px;
         }
         
         /* Minimal Animasyonlar */
@@ -490,8 +490,8 @@
 <body class="dark-mode">
     <div class="header-buttons">
         <button id="lang-toggle" class="lang-toggle-button">
-            <span id="lang-text">EN</span>
             <span id="flag-icon-container"></span>
+            <span id="lang-text">EN</span>
         </button>
         <button id="theme-toggle" class="theme-toggle-button">☀️</button>
     </div>
@@ -793,13 +793,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const trFlagSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><path fill="#e30a17" d="M0 0h512v512H0z"/><path fill="#fff" d="M266 256c0 62.7-50.7 113.5-113.5 113.5S39 318.7 39 256s50.8-113.5 113.5-113.5c62.7 0 113.5 50.8 113.5 113.5z"/><path fill="#e30a17" d="M152.5 352a96 96 0 1 0 0-192 96 96 0 0 0 0 192z"/><path fill="#fff" d="M211.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/><path fill="#fff" d="M337.8 284l-25.1 79.5-62.4-53.1-62.4 53.1-25.1-79.5 79.5-25.1 79.5 25.1z"/></svg>`;
-            const ukFlagSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 600 300"><path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/></svg>`;
+            const trFlagSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20"><path fill="#e30a17" d="M0 0h512v512H0z"/><path fill="#fff" d="M266 256c0 62.7-50.7 113.5-113.5 113.5S39 318.7 39 256s50.8-113.5 113.5-113.5c62.7 0 113.5 50.8 113.5 113.5z"/><path fill="#e30a17" d="M152.5 352a96 96 0 1 0 0-192 96 96 0 0 0 0 192z"/><path fill="#fff" d="M211.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/><path fill="#fff" d="M337.8 284l-25.1 79.5-62.4-53.1-62.4 53.1-25.1-79.5 79.5-25.1 79.5 25.1z"/></svg>`;
+            const ukFlagSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="20" height="20"><path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/></svg>`;
             
             const content = {
                 'tr': {
                     langButtonText: 'EN',
-                    langFlag: ukFlagSVG,
+                    langFlag: trFlagSVG,
                     profileTitle: 'COŞKUN PARLAR',
                     profileSubtitle: 'Sistem ve Network Yöneticisi',
                     aboutTitle: 'Hakkımda',
@@ -947,7 +947,7 @@
                             duties: [
                                 'Ağ ve güvenlik altyapısını yönetmek: IPsec/Site-to-Site ve Client-to-Site VPN bağlantılarını kurmak, NAT işlemlerini yapılandırmak ve HPE akıllı switchleri yönetmek.',
                                 'Sanallaştırma ve sistem yönetimi: HPE ProLiant sunucularına Windows Server 2016 Datacenter kurulumu yapmak, Hyper-V üzerinde Active Directory, DHCP ve DNS rollerini yönetmek.',
-                                'Yedekleme ve veri yönetimi: Fiziksel sunucuları Hyper-V\'ye taşımak, Veeam ile yedekleme süreçlerini otomatize etmek ve firewall yedeklemelerini denetlemek.',
+                                'Yedekleme ve veri yönetimi: Fiziksel sunucuları Hyper-V'ye taşımak, Veeam ile yedekleme süreçlerini otomatize etmek ve firewall yedeklemelerini denetlemek.',
                                 'Kurumsal yazılım ve destek: FreePBX ve Slack gibi kurumsal platformların kurulum ve yönetimini sağlamak; Office 365, WordPress ve SSL sertifikaları için teknik destek vermek.',
                                 'BT tedarik ve yönetim süreçleri: Donanım/yazılım satın alma süreçlerini, domain ve office 365 Online Exchange yönetimi.',
                                 'Destek ekibi liderliği: Teknik destek ekibinin liderliğini ve operasyonel yönetimini üstlenmek.'
@@ -1003,7 +1003,7 @@
                 },
                 'en': {
                     langButtonText: 'TR',
-                    langFlag: trFlagSVG,
+                    langFlag: ukFlagSVG,
                     profileTitle: 'COSKUN PARLAR',
                     profileSubtitle: 'System and Network Administrator',
                     aboutTitle: 'About Me',
@@ -1199,11 +1199,11 @@
                     ],
                     otherLinksTitle: 'Diğer Bağlantılar',
                     links: [
-                        { name: 'LinkedIn', url: 'https://www.linkedin.com/in/coskun-parlar-411906137/', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/480px-LinkedIn_logo_initials.png', alt: 'LinkedIn Logo', class: 'linkedin-icon' },
-                        { name: 'GitHub', url: 'https://github.com/coskunparlar', img: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', alt: 'GitHub Logo', class: 'github-icon' }
+                        { name: 'LinkedIn', url: 'https://www.linkedin.com/in/coskun-parlar-411906137/', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/480px-LinkedIn_logo_initials.png', alt: 'LinkedIn Logosu', class: 'linkedin-icon' },
+                        { name: 'GitHub', url: 'https://github.com/coskunparlar', img: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', alt: 'GitHub Logosu', class: 'github-icon' }
                     ],
-                    references: 'References will be provided upon request.',
-                    copyright: 'Coşkun PARLAR. All rights reserved.'
+                    references: 'Talep üzerine referanslar verilebilir.',
+                    copyright: 'Coşkun PARLAR. Tüm hakları saklıdır.'
                 }
             };
         
@@ -1223,7 +1223,7 @@
                 // Buton metni ve bayrak ikonunu güncelle
                 langTextSpan.textContent = langData.langButtonText;
                 flagIconContainer.innerHTML = langData.langFlag;
-
+        
                 // Dinamik olarak içerik güncellemeleri
                 document.querySelector('.profile-title').textContent = langData.profileTitle;
                 document.querySelector('.subtitle').textContent = langData.profileSubtitle;
@@ -1237,9 +1237,8 @@
                     const item = personalInfoItems[index];
                     const labelSpan = item.querySelector('.label-title');
                     labelSpan.textContent = label + ':';
-                    const textNode = item.childNodes[2];
-                    if (textNode) {
-                         textNode.nodeValue = ' ' + langData.infoValues[index];
+                    if (label.toLowerCase() !== 'email') {
+                         item.childNodes[2].nodeValue = ' ' + langData.infoValues[index];
                     }
                 });
         
