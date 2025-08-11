@@ -148,11 +148,17 @@
             font-weight: 500;
             transition: color 0.3s;
         }
+        
+        .personal-info-value {
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
 
         .personal-info-item a {
             color: var(--link-color);
             text-decoration: none;
             transition: color 0.3s;
+            word-wrap: break-word;
         }
 
         .personal-info-item a:hover {
@@ -495,9 +501,9 @@
 <body class="dark-mode">
     <div class="header-buttons">
         <button id="lang-toggle" class="lang-toggle-button">
-            <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512" width="20" height="20" style="display: none;">
+            <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512">
                 <path fill="#e30a17" d="M0 0h512v512H0z"/><path fill="#fff" d="M266 256c0 62.7-50.7 113.5-113.5 113.5S39 318.7 39 256s50.8-113.5 113.5-113.5c62.7 0 113.5 50.8 113.5 113.5z"/><path fill="#e30a17" d="M152.5 352a96 96 0 1 0 0-192 96 96 0 0 0 0 192z"/><path fill="#fff" d="M211.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/><path fill="#fff" d="M337.8 284l-25.1 79.5-62.4-53.1-62.4 53.1-25.1-79.5 79.5-25.1 79.5 25.1z"/></svg>
-            <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300" width="20" height="20" style="display: block;">
+            <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300">
                 <path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/></svg>
             <span id="lang-text">EN</span>
         </button>
@@ -528,28 +534,28 @@
             <h2 id="personal-info-title" class="section-title">Kişisel Bilgiler</h2>
             <div class="personal-info">
                 <div class="personal-info-item">
-                    <span class="label-title">Adres:</span> Eyüp / İstanbul
+                    <span class="label-title">Adres:</span> <span class="personal-info-value">Eyüp / İstanbul</span>
                 </div>
                 <div class="personal-info-item">
-                    <span class="label-title">Telefon:</span> +90 554 607 2885
+                    <span class="label-title">Telefon:</span> <span class="personal-info-value">+90 554 607 2885</span>
                 </div>
                 <div class="personal-info-item">
-                    <span class="label-title">Email:</span> <a href="mailto:parlarcoskun@gmail.com">parlarcoskun@gmail.com</a>
+                    <span class="label-title">Email:</span> <a href="mailto:parlarcoskun@gmail.com" class="personal-info-value">parlarcoskun@gmail.com</a>
                 </div>
                 <div class="personal-info-item">
-                    <span class="label-title">Doğum Tarihi:</span> 10.11.1990
+                    <span class="label-title">Doğum Tarihi:</span> <span class="personal-info-value">10.11.1990</span>
                 </div>
                 <div class="personal-info-item">
-                    <span class="label-title">Medeni Durum:</span> Evli
+                    <span class="label-title">Medeni Durum:</span> <span class="personal-info-value">Evli</span>
                 </div>
                 <div class="personal-info-item">
-                    <span class="label-title">Askerlik:</span> Tamamlandı
+                    <span class="label-title">Askerlik:</span> <span class="personal-info-value">Tamamlandı</span>
                 </div>
                 <div class="personal-info-item">
-                    <span class="label-title">Ehliyet:</span> A ve B / 2010
+                    <span class="label-title">Ehliyet:</span> <span class="personal-info-value">A ve B / 2010</span>
                 </div>
                 <div class="personal-info-item">
-                    <span class="label-title">Diller:</span> İngilizce (Orta)
+                    <span class="label-title">Diller:</span> <span class="personal-info-value">İngilizce (Orta)</span>
                 </div>
             </div>
         </div>
@@ -863,6 +869,7 @@
                             ]
                         }
                     ],
+                    otherLinksTitle: 'Diğer Bağlantılar',
                     otherLinksText: 'Aşağıda, diğer profesyonel ve kişisel bağlantılarıma ulaşabilirsiniz.',
                     references: 'Talep üzerine referanslar verilebilir.',
                     copyright: 'Coşkun PARLAR. Tüm hakları saklıdır.'
@@ -875,7 +882,7 @@
                     aboutText: 'As a System and Network Administrator with over 10 years of experience, I have been involved in various infrastructure projects within the finance and telecommunications sectors. My goal is to leverage my expertise in virtualization, MetaTrader 5, and cloud technologies (Azure, AWS) to contribute to organizations\' technological objectives, focusing on system optimization, security, and the management of seamless operational processes.',
                     personalInfoTitle: 'Personal Information',
                     infoLabels: ['Address', 'Phone', 'Email', 'Date of Birth', 'Marital Status', 'Military Service', 'Driver\'s License', 'Languages'],
-                    infoValues: ['Eyüp / İstanbul', '+90 554 607 2885', 'parlarcoskun@gmail.com', '10.11.1990', 'Married', 'Completed', 'A and B / 2010', 'English (Intermediate)'],
+                    infoValues: ['Eyüp / Istanbul', '+90 554 607 2885', 'parlarcoskun@gmail.com', '10.11.1990', 'Married', 'Completed', 'A and B / 2010', 'English (Intermediate)'],
                     educationTitle: 'Education',
                     educationItems: [
                         { degree: 'Bachelor\'s Degree', school: 'Istanbul University AUZEF, Geography' },
@@ -982,7 +989,7 @@
                                 'Deployed and managed NAS solutions from QNAP and Synology.',
                                 'Installed and configured network security devices including FortiGate, pfSense, and Mikrotik firewalls/routers.',
                                 'Utilized Zabbix, PRTG, SolarWinds, and ManageEngine OpManager for infrastructure monitoring and performance management.',
-                                'Managed backup and disaster recovery solutions like Veeam, vRanger, Acronis, and Arcserve.',
+                                'Managed backup and disaster recovery solutions like Veeam, vRanger, Acronis and Arcserve.',
                                 'Administered communication infrastructure, including VoIP systems (FreePBX, 3CX) and NVR security systems.',
                                 'Conducted R&D on new technologies and integrated them into existing infrastructure.'
                             ]
@@ -1011,7 +1018,7 @@
                         },
                         {
                             title: 'System and Network Specialist & Support Team Leader',
-                            company: 'MYINVEST CONSULTING AND INTERNET SERVICE LTD. STI.',
+                            company: 'MYINVEST DANIŞMANLIK VE İNTERNET SERVİS HİZ. TİC. LTD. ŞTİ.',
                             duration: 'June 2018 - August 2020',
                             duties: [
                                 'Administered network and security infrastructure, including setting up IPsec/Site-to-Site and Client-to-Site VPN connections, configuring NAT, and managing HPE smart switches.',
@@ -1024,7 +1031,7 @@
                         },
                         {
                             title: 'Infrastructure Specialist - Support Team Leader',
-                            company: 'GKFX FINANCIAL SERVICES LTD. STI.',
+                            company: 'GKFX FINANCIAL SERVICES LTD. ŞTİ.',
                             duration: 'June 2016 - February 2018',
                             duties: [
                                 'Administered system and network: Specialized in network protocols like TCP/IP, VPN, DHCP, DNS; managed Active Directory, Exchange Server 2013/2016, and file servers.',
@@ -1037,31 +1044,32 @@
                         },
                         {
                             title: 'IT Operations Specialist',
-                            company: 'BOYNER HOLDING / BEYMEN RETAIL INC.',
-                            duration: 'February 2015 - June 2016',
+                            company: 'BOYNER HOLDİNG / BEYMEN MAĞAZACILIK A.Ş.',
+                            duration: 'Şubat 2015 - Haziran 2016',
                             duties: [
-                                'Help desk and on-site support: Provided support for PC operating systems, office software, and IT devices to over 200 internal users.',
-                                'Remote support and store operations: Gave software and hardware installation support via remote connection to 82 stores, both local and remote.',
+                                'Help desk ve yerinde destek: Şirket içi 200\'den fazla kullanıcıya PC işletim sistemleri, ofis yazılımları ve BT cihazları için destek sağlamak.',
+                                'Uzaktan destek ve mağaza operasyonları: Şehir içi ve dışında bulunan 82 mağazaya uzaktan bağlantı ile yazılım ve donanım kurulum desteği vermek.',
                                 'Donanım ve yazılım yönetimi: Kurumsal yazılımların (antivirüs, yedekleme) bakım ve güncellemelerini yapmak; yeni kullanıcılar için donanım ve yazılım kurulumlarını yönetmek.',
-                                'Process tracking and reporting: Tracked user calls and customer complaints through help desk software; supported IT projects and reporting processes.',
-                                'Specialized hardware support: Troubleshot software and hardware issues on specialized devices such as Samsung tablets, NCR cash registers, and Motorola hand terminals.',
-                                'Backup and imaging: Performed backups during the replacement of user computers; executed imaging and loading processes with programs like Acronis and Ghost.'
+                                'Süreç takibi ve raporlama: Kullanıcı çağrılarını ve müşteri şikayetlerini help desk yazılımı üzerinden takip etmek; IT projeleri ve raporlama süreçlerine destek vermek.',
+                                'Özel donanım desteği: Samsung tabletler, NCR kasalar ve Motorola el terminalleri gibi özel donanımların yazılımsal ve donanımsal sorunlarını gidermek.',
+                                'Yedekleme ve imajlama: Kullanıcı bilgisayarlarının yenilenmesi esnasında yedekleme yapmak; Acronis ve Ghost gibi programlarla imaj alma ve yükleme işlemlerini yürütmek.'
                             ]
                         },
                         {
                             title: 'IT Technician',
-                            company: 'IŞIK ÜNİVERSİTESİ / Department of Information Technology',
-                            duration: 'January 2012 - September 2014',
+                            company: 'IŞIK ÜNİVERSİTESİ / Bilgi İşlem Daire Başkanlığı',
+                            duration: 'Ocak 2012 - Eylül 2014',
                             duties: [
-                                'Installation and configuration of Windows client operating systems.',
-                                'Initial installation of Linux operating system.',
-                                'Installation of peripheral hardware such as printers and faxes.',
-                                'Installation of Microsoft products (MS Office etc.) and all other required software.',
-                                'Troubleshooting of computer and peripheral hardware issues for Academic and Administrative Staff.',
-                                'Installation, management, and maintenance of Mac and Computer labs.'
+                                'Windows client işletim sisteminin kurulum ve konfigürasyonu',
+                                'Linux işletim sistemi kurulumu (başlangıç)',
+                                'Printer ve fax vb. çevre donanımların kurulumu',
+                                'Microsoft segmenti ürünlerin (Ms office vb.) kurulumu vb. ihtiyaç bulunan tüm programların kurulumu',
+                                'Akademik ve İdari Kadroların bilgisayar ve çevre donanım sorunlarının giderilmesi',
+                                'Mac ve Bilgisayar laboratuvarlarının kurulumu, yönetimi ve bakım onarımı'
                             ]
                         }
                     ],
+                    otherLinksTitle: 'Diğer Bağlantılar',
                     otherLinksText: 'Aşağıda, diğer profesyonel ve kişisel bağlantılarıma ulaşabilirsiniz.',
                     references: 'Talep üzerine referanslar verilebilir.',
                     copyright: 'Coşkun PARLAR. Tüm hakları saklıdır.'
@@ -1074,7 +1082,7 @@
                     aboutText: 'As a System and Network Administrator with over 10 years of experience, I have been involved in various infrastructure projects within the finance and telecommunications sectors. My goal is to leverage my expertise in virtualization, MetaTrader 5, and cloud technologies (Azure, AWS) to contribute to organizations\' technological objectives, focusing on system optimization, security, and the management of seamless operational processes.',
                     personalInfoTitle: 'Personal Information',
                     infoLabels: ['Address', 'Phone', 'Email', 'Date of Birth', 'Marital Status', 'Military Service', 'Driver\'s License', 'Languages'],
-                    infoValues: ['Eyüp / İstanbul', '+90 554 607 2885', 'parlarcoskun@gmail.com', '10.11.1990', 'Married', 'Completed', 'A and B / 2010', 'English (Intermediate)'],
+                    infoValues: ['Eyüp / Istanbul', '+90 554 607 2885', 'parlarcoskun@gmail.com', '10.11.1990', 'Married', 'Completed', 'A and B / 2010', 'English (Intermediate)'],
                     educationTitle: 'Education',
                     educationItems: [
                         { degree: 'Bachelor\'s Degree', school: 'Istanbul University AUZEF, Geography' },
@@ -1181,7 +1189,7 @@
                                 'Deployed and managed NAS solutions from QNAP and Synology.',
                                 'Installed and configured network security devices including FortiGate, pfSense, and Mikrotik firewalls/routers.',
                                 'Utilized Zabbix, PRTG, SolarWinds, and ManageEngine OpManager for infrastructure monitoring and performance management.',
-                                'Managed backup and disaster recovery solutions like Veeam, vRanger, Acronis, and Arcserve.',
+                                'Managed backup and disaster recovery solutions like Veeam, vRanger, Acronis and Arcserve.',
                                 'Administered communication infrastructure, including VoIP systems (FreePBX, 3CX) and NVR security systems.',
                                 'Conducted R&D on new technologies and integrated them into existing infrastructure.'
                             ]
@@ -1261,9 +1269,10 @@
                             ]
                         }
                     ],
+                    otherLinksTitle: 'Other Links',
                     otherLinksText: 'You can find my other professional and personal links below.',
                     references: 'References available upon request.',
-                    copyright: 'Coşkun PARLAR. All rights reserved.'
+                    copyright: 'Coskun PARLAR. All rights reserved.'
                 }
             };
         
@@ -1285,14 +1294,8 @@
         
                 // Buton metni ve bayrak ikonunu güncelle
                 langTextSpan.textContent = langData.langButtonText;
-
-                if (lang === 'tr') {
-                    flagTr.style.display = 'block';
-                    flagEn.style.display = 'none';
-                } else {
-                    flagEn.style.display = 'block';
-                    flagTr.style.display = 'none';
-                }
+                flagTr.style.display = (lang === 'tr') ? 'block' : 'none';
+                flagEn.style.display = (lang === 'en') ? 'block' : 'none';
         
                 // Ana başlıkları güncelle
                 document.getElementById('profile-title').textContent = langData.profileTitle;
@@ -1303,24 +1306,24 @@
                 document.getElementById('education-title').textContent = langData.educationTitle;
                 document.getElementById('skills-title').textContent = langData.skillsTitle;
                 document.getElementById('experience-title').textContent = langData.experienceTitle;
-                const otherLinksTitle = document.getElementById('other-links-title');
-                if (otherLinksTitle) otherLinksTitle.textContent = langData.otherLinksTitle;
-                const otherLinksText = document.getElementById('other-links-text');
-                if (otherLinksText) otherLinksText.textContent = langData.otherLinksText;
+                document.getElementById('other-links-title').textContent = langData.otherLinksTitle;
+                document.getElementById('other-links-text').textContent = langData.otherLinksText;
                 document.getElementById('references-note').textContent = langData.references;
-                document.getElementById('copyright-text').textContent = `© ${new Date().getFullYear()} ${langData.copyright}`;
+                document.getElementById('copyright-text').innerHTML = `&copy; <span id="currentYear">${new Date().getFullYear()}</span> ${langData.copyright}`;
         
                 // Kişisel bilgiler bölümünü güncelle
                 const personalInfoItems = document.querySelectorAll('.personal-info-item');
                 langData.infoLabels.forEach((label, index) => {
                     if (personalInfoItems[index]) {
                         const labelSpan = personalInfoItems[index].querySelector('.label-title');
+                        const valueSpan = personalInfoItems[index].querySelector('.personal-info-value');
+                        
                         if (labelSpan) {
                             labelSpan.textContent = label + ':';
-                            // Eğer bu bir link değilse, değerini de güncelle
-                            if (!personalInfoItems[index].querySelector('a')) {
-                                personalInfoItems[index].childNodes[2].nodeValue = ' ' + langData.infoValues[index];
-                            }
+                        }
+
+                        if (valueSpan) {
+                            valueSpan.textContent = langData.infoValues[index];
                         }
                     }
                 });
