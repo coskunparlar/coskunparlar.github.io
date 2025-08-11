@@ -457,10 +457,9 @@
         }
 
         /* Responsive */
-      @media (max-width: 768px) {
+     @media (max-width: 768px) {
     body {
         padding: 10px;
-        /* Yeni eklenen satır */
         overflow-x: hidden;
     }
     .container {
@@ -479,9 +478,12 @@
         width: 120px;
         height: 120px;
     }
-    /* Yeni eklenen satır */
+    /* `personal-info` grid mobil için 1fr olarak ayarlandı */
     .personal-info {
-        grid-template-columns: 1fr;
+        display: block; /* Yeni eklenen satır */
+    }
+    .personal-info-item {
+        margin-bottom: 10px; /* Yeni eklenen satır */
     }
     .experience-item, .education-item {
         padding-left: 15px;
@@ -489,8 +491,12 @@
     .experience-item ul li::before {
         left: 10px;
     }
+    /* `skills-grid` mobil için 1fr olarak ayarlandı */
     .skills-grid {
-        grid-template-columns: 1fr;
+        display: block; /* Yeni eklenen satır */
+    }
+    .skill-category {
+        margin-bottom: 15px; /* Yeni eklenen satır */
     }
     .skill-category ul li::before, .skill-category ul li::after {
         left: 0;
