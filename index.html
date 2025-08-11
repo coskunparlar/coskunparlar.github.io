@@ -506,18 +506,18 @@
             right: 10px;
         }
 
-        /* --- BURASI EKLENDİ --- */
-        /* Mobil cihazlarda animasyonun tetiklenmeme sorununu çözmek için bu kural eklendi. */
-        /* Bu kural, animasyonlu bölümlerin başlangıçta görünür olmasını sağlar. */
+        
+        .animated-section {
+            transition: none; 
+        }
         .animated-section.hidden {
-            opacity: 1;
-            transform: none;
+            opacity: 1;       
+            transform: none;  
         }
     }
     </style>
 </head>
 <body class="dark-mode">
-
     <div class="header-buttons">
         <button id="lang-toggle" class="lang-toggle-button">
             <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512" style="display:none;">
