@@ -42,15 +42,6 @@
         }
 
         /* Genel Stil Kuralları */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-            min-height: 100vh;
-        }
-
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -61,7 +52,6 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             transition: background-color 0.3s, color 0.3s;
-            overflow-x: hidden;
         }
 
         .container {
@@ -301,7 +291,6 @@
             text-align: center;
             cursor: help;
             transition: background-color 0.3s ease, color 0.3s;
-            white-space: nowrap;
         }
 
         .skill-category ul li:hover {
@@ -313,7 +302,7 @@
             position: absolute;
             bottom: 100%;
             left: 50%;
-            transform: translateX(-50%) translateY(-10px);
+            transform: translateX(-50%);
             background-color: var(--tooltip-bg);
             color: var(--tooltip-text);
             text-align: center;
@@ -323,13 +312,13 @@
             z-index: 10;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s, color 0.3s;
+            transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s, color 0.3s;
         }
 
         .skill-category ul li:hover::before {
             opacity: 1;
             visibility: visible;
-            transform: translateX(-50%) translateY(0);
+            bottom: 120%;
         }
 
         .skill-category ul li::after {
@@ -337,7 +326,7 @@
             position: absolute;
             bottom: 100%;
             left: 50%;
-            transform: translateX(-50%) translateY(-5px);
+            transform: translateX(-50%);
             width: 0;
             height: 0;
             border-left: 5px solid transparent;
@@ -346,13 +335,13 @@
             z-index: 10;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, transform 0.3s ease, border-top-color 0.3s;
+            transition: opacity 0.3s ease, visibility 0.3s ease, border-top-color 0.3s;
         }
 
         .skill-category ul li:hover::after {
             opacity: 1;
             visibility: visible;
-            transform: translateX(-50%) translateY(0);
+            bottom: 120%;
         }
 
         .references-note {
@@ -468,97 +457,83 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            .container {
-                padding: 20px;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .subtitle {
-                font-size: 1rem;
-            }
-            .section-title {
-                font-size: 1.3rem;
-            }
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-            }
-            .personal-info {
-                display: flex;
-                flex-direction: column;
-            }
-            .personal-info-item {
-                margin-bottom: 10px;
-            }
-            .experience-item, .education-item {
-                padding-left: 15px;
-            }
-            .experience-item ul li::before {
-                left: 10px;
-            }
-            .skills-grid {
-                display: flex;
-                flex-direction: column;
-                gap: 15px; /* Eksik olan gap değeri eklendi */
-            }
-            .skill-category {
-                margin-bottom: 15px;
-            }
-            .skill-category ul li {
-                white-space: normal;
-            }
-            /* Tooltip konumlandırması daha stabil hale getirildi */
-            .skill-category ul li::before, .skill-category ul li::after {
-                left: 50%;
-                bottom: auto; /* bottom ayarı kaldırıldı */
-                top: -10px; /* top değeriyle yukarı konumlandırıldı */
-                transform: translateX(-50%) translateY(0); /* Pozisyon daha güvenli hale getirildi */
-            }
-            .skill-category ul li:hover::before {
-                top: -30px; /* Hover anında daha da yukarıya kaydırıldı */
-            }
-            .skill-category ul li:hover::after {
-                top: -15px; /* Ok işareti için düzeltme yapıldı */
-            }
-            .header-buttons {
-                top: 10px;
-                right: 10px;
-            }
-        }
+     @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        overflow-x: hidden;
+    }
+    .container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 1.3rem;
+    }
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+    /* `personal-info` grid mobil için 1fr olarak ayarlandı */
+    .personal-info {
+        display: block; /* Yeni eklenen satır */
+    }
+    .personal-info-item {
+        margin-bottom: 10px; /* Yeni eklenen satır */
+    }
+    .experience-item, .education-item {
+        padding-left: 15px;
+    }
+    .experience-item ul li::before {
+        left: 10px;
+    }
+    /* `skills-grid` mobil için 1fr olarak ayarlandı */
+    .skills-grid {
+        display: block; /* Yeni eklenen satır */
+    }
+    .skill-category {
+        margin-bottom: 15px; /* Yeni eklenen satır */
+    }
+    .skill-category ul li::before, .skill-category ul li::after {
+        left: 0;
+        transform: translateX(0);
+        bottom: 100%;
+    }
+    .header-buttons {
+        top: 10px;
+        right: 10px;
+    }
+}
     </style>
 </head>
 <body class="dark-mode">
     <div class="header-buttons">
         <button id="lang-toggle" class="lang-toggle-button">
-            <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512" style="display:none;">
-                <defs>
-                    <clipPath id="clip0">
-                        <rect width="512" height="512" fill="#fff"/>
-                    </clipPath>
-                </defs>
-                <g clip-path="url(#clip0)">
-                    <rect width="512" height="512" fill="#e30a17"/>
-                    <path fill="#fff" d="M192 256c0 64.9-52.6 117.5-117.5 117.5S-43 320.9-43 256c0-64.9 52.6-117.5 117.5-117.5 64.9 0 117.5 52.6 117.5 117.5z"/>
-                    <path fill="#e30a17" d="M211.5 256a94.5 94.5 0 1 0-189 0 94.5 94.5 0 0 0 189 0z"/>
-                    <path fill="#fff" d="M336.5 256c0 30.6-24.8 55.5-55.5 55.5s-55.5-24.8-55.5-55.5 24.8-55.5 55.5-55.5 55.5 24.8 55.5 55.5z"/>
-                    <path fill="#fff" d="M380.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/>
-                    <path fill="#fff" d="M291.5 242.3L268.4 256l-23.1-13.7 23.1-38.3 23.1 13.7z"/>
-                </g>
-            </svg>
-            <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300" style="display:block;">
-                <path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/>
-            </svg>
+        <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512" style="display:none;">
+    <defs>
+        <clipPath id="clip0">
+            <rect width="512" height="512" fill="#fff"/>
+        </clipPath>
+    </defs>
+    <g clip-path="url(#clip0)">
+        <rect width="512" height="512" fill="#e30a17"/>
+        <path fill="#fff" d="M192 256c0 64.9-52.6 117.5-117.5 117.5S-43 320.9-43 256c0-64.9 52.6-117.5 117.5-117.5 64.9 0 117.5 52.6 117.5 117.5z"/>
+        <path fill="#e30a17" d="M211.5 256a94.5 94.5 0 1 0-189 0 94.5 94.5 0 0 0 189 0z"/>
+        <path fill="#fff" d="M336.5 256c0 30.6-24.8 55.5-55.5 55.5s-55.5-24.8-55.5-55.5 24.8-55.5 55.5-55.5 55.5 24.8 55.5 55.5z"/>
+        <path fill="#fff" d="M380.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/>
+        <path fill="#fff" d="M291.5 242.3L268.4 256l-23.1-13.7 23.1-38.3 23.1 13.7z"/>
+    </g>
+    </svg>        
+     <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300" style="display:block;">
+                <path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/></svg>
             <span id="lang-text">TR</span>
         </button>
         <button id="theme-toggle" class="theme-toggle-button">☀️</button>
     </div>
-</body>
-</html>
 
     <div class="container">
         <div class="animated-section">
