@@ -148,7 +148,7 @@
             font-weight: 500;
             transition: color 0.3s;
         }
-        
+       
         .personal-info-value {
             color: var(--text-color);
             transition: color 0.3s;
@@ -388,7 +388,7 @@
         .personal-info-item a:hover .icon {
             fill: var(--link-hover-color);
         }
-        
+       
         /* Butonlar için CSS */
         .header-buttons {
             position: fixed;
@@ -418,7 +418,7 @@
         .lang-toggle-button:hover {
             background-color: var(--hover-bg);
         }
-        
+       
         .flag-icon {
             width: 20px;
             height: 20px;
@@ -445,7 +445,7 @@
         .theme-toggle-button:hover {
             background-color: var(--hover-bg);
         }
-        
+       
         /* Minimal Animasyonlar */
         .animated-section {
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -457,79 +457,81 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-                overflow-x: hidden;
-            }
-            .container {
-                padding: 20px;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .subtitle {
-                font-size: 1rem;
-            }
-            .section-title {
-                font-size: 1.3rem;
-            }
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-            }
-            .personal-info {
-                display: block;
-            }
-            .personal-info-item {
-                margin-bottom: 10px;
-            }
-            .experience-item, .education-item {
-                padding-left: 15px;
-            }
-            .experience-item ul li::before {
-                left: 10px;
-            }
-            .skills-grid {
-                display: block;
-            }
-            .skill-category {
-                margin-bottom: 15px;
-            }
-            .skill-category ul li::before, .skill-category ul li::after {
-                left: 0;
-                transform: translateX(0);
-                bottom: 100%;
-            }
-            .header-buttons {
-                top: 10px;
-                right: 10px;
-            }
-            
-            .animated-section {
-                transition: none; 
-            }
-            .animated-section.hidden {
-                opacity: 1;       
-                transform: none;  
-            }
+    @media (max-width: 768px) {
+        body {
+            padding: 10px;
+            overflow-x: hidden;
         }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        .subtitle {
+            font-size: 1rem;
+        }
+        .section-title {
+            font-size: 1.3rem;
+        }
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+        }
+        .personal-info {
+            display: block;
+        }
+        .personal-info-item {
+            margin-bottom: 10px;
+        }
+        .experience-item, .education-item {
+            padding-left: 15px;
+        }
+        .experience-item ul li::before {
+            left: 10px;
+        }
+        .skills-grid {
+            display: block;
+        }
+        .skill-category {
+            margin-bottom: 15px;
+        }
+        .skill-category ul li::before, .skill-category ul li::after {
+            left: 0;
+            transform: translateX(0);
+            bottom: 100%;
+        }
+        .header-buttons {
+            top: 10px;
+            right: 10px;
+        }
+
+        
+        .animated-section {
+            transition: none; 
+        }
+        .animated-section.hidden {
+            opacity: 1;       
+            transform: none;  
+        }
+    }
     </style>
 </head>
 <body class="dark-mode">
-
     <div class="header-buttons">
-        <button id=""lang-toggle"" class=""lang-toggle-button"">
-            <svg id="flag-tr" class="flag-icon" viewBox="0 0 900 600" style="display:block;">
-                <rect width="900" height="600" fill="#E30A17"/>
-                <circle cx="300" cy="300" r="150" fill="#FFF"/>
-                <circle cx="337.5" cy="300" r="120" fill="#E30A17"/>
-                <path d="M 450,232.08 C 449.62,232.61 449.2,233.15 448.74,233.68 L 413.79,300 L 448.74,366.32 C 449.2,366.85 449.62,367.39 450,367.92 L 450,232.08 Z M 445.69,321.41 L 416.79,300 L 445.69,278.59 Z" fill="#FFF" transform="translate(15 0)"/>
-                <g transform="translate(525, 300) rotate(18)">
-                    <path d="M 0,0 -42.82,13.91 -26.47,-38.74 -26.47,38.74 -42.82,-13.91" fill="#FFF" transform="scale(0.85)"/>
+        <button id="lang-toggle" class="lang-toggle-button">
+            <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512" style="display:none;">
+                <defs><clipPath id="clip0"><rect width="512" height="512" fill="#fff"/></clipPath></defs>
+                <g clip-path="url(#clip0)">
+                    <rect width="512" height="512" fill="#e30a17"/>
+                    <path fill="#fff" d="M192 256c0 64.9-52.6 117.5-117.5 117.5S-43 320.9-43 256c0-64.9 52.6-117.5 117.5-117.5 64.9 0 117.5 52.6 117.5 117.5z"/>
+                    <path fill="#e30a17" d="M211.5 256a94.5 94.5 0 1 0-189 0 94.5 94.5 0 0 0 189 0z"/>
+                    <path fill="#fff" d="M336.5 256c0 30.6-24.8 55.5-55.5 55.5s-55.5-24.8-55.5-55.5 24.8-55.5 55.5-55.5 55.5 24.8 55.5 55.5z"/>
+                    <path fill="#fff" d="M380.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/>
+                    <path fill="#fff" d="M291.5 242.3L268.4 256l-23.1-13.7 23.1-38.3 23.1 13.7z"/>
                 </g>
-            </svg>
-            <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300" style="display:none;">
+            </svg>           
+            <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300" style="display:block;">
                 <path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/>
             </svg>
             <span id="lang-text">TR</span>
@@ -537,9 +539,7 @@
         <button id="theme-toggle" class="theme-toggle-button">☀️</button>
     </div>
 
-    <div class="container">
-        </div>
-</body>
+    </body>
 </html>
     <div class="container">
         <div class="animated-section">
