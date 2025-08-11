@@ -506,41 +506,42 @@
             right: 10px;
         }
 
-        
+        /* Mobil cihazlardaki render sorununu çözmek için animasyon tamamen devre dışı bırakılıyor. */
         .animated-section {
-            transition: none; 
+            transition: none; /* Animasyon geçişini kaldırır. */
         }
         .animated-section.hidden {
-            opacity: 1;       
-            transform: none;  
+            opacity: 1;       /* Başlangıçta görünür olmasını garanti eder. */
+            transform: none;  /* Başlangıç pozisyonunu sıfırlar. */
         }
     }
     </style>
 </head>
 <body class="dark-mode">
+
     <div class="header-buttons">
-        <button id="lang-toggle" class="lang-toggle-button">
-            <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512" style="display:none;">
-                <defs><clipPath id="clip0"><rect width="512" height="512" fill="#fff"/></clipPath></defs>
-                <g clip-path="url(#clip0)">
-                    <rect width="512" height="512" fill="#e30a17"/>
-                    <path fill="#fff" d="M192 256c0 64.9-52.6 117.5-117.5 117.5S-43 320.9-43 256c0-64.9 52.6-117.5 117.5-117.5 64.9 0 117.5 52.6 117.5 117.5z"/>
-                    <path fill="#e30a17" d="M211.5 256a94.5 94.5 0 1 0-189 0 94.5 94.5 0 0 0 189 0z"/>
-                    <path fill="#fff" d="M336.5 256c0 30.6-24.8 55.5-55.5 55.5s-55.5-24.8-55.5-55.5 24.8-55.5 55.5-55.5 55.5 24.8 55.5 55.5z"/>
-                    <path fill="#fff" d="M380.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/>
-                    <path fill="#fff" d="M291.5 242.3L268.4 256l-23.1-13.7 23.1-38.3 23.1 13.7z"/>
+        <button id=""lang-toggle"" class=""lang-toggle-button"">
+            <svg id=""flag-tr"" class=""flag-icon"" viewBox=""0 0 900 600"" style=""display:none;"">
+                <rect width=""900"" height=""600"" fill=""#E30A17""/>
+                <circle cx=""300"" cy=""300"" r=""150"" fill=""#FFF""/>
+                <circle cx=""337.5"" cy=""300"" r=""120"" fill=""#E30A17""/>
+                <g transform=""translate(450 300) rotate(-18.4349)"">
+                    <path d=""M 0,0 -37.5,0 11.57,35.62 11.57,-35.62 -37.5,0"" fill=""#FFF"" transform=""translate(0 -37.5) rotate(18.4349) scale(2)""/>
                 </g>
-            </svg>           
-            <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300" style="display:block;">
-                <path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/>
+            </svg>  
+            <svg id=""flag-en"" class=""flag-icon"" viewBox=""0 0 600 300"" style=""display:block;"">
+                <path fill=""#00247d"" d=""M0 0h600v300H0z""/><path stroke=""#fff"" stroke-width=""60"" d=""M0 0l600 300M600 0L0 300""/><path stroke=""#c11c1d"" stroke-width=""40"" d=""M0 0l600 300M600 0L0 300""/><path stroke=""#fff"" stroke-width=""100"" d=""M300 0v300M0 150h600""/><path stroke=""#c11c1d"" stroke-width=""60"" d=""M300 0v300M0 150h600""/>
             </svg>
-            <span id="lang-text">TR</span>
+            <span id=""lang-text"">TR</span>
         </button>
-        <button id="theme-toggle" class="theme-toggle-button">☀️</button>
+        <button id=""theme-toggle"" class=""theme-toggle-button"">☀️</button>
     </div>
 
-    </body>
+    <div class=""container"">
+        </div>
+</body>
 </html>
+
     <div class="container">
         <div class="animated-section">
             <img src="https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/photo.jpg" alt="Coşkun Parlar" class="profile-pic" />
