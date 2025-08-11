@@ -412,6 +412,14 @@
         .lang-toggle-button:hover {
             background-color: var(--hover-bg);
         }
+        .flag-icon {
+            width: 20px;
+            height: 20px;
+            display: none; /* Varsayılan olarak tüm bayrakları gizle */
+        }
+        .flag-icon.active {
+            display: block; /* Sadece aktif olan bayrağı göster */
+        }
         .theme-toggle-button {
             background: var(--info-bg);
             border: 1px solid var(--container-border);
@@ -489,8 +497,10 @@
 <body class="dark-mode">
     <div class="header-buttons">
         <button id="lang-toggle" class="lang-toggle-button">
-            <svg id="flag-icon-container" class="flag-icon" viewBox="0 0 512 512" width="20" height="20">
-                </svg>
+            <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512" width="20" height="20">
+                <path fill="#e30a17" d="M0 0h512v512H0z"/><path fill="#fff" d="M266 256c0 62.7-50.7 113.5-113.5 113.5S39 318.7 39 256s50.8-113.5 113.5-113.5c62.7 0 113.5 50.8 113.5 113.5z"/><path fill="#e30a17" d="M152.5 352a96 96 0 1 0 0-192 96 96 0 0 0 0 192z"/><path fill="#fff" d="M211.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/><path fill="#fff" d="M337.8 284l-25.1 79.5-62.4-53.1-62.4 53.1-25.1-79.5 79.5-25.1 79.5 25.1z"/></svg>
+            <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300" width="20" height="20">
+                <path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/></svg>
             <span id="lang-text">EN</span>
         </button>
         <button id="theme-toggle" class="theme-toggle-button">☀️</button>
@@ -655,17 +665,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Dil ve Tema için SVG ikonları
-            const svgIcons = {
-                trFlag: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20"><path fill="#e30a17" d="M0 0h512v512H0z"/><path fill="#fff" d="M266 256c0 62.7-50.7 113.5-113.5 113.5S39 318.7 39 256s50.8-113.5 113.5-113.5c62.7 0 113.5 50.8 113.5 113.5z"/><path fill="#e30a17" d="M152.5 352a96 96 0 1 0 0-192 96 96 0 0 0 0 192z"/><path fill="#fff" d="M211.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/><path fill="#fff" d="M337.8 284l-25.1 79.5-62.4-53.1-62.4 53.1-25.1-79.5 79.5-25.1 79.5 25.1z"/></svg>`,
-                ukFlag: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="20" height="20"><path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/></svg>`
-            };
-        
             // Dil için statik içerik veri yapısı
             const content = {
                 'tr': {
                     langButtonText: 'EN',
-                    langFlag: svgIcons.trFlag,
                     profileTitle: 'COŞKUN PARLAR',
                     profileSubtitle: 'Sistem ve Network Yöneticisi',
                     aboutTitle: 'Hakkımda',
@@ -864,7 +867,6 @@
                 },
                 'en': {
                     langButtonText: 'TR',
-                    langFlag: svgIcons.ukFlag,
                     profileTitle: 'COSKUN PARLAR',
                     profileSubtitle: 'System and Network Administrator',
                     aboutTitle: 'About Me',
@@ -1060,205 +1062,6 @@
                     ],
                     references: 'Talep üzerine referanslar verilebilir.',
                     copyright: 'Coşkun PARLAR. Tüm hakları saklıdır.'
-                },
-                'en': {
-                    langButtonText: 'TR',
-                    langFlag: svgIcons.ukFlag,
-                    profileTitle: 'COSKUN PARLAR',
-                    profileSubtitle: 'System and Network Administrator',
-                    aboutTitle: 'About Me',
-                    aboutText: 'As a System and Network Administrator with over 10 years of experience, I have been involved in various infrastructure projects within the finance and telecommunications sectors. My goal is to leverage my expertise in virtualization, MetaTrader 5, and cloud technologies (Azure, AWS) to contribute to organizations\' technological objectives, focusing on system optimization, security, and the management of seamless operational processes.',
-                    personalInfoTitle: 'Personal Information',
-                    infoLabels: ['Address', 'Phone', 'Email', 'Date of Birth', 'Marital Status', 'Military Service', 'Driver\'s License', 'Languages'],
-                    infoValues: ['Eyüp / İstanbul', '+90 554 607 2885', 'parlarcoskun@gmail.com', '10.11.1990', 'Married', 'Completed', 'A and B / 2010', 'English (Intermediate)'],
-                    educationTitle: 'Education',
-                    educationItems: [
-                        { degree: 'Bachelor\'s Degree', school: 'Istanbul University AUZEF, Geography' },
-                        { degree: 'Associate Degree', school: 'Namık Kemal University, Technical Sciences MYO, Electronic Technology' },
-                        { degree: 'High School', school: 'Şişli Vocational and Technical Anatolian High School' }
-                    ],
-                    skillsTitle: 'Skills',
-                    skillCategories: {
-                        network: 'Network & Security',
-                        system: 'System & Virtualization',
-                        database: 'Database & Software',
-                        storage: 'Storage & Backup'
-                    },
-                    skills: {
-                        network: [
-                            { name: 'FortiGate, Mikrotik, pfSense', tooltip: 'Managed firewalls and VPNs on FortiGate, Mikrotik, and pfSense.' },
-                            { name: 'VPN (IPsec, PPTP)', tooltip: 'Configured site-to-site and client-to-site VPNs with IPsec and PPTP protocols.' },
-                            { name: 'DHCP, DNS, TCP/IP', tooltip: 'Managed and troubleshooted core network services like DHCP, DNS, and TCP/IP.' },
-                            { name: 'LAN/WAN', tooltip: 'Designed, installed, and managed LAN/WAN topologies.' },
-                            { name: 'Kaspersky Endpoint Security', tooltip: 'Administered Kaspersky Endpoint Security for comprehensive endpoint protection.' }
-                        ],
-                        system: [
-                            { name: 'VMware (vSphere, ESXi, vCenter)', tooltip: 'Managed and deployed virtual infrastructure on vSphere, ESXi, and vCenter.' },
-                            { name: 'Hyper-V, Proxmox', tooltip: 'Installed and maintained Hyper-V and Proxmox virtualization environments.' },
-                            { name: 'Windows Server (AD, GPO, DNS)', tooltip: 'Administered Windows Server, including Active Directory, GPO, and DNS services.' },
-                            { name: 'Microsoft Azure, AWS', tooltip: 'Utilized Microsoft Azure and AWS services for scalable, cloud-based infrastructure solutions.' },
-                            { name: 'Docker', tooltip: 'Managed application virtualization and container deployment with Docker.' }
-                        ],
-                        database: [
-                            { name: 'SQL Server MS, MySQL', tooltip: 'Performed installation, management, and optimization of MS SQL Server and MySQL databases.' },
-                            { name: 'MetaTrader 4 & 5', tooltip: 'Handled installation, configuration, and performance tuning for MetaTrader 4 & 5 platforms.' },
-                            { name: 'Office 365, Zoho CRM', tooltip: 'Managed and integrated Office 365 and Zoho CRM services.' },
-                            { name: 'Atlassian JIRA', tooltip: 'Utilized Atlassian JIRA for project management and efficient handling of support requests.' },
-                            { name: 'Veeam Backup & Replication', tooltip: 'Administered Veeam Backup & Replication for robust enterprise backup and replication.' }
-                        ],
-                        storage: [
-                            { name: 'HPE, Dell, NetApp, IBM', tooltip: 'Managed enterprise storage systems from HPE, Dell, NetApp, and IBM.' },
-                            { name: 'QNAP, Synology NAS', tooltip: 'Installed and administered NAS devices from QNAP and Synology.' },
-                            { name: 'Acronis, Veeam, Arcserve', tooltip: 'Implemented and monitored backup solutions like Acronis, Veeam, and Arcserve.' }
-                        ]
-                    },
-                    experienceTitle: 'Experience',
-                    experienceItems: [
-                        {
-                            title: 'System and Network Administrator',
-                            company: 'DESTEK YATIRIM MENKUL DEĞERLER A.Ş.',
-                            duration: 'January 2025 - Present',
-                            duties: [
-                                'Provided full-scope management of the MetaTrader 5 platform, including comprehensive configuration and optimization of all financial parameters such as symbols, spreads, swaps, markups, commissions, lot sizes, tick sizes, trading hours, and order types.',
-                                'Managed plugins on the MetaTrader 5 platform, overseeing installation, configuration, and performance monitoring of all extensions.',
-                                'Ensured platform configuration was fully compliant with CMB (Capital Markets Board) and TSPB (Turkish Association of Capital Market Intermediary Institutions) regulations, maintaining continuous alignment with evolving regulatory standards.',
-                                'Tracked TSPB reporting processes, prepared relevant data and documentation, and ensured timely submission to regulatory authorities.',
-                                'Managed technical and operational integrations with liquidity providers (LPs), optimizing market data streams and depth of market.',
-                                'Handled technical configuration, trading condition management, and operational support for all derivative and financial products, including CFDs, futures, spot, and FX.',
-                                'Developed dynamic pricing strategies within a risk management framework and updated financial parameters according to market conditions.',
-                                'Planned, configured, and managed custom commission and fee policies based on specific trading conditions.',
-                                'Created and managed dedicated product and pricing groups for different client segments within the MT5 platform.',
-                                'Monitored platform performance using management tools, prepared detailed reports, and coordinated technical issue resolution.',
-                                'Executed platform, plugin, and LP agreements, including managing payment processes and budget control.',
-                                'Developed continuous improvement and automation solutions to ensure the effective and secure operation of the financial market infrastructure and trading systems.'
-                            ]
-                        },
-                        {
-                            title: 'Platform Engineer',
-                            company: 'Trive Financial Services Ltd.',
-                            duration: 'December 2023 - January 2025',
-                            duties: [
-                                'Managed migration projects and hypervisor environments.',
-                                'Installed, administered, and optimized MetaTrader 4 & 5 platforms.',
-                                'Performed server installation, configuration, maintenance, and performance tuning.',
-                                'Managed daily system, security, and backup operations.',
-                                'Conducted rapid repair and recovery processes for hardware/software failures.',
-                                'Oversaw operating system, software, and security updates.',
-                                'Configured software for Geographic Information System (GIS) infrastructure and asset management systems.',
-                                'Prepared operational procedures and technical documentation.',
-                                'Developed automation and efficiency-focused system management solutions.'
-                            ]
-                        },
-                        {
-                            title: 'Cloud Engineer',
-                            company: 'Vodafone Telecommunications Inc.',
-                            duration: 'February 2023 - December 2023',
-                            duties: [
-                                'Managed VMware infrastructure, including vCenter, NSX, vRealize Operations (vROps), Cloud Director, and Cloud Director Availability platforms.',
-                                'Configured and managed high availability and resource optimization with vSphere High Availability (HA) and Distributed Resource Scheduler (DRS).',
-                                'Applied version updates for ESXi, vCenter, vROps, and other related VMware components.',
-                                'Conducted firmware updates for storage systems, host servers and other physical components.',
-                                'Planned and executed on-premise to cloud migration projects.',
-                                'Configured Veeam Backup & Replication and performed failover/failback operations for data protection and disaster recovery.',
-                                'Managed and optimized SAN/NAS storage solutions.',
-                                'Administered virtualization infrastructure, capacity planning, and performance enhancements.'
-                            ]
-                        },
-                        {
-                            title: 'Cloud Systems Administrator',
-                            company: 'Radore Data Center Inc.',
-                            duration: 'September 2022 - February 2023',
-                            duties: [
-                                'Installed, configured, and managed server infrastructure from HPE, Dell, and Blade systems.',
-                                'Set up and managed virtualization platforms including VMware ESXi, vCenter, Hyper-V, Proxmox and Nutanix.',
-                                'Administered hosting services, domains, and SSL certificates.',
-                                'Managed applications via Office 365 and Plesk control panels.',
-                                'Installed and managed storage solutions such as HPE Primera 3PAR C630, NetApp 2620, IBM TS3100, and HPE MSA 1040/2060.',
-                                'Deployed and managed NAS solutions from QNAP and Synology.',
-                                'Installed and configured network security devices including FortiGate, pfSense, and Mikrotik firewalls/routers.',
-                                'Utilized Zabbix, PRTG, SolarWinds, and ManageEngine OpManager for infrastructure monitoring and performance management.',
-                                'Managed backup and disaster recovery solutions like Veeam, vRanger, Acronis, and Arcserve.',
-                                'Administered communication infrastructure, including VoIP systems (FreePBX, 3CX) and NVR security systems.',
-                                'Conducted R&D on new technologies and integrated them into existing infrastructure.'
-                            ]
-                        },
-                        {
-                            title: 'System and Network Administrator & Team Leader',
-                            company: 'CYBER-FINTECH',
-                            duration: 'August 2020 - September 2022',
-                            duties: [
-                                'Provided 24/7 uninterrupted system support to clients in the financial sector.',
-                                'Designed, installed, configured, and managed the entire technical architecture and its operations.',
-                                'Installed physical servers (Dedicated Servers), configured RAID, Hot Spare, and managed iDRAC and ILO.',
-                                'Managed, configured, and optimized VMware vSphere/ESXi and Hyper-V virtualization environments.',
-                                'Installed, optimized, and managed systems on Microsoft Azure and AWS.',
-                                'Designed, managed, and optimized LAN/WAN networks, including the installation and administration of various firewall systems (FortiGate, pfSense, Mikrotik, etc.).',
-                                'Handled DNS management (GoDaddy, Namecheap; MX, CNAME, TXT, NS records) and managed the creation, distribution, and renewal of SSL certificates (Comodo).',
-                                'Planned and installed, and managed Veeam Backup & Replication projects.',
-                                'Monitored, analyzed, and reported system logs regularly to enable proactive issue detection and resolution.',
-                                'Installed and optimized monitoring and management systems (Zabbix on Docker, ManageEngine OpManager).',
-                                'Installed, configured, and managed MetaTrader 4 & 5 platforms.',
-                                'Installed, configured, and managed Windows Server services (Active Directory, DHCP, DNS).',
-                                'Installed and managed IP PBX systems and IP telephony infrastructure.',
-                                'Deployed, configured, and managed Zoho CRM.',
-                                'Designed and installed office infrastructure projects, including camera systems, network cabinets, switches, routers, and access points.'
-                            ]
-                        },
-                        {
-                            title: 'System and Network Specialist & Support Team Leader',
-                            company: 'MYINVEST CONSULTING AND INTERNET SERVICE LTD. STI.',
-                            duration: 'June 2018 - August 2020',
-                            duties: [
-                                'Administered network and security infrastructure, including setting up IPsec/Site-to-Site and Client-to-Site VPN connections, configuring NAT, and managing HPE smart switches.',
-                                'Managed virtualization and systems, performing Windows Server 2016 Datacenter installations on HPE ProLiant servers and managing Active Directory, DHCP, and DNS roles on Hyper-V.',
-                                'Oversaw backup and data management, migrating physical servers to Hyper-V, automating backup processes with Veeam, and supervising firewall backups.',
-                                'Provided corporate software and technical support, installing and managing platforms like FreePBX and Slack, and offering technical support for Office 365, WordPress and SSL certificates.',
-                                'Handled IT procurement and management, including hardware/software purchasing and the administration of domains and Office 365 Online Exchange.',
-                                'Led the support team, taking charge of both technical and operational management.'
-                            ]
-                        },
-                        {
-                            title: 'Infrastructure Specialist - Support Team Leader',
-                            company: 'GKFX FINANCIAL SERVICES LTD. STI.',
-                            duration: 'June 2016 - February 2018',
-                            duties: [
-                                'Administered system and network: Specialized in network protocols like TCP/IP, VPN, DHCP, DNS; managed Active Directory, Exchange Server 2013/2016, and file servers.',
-                                'Security and support: Installed and managed Kaspersky Security Center; conducted low-level formatting and backup processes for data security.',
-                                'Provided extensive end-user support: Troubleshot issues on macOS, Windows, and mobile devices (iOS, Android); offered prioritized IT services to VIP clients.',
-                                'Managed international support and operations: Solved technical issues for international offices via remote connection (TeamViewer); managed support requests using Atlassian Jira based on SLAs.',
-                                'Handled hardware and software management: Managed IT hardware procurement and supply chain; performed software installations and license management for a wide range of applications (MetaTrader, Adobe, SQL Server, etc.), as well as storage systems and network devices.',
-                                'Managed team and inventory: Led the IT support team; managed inventory and service processes.'
-                            ]
-                        },
-                        {
-                            title: 'IT Operations Specialist',
-                            company: 'BOYNER HOLDING / BEYMEN RETAIL INC.',
-                            duration: 'February 2015 - June 2016',
-                            duties: [
-                                'Help desk ve yerinde destek: Şirket içi 200\'den fazla kullanıcıya PC işletim sistemleri, ofis yazılımları ve BT cihazları için destek sağlamak.',
-                                'Uzaktan destek ve mağaza operasyonları: Şehir içi ve dışında bulunan 82 mağazaya uzaktan bağlantı ile yazılım ve donanım kurulum desteği vermek.',
-                                'Donanım ve yazılım yönetimi: Kurumsal yazılımların (antivirüs, yedekleme) bakım ve güncellemelerini yapmak; yeni kullanıcılar için donanım ve yazılım kurulumlarını yönetmek.',
-                                'Process tracking and reporting: Tracked user calls and customer complaints through help desk software; supported IT projects and reporting processes.',
-                                'Specialized hardware support: Troubleshot software and hardware issues on specialized devices such as Samsung tablets, NCR cash registers, and Motorola hand terminals.',
-                                'Backup and imaging: Performed backups during the replacement of user computers; executed imaging and loading processes with programs like Acronis and Ghost.'
-                            ]
-                        },
-                        {
-                            title: 'IT Technician',
-                            company: 'IŞIK ÜNİVERSİTESİ / Department of Information Technology',
-                            duration: 'January 2012 - September 2014',
-                            duties: [
-                                'Installation and configuration of Windows client operating systems.',
-                                'Initial installation of Linux operating system.',
-                                'Installation of peripheral hardware such as printers and faxes.',
-                                'Installation of Microsoft products (MS Office etc.) and all other required software.',
-                                'Troubleshooting of computer and peripheral hardware issues for Academic and Administrative Staff.',
-                                'Installation, management, and maintenance of Mac and Computer labs.'
-                            ]
-                        }
-                    ],
-                    references: 'Talep üzerine referanslar verilebilir.',
-                    copyright: 'Coşkun PARLAR. Tüm hakları saklıdır.'
                 }
             };
         
@@ -1266,7 +1069,8 @@
             const langToggleBtn = document.getElementById('lang-toggle');
             const themeToggleBtn = document.getElementById('theme-toggle');
             const langTextSpan = document.getElementById('lang-text');
-            const flagIconContainer = document.getElementById('flag-icon-container');
+            const flagTr = document.getElementById('flag-tr');
+            const flagEn = document.getElementById('flag-en');
             const body = document.body;
             
             // UI'ı güncelleyen ana fonksiyon
@@ -1279,7 +1083,13 @@
         
                 // Buton metni ve bayrak ikonunu güncelle
                 langTextSpan.textContent = langData.langButtonText;
-                flagIconContainer.innerHTML = langData.langFlag;
+                if (lang === 'tr') {
+                    flagTr.classList.add('active');
+                    flagEn.classList.remove('active');
+                } else {
+                    flagEn.classList.add('active');
+                    flagTr.classList.remove('active');
+                }
         
                 // Ana başlıkları güncelle
                 document.getElementById('profile-title').textContent = langData.profileTitle;
