@@ -457,45 +457,51 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            .container {
-                padding: 20px;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .subtitle {
-                font-size: 1rem;
-            }
-            .section-title {
-                font-size: 1.3rem;
-            }
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-            }
-            .experience-item, .education-item {
-                padding-left: 15px;
-            }
-            .experience-item ul li::before {
-                left: 10px;
-            }
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            .skill-category ul li::before, .skill-category ul li::after {
-                left: 0;
-                transform: translateX(0);
-                bottom: 100%;
-            }
-            .header-buttons {
-                top: 10px;
-                right: 10px;
-            }
-        }
+      @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        /* Yeni eklenen satır */
+        overflow-x: hidden;
+    }
+    .container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 1.3rem;
+    }
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+    /* Yeni eklenen satır */
+    .personal-info {
+        grid-template-columns: 1fr;
+    }
+    .experience-item, .education-item {
+        padding-left: 15px;
+    }
+    .experience-item ul li::before {
+        left: 10px;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    .skill-category ul li::before, .skill-category ul li::after {
+        left: 0;
+        transform: translateX(0);
+        bottom: 100%;
+    }
+    .header-buttons {
+        top: 10px;
+        right: 10px;
+    }
+}
     </style>
 </head>
 <body class="dark-mode">
