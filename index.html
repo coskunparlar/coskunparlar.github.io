@@ -6,175 +6,115 @@
   <title>Coşkun Parlar - CV</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg-color: #0d1117;
-      --text-color: #c9d1d9;
-      --container-bg: #161b22;
-      --container-border: #30363d;
-      --primary-color: #58a6ff;
-      --secondary-color: #29e99a;
-      --info-bg: #21262d;
-      --hover-bg: #282f38;
-      --sub-text-color: #8b949e;
-      --bullet-color: #29e99a;
-      --tooltip-bg: #58a6ff;
-      --tooltip-text: #0d1117;
-      --link-color: #58a6ff;
-      --link-hover-color: #29e99a;
+    :root{
+      --bg-color:#0d1117;--text-color:#c9d1d9;--container-bg:#161b22;--container-border:#30363d;
+      --primary-color:#58a6ff;--secondary-color:#29e99a;--info-bg:#21262d;--hover-bg:#282f38;
+      --sub-text-color:#8b949e;--bullet-color:#29e99a;--tooltip-bg:#58a6ff;--tooltip-text:#0d1117;
+      --link-color:#58a6ff;--link-hover-color:#29e99a
     }
-    body.light-mode {
-      --bg-color: #f6f8fa;
-      --text-color: #24292f;
-      --container-bg: #ffffff;
-      --container-border: #d0d7de;
-      --primary-color: #0366d6;
-      --secondary-color: #00824b;
-      --info-bg: #f3f4f6;
-      --hover-bg: #ebedf0;
-      --sub-text-color: #57606a;
-      --bullet-color: #00824b;
-      --tooltip-bg: #0366d6;
-      --tooltip-text: #ffffff;
-      --link-color: #0366d6;
-      --link-hover-color: #00824b;
+    body.light-mode{
+      --bg-color:#f6f8fa;--text-color:#24292f;--container-bg:#fff;--container-border:#d0d7de;
+      --primary-color:#0366d6;--secondary-color:#00824b;--info-bg:#f3f4f6;--hover-bg:#ebedf0;
+      --sub-text-color:#57606a;--bullet-color:#00824b;--tooltip-bg:#0366d6;--tooltip-text:#fff;
+      --link-color:#0366d6;--link-hover-color:#00824b
     }
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      margin: 0;
-      padding: 20px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      transition: background-color 0.3s, color 0.3s;
+    html,body{margin:0}
+    body{
+      background:var(--bg-color);color:var(--text-color);
+      font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;
+      padding:20px;line-height:1.6;transition:background .3s,color .3s
     }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: var(--container-bg);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      border: 1px solid var(--container-border);
-      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    .container{
+      max-width:1000px;margin:0 auto;background:var(--container-bg);padding:30px;border-radius:12px;
+      border:1px solid var(--container-border);box-shadow:0 4px 20px rgba(0,0,0,.4)
     }
-    h1,h2,h3,h4{
-      font-family:'Poppins',sans-serif;
-      color:var(--primary-color);
-      font-weight:600;
-      margin-top:0;
-      transition:color 0.3s;
-    }
-    h1{font-size:2.5rem;text-align:center;margin-bottom:5px;}
-    .subtitle{font-size:1.2rem;text-align:center;color:var(--sub-text-color);margin-bottom:20px;transition:color 0.3s;}
-    hr{border:none;border-top:1px solid var(--container-border);margin:30px 0;transition:border-color 0.3s;}
-    p{margin:8px 0;}
+    h1,h2,h3,h4{font-family:Poppins,Inter,sans-serif;color:var(--primary-color);font-weight:600;margin-top:0}
+    h1{font-size:2.4rem;text-align:center;margin-bottom:6px}
+    .subtitle{font-size:1.1rem;text-align:center;color:var(--sub-text-color);margin-bottom:18px}
+    hr{border:none;border-top:1px solid var(--container-border);margin:28px 0}
     .section-title{
-      color:var(--primary-color);font-size:1.5rem;margin-top:30px;margin-bottom:15px;border-bottom:2px solid var(--primary-color);padding-bottom:5px;letter-spacing:1px;transition:color 0.3s,border-color 0.3s;
+      font-size:1.45rem;border-bottom:2px solid var(--primary-color);padding-bottom:6px;margin-bottom:14px
     }
     .profile-pic{
-      display:block;margin:0 auto 15px;border-radius:50%;width:150px;height:150px;object-fit:cover;border:3px solid var(--primary-color);box-shadow:0 0 15px var(--primary-color);transition:border-color 0.3s,box-shadow 0.3s;
+      display:block;margin:0 auto 14px;border-radius:50%;width:150px;height:150px;object-fit:cover;
+      border:3px solid var(--primary-color);box-shadow:0 0 12px var(--primary-color)
     }
     .personal-info{
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;text-align:center;
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;text-align:center
     }
     .personal-info-item{
-      background-color:var(--info-bg);padding:15px;border-radius:8px;border:1px solid var(--container-border);box-shadow:0 2px 10px rgba(0,0,0,0.2);transition:transform 0.2s,box-shadow 0.2s,background-color 0.3s,border-color 0.3s;word-wrap:break-word;
+      background:var(--info-bg);padding:14px;border-radius:10px;border:1px solid var(--container-border)
     }
-    .personal-info-item:hover{transform:translateY(-5px);box-shadow:0 5px 20px rgba(0,0,0,0.4);}
-    .label-title{color:var(--secondary-color);font-weight:500;transition:color 0.3s;}
-    .personal-info-value{color:var(--text-color);transition:color 0.3s;}
-    .personal-info-item a{color:var(--link-color);text-decoration:none;transition:color 0.3s;word-wrap:break-word;}
-    .personal-info-item a:hover{color:var(--link-hover-color);text-decoration:underline;}
-    .about-me{margin-bottom:20px;padding:15px;background-color:var(--info-bg);border-radius:8px;border:1px solid var(--container-border);box-shadow:0 2px 10px rgba(0,0,0,0.2);transition:background-color 0.3s,border-color 0.3s;}
-    .about-me p{margin:0;}
+    .label-title{color:var(--secondary-color);font-weight:600}
+    .about-me{padding:14px;background:var(--info-bg);border-radius:10px;border:1px solid var(--container-border)}
     .experience-item,.education-item{
-      margin-bottom:30px;padding:20px;border-left:3px solid var(--primary-color);background-color:var(--info-bg);border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:background-color 0.3s,border-color 0.3s,box-shadow 0.3s;
+      margin-bottom:22px;padding:18px;border-left:3px solid var(--primary-color);
+      background:var(--info-bg);border-radius:10px
     }
-    .experience-item h4{font-size:1.25rem;margin-bottom:5px;color:var(--text-color);transition:color 0.3s;}
-    .experience-item .job-title{font-size:1rem;color:var(--sub-text-color);margin-bottom:5px;transition:color 0.3s;}
-    .experience-item .job-duration{font-size:0.9rem;color:var(--sub-text-color);margin-bottom:15px;transition:color 0.3s;}
-    .experience-item ul,.education-item ul{list-style-type:none;padding:0;margin-top:10px;}
-    .experience-item ul li{position:relative;padding-left:20px;margin-bottom:10px;transition:background 0.3s;}
-    .experience-item ul li:hover{background:none;}
-    .experience-item ul li::before{content:'•';color:var(--bullet-color);font-weight:bold;display:inline-block;width:1em;margin-left:-1em;position:absolute;left:0;transition:color 0.3s;}
-    .education-item h4{font-size:1.15rem;margin-bottom:5px;color:var(--text-color);transition:color 0.3s;}
-    .education-item p{margin:5px 0;color:var(--sub-text-color);transition:color 0.3s;}
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;}
-    .skill-category{background-color:var(--info-bg);padding:20px;border-radius:8px;border:1px solid var(--container-border);box-shadow:0 2px 10px rgba(0,0,0,0.2);transition:background-color 0.3s,border-color 0.3s;}
-    .skill-category h4{color:var(--secondary-color);margin-bottom:10px;text-align:center;transition:color 0.3s;}
-    .skill-category ul{list-style-type:none;padding:0;margin:0;}
-    .skill-category ul li{position:relative;padding:5px 0;text-align:center;cursor:help;transition:background-color 0.3s ease,color 0.3s;}
-    .skill-category ul li:hover{background-color:var(--hover-bg);}
-    .skill-category ul li::before{
-      content:attr(data-tooltip);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background-color:var(--tooltip-bg);color:var(--tooltip-text);text-align:center;border-radius:6px;padding:8px 12px;white-space:nowrap;z-index:10;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease,background-color 0.3s,color 0.3s;
+    .experience-item h4{margin:0 0 4px;color:#e6edf3}
+    .job-title{color:var(--sub-text-color)}
+    .job-duration{color:var(--sub-text-color);font-size:.92rem;margin-top:2px;margin-bottom:10px}
+    .experience-item ul,.education-item ul{list-style:none;margin:8px 0 0;padding:0}
+    .experience-item li{position:relative;padding-left:20px;margin-bottom:8px}
+    .experience-item li::before{content:'•';color:var(--bullet-color);position:absolute;left:0}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .skill-category{background:var(--info-bg);padding:18px;border-radius:10px;border:1px solid var(--container-border)}
+    .skill-category h4{color:var(--secondary-color);margin:0 0 10px;text-align:center}
+    .skill-category ul{list-style:none;margin:0;padding:0}
+    .skill-category li{padding:6px 0;text-align:center;position:relative}
+    .skill-category li::before{
+      content:attr(data-tooltip);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+      background:var(--tooltip-bg);color:var(--tooltip-text);border-radius:6px;padding:6px 10px;white-space:nowrap;
+      opacity:0;visibility:hidden;transition:opacity .25s
     }
-    .skill-category ul li:hover::before{opacity:1;visibility:visible;bottom:120%;}
-    .skill-category ul li::after{
-      content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid var(--tooltip-bg);z-index:10;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease,border-top-color 0.3s;
+    .skill-category li:hover::before{opacity:1;visibility:visible}
+    .references-note{text-align:center;color:var(--sub-text-color);font-style:italic}
+    .footer{margin-top:30px;text-align:center;color:var(--sub-text-color);border-top:1px solid var(--container-border);padding-top:16px}
+    .header-buttons{
+      position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:999
     }
-    .skill-category ul li:hover::after{opacity:1;visibility:visible;bottom:120%;}
-    .references-note{text-align:center;font-style:italic;color:var(--sub-text-color);margin-top:20px;transition:color 0.3s;}
-    .footer{margin-top:40px;text-align:center;font-size:0.9rem;color:var(--sub-text-color);padding-top:20px;border-top:1px solid var(--container-border);transition:color 0.3s,border-top-color 0.3s;}
-    .footer a{color:var(--link-color);text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-weight:500;transition:color 0.2s;}
-    .footer a:hover{color:var(--link-hover-color);text-decoration:underline;}
-    .icon{vertical-align:middle;width:20px;height:20px;fill:var(--primary-color);transition:fill 0.3s;}
-    .personal-info-item a:hover .icon{fill:var(--link-hover-color);}
-    .header-buttons{position:fixed;top:20px;right:20px;display:flex;gap:10px;z-index:1000;}
-    .lang-toggle-button{
-      background:var(--info-bg);border:1px solid var(--container-border);color:var(--text-color);padding:10px 15px;border-radius:50px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.2);transition:background-color 0.3s,color 0.3s,border-color 0.3s;line-height:1;font-size:1rem;font-weight:600;z-index:1000;display:flex;align-items:center;gap:8px;
+    .btn{
+      background:var(--info-bg);border:1px solid var(--container-border);color:var(--text-color);
+      padding:10px 14px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px
     }
-    .lang-toggle-button:hover{background-color:var(--hover-bg);}
-    .flag-icon{width:20px;height:20px;}
-    .theme-toggle-button{
-      background:var(--info-bg);border:1px solid var(--container-border);color:var(--text-color);padding:10px;border-radius:50%;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.2);transition:background-color 0.3s,color 0.3s,border-color 0.3s;line-height:1;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;z-index:1000;
+    .icon-btn{width:40px;height:40px;border-radius:50%;padding:0;justify-content:center}
+    .btn:hover{background:var(--hover-bg)}
+    .flag-icon{width:20px;height:20px}
+    .animated-section{transition:opacity .5s ease,transform .5s ease}
+    .animated-section.hidden{opacity:0;transform:translateY(14px)}
+    /* PRINT STYLES */
+    @media print{
+      body{background:#fff;color:#000}
+      .header-buttons,.references-note,.footer{display:none !important}
+      .container{box-shadow:none;border:none;max-width:100%;padding:0 12mm}
+      a{color:#000;text-decoration:none}
     }
-    .theme-toggle-button:hover{background-color:var(--hover-bg);}
-    .animated-section{transition:opacity 0.6s ease-out,transform 0.6s ease-out;}
-    .animated-section.hidden{opacity:0;transform:translateY(20px);}
     @media (max-width:768px){
-      body{padding:10px;overflow-x:hidden;}
-      .container{padding:20px;}
-      h1{font-size:2rem;}
-      .subtitle{font-size:1rem;}
-      .section-title{font-size:1.3rem;}
-      .profile-pic{width:120px;height:120px;}
-      .personal-info{display:block;}
-      .personal-info-item{margin-bottom:10px;}
-      .experience-item,.education-item{padding-left:15px;}
-      .experience-item ul li::before{left:10px;}
-      .skills-grid{display:block;}
-      .skill-category{margin-bottom:15px;}
-      .skill-category ul li::before,.skill-category ul li::after{left:0;transform:translateX(0);bottom:100%;}
-      .header-buttons{top:10px;right:10px;}
-      .animated-section{transition:none;}
-      .animated-section.hidden{opacity:1;transform:none;}
+      body{padding:12px}
+      .container{padding:20px}
+      h1{font-size:2rem}
     }
   </style>
 </head>
 <body class="dark-mode">
-  <div class="header-buttons">
-    <button id="lang-toggle" class="lang-toggle-button">
-      <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512" style="display:none;">
-        <defs><clipPath id="clip0"><rect width="512" height="512" fill="#fff"/></clipPath></defs>
-        <g clip-path="url(#clip0)">
-          <rect width="512" height="512" fill="#e30a17"/>
-          <path fill="#fff" d="M192 256c0 64.9-52.6 117.5-117.5 117.5S-43 320.9-43 256c0-64.9 52.6-117.5 117.5-117.5 64.9 0 117.5 52.6 117.5 117.5z"/>
-          <path fill="#e30a17" d="M211.5 256a94.5 94.5 0 1 0-189 0 94.5 94.5 0 0 0 189 0z"/>
-          <path fill="#fff" d="M336.5 256c0 30.6-24.8 55.5-55.5 55.5s-55.5-24.8-55.5-55.5 24.8-55.5 55.5-55.5 55.5 24.8 55.5 55.5z"/>
-          <path fill="#fff" d="M380.5 256a44.5 44.5 0 1 0-89 0 44.5 44.5 0 0 0 89 0z"/>
-          <path fill="#fff" d="M291.5 242.3L268.4 256l-23.1-13.7 23.1-38.3 23.1 13.7z"/>
-        </g>
-      </svg>
-      <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300" style="display:block;">
-        <path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/><path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/><path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/>
+  <!-- FIXED ACTIONS -->
+  <div class="header-buttons no-print">
+    <button id="lang-toggle" class="btn">
+      <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512" style="display:none"><rect width="512" height="512" fill="#e30a17"/><circle cx="210" cy="256" r="90" fill="#fff"/><circle cx="230" cy="256" r="72" fill="#e30a17"/><circle cx="290" cy="256" r="28" fill="#fff"/></svg>
+      <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300" style="display:block">
+        <path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/>
+        <path stroke="#c11c1d" stroke-width="40" d="M0 0l600 300M600 0L0 300"/><path stroke="#fff" stroke-width="100" d="M300 0v300M0 150h600"/>
+        <path stroke="#c11c1d" stroke-width="60" d="M300 0v300M0 150h600"/>
       </svg>
       <span id="lang-text">TR</span>
     </button>
-    <button id="theme-toggle" class="theme-toggle-button">☀️</button>
-    <!-- EKLENEN: Yazdır butonu -->
-    <button id="print-btn" class="theme-toggle-button" title="Yazdır">🖨️</button>
+    <button id="theme-toggle" class="btn icon-btn" title="Tema değiştir">☀️</button>
+    <button id="printBtn" class="btn" title="Yazdır">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 8V4h10v4M7 16H5a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-2m-10 0v4h10v-4H7Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Yazdır
+    </button>
   </div>
 
   <div class="container">
@@ -200,21 +140,11 @@
     <div class="animated-section">
       <h2 id="personal-info-title" class="section-title">Kişisel Bilgiler</h2>
       <div class="personal-info">
-        <div class="personal-info-item">
-          <span class="label-title">Adres:</span> <span class="personal-info-value">Eyüp / İstanbul</span>
-        </div>
-        <div class="personal-info-item">
-          <span class="label-title">Email:</span> <a href="mailto:parlarcoskun@gmail.com" class="personal-info-value">parlarcoskun@gmail.com</a>
-        </div>
-        <div class="personal-info-item">
-          <span class="label-title">Doğum Tarihi:</span> <span class="personal-info-value">10.11.1990</span>
-        </div>
-        <div class="personal-info-item">
-          <span class="label-title">Ehliyet:</span> <span class="personal-info-value">A ve B / 2010</span>
-        </div>
-        <div class="personal-info-item">
-          <span class="label-title">Diller:</span> <span class="personal-info-value">İngilizce (Orta)</span>
-        </div>
+        <div class="personal-info-item"><span class="label-title">Adres:</span> <span class="personal-info-value">Eyüp / İstanbul</span></div>
+        <div class="personal-info-item"><span class="label-title">Email:</span> <a href="mailto:parlarcoskun@gmail.com" class="personal-info-value">parlarcoskun@gmail.com</a></div>
+        <div class="personal-info-item"><span class="label-title">Doğum Tarihi:</span> <span class="personal-info-value">10.11.1990</span></div>
+        <div class="personal-info-item"><span class="label-title">Ehliyet:</span> <span class="personal-info-value">A ve B / 2010</span></div>
+        <div class="personal-info-item"><span class="label-title">Diller:</span> <span class="personal-info-value">İngilizce (Orta)</span></div>
       </div>
     </div>
 
@@ -222,18 +152,9 @@
 
     <section class="animated-section">
       <h2 id="education-title" class="section-title">Eğitim</h2>
-      <div class="education-item">
-        <h3 class="education-degree">Lisans</h3>
-        <p class="education-school">İstanbul Üniversitesi AUZEF, Coğrafya</p>
-      </div>
-      <div class="education-item">
-        <h3 class="education-degree">Ön Lisans</h3>
-        <p class="education-school">Namık Kemal Üniversitesi, Teknik Bilimler MYO, Elektronik Teknolojisi</p>
-      </div>
-      <div class="education-item">
-        <h3 class="education-degree">Lise</h3>
-        <p class="education-school">Şişli Mesleki ve Teknik Anadolu Lisesi</p>
-      </div>
+      <div class="education-item"><h3 class="education-degree">Lisans</h3><p class="education-school">İstanbul Üniversitesi AUZEF, Coğrafya</p></div>
+      <div class="education-item"><h3 class="education-degree">Ön Lisans</h3><p class="education-school">Namık Kemal Üniversitesi, Teknik Bilimler MYO, Elektronik Teknolojisi</p></div>
+      <div class="education-item"><h3 class="education-degree">Lise</h3><p class="education-school">Şişli Mesleki ve Teknik Anadolu Lisesi</p></div>
     </section>
 
     <hr />
@@ -245,38 +166,38 @@
           <h4 id="skill-cat-network">Network & Security</h4>
           <ul id="skill-list-network">
             <li data-tooltip="FortiGate, Mikrotik ve pfSense üzerinde güvenlik duvarı ve VPN yönetimi">FortiGate, Mikrotik, pfSense</li>
-            <li data-tooltip="IPsec ve PPTP protokolleri ile site-to-site ve client-to-site VPN yapılandırmaları">VPN (IPsec, PPTP)</li>
-            <li data-tooltip="DHCP, DNS ve TCP/IP gibi temel ağ servislerinin konfigürasyonu ve sorun giderme">DHCP, DNS, TCP/IP</li>
-            <li data-tooltip="LAN/WAN topolojilerinin tasarımı, kurulumu ve yönetimi">LAN/WAN</li>
-            <li data-tooltip="Uç nokta güvenliği için Kaspersky Endpoint Security yönetimi">Kaspersky Endpoint Security</li>
+            <li data-tooltip="IPsec ve PPTP ile site-to-site & client-to-site VPN">VPN (IPsec, PPTP)</li>
+            <li data-tooltip="DHCP, DNS, TCP/IP servis konfigürasyonu ve sorun giderme">DHCP, DNS, TCP/IP</li>
+            <li data-tooltip="LAN/WAN topoloji tasarımı ve yönetimi">LAN/WAN</li>
+            <li data-tooltip="Uç nokta güvenliği yönetimi">Kaspersky Endpoint Security</li>
           </ul>
         </div>
         <div class="skill-category">
           <h4 id="skill-cat-system">Sistem & Sanallaştırma</h4>
           <ul id="skill-list-system">
-            <li data-tooltip="vSphere, ESXi ve vCenter platformlarında sanal altyapı kurulumu ve yönetimi">VMware (vSphere, ESXi, vCenter)</li>
-            <li data-tooltip="Hyper-V ve Proxmox sanallaştırma ortamlarının kurulumu ve bakımı">Hyper-V, Proxmox</li>
-            <li data-tooltip="Active Directory, GPO ve DNS servisleri dahil Windows Server yönetimi">Windows Server (AD, GPO, DNS)</li>
-            <li data-tooltip="Bulut tabanlı altyapı çözümleri için Microsoft Azure ve AWS servislerinin kullanımı">Microsoft Azure, AWS</li>
-            <li data-tooltip="Uygulama sanallaştırması ve konteyner yönetimi için Docker">Docker</li>
+            <li data-tooltip="vSphere, ESXi, vCenter kurulum & yönetim">VMware (vSphere, ESXi, vCenter)</li>
+            <li data-tooltip="Hyper-V ve Proxmox ortamları">Hyper-V, Proxmox</li>
+            <li data-tooltip="AD, GPO, DNS dahil Windows Server yönetimi">Windows Server (AD, GPO, DNS)</li>
+            <li data-tooltip="Azure ve AWS ile bulut altyapı">Microsoft Azure, AWS</li>
+            <li data-tooltip="Konteynerleştirme ve uygulama paketleme">Docker</li>
           </ul>
         </div>
         <div class="skill-category">
           <h4 id="skill-cat-database">Veritabanı & Yazılım</h4>
           <ul id="skill-list-database">
-            <li data-tooltip="MS SQL Server ve MySQL veritabanı kurulumu, yönetimi ve optimizasyonu">SQL Server MS, MySQL</li>
-            <li data-tooltip="Finansal işlem platformları MetaTrader 4 & 5'in kurulumu, konfigürasyonu ve performansı">MetaTrader 4 & 5</li>
-            <li data-tooltip="Office 365 hizmetleri ve Zoho CRM'in yönetimi ve entegrasyonu">Office 365, Zoho CRM</li>
-            <li data-tooltip="Proje yönetimi ve destek talepleri için Atlassian JIRA kullanımı">Atlassian JIRA</li>
-            <li data-tooltip="Kurumsal yedekleme ve replikasyon çözümü Veeam'in yönetimi">Veeam Backup & Replication</li>
+            <li data-tooltip="MS SQL Server & MySQL kurulum, yönetim, optimizasyon">SQL Server MS, MySQL</li>
+            <li data-tooltip="MT4/MT5 kurulum, konfigürasyon ve performans">MetaTrader 4 & 5</li>
+            <li data-tooltip="Office 365 & Zoho CRM yönetimi">Office 365, Zoho CRM</li>
+            <li data-tooltip="Proje ve talep yönetimi">Atlassian JIRA</li>
+            <li data-tooltip="Kurumsal yedekleme ve replikasyon">Veeam Backup & Replication</li>
           </ul>
         </div>
         <div class="skill-category">
           <h4 id="skill-cat-storage">Depolama & Yedekleme</h4>
           <ul id="skill-list-storage">
-            <li data-tooltip="HPE, Dell, NetApp ve IBM gibi kurumsal depolama sistemlerinin yönetimi">HPE, Dell, NetApp, IBM</li>
-            <li data-tooltip="NAS (Network Attached Storage) cihazları QNAP ve Synology'nin kurulum ve yönetimi">QNAP, Synology NAS</li>
-            <li data-tooltip="Acronis, Veeam ve Arcserve gibi yedekleme çözümlerinin uygulanması ve denetlenmesi">Acronis, Veeam, Arcserve</li>
+            <li data-tooltip="Kurumsal storage yönetimi">HPE, Dell, NetApp, IBM</li>
+            <li data-tooltip="QNAP & Synology NAS">QNAP, Synology NAS</li>
+            <li data-tooltip="Acronis, Veeam, Arcserve">Acronis, Veeam, Arcserve</li>
           </ul>
         </div>
       </div>
@@ -293,18 +214,16 @@
 
     <div class="animated-section">
       <h2 id="other-links-title" class="section-title">Diğer Bağlantılar</h2>
-      <div class="personal-info" style="justify-content: center;">
+      <div class="personal-info" style="justify-content:center">
         <div class="personal-info-item">
           <a href="https://www.linkedin.com/in/coskun-parlar-411906137/" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.7 0 32-14.5 32-32.3V64.3c0-17.8-14.3-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5s-17.3 38.5-38.5 38.5zm282.8 243h-66.4V290.1c0-25-1-50.5-27.4-50.5-27.4 0-31.4 21.4-31.4 49v126.9h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.4 62-34.4C366.5 197 372 233.1 372 282.7V416z"/></svg>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20"><path fill="currentColor" d="M416 32H32A32 32 0 0 0 0 64v384a32 32 0 0 0 32 32h384a32 32 0 0 0 32-32V64a32 32 0 0 0-32-32zM135.4 416H69V202.2h66.5V416zM102.2 177.9c-21.3 0-38.5-17.3-38.5-38.5s17.2-38.5 38.5-38.5 38.5 17.3 38.5 38.5-17.2 38.5-38.5 38.5zM416 416h-66.4V290.1c0-25-1-50.5-27.4-50.5-27.4 0-31.4 21.4-31.4 49V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.4 62-34.4 44.8 0 50.6 36.1 50.6 85.7V416z"/></svg>
             <span class="label-title">LinkedIn</span>
           </a>
         </div>
         <div class="personal-info-item">
           <a href="https://github.com/coskunparlar" target="_blank" rel="noopener noreferrer">
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.372 0 0 5.372 0 12c0 5.303 3.438 9.8 8.207 11.387.6.11.82-.26.82-.577 0-.285-.01-1.04-.01-2.04-3.337.726-4.04-1.611-4.04-1.611-.546-1.385-1.332-1.755-1.332-1.755-1.089-.745.083-.73.083-.73 1.205.084 1.838 1.237 1.838 1.237 1.07 1.835 2.809 1.305 3.493.997.108-.775.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.383 1.236-3.224-.124-.302-.536-1.523.117-3.18 0 0 1.008-.323 3.301 1.23a11.51 11.51 0 0 1 6.096 0c2.293-1.553 3.3-1.23 3.3-1.23.653 1.657.241 2.878.118 3.18.77.84 1.234 1.914 1.234 3.224 0 4.609-2.805 5.624-5.474 5.923.429.371.815 1.102.815 2.22 0 1.605-.015 2.898-.015 3.284 0 .319.217.693.825.576C20.565 21.798 24 17.302 24 12c0-6.628-5.372-12-12-12z"/>
-            </svg>
+            <svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.28-.01-1.04-.01-2.04-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.31 3.49 1 .11-.77.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23 1-.28 2.07-.42 3.14-.42s2.14.14 3.14.42c2.3-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.19.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.62-5.47 5.93.43.37.82 1.1.82 2.22 0 1.61-.02 2.9-.02 3.28 0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
             <span class="label-title">GitHub</span>
           </a>
         </div>
@@ -312,599 +231,507 @@
     </div>
 
     <div class="animated-section">
-      <div id="references-note" class="references-note">
-        Talep üzerine referanslar verilebilir.
-      </div>
+      <div id="references-note" class="references-note">Talep üzerine referanslar verilebilir.</div>
     </div>
 
     <div class="footer">
-      <div id="copyright-text" style="margin-top: 10px; font-size:12px; color: var(--sub-text-color);">
+      <div id="copyright-text" style="font-size:12px">
         &copy; <span id="currentYear"></span> Coşkun PARLAR. Tüm hakları saklıdır.
       </div>
     </div>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const content = {
-        'tr': {
-          langButtonText: 'EN',
-          profileTitle: 'COŞKUN PARLAR',
-          profileSubtitle: 'Sistem ve Network Yöneticisi',
-          aboutTitle: 'Hakkımda',
-          aboutText: 'Sistem ve Network Yöneticisi olarak, 10 yılı aşkın süredir finans ve telekomünikasyon sektörlerinde çeşitli altyapı projelerinde görev aldım. Hedefim Virtualization, MetaTrader 5 ve bulut teknolojileri (Azure, AWS) alanındaki tecrübemle, sistem optimizasyonu, güvenlik ve kesintisiz operasyonel süreçlerin yönetimi konularında organizasyonların teknolojik hedeflerine ulaşmasına katkıda bulunmaktır.',
-          personalInfoTitle: 'Kişisel Bilgiler',
-          /* Telefon, Medeni Durum, Askerlik KALDIRILDI */
-          infoLabels: ['Adres', 'Email', 'Doğum Tarihi', 'Ehliyet', 'Diller'],
-          infoValues: ['Eyüp / İstanbul', 'parlarcoskun@gmail.com', '10.11.1990', 'A ve B / 2010', 'İngilizce (Orta)'],
-          educationTitle: 'Eğitim',
-          educationItems: [
-            { degree: 'Lisans', school: 'İstanbul Üniversitesi AUZEF, Coğrafya' },
-            { degree: 'Ön Lisans', school: 'Namık Kemal Üniversitesi, Teknik Bilimler MYO, Elektronik Teknolojisi' },
-            { degree: 'Lise', school: 'Şişli Mesleki ve Teknik Anadolu Lisesi' }
+  document.addEventListener('DOMContentLoaded', () => {
+    /* ------------------ DİL İÇERİĞİ ------------------ */
+    const content = {
+      tr: {
+        langButtonText: 'EN',
+        profileTitle: 'COŞKUN PARLAR',
+        profileSubtitle: 'Sistem ve Network Yöneticisi',
+        aboutTitle: 'Hakkımda',
+        aboutText:
+          'Sistem ve Network Yöneticisi olarak, 10 yılı aşkın süredir finans ve telekomünikasyon sektörlerinde çeşitli altyapı projelerinde görev aldım. Hedefim Virtualization, MetaTrader 5 ve bulut teknolojileri (Azure, AWS) alanındaki tecrübemle, sistem optimizasyonu, güvenlik ve kesintisiz operasyonel süreçlerin yönetimi konularında organizasyonların teknolojik hedeflerine ulaşmasına katkıda bulunmaktır.',
+        personalInfoTitle: 'Kişisel Bilgiler',
+        infoLabels: ['Adres','Email','Doğum Tarihi','Ehliyet','Diller'],
+        infoValues: ['Eyüp / İstanbul','parlarcoskun@gmail.com','10.11.1990','A ve B / 2010','İngilizce (Orta)'],
+        educationTitle: 'Eğitim',
+        educationItems: [
+          { degree: 'Lisans', school: 'İstanbul Üniversitesi AUZEF, Coğrafya' },
+          { degree: 'Ön Lisans', school: 'Namık Kemal Üniversitesi, Teknik Bilimler MYO, Elektronik Teknolojisi' },
+          { degree: 'Lise', school: 'Şişli Mesleki ve Teknik Anadolu Lisesi' }
+        ],
+        skillsTitle: 'Yetenekler',
+        skillCategories: { network:'Network & Security', system:'Sistem & Sanallaştırma', database:'Veritabanı & Yazılım', storage:'Depolama & Yedekleme' },
+        skills: {
+          network: [
+            { name:'FortiGate, Mikrotik, pfSense', tooltip:'Firewall & VPN yönetimi' },
+            { name:'VPN (IPsec, PPTP)', tooltip:'Site-to-site & client VPN' },
+            { name:'DHCP, DNS, TCP/IP', tooltip:'Servis konfigürasyonu' },
+            { name:'LAN/WAN', tooltip:'Topoloji & operasyon' },
+            { name:'Kaspersky Endpoint', tooltip:'Uç nokta güvenliği' }
           ],
-          skillsTitle: 'Yetenekler',
-          skillCategories: {
-            network: 'Network & Security',
-            system: 'Sistem & Sanallaştırma',
-            database: 'Veritabanı & Yazılım',
-            storage: 'Depolama & Yedekleme'
-          },
-          skills: {
-            network: [
-              { name: 'FortiGate, Mikrotik, pfSense', tooltip: 'FortiGate, Mikrotik ve pfSense üzerinde güvenlik duvarı ve VPN yönetimi' },
-              { name: 'VPN (IPsec, PPTP)', tooltip: 'IPsec ve PPTP protokolleri ile site-to-site ve client-to-site VPN yapılandırmaları' },
-              { name: 'DHCP, DNS, TCP/IP', tooltip: 'DHCP, DNS ve TCP/IP gibi temel ağ servislerinin konfigürasyonu ve sorun giderme' },
-              { name: 'LAN/WAN', tooltip: 'LAN/WAN topolojilerinin tasarımı, kurulumu ve yönetimi' },
-              { name: 'Kaspersky Endpoint Security', tooltip: 'Uç nokta güvenliği için Kaspersky Endpoint Security yönetimi' }
-            ],
-            system: [
-              { name: 'VMware (vSphere, ESXi, vCenter)', tooltip: 'vSphere, ESXi ve vCenter platformlarında sanal altyapı kurulumu ve yönetimi' },
-              { name: 'Hyper-V, Proxmox', tooltip: 'Hyper-V ve Proxmox sanallaştırma ortamlarının kurulumu ve bakımı' },
-              { name: 'Windows Server (AD, GPO, DNS)', tooltip: 'Active Directory, GPO ve DNS servisleri dahil Windows Server yönetimi' },
-              { name: 'Microsoft Azure, AWS', tooltip: 'Bulut tabanlı altyapı çözümleri için Microsoft Azure ve AWS servislerinin kullanımı' },
-              { name: 'Docker', tooltip: 'Uygulama sanallaştırması ve konteyner yönetimi için Docker' }
-            ],
-            database: [
-              { name: 'SQL Server MS, MySQL', tooltip: 'MS SQL Server ve MySQL veritabanı kurulumu, yönetimi ve optimizasyonu' },
-              { name: 'MetaTrader 4 & 5', tooltip: 'Finansal işlem platformları MetaTrader 4 & 5\'in kurulumu, konfigürasyonu ve performansı' },
-              { name: 'Office 365, Zoho CRM', tooltip: 'Office 365 hizmetleri ve Zoho CRM\'in yönetimi ve entegrasyonu' },
-              { name: 'Atlassian JIRA', tooltip: 'Proje yönetimi ve destek talepleri için Atlassian JIRA kullanımı' },
-              { name: 'Veeam Backup & Replication', tooltip: 'Kurumsal yedekleme ve replikasyon çözümü Veeam\'in yönetimi' }
-            ],
-            storage: [
-              { name: 'HPE, Dell, NetApp, IBM', tooltip: 'HPE, Dell, NetApp ve IBM gibi kurumsal depolama sistemlerinin yönetimi' },
-              { name: 'QNAP, Synology NAS', tooltip: 'NAS (Network Attached Storage) cihazları QNAP ve Synology\'nin kurulum ve yönetimi' },
-              { name: 'Acronis, Veeam, Arcserve', tooltip: 'Acronis, Veeam ve Arcserve gibi yedekleme çözümlerinin uygulanması ve denetlenmesi' }
-            ]
-          },
-          experienceTitle: 'Deneyim',
-          experienceItems: [
-            {
-              title: 'Sistem ve Network Yöneticisi',
-              company: 'DESTEK YATIRIM MENKUL DEĞERLER A.Ş.',
-              duration: 'Ocak 2025 - Günümüz',
-              duties: [
-                'MetaTrader 5 platformunun tam kapsamlı yönetimi; sembol, spread, swap, markup, komisyon, minimum ve maksimum lot, fiyat adımları (tick size), işlem saatleri, emir türleri gibi tüm finansal parametrelerin eksiksiz yapılandırılması ve optimize edilmesi',
-                'MetaTrader 5 platformunda plugin yönetimi; eklentilerin kurulumu, konfigürasyonu ve performans takibinin sağlanması',
-                'SPK ve TSPB düzenlemelerine tam uyumlu platform konfigürasyonu ve sürekli güncellenen düzenleyici standartlara uygunluk',
-                'TSPB raporlama süreçlerinin takibi, ilgili veri ve dokümantasyonun hazırlanması ve düzenleyici kurumlara zamanında iletilmesi',
-                'Likidite sağlayıcılar (LP) ile teknik ve operasyonel entegrasyonların yönetilmesi; piyasa veri akışlarının ve fiyat derinliğinin optimize edilmesi',
-                'CFD, vadeli işlemler, spot ve FX dahil olmak üzere tüm türev ve finansal ürünlerin teknik yapılandırması, işlem koşullarının yönetimi ve operasyonel desteğinin sağlanması',
-                'Risk yönetimi çerçevesinde dinamik fiyatlama stratejilerinin geliştirilmesi ve piyasa koşullarına göre finansal parametrelerin güncellenmesi',
-                'İşlem koşullarına göre özel komisyon ve ücret politikalarının planlanması, yapılandırılması ve yönetimi',
-                'MT5 platformunda farklı müşteri segmentlerine özel ürün ve fiyatlandırma gruplarının oluşturulması ve yönetilmesi',
-                'Platform yönetim araçları kullanılarak performans takibi yapılması, detaylı raporların hazırlanması ve teknik sorunların çözümü için koordinasyon sağlanması',
-                'Platform, plugin ve LP anlaşmalarının yürütülmesi; ödeme süreçlerinin yönetimi ve bütçe kontrolü',
-                'Finansal piyasa altyapısı ve işlem sistemlerinin etkin ve güvenli çalışması için sürekli iyileştirme ve otomasyon çözümleri geliştirilmesi'
-              ]
-            },
-            {
-              title: 'Platform Engineer',
-              company: 'Trive Financial Services Ltd.',
-              duration: 'Aralık 2023 - Ocak 2025',
-              duties: [
-                'Migration projeleri ve Hypervisor yönetimi',
-                'MetaTrader 4 & 5 platformlarının kurulumu, yönetimi ve optimizasyonu',
-                'Sunucu kurulumu, yapılandırma, bakım ve performans iyileştirme',
-                'Günlük sistem, güvenlik ve yedekleme operasyonlarının yürütülmesi',
-                'Donanım/yazılım arızalarında hızlı onarım ve kurtarma süreçleri',
-                'İşletim sistemi, yazılım ve güvenlik güncellemelerinin yönetimi',
-                'Geographic Information System (GIS) altyapı ve varlık yönetim sistemleri için yazılım konfigürasyonu',
-                'Operasyonel prosedür ve teknik dokümantasyonun hazırlanması',
-                'Otomasyon ve verimlilik odaklı sistem yönetimi çözümlerinin geliştirilmesi'
-              ]
-            },
-            {
-              title: 'Cloud Engineer',
-              company: 'Vodafone Telekomünikasyon A.Ş.',
-              duration: 'Şubat 2023 - Aralık 2023',
-              duties: [
-                'VMware altyapı yönetimi: vCenter, NSX, vRealize Operations (vROps), Cloud Director ve Cloud Director Availability platformlarının yönetimi',
-                'Yüksek erişilebilirlik ve kaynak optimizasyonu: vSphere High Availability (HA) ve Distributed Resource Scheduler (DRS) yapılandırma ve yönetimi',
-                'Sürüm güncellemeleri: ESXi, vCenter, vROps ve ilgili VMware bileşenlerinin versiyon güncellemelerinin uygulanması',
-                'Donanım güncellemeleri: Storage sistemleri, host sunucular ve diğer fiziksel bileşenlerin firmware güncellemelerinin yapılması',
-                'Bulut geçiş projeleri: On-Premise ⇆ Cloud migration projelerinin planlanması ve yürütülmesi',
-                'Veri koruma ve felaket kurtarma: Veeam Backup & Replication yapılandırmaları, Failover – Failback operasyonlarının uygulanması',
-                'Depolama yönetimi: SAN/NAS depolama çözümlerinin yönetimi ve optimizasyonu',
-                'Hypervisor ortamları: Sanallaştırma altyapısının yönetimi, kapasite planlaması ve performans iyileştirmeleri'
-              ]
-            },
-            {
-              title: 'Cloud Systems Administrator',
-              company: 'Radore Data Center A.Ş.',
-              duration: 'Eylül 2022 - Şubat 2023',
-              duties: [
-                'Sunucu altyapısı: HPE, Dell ve Blade server sistemlerinin kurulumu, yapılandırılması ve yönetimi',
-                'Sanallaştırma platformları: VMware ESXi, vCenter, Hyper-V, Proxmox ve Nutanix ortamlarının kurulumu ve yönetimi',
-                'Barındırma hizmetleri: Hosting, domain ve SSL sertifika yönetimi',
-                'Uygulama yönetimi: Office 365 ve Plesk kontrol panellerinin yönetimi',
-                'Depolama çözümleri: HPE Primera 3PAR C630, NetApp 2620, IBM TS3100, HPE MSA 1040/2060 gibi storage sistemlerinin kurulumu ve yönetimi',
-                'NAS çözümleri: QNAP ve Synology ürünlerinin kurulumu ve yönetimi',
-                'Ağ güvenliği: FortiGate, pfSense ve Mikrotik firewall/router cihazlarının kurulumu ve yönetimi',
-                'Sistem izleme: Zabbix, PRTG, SolarWinds ve ManageEngine OpManager ile altyapı izleme ve performans yönetimi',
-                'Yedekleme & Felaket kurtarma: Veeam, vRanger, Acronis ve Arcserve çözümlerinin yönetimi',
-                'İletişim altyapısı: VoIP sistemler (FreePBX, 3CX) ve NVR güvenlik sistemlerinin yönetimi',
-                'Ar-Ge: Teknolojik gelişmelerin araştırılması, test edilmesi ve mevcut altyapıya entegrasyonu'
-              ]
-            },
-            {
-              title: 'System and Network Administrator & Team Leader',
-              company: 'CYBER-FINTECH',
-              duration: 'Ağustos 2020 - Eylül 2022',
-              duties: [
-                'Finans sektöründeki müşterilere 7/24 kesintisiz sistem desteği sağlamak',
-                'Tüm teknik mimarinin tasarımı, kurulumu, konfigürasyonu ve operasyonel yönetimi',
-                'Fiziksel sunucu (Dedicated Server) kurulumu, RAID yapılandırması, Hot Spare konfigürasyonu, iDRAC ve ILO yönetimi',
-                'VMware vSphere/ESXi, Hyper-V sanallaştırma ortamlarının kurulumu, konfigürasyonu, optimizasyonu ve yönetimi',
-                'Microsoft Azure ve AWS üzerinde sistem kurulumu, optimizasyonu ve yönetimi',
-                'LAN/WAN ağ tasarımı, yönetimi ve optimizasyonu; Firewall sistemleri (FortiGate, pfSense, Mikrotik vb.) kurulumu ve yönetimi',
-                'DNS yönetimi (GoDaddy, Namecheap; MX, CNAME, TXT, NS kayıtları) ve SSL sertifikalarının (Comodo) oluşturulması, dağıtımı ve yenilenmesi',
-                'Veeam Backup & Replication projelerinin planlanması, kurulumu ve yönetimi',
-                'Sistem loglarının düzenli olarak izlenmesi, analizi ve raporlanması; proaktif sorun tespiti ve çözüm geliştirme',
-                'İzleme ve yönetim sistemleri (Docker üzerinde Zabbix, ManageEngine OpManager) kurulumu ve optimizasyonu',
-                'MetaTrader 4 & 5 platformlarının kurulumu, yapılandırılması ve yönetimi',
-                'Windows Server servisleri (Active Directory, DHCP, DNS) kurulumu, yapılandırılması ve yönetimi',
-                'IP PBX sistemleri ve IP telefon altyapısının kurulumu ve yönetimi',
-                'Zoho CRM kurulumu, yapılandırılması ve yönetimi',
-                'Ofis altyapı projeleri (kamera sistemleri, network kabinet, switch, router, access point) tasarımı ve kurulumu'
-              ]
-            },
-            {
-              title: 'System and Network Specialist & Support Team Leader',
-              company: 'MYINVEST DANIŞMANLIK VE İNTERNET SERVİS HİZ. TİC. LTD. ŞTİ.',
-              duration: 'Haziran 2018 - Ağustos 2020',
-              duties: [
-                'Ağ ve güvenlik altyapısını yönetmek: IPsec/Site-to-Site ve Client-to-Site VPN bağlantılarını kurmak, NAT işlemlerini yapılandırmak ve HPE akıllı switchleri yönetmek.',
-                'Sanallaştırma ve sistem yönetimi: HPE ProLiant sunucularına Windows Server 2016 Datacenter kurulumu yapmak, Hyper-V üzerinde Active Directory, DHCP ve DNS rollerini yönetmek.',
-                'Yedekleme ve veri yönetimi: Fiziksel sunucuları Hyper-V\'ye taşımak, Veeam ile yedekleme süreçlerini otomatize etmek ve firewall yedeklemelerini denetlemek.',
-                'Kurumsal yazılım ve destek: FreePBX ve Slack gibi kurumsal platformların kurulum ve yönetimini sağlamak; Office 365, WordPress ve SSL sertifikaları için teknik destek vermek.',
-                'BT tedarik ve yönetim süreçleri: Donanım/yazılım satın alma süreçlerini, domain ve office 365 Online Exchange yönetimi.',
-                'Destek ekibi liderliği: Teknik destek ekibinin liderliğini ve operasyonel yönetimini üstlenmek.'
-              ]
-            },
-            {
-              title: 'Infrastructure Specialist - Support Team Leader',
-              company: 'GKFX FINANCIAL SERVICES LTD. ŞTİ.',
-              duration: 'Haziran 2016 - Şubat 2018',
-              duties: [
-                'Sistem ve network yönetimi: TCP/IP, VPN, DHCP, DNS gibi ağ protokolleri üzerinde uzmanlaşmak; Active Directory, Exchange Server 2013/2016 ve dosya sunucularını yönetmek.',
-                'Güvenlik ve destek: Kaspersky Security Center\'ın kurulum ve yönetimini yapmak; veri güvenliği için low-level format ve yedekleme süreçlerini yürütmek.',
-                'Kapsamlı son kullanıcı desteği: macOS, Windows ve mobil cihazlarda (iOS, Android) sorun giderme desteği sunmak; VIP müşterilere öncelikli IT hizmeti sağlamak.',
-                'Uluslararası destek ve operasyonlar: Uluslararası ofisler için uzaktan bağlantı yoluyla (TeamViewer) teknik sorunları çözmek; Atlassian Jira kullanarak destek taleplerini SLA\'lara göre yönetmek.',
-                'Donanım ve yazılım yönetimi: IT donanımı satın alma ve tedarik süreçlerini yürütmek; depolama sistemleri, ağ cihazları ve geniş bir yelpazede (MetaTrader, Adobe, SQL Server vb.) yazılım kurulumlarını ve lisans yönetimini yapmak.',
-                'Ekip ve envanter yönetimi: IT destek ekibine liderlik etmek; envanter ve servis süreçlerini yönetmek.'
-              ]
-            },
-            {
-              title: 'IT Operations Specialist',
-              company: 'BOYNER HOLDİNG / BEYMEN MAĞAZACILIK A.Ş.',
-              duration: 'Şubat 2015 - Haziran 2016',
-              duties: [
-                'Help desk ve yerinde destek: Şirket içi 200\'den fazla kullanıcıya PC işletim sistemleri, ofis yazılımları ve BT cihazları için destek sağlamak.',
-                'Uzaktan destek ve mağaza operasyonları: Şehir içi ve dışında bulunan 82 mağazaya uzaktan bağlantı ile yazılım ve donanım kurulum desteği vermek.',
-                'Donanım ve yazılım yönetimi: Kurumsal yazılımların (antivirüs, yedekleme) bakım ve güncellemelerini yapmak; yeni kullanıcılar için donanım ve yazılım kurulumlarını yönetmek.',
-                'Süreç takibi ve raporlama: Kullanıcı çağrılarını ve müşteri şikayetlerini help desk yazılımı üzerinden takip etmek; IT projeleri ve raporlama süreçlerine destek vermek.',
-                'Özel donanım desteği: Samsung tabletler, NCR kasalar ve Motorola el terminalleri gibi özel donanımların yazılımsal ve donanımsal sorunlarını gidermek.',
-                'Yedekleme ve imajlama: Kullanıcı bilgisayarlarının yenilenmesi esnasında yedekleme yapmak; Acronis ve Ghost gibi programlarla imaj alma ve yükleme işlemlerini yürütmek.'
-              ]
-            },
-            {
-              title: 'IT Technician',
-              company: 'IŞIK ÜNİVERSİTESİ / Bilgi İşlem Daire Başkanlığı',
-              duration: 'Ocak 2012 - Eylül 2014',
-              duties: [
-                'Windows client işletim sisteminin kurulum ve konfigürasyonu',
-                'Linux işletim sistemi kurulumu (başlangıç)',
-                'Printer ve fax vb. çevre donanımların kurulumu',
-                'Microsoft segmenti ürünlerin (Ms office vb.) kurulumu vb. ihtiyaç bulunan tüm programların kurulumu',
-                'Akademik ve İdari Kadroların bilgisayar ve çevre donanım sorunlarının giderilmesi',
-                'Mac ve Bilgisayar laboratuvarlarının kurulumu, yönetimi ve bakım onarımı'
-              ]
-            }
+          system: [
+            { name:'VMware (vSphere, ESXi, vCenter)', tooltip:'Kurulum & yönetim' },
+            { name:'Hyper-V, Proxmox', tooltip:'Sanallaştırma platformları' },
+            { name:'Windows Server (AD, GPO, DNS)', tooltip:'Alan servisi & politika' },
+            { name:'Azure, AWS', tooltip:'Bulut altyapı' },
+            { name:'Docker', tooltip:'Konteyner' }
           ],
-          otherLinksTitle: 'Diğer Bağlantılar',
-          otherLinksText: '',
-          references: 'Talep üzerine referanslar verilebilir.',
-          copyright: 'Coşkun PARLAR. Tüm hakları saklıdır.'
+          database: [
+            { name:'MS SQL, MySQL', tooltip:'Kurulum & optimizasyon' },
+            { name:'MetaTrader 4 & 5', tooltip:'Kurulum & tuning' },
+            { name:'Office 365, Zoho CRM', tooltip:'Yönetim' },
+            { name:'JIRA', tooltip:'Proje & talep' },
+            { name:'Veeam B&R', tooltip:'Yedekleme' }
+          ],
+          storage: [
+            { name:'HPE, Dell, NetApp, IBM', tooltip:'Storage yönetimi' },
+            { name:'QNAP, Synology NAS', tooltip:'NAS yönetimi' },
+            { name:'Acronis, Veeam, Arcserve', tooltip:'Yedekleme' }
+          ]
         },
-        'en': {
-          langButtonText: 'TR',
-          profileTitle: 'COSKUN PARLAR',
-          profileSubtitle: 'System and Network Administrator',
-          aboutTitle: 'About Me',
-          aboutText: 'As a System and Network Administrator with over 10 years of experience, I have been involved in various infrastructure projects within the finance and telecommunications sectors. My goal is to leverage my expertise in virtualization, MetaTrader 5, and cloud technologies (Azure, AWS) to contribute to organizations\' technological objectives, focusing on system optimization, security, and the management of seamless operational processes.',
-          personalInfoTitle: 'Personal Information',
-          /* Phone, Marital Status, Military Service REMOVED */
-          infoLabels: ['Address', 'Email', 'Date of Birth', 'Driver\'s License', 'Languages'],
-          infoValues: ['Eyüp / Istanbul', 'parlarcoskun@gmail.com', '10.11.1990', 'A and B / 2010', 'English (Intermediate)'],
-          educationTitle: 'Education',
-          educationItems: [
-            { degree: 'Bachelor\'s Degree', school: 'Istanbul University AUZEF, Geography' },
-            { degree: 'Associate Degree', school: 'Namık Kemal University, Technical Sciences MYO, Electronic Technology' },
-            { degree: 'High School', school: 'Şişli Vocational and Technical Anatolian High School' }
-          ],
-          skillsTitle: 'Skills',
-          skillCategories: {
-            network: 'Network & Security',
-            system: 'System & Virtualization',
-            database: 'Database & Software',
-            storage: 'Storage & Backup'
-          },
-          skills: {
-            network: [
-              { name: 'FortiGate, Mikrotik, pfSense', tooltip: 'Managed firewalls and VPNs on FortiGate, Mikrotik, and pfSense.' },
-              { name: 'VPN (IPsec, PPTP)', tooltip: 'Configured site-to-site and client-to-site VPNs with IPsec and PPTP protocols.' },
-              { name: 'DHCP, DNS, TCP/IP', tooltip: 'Managed and troubleshooted core network services like DHCP, DNS, and TCP/IP.' },
-              { name: 'LAN/WAN', tooltip: 'Designed, installed, and managed LAN/WAN topologies.' },
-              { name: 'Kaspersky Endpoint Security', tooltip: 'Administered Kaspersky Endpoint Security for comprehensive endpoint protection.' }
-            ],
-            system: [
-              { name: 'VMware (vSphere, ESXi, vCenter)', tooltip: 'Managed and deployed virtual infrastructure on vSphere, ESXi, and vCenter.' },
-              { name: 'Hyper-V, Proxmox', tooltip: 'Installed and maintained Hyper-V and Proxmox virtualization environments.' },
-              { name: 'Windows Server (AD, GPO, DNS)', tooltip: 'Administered Windows Server, including Active Directory, GPO, and DNS services.' },
-              { name: 'Microsoft Azure, AWS', tooltip: 'Utilized Microsoft Azure and AWS services for scalable, cloud-based infrastructure solutions.' },
-              { name: 'Docker', tooltip: 'Managed application virtualization and container deployment with Docker.' }
-            ],
-            database: [
-              { name: 'SQL Server MS, MySQL', tooltip: 'Performed installation, management, and optimization of MS SQL Server and MySQL databases.' },
-              { name: 'MetaTrader 4 & 5', tooltip: 'Handled installation, configuration, and performance tuning for MetaTrader 4 & 5 platforms.' },
-              { name: 'Office 365, Zoho CRM', tooltip: 'Managed and integrated Office 365 and Zoho CRM services.' },
-              { name: 'Atlassian JIRA', tooltip: 'Utilized Atlassian JIRA for project management and efficient handling of support requests.' },
-              { name: 'Veeam Backup & Replication', tooltip: 'Administered Veeam Backup & Replication for robust enterprise backup and replication.' }
-            ],
-            storage: [
-              { name: 'HPE, Dell, NetApp, IBM', tooltip: 'Managed enterprise storage systems from HPE, Dell, NetApp, and IBM.' },
-              { name: 'QNAP, Synology NAS', tooltip: 'Installed and administered NAS devices from QNAP and Synology.' },
-              { name: 'Acronis, Veeam, Arcserve', tooltip: 'Implemented and monitored backup solutions like Acronis, Veeam, and Arcserve.' }
+        experienceTitle: 'Deneyim',
+        /* AŞAĞIDAKİ GÖREV MADDELERİ TR/EN TEKNİKLEŞTİRİLMİŞ HALDİR */
+        experienceItems: [
+          {
+            title:'Sistem ve Network Yöneticisi',
+            company:'DESTEK YATIRIM MENKUL DEĞERLER A.Ş.',
+            duration:'Ocak 2025 - Günümüz',
+            duties:[
+              'MT5 üretim ortamının uçtan uca yönetimi: sembol/lot/komisyon/swap/markup/tick size/işlem saatleri/emir tipleri için kontrollü sürümleme ve doğrulama.',
+              'MT5 eklentilerinin (plugin) kurulumu, konfigürasyonu ve performans izleme; hatalarda RCA ve kalıcı düzeltme.',
+              'SPK/TSPB mevzuatına uyumlu konfigürasyon, değişen düzenlemelere göre periyodik güncelleme.',
+              'TSPB raporlarının veri hazırlığı, doğrulama ve zamanında gönderim.',
+              'LP entegrasyonları (fiyat akışı/DOM) için bağlantı dayanıklılığı ve gecikme optimizasyonu.',
+              'CFD/vadeli/spot/FX ürün seti için işlem koşullarının tanımı ve risk kısıtlarının uygulanması.',
+              'Piyasa koşullarına göre dinamik fiyatlama ve parametre güncelleme süreçleri.',
+              'Müşteri segmentlerine özel fiyat/komisyon grupları ve kural tabanlı atama.',
+              'Yönetim konsollarıyla kapasite/performans izleme, olay yönetimi ve raporlama.',
+              'Tüm platform/LP sözleşmeleri ve bütçesel takip; otomasyon ve süreklilik iyileştirmeleri.'
             ]
           },
-          experienceTitle: 'Experience',
-          experienceItems: [
-            {
-              title: 'System and Network Administrator',
-              company: 'DESTEK YATIRIM MENKUL DEĞERLER A.Ş.',
-              duration: 'January 2025 - Present',
-              duties: [
-                'Provided full-scope management of the MetaTrader 5 platform, including comprehensive configuration and optimization of all financial parameters such as symbols, spreads, swaps, markups, commissions, lot sizes, tick sizes, trading hours, and order types.',
-                'Managed plugins on the MetaTrader 5 platform, overseeing installation, configuration, and performance monitoring of all extensions.',
-                'Ensured platform configuration was fully compliant with CMB (Capital Markets Board) and TSPB (Turkish Association of Capital Market Intermediary Institutions) regulations, maintaining continuous alignment with evolving regulatory standards.',
-                'Tracked TSPB reporting processes, prepared relevant data and documentation, and ensured timely submission to regulatory authorities.',
-                'Managed technical and operational integrations with liquidity providers (LPs), optimizing market data streams and depth of market.',
-                'Handled technical configuration, trading condition management, and operational support for all derivative and financial products, including CFDs, futures, spot, and FX.',
-                'Developed dynamic pricing strategies within a risk management framework and updated financial parameters according to market conditions.',
-                'Planned, configured, and managed custom commission and fee policies based on specific trading conditions.',
-                'Created and managed dedicated product and pricing groups for different client segments within the MT5 platform.',
-                'Monitored platform performance using management tools, prepared detailed reports, and coordinated technical issue resolution.',
-                'Executed platform, plugin, and LP agreements, including managing payment processes and budget control.',
-                'Developed continuous improvement and automation solutions to ensure the effective and secure operation of the financial market infrastructure and trading systems.'
-              ]
-            },
-            {
-              title: 'Platform Engineer',
-              company: 'Trive Financial Services Ltd.',
-              duration: 'December 2023 - January 2025',
-              duties: [
-                'Managed migration projects and hypervisor environments.',
-                'Installed, administered, and optimized MetaTrader 4 & 5 platforms.',
-                'Performed server installation, configuration, maintenance, and performance tuning.',
-                'Managed daily system, security, and backup operations.',
-                'Conducted rapid repair and recovery processes for hardware/software failures.',
-                'Oversaw operating system, software, and security updates.',
-                'Configured software for Geographic Information System (GIS) infrastructure and asset management systems.',
-                'Prepared operational procedures and technical documentation.',
-                'Developed automation and efficiency-focused system management solutions.'
-              ]
-            },
-            {
-              title: 'Cloud Engineer',
-              company: 'Vodafone Telecommunications Inc.',
-              duration: 'February 2023 - December 2023',
-              duties: [
-                'Managed VMware infrastructure, including vCenter, NSX, vRealize Operations (vROps), Cloud Director, and Cloud Director Availability platforms.',
-                'Configured and managed high availability and resource optimization with vSphere High Availability (HA) and Distributed Resource Scheduler (DRS).',
-                'Applied version updates for ESXi, vCenter, vROps and other related VMware components.',
-                'Conducted firmware updates for storage systems, host servers and other physical components.',
-                'Planned and executed on-premise to cloud migration projects.',
-                'Configured Veeam Backup & Replication and performed failover/failback operations for data protection and disaster recovery.',
-                'Managed and optimized SAN/NAS storage solutions.',
-                'Administered virtualization infrastructure, capacity planning, and performance enhancements.'
-              ]
-            },
-            {
-              title: 'Cloud Systems Administrator',
-              company: 'Radore Data Center Inc.',
-              duration: 'September 2022 - February 2023',
-              duties: [
-                'Installed, configured, and managed server infrastructure from HPE, Dell, and Blade systems.',
-                'Set up and managed virtualization platforms including VMware ESXi, vCenter, Hyper-V, Proxmox and Nutanix.',
-                'Administered hosting services, domains, and SSL certificates.',
-                'Managed applications via Office 365 and Plesk control panels.',
-                'Installed and managed storage solutions such as HPE Primera 3PAR C630, NetApp 2620, IBM TS3100, and HPE MSA 1040/2060.',
-                'Deployed and managed NAS solutions from QNAP and Synology.',
-                'Installed and configured network security devices including FortiGate, pfSense, and Mikrotik firewalls/routers.',
-                'Utilized Zabbix, PRTG, SolarWinds, and ManageEngine OpManager for infrastructure monitoring and performance management.',
-                'Managed backup and disaster recovery solutions like Veeam, vRanger, Acronis and Arcserve.',
-                'Administered communication infrastructure, including VoIP systems (FreePBX, 3CX) and NVR security systems.',
-                'Conducted R&D on new technologies and integrated them into existing infrastructure.'
-              ]
-            },
-            {
-              title: 'System and Network Administrator & Team Leader',
-              company: 'CYBER-FINTECH',
-              duration: 'August 2020 - September 2022',
-              duties: [
-                'Provided 24/7 uninterrupted system support to clients in the financial sector.',
-                'Designed, installed, configured, and managed the entire technical architecture and its operations.',
-                'Installed physical servers (Dedicated Servers), configured RAID, Hot Spare, and managed iDRAC and ILO.',
-                'Managed, configured, and optimized VMware vSphere/ESXi and Hyper-V virtualization environments.',
-                'Installed, optimized, and managed systems on Microsoft Azure and AWS.',
-                'Designed, managed, and optimized LAN/WAN networks, including the installation and administration of various firewall systems (FortiGate, pfSense, Mikrotik, etc.).',
-                'Handled DNS management (GoDaddy, Namecheap; MX, CNAME, TXT, NS records) and managed the creation, distribution, and renewal of SSL certificates (Comodo).',
-                'Planned and installed, and managed Veeam Backup & Replication projects.',
-                'Monitored, analyzed, and reported system logs regularly to enable proactive issue detection and resolution.',
-                'Installed and optimized monitoring and management systems (Zabbix on Docker, ManageEngine OpManager).',
-                'Installed, configured, and managed MetaTrader 4 & 5 platforms.',
-                'Installed, configured, and managed Windows Server services (Active Directory, DHCP, DNS).',
-                'Installed and managed IP PBX systems and IP telephony infrastructure.',
-                'Deployed, configured, and managed Zoho CRM.',
-                'Designed and installed office infrastructure projects, including camera systems, network cabinets, switches, routers, and access points.'
-              ]
-            },
-            {
-              title: 'System and Network Specialist & Support Team Leader',
-              company: 'MYINVEST CONSULTING AND INTERNET SERVICE LTD. STI.',
-              duration: 'June 2018 - August 2020',
-              duties: [
-                'Administered network and security infrastructure, including setting up IPsec/Site-to-Site and Client-to-Site VPN connections, configuring NAT, and managing HPE smart switches.',
-                'Managed virtualization and systems, performing Windows Server 2016 Datacenter installations on HPE ProLiant servers and managing Active Directory, DHCP, and DNS roles on Hyper-V.',
-                'Oversaw backup and data management, migrating physical servers to Hyper-V, automating backup processes with Veeam, and supervising firewall backups.',
-                'Provided corporate software and technical support, installing and managing platforms like FreePBX and Slack, and offering technical support for Office 365, WordPress and SSL certificates.',
-                'Handled IT procurement and management, including hardware/software purchasing and the administration of domains and Office 365 Online Exchange.',
-                'Led the support team, taking charge of both technical and operational management.'
-              ]
-            },
-            {
-              title: 'Infrastructure Specialist - Support Team Leader',
-              company: 'GKFX FINANCIAL SERVICES LTD. STI.',
-              duration: 'June 2016 - February 2018',
-              duties: [
-                'Administered system and network: Specialized in network protocols like TCP/IP, VPN, DHCP, DNS; managed Active Directory, Exchange Server 2013/2016, and file servers.',
-                'Security and support: Installed and managed Kaspersky Security Center; conducted low-level formatting and backup processes for data security.',
-                'Provided extensive end-user support: Troubleshot issues on macOS, Windows, and mobile devices (iOS, Android) with prioritized IT service to VIP clients.',
-                'Managed international support and operations: Solved technical issues for international offices via remote connection (TeamViewer); managed support requests using Atlassian Jira based on SLAs.',
-                'Handled hardware and software management: Managed IT hardware procurement and supply chain; performed software installations and license management for a wide range of applications (MetaTrader, Adobe, SQL Server, etc.), as well as storage systems and network devices.',
-                'Managed team and inventory: Led the IT support team; managed inventory and service processes.'
-              ]
-            },
-            {
-              title: 'IT Operations Specialist',
-              company: 'BOYNER HOLDİNG / BEYMEN RETAIL INC.',
-              duration: 'February 2015 - June 2016',
-              duties: [
-                'Help desk and on-site support: Provided support for PC operating systems, office software, and IT devices to over 200 internal users.',
-                'Remote support and store operations: Gave software and hardware installation support via remote connection to 82 stores, both local and remote.',
-                'Donanım ve yazılım yönetimi: Kurumsal yazılımların (antivirüs, yedekleme) bakım ve güncellemelerini yapmak; yeni kullanıcılar için donanım ve yazılım kurulumlarını yönetmek.',
-                'Process tracking and reporting: Tracked user calls and customer complaints through help desk software; supported IT projects and reporting processes.',
-                'Specialized hardware support: Troubleshot software and hardware issues on specialized devices such as Samsung tablets, NCR cash registers, and Motorola hand terminals.',
-                'Backup and imaging: Performed backups during the replacement of user computers; executed imaging and loading processes with programs like Acronis and Ghost.'
-              ]
-            },
-            {
-              title: 'IT Technician',
-              company: 'IŞIK ÜNİVERSİTESİ / Department of Information Technology',
-              duration: 'January 2012 - September 2014',
-              duties: [
-                'Installation and configuration of Windows client operating systems.',
-                'Initial installation of Linux operating system.',
-                'Installation of peripheral hardware such as printers and faxes.',
-                'Installation of Microsoft products (MS Office etc.) and all other required software.',
-                'Troubleshooting of computer and peripheral hardware issues for Academic and Administrative Staff.',
-                'Installation, management, and maintenance of Mac and Computer labs.'
-              ]
-            }
+          {
+            title:'Platform Engineer',
+            company:'Trive Financial Services Ltd.',
+            duration:'Aralık 2023 - Ocak 2025',
+            duties:[
+              'Hypervisor migrasyonları ve kaynak konsolidasyonu.',
+              'MT4/MT5 kurulum, yükseltme ve performans tuning.',
+              'Sunucu yaşam döngüsü yönetimi (provisioning, patch, hardening).',
+              'Günlük güvenlik/yedekleme operasyonları ve geri dönüş testleri.',
+              'Arıza durumlarında hızlı kurtarım (RTO/RPO gözetimi).',
+              'GIS ve varlık yönetim sistemleri için uygulama konfigürasyonu ve dokümantasyon.',
+              'Operasyonel otomasyon ve gözlemlenebilirlik geliştirmeleri.'
+            ]
+          },
+          {
+            title:'Cloud Engineer',
+            company:'Vodafone Telekomünikasyon A.Ş.',
+            duration:'Şubat 2023 - Aralık 2023',
+            duties:[
+              'VMware ekosistemi: vCenter, NSX, vROps, Cloud Director/Availability yönetimi.',
+              'HA/DRS politikalarıyla kapasite ve kesintisizlik optimizasyonu.',
+              'ESXi/vCenter/vROps versiyon geçişleri ve firmware güncellemeleri.',
+              'On-Prem ⇆ Cloud migrasyon planlama ve yürütme.',
+              'Veeam ile yedekleme, failover/failback ve kurtarma senaryoları.',
+              'SAN/NAS depolama yönetimi ve performans iyileştirmeleri.'
+            ]
+          },
+          {
+            title:'Cloud Systems Administrator',
+            company:'Radore Data Center A.Ş.',
+            duration:'Eylül 2022 - Şubat 2023',
+            duties:[
+              'HPE/Dell/Blade altyapısı kurulumu ve yaşam döngüsü yönetimi.',
+              'ESXi, vCenter, Hyper-V, Proxmox, Nutanix ortamları kurulumu/operasyonu.',
+              'Hosting, domain ve SSL süreçleri; Office 365 & Plesk yönetimi.',
+              'HPE Primera 3PAR, NetApp 2620, IBM TS3100, HPE MSA 1040/2060 depolama yönetimi.',
+              'QNAP/Synology NAS; FortiGate/pfSense/Mikrotik güvenlik cihazları.',
+              'Zabbix/PRTG/SolarWinds/OpManager ile izleme; Veeam/Acronis/Arcserve yedekleme.',
+              'VoIP (FreePBX/3CX) ve NVR sistemleri; Ar-Ge ve entegrasyon.'
+            ]
+          },
+          {
+            title:'System and Network Administrator & Team Leader',
+            company:'CYBER-FINTECH',
+            duration:'Ağustos 2020 - Eylül 2022',
+            duties:[
+              '7/24 operasyon desteği; mimari tasarım/kurulum/konfigürasyon.',
+              'RAID/Hot Spare, iDRAC/ILO yönetimi ve sanallaştırma (vSphere/Hyper-V).',
+              'Azure/AWS üzerinde sistem kurulumları ve optimizasyon.',
+              'LAN/WAN tasarım; FortiGate/pfSense/Mikrotik firewall yönetimi.',
+              'DNS (MX/CNAME/TXT/NS) ve SSL (Comodo) yaşam döngüsü.',
+              'Veeam B&R projeleri; log analizi ve proaktif problem yönetimi.',
+              'Zabbix (Docker) ve OpManager ile görünürlük; MT4/MT5 ve AD/DHCP/DNS servis yönetimi.',
+              'IP-PBX ve Zoho CRM; ofis altyapı projeleri (kamera/kabinet/switch/AP).'
+            ]
+          },
+          {
+            title:'System and Network Specialist & Support Team Leader',
+            company:'MYINVEST DANIŞMANLIK VE İNTERNET SERVİS HİZ. TİC. LTD. ŞTİ.',
+            duration:'Haziran 2018 - Ağustos 2020',
+            duties:[
+              'IPsec S2S/Client VPN, NAT ve HPE switch yönetimi.',
+              'HPE ProLiant üzerinde Windows Server 2016 Datacenter ve Hyper-V/AD/DHCP/DNS.',
+              'Fiziksel→Hyper-V dönüşümleri; Veeam otomasyonu; firewall yedekleri.',
+              'FreePBX, Slack, Office 365, WordPress, SSL operasyonları.',
+              'Satınalma, domain ve O365 Online Exchange yönetimi; destek ekibi liderliği.'
+            ]
+          },
+          {
+            title:'Infrastructure Specialist - Support Team Leader',
+            company:'GKFX FINANCIAL SERVICES LTD. ŞTİ.',
+            duration:'Haziran 2016 - Şubat 2018',
+            duties:[
+              'TCP/IP, VPN, DHCP, DNS; AD, Exchange 2013/2016 ve dosya sunucuları.',
+              'Kaspersky Security Center; veri güvenliği ve yedekleme süreçleri.',
+              'macOS/Windows/iOS/Android için VIP destek; Jira ile SLA yönetimi.',
+              'Uluslararası ofislere uzaktan destek (TeamViewer); lisans ve envanter takibi.',
+              'MetaTrader/Adobe/SQL Server ve ağ/storage cihazlarının kurulum/lisans yönetimi.'
+            ]
+          },
+          {
+            title:'IT Operations Specialist',
+            company:'BOYNER HOLDİNG / BEYMEN MAĞAZACILIK A.Ş.',
+            duration:'Şubat 2015 - Haziran 2016',
+            duties:[
+              '200+ kullanıcı için help desk ve yerinde destek.',
+              '82 mağazaya uzaktan kurulum ve sorun giderme.',
+              'Kurumsal yazılım bakımı (AV/yedekleme), donanım hazırlığı ve imaj yönetimi (Acronis/Ghost).',
+              'Çağrı/şikâyet takibi ve raporlama; özel cihaz desteği (tablet/kasa/el terminali).'
+            ]
+          },
+          {
+            title:'IT Technician',
+            company:'IŞIK ÜNİVERSİTESİ / Bilgi İşlem Daire Başkanlığı',
+            duration:'Ocak 2012 - Eylül 2014',
+            duties:[
+              'Windows istemci kurulumu/konfigürasyonu; temel Linux kurulumları.',
+              'Yazıcı/faks ve çevre birimleri kurulumu.',
+              'MS Office ve gerekli yazılımların kurulumu; kullanıcı sorunlarının giderimi.',
+              'Mac ve bilgisayar laboratuvarlarının işletimi ve bakımı.'
+            ]
+          }
+        ],
+        otherLinksTitle:'Diğer Bağlantılar',
+        references:'Talep üzerine referanslar verilebilir.',
+        copyright:'Coşkun PARLAR. Tüm hakları saklıdır.'
+      },
+      en: {
+        langButtonText: 'TR',
+        profileTitle: 'COSKUN PARLAR',
+        profileSubtitle: 'System and Network Administrator',
+        aboutTitle: 'About Me',
+        aboutText:
+          'System & Network Administrator with 10+ years across finance and telco. I leverage virtualization, MetaTrader 5, and cloud (Azure, AWS) to deliver secure, resilient, and efficient infrastructure with strong operational runbooks.',
+        personalInfoTitle: 'Personal Information',
+        infoLabels: ['Address','Email','Date of Birth','Driver’s License','Languages'],
+        infoValues: ['Eyüp / Istanbul','parlarcoskun@gmail.com','10.11.1990','A and B / 2010','English (Intermediate)'],
+        educationTitle: 'Education',
+        educationItems: [
+          { degree: "Bachelor's Degree", school: 'Istanbul University AUZEF, Geography' },
+          { degree: 'Associate Degree', school: 'Namık Kemal University, Technical Sciences MYO, Electronic Technology' },
+          { degree: 'High School', school: 'Şişli Vocational and Technical Anatolian High School' }
+        ],
+        skillsTitle: 'Skills',
+        skillCategories: { network:'Network & Security', system:'System & Virtualization', database:'Database & Software', storage:'Storage & Backup' },
+        skills: {
+          network: [
+            { name:'FortiGate, Mikrotik, pfSense', tooltip:'Firewall & VPN ops' },
+            { name:'VPN (IPsec, PPTP)', tooltip:'S2S & Client VPN' },
+            { name:'DHCP, DNS, TCP/IP', tooltip:'Core services' },
+            { name:'LAN/WAN', tooltip:'Topology & ops' },
+            { name:'Kaspersky Endpoint', tooltip:'Endpoint security' }
           ],
-          otherLinksTitle: 'Other Links',
-          otherLinksText: '',
-          references: 'References available upon request.',
-          copyright: 'Coskun PARLAR. All rights reserved.'
+          system: [
+            { name:'VMware (vSphere, ESXi, vCenter)', tooltip:'Deploy & operate' },
+            { name:'Hyper-V, Proxmox', tooltip:'Virtualization platforms' },
+            { name:'Windows Server (AD, GPO, DNS)', tooltip:'Identity & policy' },
+            { name:'Azure, AWS', tooltip:'Cloud infra' },
+            { name:'Docker', tooltip:'Containers' }
+          ],
+          database: [
+            { name:'MS SQL, MySQL', tooltip:'Install & optimize' },
+            { name:'MetaTrader 4 & 5', tooltip:'Install & tuning' },
+            { name:'Office 365, Zoho CRM', tooltip:'Administration' },
+            { name:'JIRA', tooltip:'Project & ticketing' },
+            { name:'Veeam B&R', tooltip:'Backup & replication' }
+          ],
+          storage: [
+            { name:'HPE, Dell, NetApp, IBM', tooltip:'Enterprise storage' },
+            { name:'QNAP, Synology NAS', tooltip:'NAS ops' },
+            { name:'Acronis, Veeam, Arcserve', tooltip:'Backup tooling' }
+          ]
+        },
+        experienceTitle: 'Experience',
+        experienceItems: [
+          {
+            title:'System and Network Administrator',
+            company:'DESTEK YATIRIM MENKUL DEĞERLER A.Ş.',
+            duration:'January 2025 - Present',
+            duties:[
+              'Owned MT5 production: controlled releases and validation for symbols/lots/commissions/swaps/markups/tick size/trading hours/order types.',
+              'Deployed & tuned MT5 plugins; performed RCA and permanent fixes for incidents.',
+              'Maintained full compliance with CMB/TSPB; iterated configs as regulations evolved.',
+              'Prepared and submitted TSPB regulatory reports on schedule with data QA.',
+              'Optimized LP integrations (pricing feeds/DOM) for resiliency and latency.',
+              'Defined trading conditions for CFD/futures/spot/FX with risk constraints.',
+              'Implemented dynamic pricing updates aligned to market conditions.',
+              'Segmented pricing/commission groups; rule-based client assignment.',
+              'Capacity/perf monitoring, incident management, and reporting via consoles.',
+              'Managed platform/LP contracts and budget; delivered automation for SRE.'
+            ]
+          },
+          {
+            title:'Platform Engineer',
+            company:'Trive Financial Services Ltd.',
+            duration:'December 2023 - January 2025',
+            duties:[
+              'Led hypervisor migrations and resource consolidation.',
+              'Installed, upgraded, and tuned MT4/MT5 stacks.',
+              'Server lifecycle: provisioning, patching, hardening.',
+              'Daily security/backup ops with verified restores.',
+              'Fast recovery for HW/SW failures under RTO/RPO.',
+              'Configured GIS/asset-mgmt apps and documentation.',
+              'Built automations and observability improvements.'
+            ]
+          },
+          {
+            title:'Cloud Engineer',
+            company:'Vodafone Telecommunications Inc.',
+            duration:'February 2023 - December 2023',
+            duties:[
+              'Administered vCenter, NSX, vROps, Cloud Director/Availability.',
+              'Optimized capacity and HA with DRS/HA policies.',
+              'Executed ESXi/vCenter/vROps upgrades and firmware updates.',
+              'Planned & executed On-Prem ⇆ Cloud migrations.',
+              'Veeam backups with failover/failback runbooks.',
+              'Managed SAN/NAS storage and performance.'
+            ]
+          },
+          {
+            title:'Cloud Systems Administrator',
+            company:'Radore Data Center Inc.',
+            duration:'September 2022 - February 2023',
+            duties:[
+              'Provisioned HPE/Dell/Blade infra; lifecycle operations.',
+              'Operated ESXi, vCenter, Hyper-V, Proxmox, Nutanix.',
+              'Domains/SSL and Office 365/Plesk administration.',
+              'Managed HPE 3PAR, NetApp 2620, IBM TS3100, HPE MSA.',
+              'QNAP/Synology NAS; FortiGate/pfSense/Mikrotik.',
+              'Monitoring via Zabbix/PRTG/SolarWinds/OpManager; backups via Veeam/Acronis/Arcserve.',
+              'VoIP (FreePBX/3CX) and NVR; R&D integrations.'
+            ]
+          },
+          {
+            title:'System and Network Administrator & Team Leader',
+            company:'CYBER-FINTECH',
+            duration:'August 2020 - September 2022',
+            duties:[
+              '24/7 ops support; design/deploy/configure infra.',
+              'RAID/Hot Spare, iDRAC/iLO; virtualization (vSphere/Hyper-V).',
+              'Azure/AWS builds and optimization.',
+              'LAN/WAN design; FortiGate/pfSense/Mikrotik firewalls.',
+              'DNS (MX/CNAME/TXT/NS) & SSL lifecycle.',
+              'Veeam B&R projects; proactive log analytics.',
+              'Observability (Zabbix on Docker, OpManager); MT4/MT5 and AD/DHCP/DNS.',
+              'IP-PBX & Zoho CRM; office infra (CCTV/cabinets/switch/AP).'
+            ]
+          },
+          {
+            title:'System and Network Specialist & Support Team Leader',
+            company:'MYINVEST CONSULTING AND INTERNET SERVICE LTD. STI.',
+            duration:'June 2018 - August 2020',
+            duties:[
+              'IPsec S2S/Client VPN, NAT, HPE switch ops.',
+              'Windows Server 2016 on HPE ProLiant; Hyper-V/AD/DHCP/DNS.',
+              'P2V to Hyper-V; Veeam automation; firewall backups.',
+              'FreePBX, Slack, O365, WordPress, SSL administration.',
+              'Procurement, domains, O365 Online Exchange; team leadership.'
+            ]
+          },
+          {
+            title:'Infrastructure Specialist - Support Team Leader',
+            company:'GKFX FINANCIAL SERVICES LTD. STI.',
+            duration:'June 2016 - February 2018',
+            duties:[
+              'TCP/IP, VPN, DHCP, DNS; AD, Exchange 2013/2016, file servers.',
+              'Kaspersky Security Center; data protection & backups.',
+              'VIP support for macOS/Windows/mobile; Jira/SLA ops.',
+              'Remote support for international offices; licensing & inventory.',
+              'Install/license mgmt for MetaTrader/Adobe/SQL Server; storage & network gear.'
+            ]
+          },
+          {
+            title:'IT Operations Specialist',
+            company:'BOYNER HOLDİNG / BEYMEN RETAIL INC.',
+            duration:'February 2015 - June 2016',
+            duties:[
+              'Help desk & on-site support for 200+ users.',
+              'Remote install/support for 82 stores.',
+              'Enterprise software maintenance; imaging via Acronis/Ghost.',
+              'Ticket/reporting and specialized device support.'
+            ]
+          },
+          {
+            title:'IT Technician',
+            company:'IŞIK ÜNİVERSİTESİ / Department of Information Technology',
+            duration:'January 2012 - September 2014',
+            duties:[
+              'Windows client deployment; basic Linux installs.',
+              'Printers/fax and peripherals setup.',
+              'MS Office & required software installs; user troubleshooting.',
+              'Mac & computer labs operation and maintenance.'
+            ]
+          }
+        ],
+        otherLinksTitle:'Other Links',
+        references:'References available upon request.',
+        copyright:'Coskun PARLAR. All rights reserved.'
+      }
+    };
+
+    /* ------------------ ELEMENTLER ------------------ */
+    const body = document.body;
+    const langToggleBtn = document.getElementById('lang-toggle');
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const printBtn = document.getElementById('printBtn');
+    const langTextSpan = document.getElementById('lang-text');
+    const flagTr = document.getElementById('flag-tr');
+    const flagEn = document.getElementById('flag-en');
+
+    /* ------------------ UI GÜNCELLE ------------------ */
+    const updateUI = (lang) => {
+      const langData = content[lang]; if(!langData) return;
+      document.documentElement.lang = lang;
+
+      langTextSpan.textContent = langData.langButtonText;
+      flagTr.style.display = (lang === 'tr') ? 'none' : 'block';
+      flagEn.style.display = (lang === 'en') ? 'none' : 'block';
+
+      document.getElementById('profile-title').textContent = langData.profileTitle;
+      document.getElementById('profile-subtitle').textContent = langData.profileSubtitle;
+      document.getElementById('about-title').textContent = langData.aboutTitle;
+      document.getElementById('about-text').textContent = langData.aboutText;
+      document.getElementById('personal-info-title').textContent = langData.personalInfoTitle;
+      document.getElementById('education-title').textContent = langData.educationTitle;
+      document.getElementById('skills-title').textContent = langData.skillsTitle;
+      document.getElementById('experience-title').textContent = langData.experienceTitle;
+      document.getElementById('other-links-title').textContent = langData.otherLinksTitle;
+      document.getElementById('references-note').textContent = langData.references;
+      document.getElementById('copyright-text').innerHTML =
+        `&copy; <span id="currentYear">${new Date().getFullYear()}</span> ${langData.copyright}`;
+
+      // Kişisel bilgiler
+      const personalInfoItems = document.querySelectorAll('.personal-info .personal-info-item');
+      langData.infoLabels.forEach((label, i) => {
+        if (personalInfoItems[i]) {
+          const labelSpan = personalInfoItems[i].querySelector('.label-title');
+          const valueEl = personalInfoItems[i].querySelector('.personal-info-value');
+          if (labelSpan) labelSpan.textContent = label + ':';
+          if (valueEl){
+            if (valueEl.tagName === 'A'){ valueEl.textContent = langData.infoValues[i]; valueEl.href = `mailto:${langData.infoValues[i]}`; }
+            else { valueEl.textContent = langData.infoValues[i]; }
+          }
         }
-      };
+      });
 
-      const langToggleBtn = document.getElementById('lang-toggle');
-      const themeToggleBtn = document.getElementById('theme-toggle');
-      const langTextSpan = document.getElementById('lang-text');
-      const flagTr = document.getElementById('flag-tr');
-      const flagEn = document.getElementById('flag-en');
-      const body = document.body;
-      const printBtn = document.getElementById('print-btn'); // EKLENEN
+      // Eğitim
+      const educationItems = document.querySelectorAll('.education-item');
+      langData.educationItems.forEach((item, index) => {
+        if (educationItems[index]) {
+          educationItems[index].querySelector('.education-degree').textContent = item.degree;
+          educationItems[index].querySelector('.education-school').textContent = item.school;
+        }
+      });
 
-      const updateUI = (lang) => {
-        const langData = content[lang];
-        if (!langData) return;
-
-        document.documentElement.lang = lang;
-
-        langTextSpan.textContent = langData.langButtonText;
-        flagTr.style.display = (lang === 'tr') ? 'none' : 'block';
-        flagEn.style.display = (lang === 'en') ? 'none' : 'block';
-
-        document.getElementById('profile-title').textContent = langData.profileTitle;
-        document.getElementById('profile-subtitle').textContent = langData.profileSubtitle;
-        document.getElementById('about-title').textContent = langData.aboutTitle;
-        document.getElementById('about-text').textContent = langData.aboutText;
-        document.getElementById('personal-info-title').textContent = langData.personalInfoTitle;
-        document.getElementById('education-title').textContent = langData.educationTitle;
-        document.getElementById('skills-title').textContent = langData.skillsTitle;
-        document.getElementById('experience-title').textContent = langData.experienceTitle;
-        document.getElementById('other-links-title').textContent = langData.otherLinksTitle;
-        document.getElementById('references-note').textContent = langData.references;
-        document.getElementById('copyright-text').innerHTML =
-          `&copy; <span id="currentYear">${new Date().getFullYear()}</span> ${langData.copyright}`;
-
-        // Kişisel bilgiler (5 kart)
-        const personalInfoItems = document.querySelectorAll('.personal-info .personal-info-item');
-        langData.infoLabels.forEach((label, index) => {
-          if (personalInfoItems[index]) {
-            const labelSpan = personalInfoItems[index].querySelector('.label-title');
-            const valueEl = personalInfoItems[index].querySelector('.personal-info-value');
-            if (labelSpan) labelSpan.textContent = label + ':';
-            if (valueEl) {
-              if (valueEl.tagName === 'A') {
-                valueEl.textContent = langData.infoValues[index];
-                valueEl.href = `mailto:${langData.infoValues[index]}`;
-              } else {
-                valueEl.textContent = langData.infoValues[index];
-              }
-            }
-          }
-        });
-
-        // Eğitim
-        const educationItems = document.querySelectorAll('.education-item');
-        langData.educationItems.forEach((item, index) => {
-          if (educationItems[index]) {
-            educationItems[index].querySelector('.education-degree').textContent = item.degree;
-            educationItems[index].querySelector('.education-school').textContent = item.school;
-          }
-        });
-
-        // Yetenekler
-        const skillCategoryTitles = document.querySelectorAll('.skill-category h4');
-        const categoryKeys = Object.keys(langData.skillCategories);
-        categoryKeys.forEach((key, index) => {
-          if (skillCategoryTitles[index]) {
-            skillCategoryTitles[index].textContent = langData.skillCategories[key];
-          }
-          const skillList = document.getElementById(`skill-list-${key}`);
-          if (skillList) {
-            skillList.innerHTML = '';
-            langData.skills[key].forEach(skill => {
-              const li = document.createElement('li');
-              li.textContent = skill.name;
-              li.setAttribute('data-tooltip', skill.tooltip);
-              skillList.appendChild(li);
-            });
-          }
-        });
-
-        // Deneyim
-        const experienceContainer = document.getElementById('experience-items-container');
-        experienceContainer.innerHTML = '';
-        langData.experienceItems.forEach(exp => {
-          const expDiv = document.createElement('div');
-          expDiv.className = 'experience-item';
-
-          const h4 = document.createElement('h4');
-          h4.textContent = exp.title;
-
-          const jobTitle = document.createElement('div');
-          jobTitle.className = 'job-title';
-          jobTitle.textContent = exp.company;
-
-          const jobDuration = document.createElement('div');
-          jobDuration.className = 'job-duration';
-          jobDuration.textContent = exp.duration;
-
-          const ul = document.createElement('ul');
-          exp.duties.forEach(duty => {
-            const li = document.createElement('li');
-            li.textContent = duty;
-            ul.appendChild(li);
+      // Yetenekler
+      const categoryKeys = Object.keys(langData.skillCategories);
+      const skillCategoryTitles = document.querySelectorAll('.skill-category h4');
+      categoryKeys.forEach((key, index) => {
+        if (skillCategoryTitles[index]) skillCategoryTitles[index].textContent = langData.skillCategories[key];
+        const ul = document.getElementById(`skill-list-${key}`);
+        if (ul){
+          ul.innerHTML = '';
+          langData.skills[key].forEach(s =>{
+            const li=document.createElement('li');
+            li.textContent=s.name; li.setAttribute('data-tooltip', s.tooltip); ul.appendChild(li);
           });
-
-          expDiv.appendChild(h4);
-          expDiv.appendChild(jobTitle);
-          expDiv.appendChild(jobDuration);
-          expDiv.appendChild(ul);
-          experienceContainer.appendChild(expDiv);
-        });
-      };
-
-      const toggleLanguage = () => {
-        const currentLang = document.documentElement.lang;
-        const newLang = currentLang === 'tr' ? 'en' : 'tr';
-        localStorage.setItem('lang', newLang);
-        updateUI(newLang);
-      };
-
-      const toggleTheme = () => {
-        if (body.classList.contains('light-mode')) {
-          body.classList.remove('light-mode');
-          body.classList.add('dark-mode');
-          themeToggleBtn.innerHTML = '☀️';
-          localStorage.setItem('theme', 'dark-mode');
-        } else {
-          body.classList.remove('dark-mode');
-          body.classList.add('light-mode');
-          themeToggleBtn.innerHTML = '🌙';
-          localStorage.setItem('theme', 'light-mode');
         }
-      };
+      });
 
-      const initializeSettings = () => {
-        const storedLang = localStorage.getItem('lang');
-        const defaultLang = 'tr';
-        const initialLang = storedLang || defaultLang;
-        updateUI(initialLang);
+      // Deneyim
+      const expContainer = document.getElementById('experience-items-container');
+      expContainer.innerHTML = '';
+      langData.experienceItems.forEach(exp=>{
+        const wrap=document.createElement('div'); wrap.className='experience-item';
+        const h4=document.createElement('h4'); h4.textContent=exp.title;
+        const jt=document.createElement('div'); jt.className='job-title'; jt.textContent=exp.company;
+        const dur=document.createElement('div'); dur.className='job-duration'; dur.textContent=exp.duration;
+        const ul=document.createElement('ul');
+        exp.duties.forEach(d=>{ const li=document.createElement('li'); li.textContent=d; ul.appendChild(li); });
+        wrap.append(h4,jt,dur,ul); expContainer.appendChild(wrap);
+      });
+    };
 
-        const storedTheme = localStorage.getItem('theme');
-                if (storedTheme) {
-                    body.classList.add(storedTheme);
-                    themeToggleBtn.innerHTML = storedTheme === 'light-mode' ? '🌙' : '☀️';
-                } else {
-                    body.classList.add('dark-mode');
-                    localStorage.setItem('theme', 'dark-mode');
-                }
-            };
+    /* ------------------ TEMA/DİL ------------------ */
+    const toggleLanguage = () => {
+      const cur = document.documentElement.lang || 'tr';
+      const next = cur === 'tr' ? 'en' : 'tr';
+      localStorage.setItem('lang', next);
+      updateUI(next);
+    };
+    const toggleTheme = () => {
+      if (body.classList.contains('light-mode')){
+        body.classList.remove('light-mode'); body.classList.add('dark-mode'); themeToggleBtn.innerHTML='☀️';
+        localStorage.setItem('theme','dark-mode');
+      } else {
+        body.classList.remove('dark-mode'); body.classList.add('light-mode'); themeToggleBtn.innerHTML='🌙';
+        localStorage.setItem('theme','light-mode');
+      }
+    };
 
-            initializeSettings();
-        
-            // Olay dinleyicilerini ekle
-            langToggleBtn.addEventListener('click', toggleLanguage);
-            themeToggleBtn.addEventListener('click', toggleTheme);
+    /* ------------------ YAZDIR BUTONU (DÜZGÜN ÇALIŞIR) ------------------ */
+    const handlePrint = () => {
+      try { window.focus(); } catch(e) {}
+      window.print();
+    };
 
-            // Animasyonlar için Intersection Observer
-            const sections = document.querySelectorAll('.animated-section');
-            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.remove('hidden');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-        
-            sections.forEach(section => {
-                section.classList.add('hidden');
-                observer.observe(section);
-            });
-        
-            // Yıl bilgisini güncelle
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-        });
-    </script>
+    /* ------------------ INIT ------------------ */
+    const init = () => {
+      // Dil
+      const storedLang = localStorage.getItem('lang') || 'tr';
+      updateUI(storedLang);
+
+      // Tema
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme){ body.classList.add(storedTheme); themeToggleBtn.innerHTML = storedTheme === 'light-mode' ? '🌙' : '☀️'; }
+      else { body.classList.add('dark-mode'); localStorage.setItem('theme','dark-mode'); }
+
+      // Yıl
+      const y = document.getElementById('currentYear'); if (y) y.textContent = new Date().getFullYear();
+
+      // Eventler
+      langToggleBtn.addEventListener('click', toggleLanguage);
+      themeToggleBtn.addEventListener('click', toggleTheme);
+      printBtn.addEventListener('click', handlePrint);
+
+      // Scroll animasyon
+      const sections = document.querySelectorAll('.animated-section');
+      const io = new IntersectionObserver((ents,obs)=>{
+        ents.forEach(en => { if (en.isIntersecting){ en.target.classList.remove('hidden'); obs.unobserve(en.target); } });
+      }, { threshold:.12 });
+      sections.forEach(s=>{ s.classList.add('hidden'); io.observe(s); });
+    };
+    init();
+
+    // Klavye kısayolu: Ctrl/Cmd + P => native print zaten tetikler, ama güvence:
+    window.addEventListener('keydown', (e)=>{
+      const isCmd = navigator.platform.toUpperCase().includes('MAC') ? e.metaKey : e.ctrlKey;
+      if (isCmd && e.key.toLowerCase() === 'p'){ e.preventDefault(); handlePrint(); }
+    });
+  });
+  </script>
 </body>
 </html>
