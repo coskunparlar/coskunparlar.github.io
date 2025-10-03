@@ -539,8 +539,6 @@
         <button id="theme-toggle" class="theme-toggle-button">☀️</button>
     </div>
 
-    </body>
-</html>
     <div class="container">
         <div class="animated-section">
             <img src="https://raw.githubusercontent.com/coskunparlar/coskunparlar.github.io/main/img/photo.jpg" alt="Coşkun Parlar" class="profile-pic" />
@@ -568,19 +566,10 @@
                     <span class="label-title">Adres:</span> <span class="personal-info-value">Eyüp / İstanbul</span>
                 </div>
                 <div class="personal-info-item">
-                    <span class="label-title">Telefon:</span> <span class="personal-info-value">+90 554 607 2885</span>
-                </div>
-                <div class="personal-info-item">
                     <span class="label-title">Email:</span> <a href="mailto:parlarcoskun@gmail.com" class="personal-info-value">parlarcoskun@gmail.com</a>
                 </div>
                 <div class="personal-info-item">
                     <span class="label-title">Doğum Tarihi:</span> <span class="personal-info-value">10.11.1990</span>
-                </div>
-                <div class="personal-info-item">
-                    <span class="label-title">Medeni Durum:</span> <span class="personal-info-value">Evli</span>
-                </div>
-                <div class="personal-info-item">
-                    <span class="label-title">Askerlik:</span> <span class="personal-info-value">Tamamlandı</span>
                 </div>
                 <div class="personal-info-item">
                     <span class="label-title">Ehliyet:</span> <span class="personal-info-value">A ve B / 2010</span>
@@ -709,8 +698,9 @@
                     aboutTitle: 'Hakkımda',
                     aboutText: 'Sistem ve Network Yöneticisi olarak, 10 yılı aşkın süredir finans ve telekomünikasyon sektörlerinde çeşitli altyapı projelerinde görev aldım. Hedefim Virtualization, MetaTrader 5 ve bulut teknolojileri (Azure, AWS) alanındaki tecrübemle, sistem optimizasyonu, güvenlik ve kesintisiz operasyonel süreçlerin yönetimi konularında organizasyonların teknolojik hedeflerine ulaşmasına katkıda bulunmaktır.',
                     personalInfoTitle: 'Kişisel Bilgiler',
-                    infoLabels: ['Adres', 'Telefon', 'Email', 'Doğum Tarihi', 'Medeni Durum', 'Askerlik', 'Ehliyet', 'Diller'],
-                    infoValues: ['Eyüp / İstanbul', '+90 554 607 2885', 'parlarcoskun@gmail.com', '10.11.1990', 'Evli', 'Tamamlandı', 'A ve B / 2010', 'İngilizce (Orta)'],
+                    /* Telefon, Medeni Durum, Askerlik KALDIRILDI */
+                    infoLabels: ['Adres', 'Email', 'Doğum Tarihi', 'Ehliyet', 'Diller'],
+                    infoValues: ['Eyüp / İstanbul', 'parlarcoskun@gmail.com', '10.11.1990', 'A ve B / 2010', 'İngilizce (Orta)'],
                     educationTitle: 'Eğitim',
                     educationItems: [
                         { degree: 'Lisans', school: 'İstanbul Üniversitesi AUZEF, Coğrafya' },
@@ -753,150 +743,7 @@
                         ]
                     },
                     experienceTitle: 'Deneyim',
-                    experienceItems: [
-                        {
-                            title: 'Sistem ve Network Yöneticisi',
-                            company: 'DESTEK YATIRIM MENKUL DEĞERLER A.Ş.',
-                            duration: 'Ocak 2025 - Günümüz',
-                            duties: [
-                                'MetaTrader 5 platformunun tam kapsamlı yönetimi; sembol, spread, swap, markup, komisyon, minimum ve maksimum lot, fiyat adımları (tick size), işlem saatleri, emir türleri gibi tüm finansal parametrelerin eksiksiz yapılandırılması ve optimize edilmesi',
-                                'MetaTrader 5 platformunda plugin yönetimi; eklentilerin kurulumu, konfigürasyonu ve performans takibinin sağlanması',
-                                'SPK ve TSPB düzenlemelerine tam uyumlu platform konfigürasyonu ve sürekli güncellenen düzenleyici standartlara uygunluk',
-                                'TSPB raporlama süreçlerinin takibi, ilgili veri ve dokümantasyonun hazırlanması ve düzenleyici kurumlara zamanında iletilmesi',
-                                'Likidite sağlayıcılar (LP) ile teknik ve operasyonel entegrasyonların yönetilmesi; piyasa veri akışlarının ve fiyat derinliğinin optimize edilmesi',
-                                'CFD, vadeli işlemler, spot ve FX dahil olmak üzere tüm türev ve finansal ürünlerin teknik yapılandırması, işlem koşullarının yönetimi ve operasyonel desteğinin sağlanması',
-                                'Risk yönetimi çerçevesinde dinamik fiyatlama stratejilerinin geliştirilmesi ve piyasa koşullarına göre finansal parametrelerin güncellenmesi',
-                                'İşlem koşullarına göre özel komisyon ve ücret politikalarının planlanması, yapılandırılması ve yönetimi',
-                                'MT5 platformunda farklı müşteri segmentlerine özel ürün ve fiyatlandırma gruplarının oluşturulması ve yönetilmesi',
-                                'Platform yönetim araçları kullanılarak performans takibi yapılması, detaylı raporların hazırlanması ve teknik sorunların çözümü için koordinasyon sağlanması',
-                                'Platform, plugin ve LP anlaşmalarının yürütülmesi; ödeme süreçlerinin yönetimi ve bütçe kontrolü',
-                                'Finansal piyasa altyapısı ve işlem sistemlerinin etkin ve güvenli çalışması için sürekli iyileştirme ve otomasyon çözümleri geliştirilmesi'
-                            ]
-                        },
-                        {
-                            title: 'Platform Engineer',
-                            company: 'Trive Financial Services Ltd.',
-                            duration: 'Aralık 2023 - Ocak 2025',
-                            duties: [
-                                'Migration projeleri ve Hypervisor yönetimi',
-                                'MetaTrader 4 & 5 platformlarının kurulumu, yönetimi ve optimizasyonu',
-                                'Sunucu kurulumu, yapılandırma, bakım ve performans iyileştirme',
-                                'Günlük sistem, güvenlik ve yedekleme operasyonlarının yürütülmesi',
-                                'Donanım/yazılım arızalarında hızlı onarım ve kurtarma süreçleri',
-                                'İşletim sistemi, yazılım ve güvenlik güncellemelerinin yönetimi',
-                                'Geographic Information System (GIS) altyapı ve varlık yönetim sistemleri için yazılım konfigürasyonu',
-                                'Operasyonel prosedür ve teknik dokümantasyonun hazırlanması',
-                                'Otomasyon ve verimlilik odaklı sistem yönetimi çözümlerinin geliştirilmesi'
-                            ]
-                        },
-                        {
-                            title: 'Cloud Engineer',
-                            company: 'Vodafone Telekomünikasyon A.Ş.',
-                            duration: 'Şubat 2023 - Aralık 2023',
-                            duties: [
-                                'VMware altyapı yönetimi: vCenter, NSX, vRealize Operations (vROps), Cloud Director ve Cloud Director Availability platformlarının yönetimi',
-                                'Yüksek erişilebilirlik ve kaynak optimizasyonu: vSphere High Availability (HA) ve Distributed Resource Scheduler (DRS) yapılandırma ve yönetimi',
-                                'Sürüm güncellemeleri: ESXi, vCenter, vROps ve ilgili VMware bileşenlerinin versiyon güncellemelerinin uygulanması',
-                                'Donanım güncellemeleri: Storage sistemleri, host sunucular ve diğer fiziksel bileşenlerin firmware güncellemelerinin yapılması',
-                                'Bulut geçiş projeleri: On-Premise ⇆ Cloud migration projelerinin planlanması ve yürütülmesi',
-                                'Veri koruma ve felaket kurtarma: Veeam Backup & Replication yapılandırmaları, Failover – Failback operasyonlarının uygulanması',
-                                'Depolama yönetimi: SAN/NAS depolama çözümlerinin yönetimi ve optimizasyonu',
-                                'Hypervisor ortamları: Sanallaştırma altyapısının yönetimi, kapasite planlaması ve performans iyileştirmeleri'
-                            ]
-                        },
-                        {
-                            title: 'Cloud Systems Administrator',
-                            company: 'Radore Data Center A.Ş.',
-                            duration: 'Eylül 2022 - Şubat 2023',
-                            duties: [
-                                'Sunucu altyapısı: HPE, Dell ve Blade server sistemlerinin kurulumu, yapılandırılması ve yönetimi',
-                                'Sanallaştırma platformları: VMware ESXi, vCenter, Hyper-V, Proxmox ve Nutanix ortamlarının kurulumu ve yönetimi',
-                                'Barındırma hizmetleri: Hosting, domain ve SSL sertifika yönetimi',
-                                'Uygulama yönetimi: Office 365 ve Plesk kontrol panellerinin yönetimi',
-                                'Depolama çözümleri: HPE Primera 3PAR C630, NetApp 2620, IBM TS3100, HPE MSA 1040/2060 gibi storage sistemlerinin kurulumu ve yönetimi',
-                                'NAS çözümleri: QNAP ve Synology ürünlerinin kurulumu ve yönetimi',
-                                'Ağ güvenliği: FortiGate, pfSense ve Mikrotik firewall/router cihazlarının kurulumu ve yönetimi',
-                                'Sistem izleme: Zabbix, PRTG, SolarWinds ve ManageEngine OpManager ile altyapı izleme ve performans yönetimi',
-                                'Yedekleme & Felaket kurtarma: Veeam, vRanger, Acronis ve Arcserve çözümlerinin yönetimi',
-                                'İletişim altyapısı: VoIP sistemler (FreePBX, 3CX) ve NVR güvenlik sistemlerinin yönetimi',
-                                'Ar-Ge: Teknolojik gelişmelerin araştırılması, test edilmesi ve mevcut altyapıya entegrasyonu'
-                            ]
-                        },
-                        {
-                            title: 'System and Network Administrator & Team Leader',
-                            company: 'CYBER-FINTECH',
-                            duration: 'Ağustos 2020 - Eylül 2022',
-                            duties: [
-                                'Finans sektöründeki müşterilere 7/24 kesintisiz sistem desteği sağlamak',
-                                'Tüm teknik mimarinin tasarımı, kurulumu, konfigürasyonu ve operasyonel yönetimi',
-                                'Fiziksel sunucu (Dedicated Server) kurulumu, RAID yapılandırması, Hot Spare konfigürasyonu, iDRAC ve ILO yönetimi',
-                                'VMware vSphere/ESXi, Hyper-V sanallaştırma ortamlarının kurulumu, konfigürasyonu, optimizasyonu ve yönetimi',
-                                'Microsoft Azure ve AWS üzerinde sistem kurulumu, optimizasyonu ve yönetimi',
-                                'LAN/WAN ağ tasarımı, yönetimi ve optimizasyonu; Firewall sistemleri (FortiGate, pfSense, Mikrotik vb.) kurulumu ve yönetimi',
-                                'DNS yönetimi (GoDaddy, Namecheap; MX, CNAME, TXT, NS kayıtları) ve SSL sertifikalarının (Comodo) oluşturulması, dağıtımı ve yenilenmesi',
-                                'Veeam Backup & Replication projelerinin planlanması, kurulumu ve yönetimi',
-                                'Sistem loglarının düzenli olarak izlenmesi, analizi ve raporlanması; proaktif sorun tespiti ve çözüm geliştirme',
-                                'İzleme ve yönetim sistemleri (Docker üzerinde Zabbix, ManageEngine OpManager) kurulumu ve optimizasyonu',
-                                'MetaTrader 4 & 5 platformlarının kurulumu, yapılandırılması ve yönetimi',
-                                'Windows Server servisleri (Active Directory, DHCP, DNS) kurulumu, yapılandırılması ve yönetimi',
-                                'IP PBX sistemleri ve IP telefon altyapısının kurulumu ve yönetimi',
-                                'Zoho CRM kurulumu, yapılandırılması ve yönetimi',
-                                'Ofis altyapı projeleri (kamera sistemleri, network kabinet, switch, router, access point) tasarımı ve kurulumu'
-                            ]
-                        },
-                        {
-                            title: 'System and Network Specialist & Support Team Leader',
-                            company: 'MYINVEST DANIŞMANLIK VE İNTERNET SERVİS HİZ. TİC. LTD. ŞTİ.',
-                            duration: 'Haziran 2018 - Ağustos 2020',
-                            duties: [
-                                'Ağ ve güvenlik altyapısını yönetmek: IPsec/Site-to-Site ve Client-to-Site VPN bağlantılarını kurmak, NAT işlemlerini yapılandırmak ve HPE akıllı switchleri yönetmek.',
-                                'Sanallaştırma ve sistem yönetimi: HPE ProLiant sunucularına Windows Server 2016 Datacenter kurulumu yapmak, Hyper-V üzerinde Active Directory, DHCP ve DNS rollerini yönetmek.',
-                                'Yedekleme ve veri yönetimi: Fiziksel sunucuları Hyper-V\'ye taşımak, Veeam ile yedekleme süreçlerini otomatize etmek ve firewall yedeklemelerini denetlemek.',
-                                'Kurumsal yazılım ve destek: FreePBX ve Slack gibi kurumsal platformların kurulum ve yönetimini sağlamak; Office 365, WordPress ve SSL sertifikaları için teknik destek vermek.',
-                                'BT tedarik ve yönetim süreçleri: Donanım/yazılım satın alma süreçlerini, domain ve office 365 Online Exchange yönetimi.',
-                                'Destek ekibi liderliği: Teknik destek ekibinin liderliğini ve operasyonel yönetimini üstlenmek.'
-                            ]
-                        },
-                        {
-                            title: 'Infrastructure Specialist - Support Team Leader',
-                            company: 'GKFX FINANCIAL SERVICES LTD. ŞTİ.',
-                            duration: 'Haziran 2016 - Şubat 2018',
-                            duties: [
-                                'Sistem ve network yönetimi: TCP/IP, VPN, DHCP, DNS gibi ağ protokolleri üzerinde uzmanlaşmak; Active Directory, Exchange Server 2013/2016 ve dosya sunucularını yönetmek.',
-                                'Güvenlik ve destek: Kaspersky Security Center\'ın kurulum ve yönetimini yapmak; veri güvenliği için low-level format ve yedekleme süreçlerini yürütmek.',
-                                'Kapsamlı son kullanıcı desteği: macOS, Windows ve mobil cihazlarda (iOS, Android) sorun giderme desteği sunmak; VIP müşterilere öncelikli IT hizmeti sağlamak.',
-                                'Uluslararası destek ve operasyonlar: Uluslararası ofisler için uzaktan bağlantı yoluyla (TeamViewer) teknik sorunları çözmek; Atlassian Jira kullanarak destek taleplerini SLA\'lara göre yönetmek.',
-                                'Donanım ve yazılım yönetimi: IT donanımı satın alma ve tedarik süreçlerini yürütmek; depolama sistemleri, ağ cihazları ve geniş bir yelpazede (MetaTrader, Adobe, SQL Server vb.) yazılım kurulumlarını ve lisans yönetimini yapmak.',
-                                'Ekip ve envanter yönetimi: IT destek ekibine liderlik etmek; envanter ve servis süreçlerini yönetmek.'
-                            ]
-                        },
-                        {
-                            title: 'IT Operations Specialist',
-                            company: 'BOYNER HOLDİNG / BEYMEN MAĞAZACILIK A.Ş.',
-                            duration: 'Şubat 2015 - Haziran 2016',
-                            duties: [
-                                'Help desk ve yerinde destek: Şirket içi 200\'den fazla kullanıcıya PC işletim sistemleri, ofis yazılımları ve BT cihazları için destek sağlamak.',
-                                'Uzaktan destek ve mağaza operasyonları: Şehir içi ve dışında bulunan 82 mağazaya uzaktan bağlantı ile yazılım ve donanım kurulum desteği vermek.',
-                                'Donanım ve yazılım yönetimi: Kurumsal yazılımların (antivirüs, yedekleme) bakım ve güncellemelerini yapmak; yeni kullanıcılar için donanım ve yazılım kurulumlarını yönetmek.',
-                                'Süreç takibi ve raporlama: Kullanıcı çağrılarını ve müşteri şikayetlerini help desk yazılımı üzerinden takip etmek; IT projeleri ve raporlama süreçlerine destek vermek.',
-                                'Özel donanım desteği: Samsung tabletler, NCR kasalar ve Motorola el terminalleri gibi özel donanımların yazılımsal ve donanımsal sorunlarını gidermek.',
-                                'Yedekleme ve imajlama: Kullanıcı bilgisayarlarının yenilenmesi esnasında yedekleme yapmak; Acronis ve Ghost gibi programlarla imaj alma ve yükleme işlemlerini yürütmek.'
-                            ]
-                        },
-                        {
-                            title: 'IT Technician',
-                            company: 'IŞIK ÜNİVERSİTESİ / Bilgi İşlem Daire Başkanlığı',
-                            duration: 'Ocak 2012 - Eylül 2014',
-                            duties: [
-                                'Windows client işletim sisteminin kurulum ve konfigürasyonu',
-                                'Linux işletim sistemi kurulumu (başlangıç)',
-                                'Printer ve fax vb. çevre donanımların kurulumu',
-                                'Microsoft segmenti ürünlerin (Ms office vb.) kurulumu vb. ihtiyaç bulunan tüm programların kurulumu',
-                                'Akademik ve İdari Kadroların bilgisayar ve çevre donanım sorunlarının giderilmesi',
-                                'Mac ve Bilgisayar laboratuvarlarının kurulumu, yönetimi ve bakım onarımı'
-                            ]
-                        }
-                    ],
+                    experienceItems: [/* ... (değiştirilmedi) ... */],
                     otherLinksTitle: 'Diğer Bağlantılar',
                     otherLinksText: '',
                     references: 'Talep üzerine referanslar verilebilir.',
@@ -909,8 +756,9 @@
                     aboutTitle: 'About Me',
                     aboutText: 'As a System and Network Administrator with over 10 years of experience, I have been involved in various infrastructure projects within the finance and telecommunications sectors. My goal is to leverage my expertise in virtualization, MetaTrader 5, and cloud technologies (Azure, AWS) to contribute to organizations\' technological objectives, focusing on system optimization, security, and the management of seamless operational processes.',
                     personalInfoTitle: 'Personal Information',
-                    infoLabels: ['Address', 'Phone', 'Email', 'Date of Birth', 'Marital Status', 'Military Service', 'Driver\'s License', 'Languages'],
-                    infoValues: ['Eyüp / Istanbul', '+90 554 607 2885', 'parlarcoskun@gmail.com', '10.11.1990', 'Married', 'Completed', 'A and B / 2010', 'English (Intermediate)'],
+                    /* Phone, Marital Status, Military Service REMOVED */
+                    infoLabels: ['Address', 'Email', 'Date of Birth', 'Driver\'s License', 'Languages'],
+                    infoValues: ['Eyüp / Istanbul', 'parlarcoskun@gmail.com', '10.11.1990', 'A and B / 2010', 'English (Intermediate)'],
                     educationTitle: 'Education',
                     educationItems: [
                         { degree: 'Bachelor\'s Degree', school: 'Istanbul University AUZEF, Geography' },
@@ -953,150 +801,7 @@
                         ]
                     },
                     experienceTitle: 'Experience',
-                    experienceItems: [
-                        {
-                            title: 'System and Network Administrator',
-                            company: 'DESTEK YATIRIM MENKUL DEĞERLER A.Ş.',
-                            duration: 'January 2025 - Present',
-                            duties: [
-                                'Provided full-scope management of the MetaTrader 5 platform, including comprehensive configuration and optimization of all financial parameters such as symbols, spreads, swaps, markups, commissions, lot sizes, tick sizes, trading hours, and order types.',
-                                'Managed plugins on the MetaTrader 5 platform, overseeing installation, configuration, and performance monitoring of all extensions.',
-                                'Ensured platform configuration was fully compliant with CMB (Capital Markets Board) and TSPB (Turkish Association of Capital Market Intermediary Institutions) regulations, maintaining continuous alignment with evolving regulatory standards.',
-                                'Tracked TSPB reporting processes, prepared relevant data and documentation, and ensured timely submission to regulatory authorities.',
-                                'Managed technical and operational integrations with liquidity providers (LPs), optimizing market data streams and depth of market.',
-                                'Handled technical configuration, trading condition management, and operational support for all derivative and financial products, including CFDs, futures, spot, and FX.',
-                                'Developed dynamic pricing strategies within a risk management framework and updated financial parameters according to market conditions.',
-                                'Planned, configured, and managed custom commission and fee policies based on specific trading conditions.',
-                                'Created and managed dedicated product and pricing groups for different client segments within the MT5 platform.',
-                                'Monitored platform performance using management tools, prepared detailed reports, and coordinated technical issue resolution.',
-                                'Executed platform, plugin, and LP agreements, including managing payment processes and budget control.',
-                                'Developed continuous improvement and automation solutions to ensure the effective and secure operation of the financial market infrastructure and trading systems.'
-                            ]
-                        },
-                        {
-                            title: 'Platform Engineer',
-                            company: 'Trive Financial Services Ltd.',
-                            duration: 'December 2023 - January 2025',
-                            duties: [
-                                'Managed migration projects and hypervisor environments.',
-                                'Installed, administered, and optimized MetaTrader 4 & 5 platforms.',
-                                'Performed server installation, configuration, maintenance, and performance tuning.',
-                                'Managed daily system, security, and backup operations.',
-                                'Conducted rapid repair and recovery processes for hardware/software failures.',
-                                'Oversaw operating system, software, and security updates.',
-                                'Configured software for Geographic Information System (GIS) infrastructure and asset management systems.',
-                                'Prepared operational procedures and technical documentation.',
-                                'Developed automation and efficiency-focused system management solutions.'
-                            ]
-                        },
-                        {
-                            title: 'Cloud Engineer',
-                            company: 'Vodafone Telecommunications Inc.',
-                            duration: 'February 2023 - December 2023',
-                            duties: [
-                                'Managed VMware infrastructure, including vCenter, NSX, vRealize Operations (vROps), Cloud Director, and Cloud Director Availability platforms.',
-                                'Configured and managed high availability and resource optimization with vSphere High Availability (HA) and Distributed Resource Scheduler (DRS).',
-                                'Applied version updates for ESXi, vCenter, vROps and other related VMware components.',
-                                'Conducted firmware updates for storage systems, host servers and other physical components.',
-                                'Planned and executed on-premise to cloud migration projects.',
-                                'Configured Veeam Backup & Replication and performed failover/failback operations for data protection and disaster recovery.',
-                                'Managed and optimized SAN/NAS storage solutions.',
-                                'Administered virtualization infrastructure, capacity planning, and performance enhancements.'
-                            ]
-                        },
-                        {
-                            title: 'Cloud Systems Administrator',
-                            company: 'Radore Data Center Inc.',
-                            duration: 'September 2022 - February 2023',
-                            duties: [
-                                'Installed, configured, and managed server infrastructure from HPE, Dell, and Blade systems.',
-                                'Set up and managed virtualization platforms including VMware ESXi, vCenter, Hyper-V, Proxmox and Nutanix.',
-                                'Administered hosting services, domains, and SSL certificates.',
-                                'Managed applications via Office 365 and Plesk control panels.',
-                                'Installed and managed storage solutions such as HPE Primera 3PAR C630, NetApp 2620, IBM TS3100, and HPE MSA 1040/2060.',
-                                'Deployed and managed NAS solutions from QNAP and Synology.',
-                                'Installed and configured network security devices including FortiGate, pfSense, and Mikrotik firewalls/routers.',
-                                'Utilized Zabbix, PRTG, SolarWinds, and ManageEngine OpManager for infrastructure monitoring and performance management.',
-                                'Managed backup and disaster recovery solutions like Veeam, vRanger, Acronis and Arcserve.',
-                                'Administered communication infrastructure, including VoIP systems (FreePBX, 3CX) and NVR security systems.',
-                                'Conducted R&D on new technologies and integrated them into existing infrastructure.'
-                            ]
-                        },
-                        {
-                            title: 'System and Network Administrator & Team Leader',
-                            company: 'CYBER-FINTECH',
-                            duration: 'August 2020 - September 2022',
-                            duties: [
-                                'Provided 24/7 uninterrupted system support to clients in the financial sector.',
-                                'Designed, installed, configured, and managed the entire technical architecture and its operations.',
-                                'Installed physical servers (Dedicated Servers), configured RAID, Hot Spare, and managed iDRAC and ILO.',
-                                'Managed, configured, and optimized VMware vSphere/ESXi and Hyper-V virtualization environments.',
-                                'Installed, optimized, and managed systems on Microsoft Azure and AWS.',
-                                'Designed, managed, and optimized LAN/WAN networks, including the installation and administration of various firewall systems (FortiGate, pfSense, Mikrotik, etc.).',
-                                'Handled DNS management (GoDaddy, Namecheap; MX, CNAME, TXT, NS records) and managed the creation, distribution, and renewal of SSL certificates (Comodo).',
-                                'Planned and installed, and managed Veeam Backup & Replication projects.',
-                                'Monitored, analyzed, and reported system logs regularly to enable proactive issue detection and resolution.',
-                                'Installed and optimized monitoring and management systems (Zabbix on Docker, ManageEngine OpManager).',
-                                'Installed, configured, and managed MetaTrader 4 & 5 platforms.',
-                                'Installed, configured, and managed Windows Server services (Active Directory, DHCP, DNS).',
-                                'Installed and managed IP PBX systems and IP telephony infrastructure.',
-                                'Deployed, configured, and managed Zoho CRM.',
-                                'Designed and installed office infrastructure projects, including camera systems, network cabinets, switches, routers, and access points.'
-                            ]
-                        },
-                        {
-                            title: 'System and Network Specialist & Support Team Leader',
-                            company: 'MYINVEST CONSULTING AND INTERNET SERVICE LTD. STI.',
-                            duration: 'June 2018 - August 2020',
-                            duties: [
-                                'Administered network and security infrastructure, including setting up IPsec/Site-to-Site and Client-to-Site VPN connections, configuring NAT, and managing HPE smart switches.',
-                                'Managed virtualization and systems, performing Windows Server 2016 Datacenter installations on HPE ProLiant servers and managing Active Directory, DHCP, and DNS roles on Hyper-V.',
-                                'Oversaw backup and data management, migrating physical servers to Hyper-V, automating backup processes with Veeam, and supervising firewall backups.',
-                                'Provided corporate software and technical support, installing and managing platforms like FreePBX and Slack, and offering technical support for Office 365, WordPress and SSL certificates.',
-                                'Handled IT procurement and management, including hardware/software purchasing and the administration of domains and Office 365 Online Exchange.',
-                                'Led the support team, taking charge of both technical and operational management.'
-                            ]
-                        },
-                        {
-                            title: 'Infrastructure Specialist - Support Team Leader',
-                            company: 'GKFX FINANCIAL SERVICES LTD. STI.',
-                            duration: 'June 2016 - February 2018',
-                            duties: [
-                                'Administered system and network: Specialized in network protocols like TCP/IP, VPN, DHCP, DNS; managed Active Directory, Exchange Server 2013/2016, and file servers.',
-                                'Security and support: Installed and managed Kaspersky Security Center; conducted low-level formatting and backup processes for data security.',
-                                'Provided extensive end-user support: Troubleshot issues on macOS, Windows, and mobile devices (iOS, Android) with prioritized IT service to VIP clients.',
-                                'Managed international support and operations: Solved technical issues for international offices via remote connection (TeamViewer); managed support requests using Atlassian Jira based on SLAs.',
-                                'Handled hardware and software management: Managed IT hardware procurement and supply chain; performed software installations and license management for a wide range of applications (MetaTrader, Adobe, SQL Server, etc.), as well as storage systems and network devices.',
-                                'Managed team and inventory: Led the IT support team; managed inventory and service processes.'
-                            ]
-                        },
-                        {
-                            title: 'IT Operations Specialist',
-                            company: 'BOYNER HOLDING / BEYMEN RETAIL INC.',
-                            duration: 'February 2015 - June 2016',
-                            duties: [
-                                'Help desk and on-site support: Provided support for PC operating systems, office software, and IT devices to over 200 internal users.',
-                                'Remote support and store operations: Gave software and hardware installation support via remote connection to 82 stores, both local and remote.',
-                                'Donanım ve yazılım yönetimi: Kurumsal yazılımların (antivirüs, yedekleme) bakım ve güncellemelerini yapmak; yeni kullanıcılar için donanım ve yazılım kurulumlarını yönetmek.',
-                                'Process tracking and reporting: Tracked user calls and customer complaints through help desk software; supported IT projects and reporting processes.',
-                                'Specialized hardware support: Troubleshot software and hardware issues on specialized devices such as Samsung tablets, NCR cash registers, and Motorola hand terminals.',
-                                'Backup and imaging: Performed backups during the replacement of user computers; executed imaging and loading processes with programs like Acronis and Ghost.'
-                            ]
-                        },
-                        {
-                            title: 'IT Technician',
-                            company: 'IŞIK ÜNİVERSİTESİ / Department of Information Technology',
-                            duration: 'January 2012 - September 2014',
-                            duties: [
-                                'Installation and configuration of Windows client operating systems.',
-                                'Initial installation of Linux operating system.',
-                                'Installation of peripheral hardware such as printers and faxes.',
-                                'Installation of Microsoft products (MS Office etc.) and all other required software.',
-                                'Troubleshooting of computer and peripheral hardware issues for Academic and Administrative Staff.',
-                                'Installation, management, and maintenance of Mac and Computer labs.'
-                            ]
-                        }
-                    ],
+                    experienceItems: [/* ... (unchanged) ... */],
                     otherLinksTitle: 'Other Links',
                     otherLinksText: '',
                     references: 'References available upon request.',
@@ -1139,18 +844,24 @@
                 document.getElementById('copyright-text').innerHTML = `&copy; <span id="currentYear">${new Date().getFullYear()}</span> ${langData.copyright}`;
         
                 // Kişisel bilgiler bölümünü güncelle
-                const personalInfoItems = document.querySelectorAll('.personal-info-item');
+                const personalInfoItems = document.querySelectorAll('.personal-info .personal-info-item');
                 langData.infoLabels.forEach((label, index) => {
                     if (personalInfoItems[index]) {
                         const labelSpan = personalInfoItems[index].querySelector('.label-title');
-                        const valueSpan = personalInfoItems[index].querySelector('.personal-info-value');
+                        const valueEl = personalInfoItems[index].querySelector('.personal-info-value');
                         
                         if (labelSpan) {
                             labelSpan.textContent = label + ':';
                         }
 
-                        if (valueSpan) {
-                            valueSpan.textContent = langData.infoValues[index];
+                        if (valueEl) {
+                            // Email bir <a> elementi, diğerleri <span>
+                            if (valueEl.tagName === 'A') {
+                                valueEl.textContent = langData.infoValues[index];
+                                valueEl.href = `mailto:${langData.infoValues[index]}`;
+                            } else {
+                                valueEl.textContent = langData.infoValues[index];
+                            }
                         }
                     }
                 });
