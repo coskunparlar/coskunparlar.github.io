@@ -173,6 +173,8 @@
       <span id="lang-text">TR</span>
     </button>
     <button id="theme-toggle" class="theme-toggle-button">☀️</button>
+    <!-- EKLENEN: Yazdır butonu -->
+    <button id="print-btn" class="theme-toggle-button" title="Yazdır">🖨️</button>
   </div>
 
   <div class="container">
@@ -697,7 +699,7 @@
             },
             {
               title: 'IT Operations Specialist',
-              company: 'BOYNER HOLDING / BEYMEN RETAIL INC.',
+              company: 'BOYNER HOLDİNG / BEYMEN RETAIL INC.',
               duration: 'February 2015 - June 2016',
               duties: [
                 'Help desk and on-site support: Provided support for PC operating systems, office software, and IT devices to over 200 internal users.',
@@ -735,6 +737,7 @@
       const flagTr = document.getElementById('flag-tr');
       const flagEn = document.getElementById('flag-en');
       const body = document.body;
+      const printBtn = document.getElementById('print-btn'); // EKLENEN
 
       const updateUI = (lang) => {
         const langData = content[lang];
@@ -905,3 +908,4 @@
     </script>
 </body>
 </html>
+
