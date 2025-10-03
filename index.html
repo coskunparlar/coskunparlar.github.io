@@ -7,16 +7,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --bg-color:#0d1117;--text-color:#c9d1d9;--container-bg:#161b22;--container-border:#30363d;
-      --primary-color:#58a6ff;--secondary-color:#29e99a;--info-bg:#21262d;--hover-bg:#282f38;
-      --sub-text-color:#8b949e;--bullet-color:#29e99a;--tooltip-bg:#58a6ff;--tooltip-text:#0d1117;
-      --link-color:#58a6ff;--link-hover-color:#29e99a
+      --bg-color:#0d1117;
+      --text-color:#c9d1d9;
+      --container-bg:#161b22;
+      --container-border:#30363d;
+      --primary-color:#58a6ff;
+      --secondary-color:#29e99a;
+      --info-bg:#21262d;
+      --hover-bg:#282f38;
+      --sub-text-color:#8b949e;
+      --bullet-color:#29e99a;
+      --tooltip-bg:#58a6ff;
+      --tooltip-text:#0d1117;
+      --link-color:#58a6ff;
+      --link-hover-color:#29e99a;
+      /* NEW: contrast colors for titles/company names */
+      --heading-contrast:#e6edf3;        /* h4 (title) in dark */
+      --company-contrast:#cbd5e1;        /* company name in dark */
+      --muted-contrast:#94a3b8;          /* durations etc. in dark */
     }
     body.light-mode{
-      --bg-color:#f6f8fa;--text-color:#24292f;--container-bg:#fff;--container-border:#d0d7de;
-      --primary-color:#0366d6;--secondary-color:#00824b;--info-bg:#f3f4f6;--hover-bg:#ebedf0;
-      --sub-text-color:#57606a;--bullet-color:#00824b;--tooltip-bg:#0366d6;--tooltip-text:#fff;
-      --link-color:#0366d6;--link-hover-color:#00824b
+      --bg-color:#f6f8fa;
+      --text-color:#24292f;
+      --container-bg:#ffffff;
+      --container-border:#d0d7de;
+      --primary-color:#0366d6;
+      --secondary-color:#00824b;
+      --info-bg:#f3f4f6;
+      --hover-bg:#ebedf0;
+      --sub-text-color:#57606a;
+      --bullet-color:#00824b;
+      --tooltip-bg:#0366d6;
+      --tooltip-text:#ffffff;
+      --link-color:#0366d6;
+      --link-hover-color:#00824b;
+      /* Light mode contrasts so text is ALWAYS visible */
+      --heading-contrast:#0f172a;        /* very dark slate for h4 */
+      --company-contrast:#334155;        /* dark slate for company */
+      --muted-contrast:#475569;          /* slate for durations */
     }
     html,body{margin:0}
     body{
@@ -45,15 +73,17 @@
     .personal-info-item{
       background:var(--info-bg);padding:14px;border-radius:10px;border:1px solid var(--container-border)
     }
+    .personal-info-item a{color:var(--link-color);text-decoration:none}
     .label-title{color:var(--secondary-color);font-weight:600}
     .about-me{padding:14px;background:var(--info-bg);border-radius:10px;border:1px solid var(--container-border)}
     .experience-item,.education-item{
       margin-bottom:22px;padding:18px;border-left:3px solid var(--primary-color);
       background:var(--info-bg);border-radius:10px
     }
-    .experience-item h4{margin:0 0 4px;color:#e6edf3}
-    .job-title{color:var(--sub-text-color)}
-    .job-duration{color:var(--sub-text-color);font-size:.92rem;margin-top:2px;margin-bottom:10px}
+    /* FIX: always-visible title/company colors on both themes */
+    .experience-item h4{margin:0 0 4px;color:var(--heading-contrast)}
+    .job-title{color:var(--company-contrast);font-weight:700;letter-spacing:.2px}
+    .job-duration{color:var(--muted-contrast);font-size:.92rem;margin-top:2px;margin-bottom:10px}
     .experience-item ul,.education-item ul{list-style:none;margin:8px 0 0;padding:0}
     .experience-item li{position:relative;padding-left:20px;margin-bottom:8px}
     .experience-item li::before{content:'•';color:var(--bullet-color);position:absolute;left:0}
@@ -99,7 +129,7 @@
 <body class="dark-mode">
   <!-- FIXED ACTIONS -->
   <div class="header-buttons no-print">
-    <button id="lang-toggle" class="btn">
+    <button id="lang-toggle" class="btn" title="Dili değiştir / Switch language">
       <svg id="flag-tr" class="flag-icon" viewBox="0 0 512 512" style="display:none"><rect width="512" height="512" fill="#e30a17"/><circle cx="210" cy="256" r="90" fill="#fff"/><circle cx="230" cy="256" r="72" fill="#e30a17"/><circle cx="290" cy="256" r="28" fill="#fff"/></svg>
       <svg id="flag-en" class="flag-icon" viewBox="0 0 600 300" style="display:block">
         <path fill="#00247d" d="M0 0h600v300H0z"/><path stroke="#fff" stroke-width="60" d="M0 0l600 300M600 0L0 300"/>
@@ -108,10 +138,31 @@
       </svg>
       <span id="lang-text">TR</span>
     </button>
+
     <button id="theme-toggle" class="btn icon-btn" title="Tema değiştir">☀️</button>
+
+    <!-- COLORED PRINTER ICON -->
     <button id="printBtn" class="btn" title="Yazdır">
-      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M7 8V4h10v4M7 16H5a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-2m-10 0v4h10v-4H7Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+        <defs>
+          <linearGradient id="gBody" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00c6ff"/>
+            <stop offset="100%" stop-color="#0072ff"/>
+          </linearGradient>
+          <linearGradient id="gPaper" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffd166"/>
+            <stop offset="100%" stop-color="#fca311"/>
+          </linearGradient>
+        </defs>
+        <!-- printer body -->
+        <rect x="4" y="7" width="16" height="9" rx="2" fill="url(#gBody)"/>
+        <!-- paper -->
+        <rect x="7" y="3" width="10" height="6" rx="1" fill="url(#gPaper)"/>
+        <!-- tray -->
+        <rect x="7" y="16" width="10" height="5" rx="1" fill="#94d2bd"/>
+        <!-- details -->
+        <circle cx="18" cy="11.5" r="1.1" fill="#e8e8e8"/>
+        <rect x="9" y="5" width="6" height="1.6" rx=".8" fill="#fff"/>
       </svg>
       Yazdır
     </button>
@@ -292,7 +343,6 @@
           ]
         },
         experienceTitle: 'Deneyim',
-        /* AŞAĞIDAKİ GÖREV MADDELERİ TR/EN TEKNİKLEŞTİRİLMİŞ HALDİR */
         experienceItems: [
           {
             title:'Sistem ve Network Yöneticisi',
@@ -692,7 +742,7 @@
       }
     };
 
-    /* ------------------ YAZDIR BUTONU (DÜZGÜN ÇALIŞIR) ------------------ */
+    /* ------------------ YAZDIR BUTONU ------------------ */
     const handlePrint = () => {
       try { window.focus(); } catch(e) {}
       window.print();
@@ -700,19 +750,15 @@
 
     /* ------------------ INIT ------------------ */
     const init = () => {
-      // Dil
       const storedLang = localStorage.getItem('lang') || 'tr';
       updateUI(storedLang);
 
-      // Tema
       const storedTheme = localStorage.getItem('theme');
       if (storedTheme){ body.classList.add(storedTheme); themeToggleBtn.innerHTML = storedTheme === 'light-mode' ? '🌙' : '☀️'; }
       else { body.classList.add('dark-mode'); localStorage.setItem('theme','dark-mode'); }
 
-      // Yıl
       const y = document.getElementById('currentYear'); if (y) y.textContent = new Date().getFullYear();
 
-      // Eventler
       langToggleBtn.addEventListener('click', toggleLanguage);
       themeToggleBtn.addEventListener('click', toggleTheme);
       printBtn.addEventListener('click', handlePrint);
@@ -726,7 +772,7 @@
     };
     init();
 
-    // Klavye kısayolu: Ctrl/Cmd + P => native print zaten tetikler, ama güvence:
+    // Ctrl/Cmd + P kısayolu – native print’i tetikler
     window.addEventListener('keydown', (e)=>{
       const isCmd = navigator.platform.toUpperCase().includes('MAC') ? e.metaKey : e.ctrlKey;
       if (isCmd && e.key.toLowerCase() === 'p'){ e.preventDefault(); handlePrint(); }
