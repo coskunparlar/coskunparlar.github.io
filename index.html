@@ -7,7 +7,7 @@
 <title>Coşkun Parlar — System &amp; Trading Infrastructure</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   @view-transition {
     navigation: auto;
@@ -28,9 +28,9 @@
     --amber:      #f0a940;
     --amber-dim:  #c98a34;
 
-    --font-display:'Space Grotesk',sans-serif;
-    --font-body:'IBM Plex Sans',sans-serif;
-    --font-mono:'IBM Plex Mono',monospace;
+    --font-display:'Inter',Arial,Helvetica,sans-serif;
+    --font-body:'Inter',Arial,Helvetica,sans-serif;
+    --font-mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
 
     --container: 1160px;
     --ease: cubic-bezier(.22,.7,.2,1);
@@ -134,20 +134,25 @@
   .sidebar{position:sticky;top:60px;display:flex;flex-direction:column;gap:26px}
   .sidebar-photo img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:1px solid var(--border-2);filter:grayscale(.1)}
   .sidebar-name{font-size:1.7rem;font-weight:700;line-height:1.15}
-  .sidebar-role{font-family:var(--font-mono);font-size:.78rem;color:var(--amber-dim);letter-spacing:.04em;margin-top:8px;line-height:1.5}
+  .sidebar-role{font-family:var(--font-body);font-size:.86rem;font-weight:600;color:var(--amber-dim);letter-spacing:.01em;margin-top:8px;line-height:1.5}
   .sidebar-bio{font-size:.92rem;line-height:1.75;color:var(--text-dim)}
 
   .sidebar-nav{display:flex;flex-direction:column;gap:13px}
   .sidebar-nav a{
-    font-family:var(--font-mono);font-size:.76rem;letter-spacing:.04em;color:var(--text-mute);
+    font-family:var(--font-body);font-size:.84rem;font-weight:500;letter-spacing:0;color:var(--text-mute);
     display:flex;align-items:center;gap:12px;transition:color .2s var(--ease);
   }
   .sidebar-nav a::before{content:'';width:16px;height:1px;background:var(--border-2);transition:width .2s var(--ease),background .2s var(--ease)}
   .sidebar-nav a:hover{color:var(--text)}
   .sidebar-nav a.active{color:var(--text)}
   .sidebar-nav a.active::before{width:28px;background:var(--amber)}
+  .sidebar-nav a.external-link .external-icon{
+    width:13px;height:13px;margin-left:2px;flex-shrink:0;color:var(--text-mute);
+    transition:color .2s var(--ease),transform .2s var(--ease);
+  }
+  .sidebar-nav a.external-link:hover .external-icon{color:var(--amber);transform:translate(1px,-1px)}
 
-  .sidebar-meta{font-family:var(--font-mono);font-size:.74rem;color:var(--text-mute);line-height:1.8}
+  .sidebar-meta{font-family:var(--font-body);font-size:.84rem;font-weight:500;color:var(--text-mute);line-height:1.8}
   .sidebar-social{display:flex;gap:16px}
   .sidebar-social a{color:var(--text-mute);transition:color .2s var(--ease),transform .2s var(--ease)}
   .sidebar-social a:hover{color:var(--amber);transform:translateY(-2px)}
@@ -174,6 +179,13 @@
   .domain-icon svg{width:18px;height:18px;display:block}
   .domain-label{font-family:var(--font-mono);font-size:.73rem;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-dim);line-height:1.5}
   .domain-text{color:var(--text-dim);font-size:1rem;line-height:1.8}
+
+  .card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:26px}
+  .profile-card{border:1px solid var(--border);border-radius:12px;padding:22px;background:color-mix(in srgb, var(--border) 14%, transparent)}
+  .card-kicker{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-dim);margin-bottom:10px}
+  .card-title{font-family:var(--font-display);font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.35}
+  .card-text{color:var(--text-dim);font-size:.94rem;line-height:1.7}
+
 
   /* experience: tabs + panel */
   .exp-layout{display:grid;grid-template-columns:230px 1fr;gap:36px}
@@ -240,6 +252,7 @@
   @media (max-width:640px){
     .wrap{padding:0 20px}
     .content-section{padding-bottom:64px}
+    .card-grid{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -284,11 +297,12 @@
     <p class="sidebar-bio" id="sidebar-bio"></p>
     <nav class="sidebar-nav" id="sidebar-nav">
       <a href="#what-i-do" data-target="what-i-do"><span id="nav-1"></span></a>
-      <a href="#experience" data-target="experience"><span id="nav-2"></span></a>
-      <a href="#education" data-target="education"><span id="nav-3"></span></a>
-      <a href="#connect" data-target="connect"><span id="nav-4"></span></a>
-      <a href="notes.html"><span id="nav-5"></span></a>
-      <a href="topology.html"><span id="nav-6"></span></a>
+      <a href="#core-expertise" data-target="core-expertise"><span id="nav-2"></span></a>
+      <a href="#experience" data-target="experience"><span id="nav-3"></span></a>
+      <a href="topology.html" class="external-link"><span id="nav-4"></span><svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></a>
+      <a href="notes.html" class="external-link"><span id="nav-5"></span><svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></a>
+      <a href="#education" data-target="education"><span id="nav-6"></span></a>
+      <a href="#connect" data-target="connect"><span id="nav-7"></span></a>
     </nav>
     <div class="sidebar-meta" id="sidebar-meta"></div>
     <div class="sidebar-social" id="sidebar-social"></div>
@@ -301,6 +315,11 @@
       <div id="domain-rows"></div>
     </section>
 
+    <section class="content-section animated-section" id="core-expertise">
+      <h2 class="section-title" id="core-title"></h2>
+      <div class="card-grid" id="core-cards"></div>
+    </section>
+
     <section class="content-section animated-section" id="experience">
       <h2 class="section-title" id="experience-title"></h2>
       <div class="exp-layout">
@@ -308,7 +327,6 @@
         <div id="exp-panel" role="tabpanel"></div>
       </div>
     </section>
-
     <section class="content-section animated-section" id="education">
       <h2 class="section-title" id="education-title"></h2>
       <div id="edu-list"></div>
@@ -352,6 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "sidebarBio": "Finans, telekom, bulut ve veri merkezi ortamlarında 14 yılı aşkın sistem, ağ, sanallaştırma ve trading platformu deneyimi.",
         "navLabels": [
             "Ne Yapıyorum",
+            "Temel Uzmanlık Alanları",
             "Deneyim",
             "Eğitim",
             "Bağlantılar"
@@ -382,22 +401,22 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 "icon": "trading",
                 "label": "Trading Altyapısı",
-                "text": "MetaTrader 5 üretim ortamında platform servisleri, Windows/Linux sunucu katmanı, VM kaynakları, storage kapasitesi, monitoring ve log sağlığıyla birlikte uçtan uca teknik sahiplik. Sembol, grup, komisyon, swap, markup, tick size, session ve risk parametrelerinde kontrollü değişiklik yönetimi; LP/bridge tarafında fiyat akışı, market depth (DOM), latency, rejection/fill davranışı ve order routing sürekliliği."
+                "text": "MetaTrader 5 üretim ortamında platform servisleri, Windows/Linux sunucu katmanı, VM kaynakları, storage kapasitesi ve monitoring kapsamıyla uçtan uca teknik sahiplik. Sembol, grup, komisyon, swap, markup, tick size, session ve risk parametrelerinde kontrollü değişiklik yönetimi; FXCubic/LP bridge tarafında fiyat akışı, market depth (DOM), latency, rejection/fill davranışı ve order routing sürekliliği."
             },
             {
                 "icon": "cloud",
                 "label": "Sanallaştırma & Bulut",
-                "text": "VMware vSphere, ESXi, vCenter, NSX, vROps, Hyper-V, Proxmox ve Nutanix ortamlarında host provisioning, datastore/LUN kullanımı, cluster kapasitesi, HA/DRS, snapshot/backup ön kontrolleri, migration ve resource placement deneyimi. Azure/AWS kurulumlarında maliyet, performans, erişilebilirlik ve operasyonel sürdürülebilirlik dengesi."
+                "text": "VMware vSphere, ESXi, vCenter, NSX, vROps, Hyper-V, Proxmox ve Nutanix ortamlarında host provisioning, datastore/LUN kullanımı, cluster kapasitesi, HA/DRS, snapshot/backup ön kontrolleri, migration ve resource placement deneyimi. Azure/AWS kurulumlarında maliyet, performans ve erişilebilirlik dengesi."
             },
             {
                 "icon": "shield",
                 "label": "Ağ & Güvenlik",
-                "text": "FortiGate, Mikrotik ve pfSense üzerinde firewall, NAT, IPsec site-to-site VPN ve client VPN mimarileri. VLAN, DNS, DHCP, NTP, sertifika yönetimi, endpoint security ve erişim kontrolü tarafında güvenli, izlenebilir ve sürdürülebilir altyapı standardı."
+                "text": "FortiGate, Mikrotik ve pfSense üzerinde firewall, NAT, IPsec site-to-site VPN ve client VPN mimarileri. VLAN, DNS, DHCP, NTP, endpoint security ve erişim kontrolü tarafında güvenli ve izlenebilir altyapı standardı."
             },
             {
                 "icon": "backup",
                 "label": "Yedekleme, DR & Operasyon",
-                "text": "Veeam, Acronis ve Arcserve ile backup, replikasyon, restore, failover/failback ve RTO/RPO odaklı DR senaryoları. Zabbix, PRTG, SolarWinds, vROps ve OpManager ile kapasite, servis sağlığı, log, alarm ve operasyonel görünürlük yönetimi."
+                "text": "Veeam, Acronis ve Arcserve ile backup, replikasyon, failover/failback ve RTO/RPO odaklı DR senaryoları. Zabbix, PRTG, SolarWinds, vROps ve OpManager ile host, VM, storage ve network metriklerinin merkezi izlenmesi."
             }
         ],
         "experienceTitle": "Deneyim",
@@ -409,13 +428,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 "start": "2025-01",
                 "end": null,
                 "duties": [
-                    "MetaTrader 5 üretim platformunda Trade/History/Access bileşenleri, Windows/Linux sunucu katmanı, servis bağımlılıkları ve günlük platform sağlığı için uçtan uca operasyon sorumluluğu.",
-                    "VMware/vCenter üzerinde MT5 ilişkili VM kaynakları, CPU/RAM/disk kapasitesi, datastore kullanımı, snapshot/backup ön kontrolleri ve bakım penceresi doğrulamaları.",
-                    "Storage kapasitesi, disk büyümesi, log path kullanımı, servis çalışma dizinleri ve kritik uygulama klasörleri için izleme, alarm ve kapasite planlama standardı.",
-                    "Sembol, grup, komisyon, swap, markup, tick size, session, margin/leverage/stop-out ve 2FA parametrelerinde kontrollü değişiklik, test, kayıt ve rollback disiplini.",
-                    "LP/bridge entegrasyonlarında fiyat akışı, market depth (DOM), latency, stale quote, rejection/fill davranışı, order routing ve bağlantı sürekliliği kontrolleri.",
-                    "SPK/TSPB uyumlu platform konfigürasyonu, düzenli raporlama, audit hazırlığı, değişiklik kayıtları ve operasyonel kanıt üretimi.",
-                    "Monitoring, incident yönetimi, kök neden analizi, tedarikçi koordinasyonu ve canlı platformda stabilite/izlenebilirlik/kesintisizlik odağı."
+                    "2 veri merkezi üzerinde MT5 production-backup mimarisinin Windows/Linux sunucu katmanı, servis dizinleri, log path, VM kaynakları ve datastore kapasitesiyle birlikte operasyonel sahipliği.",
+                    "Sembol, grup, komisyon, swap, markup, tick size, session ve risk parametrelerinde controlled change, ön doğrulama, bakım penceresi ve rollback disiplininin işletilmesi.",
+                    "SPK/TSPB uyumlu platform konfigürasyonu, düzenli raporlama, audit hazırlığı ve değişiklik kayıtlarının operasyonel takibi.",
+                    "LP/bridge entegrasyonlarında fiyat akışı, DOM, latency, rejection/fill davranışı, aggregation/priority routing ve sembol mapping sürekliliğinin izlenmesi.",
+                    "CFD, FX, spot ve vadeli ürünlerde ürün yaşam döngüsü, session değişiklikleri, margin/leverage/stop-out parametreleri ve işlem koşullarının kontrollü güncellenmesi.",
+                    "Monitoring, kaynak kullanımı, backup/snapshot ön kontrolleri ve platform/LP tedarikçileriyle teknik koordinasyon."
                 ]
             },
             {
@@ -424,13 +442,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 "start": "2023-12",
                 "end": "2025-01",
                 "duties": [
-                    "Yeni sunucu provisioning ve rebuild süreçlerinde donanım hazırlığı, işletim sistemi kurulumu, servis bağımlılıkları, disk/dizin standardı ve platform baseline konfigürasyonu.",
-                    "Hypervisor migration çalışmalarında VM envanteri, kaynak analizi, downtime planı, servis bağımlılıkları, migration sonrası health check ve performans doğrulama adımları.",
-                    "MT4/MT5 platformlarında kurulum, lisanslama, sürüm takibi, plugin/manager bileşenleri, servis kontrolü ve operasyonel konfigürasyon bütünlüğü.",
-                    "Günlük health check kapsamında CPU/RAM/disk kullanımı, Windows servisleri, sistem/uygulama logları, backup job sonuçları ve kritik alarm durumları.",
-                    "İşletim sistemi patch/upgrade, yönetim araçları, güvenlik kontrolleri, erişim denetimi ve maintenance window sonrası doğrulama prosedürleri.",
-                    "Backup rotasyonu, recovery media, dosya sistemi koruması, restore edilebilirlik kontrolleri ve operasyonel süreklilik için temel geri dönüş senaryoları.",
-                    "Performans tuning, kapasite iyileştirme, donanım yükseltme, arıza kurtarma ve ekipler arası teknik koordinasyon."
+                    "Yeni sunucu kurulumları ve rebuild süreçlerinde donanım, servis, storage, dizin yapısı, OS baseline ve temel platform konfigürasyonlarının kurumsal standarda alınması.",
+                    "Günlük health check kapsamında donanım sağlığı, kaynak kullanımı, kritik servisler, sistem/uygulama logları ve zamanlanmış yedekleme sonuçlarının doğrulanması.",
+                    "OS patch, upgrade ve yönetim aracı güncellemelerinde maintenance window, güvenlik kontrolü, erişim denetimi ve bakım sonrası servis validasyonu.",
+                    "Backup rotasyonu, recovery media, dosya sistemi koruması ve operasyonel süreklilik için temel geri dönüş senaryoları.",
+                    "Performans tuning, kapasite iyileştirme, donanım yükseltme, arıza kurtarma ve ekipler arası teknik koordinasyonla servis kesinti riskinin azaltılması.",
+                    "Hypervisor migration projeleri ve MT4/MT5 platform yönetiminde kurulum, lisanslama, versiyon takibi ve otomasyon iyileştirmelerine teknik katkı."
                 ]
             },
             {
@@ -439,11 +456,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 "start": "2023-02",
                 "end": "2023-12",
                 "duties": [
-                    "VMware vCenter, ESXi, NSX, vROps, Cloud Director ve Cloud Director Availability bileşenlerinde tenant, cluster, host ve servis sürekliliği operasyonları.",
-                    "vSphere HA/DRS, resource placement, cluster kapasitesi, workload dağılımı, datastore kullanımı ve host bakım modları için operasyonel optimizasyon.",
-                    "ESXi, vCenter, vROps, host firmware ve storage firmware güncellemelerinde planlama, uygulama, rollback hazırlığı ve bakım sonrası validasyon.",
+                    "VMware vCenter, ESXi, NSX ve vROps bileşenlerinde cluster, host, datastore ve servis sürekliliği operasyonları.",
+                    "vSphere HA/DRS, resource placement, cluster kapasitesi, workload dağılımı, datastore kullanımı ve host bakım modlarıyla kapasite dengesinin korunması.",
+                    "ESXi, vCenter, vROps, host firmware ve storage firmware güncellemelerinde planlama, rollback hazırlığı, uygulama ve bakım sonrası validasyon.",
                     "On-premise ↔ cloud migration projelerinde kaynak keşfi, dependency analizi, network mapping, cutover planı, post-migration testleri ve performans kontrolü.",
-                    "Veeam tabanlı backup, replication, restore, failover/failback testleri ve RTO/RPO hedeflerine göre DR senaryosu doğrulaması.",
+                    "Veeam tabanlı backup, replication, failover/failback senaryoları ve RTO/RPO hedeflerine göre DR doğrulaması.",
                     "Storage/NAS altyapısında kapasite, IOPS/latency, multipath/path health, erişilebilirlik ve operasyonel sağlık kontrolleri.",
                     "vROps ve operasyonel monitoring çıktıları üzerinden kapasite trendleri, alarm analizi ve servis etkisi değerlendirmesi."
                 ]
@@ -459,8 +476,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     "HPE Primera 3PAR, NetApp 2620, IBM TS3100, HPE MSA 1040/2060, QNAP ve Synology üzerinde storage pool, LUN/datastore, NAS share ve kapasite yönetimi.",
                     "FortiGate, pfSense ve Mikrotik altyapılarında firewall policy, NAT, VLAN, routing, IPsec VPN ve erişim güvenliği konfigürasyonları.",
                     "Zabbix, PRTG, SolarWinds ve OpManager ile host, VM, network, storage, servis ve kapasite metrikleri için merkezi izleme yapısı.",
-                    "Veeam, vRanger, Acronis ve Arcserve ile backup job tasarımı, retention, restore testi, tape/NAS hedefleri ve operasyonel backup takibi.",
-                    "Hosting, domain, SSL, Office 365, Plesk, VoIP/3CX-FreePBX ve NVR altyapılarında kurulum, bakım ve incident desteği."
+                    "Veeam, vRanger, Acronis ve Arcserve ile backup planı, retention, tape/NAS hedefleri ve operasyonel yedekleme takibi.",
+                    "Hosting, domain, SSL, Office 365, Plesk, VoIP/3CX-FreePBX ve NVR altyapılarında kurulum, bakım ve operasyonel destek."
                 ]
             },
             {
@@ -470,8 +487,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 "end": "2022-09",
                 "duties": [
                     "Finans sektörü müşterileri için 7/24 çalışan sistem ve trading altyapılarında mimari tasarım, kurulum standardı, bakım planı ve operasyon modeli.",
-                    "MetaTrader 4/5 platformlarında sunucu kurulumu, servis konfigürasyonu, Manager erişimleri, log takibi, platform sağlığı ve günlük operasyon kontrolleri.",
-                    "Dedicated sunucu sanallaştırma, Hyper-V/VMware kurulumu, VM kaynak planlaması, Windows Server rolleri ve servis bağımlılıkları için teknik uygulama standardı.",
+                    "MetaTrader 4/5 platformlarında sunucu kurulumu, servis konfigürasyonu, Manager erişimleri, platform sağlığı ve günlük operasyon kontrolleri.",
+                    "Dedicated sunucu sanallaştırma, Hyper-V/VMware kurulumu, VM kaynak planlaması, Windows Server rolleri ve servis bağımlılıklarında standart kurulum yaklaşımı.",
                     "RAID/Hot Spare yapılandırmaları, iDRAC/iLO kontrolleri, firmware/bakım operasyonları, disk sağlığı ve donanım arıza senaryoları.",
                     "AD, DHCP, DNS, LAN/WAN, VLAN, firewall, VPN, VoIP, IP santral ve IP telefon altyapılarında erişim, yetki ve sorun giderme kapsamı.",
                     "Veeam backup/replication, Docker üzerinde Zabbix, Azure/AWS sunucu kurulumları ve OpManager monitoring ile izlenebilirlik ve DR hazırlığı.",
@@ -488,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "HPE 1920S switch altyapısında VLAN, port erişimi, uplink düzeni ve temel switching operasyonları; Kaspersky Endpoint Security Cloud ile uç nokta güvenliği.",
                     "HPE ProLiant DL380 Gen10 üzerinde Windows Server 2016 Datacenter, Hyper-V, AD, DHCP, DNS ve file server rolleri için kurulum standardı.",
                     "Fiziksel sunucuların VHDX formatına dönüştürülmesi, Hyper-V ortamına P2V geçişi, VM kaynak planlaması ve migration sonrası servis doğrulaması.",
-                    "Veeam backup job takibi, retention, restore edilebilirlik kontrolü ve firewall configuration backup süreçleri.",
+                    "Veeam backup planı, retention, yedek bütünlüğü ve firewall configuration backup süreçleri.",
                     "Domain DNS kayıtları, MX/TXT/A kayıt yönetimi, SSL sertifikaları, WordPress/web hosting ve Office 365 Online Exchange operasyonları.",
                     "FreePBX VoIP altyapısı, donanım/yazılım satınalma, envanter, destek ekibi koordinasyonu ve kullanıcı erişim süreçleri."
                 ]
@@ -502,7 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "Kaspersky Admin Center, Active Directory ve Exchange Server 2013/2016 ortamlarında kullanıcı yaşam döngüsü, policy, mailbox ve erişim operasyonları.",
                     "macOS, Windows, iOS ve Android platformlarında VIP/C-level kullanıcılar için cihaz, yazılım, erişim, e-posta ve güvenlik sorunları.",
                     "3CX telefon sistemi, TCP/IP, VPN, DHCP, DNS ve file server altyapılarında servis sürekliliği, erişim kontrolü ve sorun giderme kapsamı.",
-                    "Uluslararası ofisler için Jira/ticket sistemi ve TeamViewer üzerinden SLA odaklı remote support, incident sınıflandırma ve eskalasyon takibi.",
+                    "Uluslararası ofisler için Jira/ticket sistemi ve TeamViewer üzerinden SLA odaklı remote support, talep sınıflandırma ve eskalasyon takibi.",
                     "Switch, router, access point, kablolama, storage ve VMware ortamlarında kapasite, bağlantı, donanım sağlığı ve temel performans analizi.",
                     "MetaTrader 4/5, Manager, SQL Server, MySQL, Adobe ürünleri ve Office 365 için kurulum, lisanslama, versiyon takibi ve uygulama dağıtım süreçleri.",
                     "Acronis/Ghost imajlama, toplu PC deployment, IT envanteri, donanım tedariki, LiveChat destek ürünü ve destek ekibi operasyonları."
@@ -518,7 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "82 mağazada uzaktan yazılım kurulumu, çevre donanım desteği, IP/network ayarları, kasa/terminal bağlantıları ve arıza takibi.",
                     "Samsung tablet, NCR kasa ve Motorola el terminali gibi mağaza operasyon cihazlarında donanım kontrolü, yazılım problemi ayrıştırması ve tedarikçi koordinasyonu.",
                     "Kullanıcı cihaz değişimlerinde profil/veri yedekleme, Acronis/Ghost imajlama, standart kurulum paketi ve envanter güncelleme süreçleri.",
-                    "Help desk çağrı yönetimi, incident önceliklendirme, talep/şikayet yönlendirme ve mağaza operasyon ekipleriyle teknik koordinasyon."
+                    "Help desk çağrı yönetimi, talep önceliklendirme, talep/şikayet yönlendirme ve mağaza operasyon ekipleriyle teknik koordinasyon."
                 ]
             },
             {
@@ -553,7 +570,30 @@ document.addEventListener('DOMContentLoaded', () => {
         "connectLine": "",
         "notesLinkText": "Teknik Notlar",
         "topologyLinkText": "Topoloji",
-        "footerLine": ""
+        "footerLine": "",
+        "coreTitle": "Temel Uzmanlık Alanları",
+        "coreItems": [
+            {
+                "label": "Trading Platform",
+                "title": "MetaTrader 5 Production Platform",
+                "text": "Trade, History, Access, Backup ve Manager servisleri; sembol, grup, session, markup, swap, margin, leverage ve stop-out parametreleriyle production ortam yönetimi."
+            },
+            {
+                "label": "Liquidity & Bridge",
+                "title": "Bridge & Liquidity Provider Integrations",
+                "text": "FXCubic bridge, FIX bağlantıları, LP fiyat akışı, symbol mapping, aggregation/priority routing, DOM, latency ve trade/order testleri."
+            },
+            {
+                "label": "Infrastructure",
+                "title": "VMware, HA/DR ve Sunucu Altyapısı",
+                "text": "Fiziksel host, RAID/storage, ESXi, vCenter, HA/DRS, VM provisioning, datastore, backup/replication ve DR hazırlığı."
+            },
+            {
+                "label": "Operations & Compliance",
+                "title": "Trading Operasyonu ve Regülasyon Uyumu",
+                "text": "SPK/TSPB uyumlu platform konfigürasyonu, MT5 pluginleri, transaction/reporting çıktıları, audit hazırlığı ve değişiklik kontrolü."
+            }
+        ]
     },
     "en": {
         "langBtn": "TR",
@@ -562,6 +602,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "sidebarBio": "Over fourteen years of experience across system, network, virtualization, cloud, data-center and trading-platform operations.",
         "navLabels": [
             "What I Do",
+            "Core Expertise",
             "Experience",
             "Education",
             "Connect"
@@ -592,22 +633,22 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 "icon": "trading",
                 "label": "Trading Infrastructure",
-                "text": "End-to-end technical ownership of MetaTrader 5 production, including platform services, Windows/Linux server layer, VM resources, storage capacity, monitoring, and log health. Controlled change management for symbols, groups, commissions, swaps, markups, tick sizes, sessions, and risk parameters; pricing, DOM, latency, rejection/fill behavior, and order-routing continuity across LP/bridge integrations."
+                "text": "End-to-end technical ownership of MetaTrader 5 production, including platform services, Windows/Linux server layer, VM resources, storage capacity, and monitoring scope. Controlled change management for symbols, groups, commissions, swaps, markups, tick sizes, sessions, and risk parameters; pricing, DOM, latency, rejection/fill behavior, and order-routing continuity across FXCubic/LP bridge integrations."
             },
             {
                 "icon": "cloud",
                 "label": "Virtualization & Cloud",
-                "text": "Hands-on experience across VMware vSphere, ESXi, vCenter, NSX, vROps, Hyper-V, Proxmox, and Nutanix, covering host provisioning, datastore/LUN usage, cluster capacity, HA/DRS, snapshot/backup pre-checks, migrations, and resource placement. Azure/AWS builds shaped by cost, performance, availability, and operational sustainability."
+                "text": "Hands-on experience across VMware vSphere, ESXi, vCenter, NSX, vROps, Hyper-V, Proxmox, and Nutanix, covering host provisioning, datastore/LUN usage, cluster capacity, HA/DRS, snapshot/backup pre-checks, migrations, and resource placement. Azure/AWS builds shaped by cost, performance, and availability."
             },
             {
                 "icon": "shield",
                 "label": "Network & Security",
-                "text": "Firewall, NAT, IPsec site-to-site VPN and client VPN architecture across FortiGate, Mikrotik and pfSense. Secure and observable infrastructure standards across VLAN, DNS, DHCP, NTP, certificate management, endpoint security and access control."
+                "text": "Firewall, NAT, IPsec site-to-site VPN and client VPN architecture across FortiGate, Mikrotik and pfSense. Secure and observable infrastructure standards across VLAN, DNS, DHCP, NTP, endpoint security and access control."
             },
             {
                 "icon": "backup",
                 "label": "Backup, DR & Operations",
-                "text": "Backup, replication, restore, failover/failback and RTO/RPO-driven DR scenarios with Veeam, Acronis and Arcserve. Capacity, service health, log, alert and operational visibility management with Zabbix, PRTG, SolarWinds, vROps and OpManager."
+                "text": "Backup, replication, failover/failback and RTO/RPO-driven DR scenarios with Veeam, Acronis and Arcserve. Central monitoring of host, VM, storage and network metrics with Zabbix, PRTG, SolarWinds, vROps and OpManager."
             }
         ],
         "experienceTitle": "Experience",
@@ -619,13 +660,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 "start": "2025-01",
                 "end": null,
                 "duties": [
-                    "End-to-end operations for the MetaTrader 5 production platform, including Trade/History/Access components, Windows/Linux server layer, service dependencies, and daily platform health.",
-                    "VMware/vCenter oversight for MT5-related VM resources, CPU/RAM/disk capacity, datastore usage, snapshot/backup pre-checks, and maintenance-window validation.",
-                    "Monitoring and capacity planning for storage usage, disk growth, log paths, service working directories, and critical application folders.",
-                    "Controlled change, testing, documentation, and rollback discipline for symbols, groups, commissions, swaps, markups, tick sizes, sessions, margin/leverage/stop-out, and 2FA parameters.",
-                    "LP/bridge integration checks across pricing feeds, market depth (DOM), latency, stale quotes, rejection/fill behavior, order routing, and connection continuity.",
-                    "CMB/TSPB-compliant platform configuration, recurring reporting, audit readiness, change records, and operational evidence management.",
-                    "Monitoring, incident management, root-cause analysis, vendor coordination, and a production focus on stability, observability, and continuity."
+                    "Operational ownership of the MT5 production-backup architecture across a 2-data-center model, including Windows/Linux server layers, service paths, log paths, VM resources, and datastore capacity.",
+                    "Controlled change, pre-validation, maintenance-window discipline, and rollback handling for symbols, groups, commissions, swaps, markups, tick sizes, sessions, and risk parameters.",
+                    "CMB/TSPB-compliant platform configuration, recurring reporting, audit readiness, and operational tracking of traceable change records.",
+                    "LP/bridge integration monitoring across pricing flow, DOM, latency, rejection/fill behavior, aggregation/priority routing, and symbol mapping continuity.",
+                    "Controlled updates for CFD, FX, spot, and futures product lifecycles, session changes, margin/leverage/stop-out parameters, and trading conditions.",
+                    "Monitoring, resource usage, backup/snapshot pre-checks, and technical coordination with platform and LP vendors."
                 ]
             },
             {
@@ -634,13 +674,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 "start": "2023-12",
                 "end": "2025-01",
                 "duties": [
-                    "Server provisioning and rebuild baseline covering hardware preparation, OS installation, service dependencies, disk/directory standards, and platform configuration.",
-                    "Hypervisor migration work across VM inventory, resource analysis, downtime planning, service dependencies, post-migration health checks, and performance validation.",
-                    "MT4/MT5 platform administration covering installation, licensing, version tracking, plugin/manager components, service checks, and configuration integrity.",
-                    "Daily health checks for CPU/RAM/disk usage, Windows services, system/application logs, backup job results, and critical alarm states.",
-                    "Maintenance-window procedures for OS patching/upgrades, administrative tooling, security checks, access review, and post-change validation.",
-                    "Backup rotation, recovery media, file-system protection, restore-readiness checks, and baseline recovery scenarios for operational continuity.",
-                    "Performance tuning, capacity improvements, hardware upgrades, failure recovery, and cross-team technical coordination."
+                    "Corporate-standard server provisioning and rebuild baseline across hardware, services, storage, directory structure, OS baseline, and core platform configuration.",
+                    "Daily health checks for hardware state, resource usage, critical services, system/application logs, and scheduled backup results.",
+                    "Maintenance-window execution for OS patching, upgrades, administrative tools, security checks, access review, and post-maintenance service validation.",
+                    "Backup rotation, recovery media, file-system protection, and fallback scenarios for operational continuity.",
+                    "Performance tuning, capacity improvement, hardware upgrades, fault recovery, and cross-team technical coordination to reduce service-disruption risk.",
+                    "Technical contribution to hypervisor migration projects and MT4/MT5 platform administration, including deployment, licensing, version tracking, and automation improvements."
                 ]
             },
             {
@@ -649,13 +688,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 "start": "2023-02",
                 "end": "2023-12",
                 "duties": [
-                    "Operational coverage for VMware vCenter, ESXi, NSX, vROps, Cloud Director, and Cloud Director Availability across tenants, clusters, hosts, and service continuity.",
-                    "Optimization of vSphere HA/DRS, resource placement, cluster capacity, workload distribution, datastore usage, and host maintenance-mode workflows.",
-                    "Planning, execution, rollback preparation, and post-maintenance validation for ESXi, vCenter, vROps, host firmware, and storage firmware updates.",
-                    "On-premise ↔ cloud migration work covering discovery, dependency analysis, network mapping, cutover planning, post-migration testing, and performance checks.",
-                    "Veeam-based backup, replication, restore, failover/failback testing, and DR validation against RTO/RPO targets.",
-                    "Storage/NAS health checks across capacity, IOPS/latency, multipath/path health, availability, and operational status.",
-                    "Capacity trends, alarm analysis, and service-impact review using vROps and operational monitoring outputs."
+                    "Cluster, host and service-continuity operations across VMware vCenter, ESXi, NSX, vROps and vMotion/migration scope.",
+                    "Capacity balance through vSphere HA/DRS, resource placement, cluster capacity, workload distribution, datastore usage, and host maintenance modes.",
+                    "Planning, rollback preparation, execution, and post-maintenance validation for ESXi, vCenter, vROps, host firmware, and storage firmware updates.",
+                    "Source discovery, dependency analysis, network mapping, cutover planning, post-migration testing, and performance checks in on-premise ↔ cloud migration projects.",
+                    "Veeam-based backup, replication, failover/failback scenarios, and DR validation against RTO/RPO targets.",
+                    "Capacity, IOPS/latency, multipath/path health, availability, and operational health checks across storage/NAS infrastructure.",
+                    "Capacity trend analysis, alarm review, and service-impact assessment based on vROps and operational monitoring outputs."
                 ]
             },
             {
@@ -665,12 +704,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 "end": "2023-02",
                 "duties": [
                     "Provisioning, iLO/iDRAC access, firmware/component tracking, capacity planning, and hardware lifecycle operations across HPE, Dell, and Blade server infrastructure.",
-                    "Cluster deployment, VM provisioning, migration, snapshot handling, and troubleshooting across VMware ESXi/vCenter, Hyper-V, Proxmox, and Nutanix platforms.",
+                    "Cluster deployment, VM provisioning, migration, snapshot, and troubleshooting across VMware ESXi/vCenter, Hyper-V, Proxmox, and Nutanix platforms.",
                     "Storage pool, LUN/datastore, NAS share, and capacity management across HPE Primera 3PAR, NetApp 2620, IBM TS3100, HPE MSA 1040/2060, QNAP, and Synology.",
-                    "Firewall policy, NAT, VLAN, routing, IPsec VPN, and access-security configuration across FortiGate, pfSense, and Mikrotik environments.",
-                    "Central monitoring for host, VM, network, storage, service, and capacity metrics using Zabbix, PRTG, SolarWinds, and OpManager.",
-                    "Backup job design, retention, restore testing, tape/NAS targets, and operational backup follow-up with Veeam, vRanger, Acronis, and Arcserve.",
-                    "Installation, maintenance, and incident support across hosting, domain, SSL, Office 365, Plesk, VoIP/3CX-FreePBX, and NVR infrastructure."
+                    "Firewall policy, NAT, VLAN, routing, IPsec VPN, and access-security configurations on FortiGate, pfSense, and Mikrotik infrastructure.",
+                    "Central monitoring coverage for host, VM, network, storage, service, and capacity metrics with Zabbix, PRTG, SolarWinds, and OpManager.",
+                    "Backup planning, retention, tape/NAS targets, and operational backup follow-up with Veeam, vRanger, Acronis, and Arcserve.",
+                    "Deployment, maintenance, and operational support across hosting, domain, SSL, Office 365, Plesk, VoIP/3CX-FreePBX, and NVR infrastructure."
                 ]
             },
             {
@@ -679,13 +718,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 "start": "2020-08",
                 "end": "2022-09",
                 "duties": [
-                    "Architecture, deployment standards, maintenance planning, and operating model for 24/7 systems and trading infrastructure serving financial-sector clients.",
-                    "MetaTrader 4/5 server installation, service configuration, Manager access, log tracking, platform health, and daily operational checks.",
-                    "Dedicated server virtualization, Hyper-V/VMware deployment, VM resource planning, Windows Server roles, and service-dependency standards.",
-                    "RAID/hot-spare configuration, iDRAC/iLO checks, firmware/maintenance operations, disk health, and hardware-failure scenarios.",
-                    "Access, permissions, and troubleshooting across AD, DHCP, DNS, LAN/WAN, VLAN, firewall, VPN, VoIP, IP-PBX, and IP phone infrastructure.",
-                    "Observability and DR readiness through Veeam backup/replication, Zabbix on Docker, Azure/AWS server builds, and OpManager monitoring.",
-                    "Technical planning and field implementation for domain/DNS records, SSL certificates, Office 365, Zoho CRM, CCTV/network/cabinet/switch/router/AP projects."
+                    "Architecture design, deployment standards, maintenance planning, and operating model for 24/7 system and trading infrastructure serving financial-sector clients.",
+                    "Server deployment, service configuration, Manager access, platform health checks, and daily operations for MetaTrader 4/5 environments.",
+                    "Dedicated-server virtualization, Hyper-V/VMware deployment, VM resource planning, Windows Server roles, and service-dependency baselines.",
+                    "RAID/Hot Spare configuration, iDRAC/iLO checks, firmware/maintenance operations, disk health, and hardware-failure scenarios.",
+                    "Access, permission, and troubleshooting coverage across AD, DHCP, DNS, LAN/WAN, VLAN, firewalls, VPN, VoIP, IP-PBX, and IP phones.",
+                    "Observability and DR readiness through Veeam backup/replication, Docker-based Zabbix, Azure/AWS server deployment, and OpManager monitoring.",
+                    "Technical planning and field implementation for domain/DNS records, SSL certificates, Office 365, Zoho CRM, CCTV, network cabinets, switches, routers, and access points."
                 ]
             },
             {
@@ -698,7 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "VLAN, port access, uplink layout, and switching operations on HPE 1920S infrastructure; endpoint security through Kaspersky Endpoint Security Cloud.",
                     "Installation baseline for Windows Server 2016 Datacenter, Hyper-V, AD, DHCP, DNS, and file-server roles on HPE ProLiant DL380 Gen10 hardware.",
                     "Physical-to-virtual conversion into VHDX, P2V migration into Hyper-V, VM resource planning, and post-migration service validation.",
-                    "Veeam backup job follow-up, retention, restore-readiness checks, and firewall configuration backup processes.",
+                    "Veeam backup planning, retention, backup integrity checks, and firewall configuration backup processes.",
                     "Domain DNS records, MX/TXT/A record management, SSL certificates, WordPress/web hosting, and Office 365 Online Exchange operations.",
                     "FreePBX VoIP infrastructure, hardware/software procurement, inventory, support-team coordination, and user-access processes."
                 ]
@@ -724,11 +763,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 "start": "2015-02",
                 "end": "2016-06",
                 "duties": [
-                    "Windows client, Office, email, printer/scanner, phone, peripheral, and baseline network support operations for 200+ users.",
-                    "Remote software installation, peripheral support, IP/network settings, register/terminal connectivity, and incident follow-up across 82 stores.",
-                    "Hardware checks, software issue triage, and vendor coordination for Samsung tablets, NCR registers, and Motorola handheld terminals.",
-                    "Profile/data backup, Acronis/Ghost imaging, standard build package, and inventory updates during user-device replacements.",
-                    "Help desk call handling, incident prioritization, request/complaint routing, and technical coordination with store operations teams."
+                    "Support operations for 200+ users across Windows clients, Office, email, printers/scanners, phones, peripherals, and basic network issues.",
+                    "Remote software installation, peripheral support, IP/network settings, POS/terminal connectivity, and issue follow-up across 82 stores.",
+                    "Hardware checks, software-issue triage, and vendor coordination for store operation devices including Samsung tablets, NCR registers, and Motorola handheld terminals.",
+                    "Profile/data backup, Acronis/Ghost imaging, standard deployment packages, and inventory updates during user device replacement.",
+                    "Help desk ticket handling, request prioritization, request/complaint routing, and technical coordination with store operation teams."
                 ]
             },
             {
@@ -740,7 +779,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "Windows client deployments, basic Linux installations, driver/package preparation, domain/network access, and user-profile configuration.",
                     "Academic and administrative software installation, license/activation checks, lab image baseline, and application compatibility validation.",
                     "Hardware maintenance, disk/RAM checks, peripheral connectivity, and operational continuity across computer labs and Mac workstations.",
-                    "Campus support for IP connectivity, basic DNS/DHCP checks, user access, printer connections, and daily operational incidents."
+                    "Campus support for IP connectivity, basic DNS/DHCP checks, user access, printer connections, and daily operational issues."
                 ]
             }
         ],
@@ -763,7 +802,30 @@ document.addEventListener('DOMContentLoaded', () => {
         "connectLine": "",
         "notesLinkText": "Technical Notes",
         "topologyLinkText": "Topology",
-        "footerLine": ""
+        "footerLine": "",
+        "coreTitle": "Core Expertise",
+        "coreItems": [
+            {
+                "label": "Trading Platform",
+                "title": "MetaTrader 5 Production Platform",
+                "text": "Production operations for Trade, History, Access, Backup and Manager services, including symbols, groups, sessions, markup, swaps, margin, leverage and stop-out parameters."
+            },
+            {
+                "label": "Liquidity & Bridge",
+                "title": "Bridge & Liquidity Provider Integrations",
+                "text": "FXCubic bridge, FIX connectivity, LP pricing flow, symbol mapping, aggregation/priority routing, DOM, latency and trade/order validation."
+            },
+            {
+                "label": "Infrastructure",
+                "title": "VMware, HA/DR and Server Infrastructure",
+                "text": "Physical hosts, RAID/storage, ESXi, vCenter, HA/DRS, VM provisioning, datastore, backup/replication and DR readiness."
+            },
+            {
+                "label": "Operations & Compliance",
+                "title": "Trading Operations and Regulatory Compliance",
+                "text": "CMB/TSPB-compliant platform configuration, MT5 plugins, transaction/reporting outputs, audit readiness and controlled change management."
+            }
+        ]
     }
 };
 
@@ -788,10 +850,13 @@ document.addEventListener('DOMContentLoaded', () => {
     nav4: document.getElementById('nav-4'),
     nav5: document.getElementById('nav-5'),
     nav6: document.getElementById('nav-6'),
+    nav7: document.getElementById('nav-7'),
     sidebarMeta: document.getElementById('sidebar-meta'),
     sidebarSocial: document.getElementById('sidebar-social'),
     widTitle: document.getElementById('wid-title'),
     domainRows: document.getElementById('domain-rows'),
+    coreTitle: document.getElementById('core-title'),
+    coreCards: document.getElementById('core-cards'),
     experienceTitle: document.getElementById('experience-title'),
     expTabs: document.getElementById('exp-tabs'),
     expPanel: document.getElementById('exp-panel'),
@@ -870,9 +935,10 @@ document.addEventListener('DOMContentLoaded', () => {
     els.nav1.textContent = d.navLabels[0];
     els.nav2.textContent = d.navLabels[1];
     els.nav3.textContent = d.navLabels[2];
-    els.nav4.textContent = d.navLabels[3];
+    els.nav4.textContent = d.topologyLinkText;
     els.nav5.textContent = d.notesLinkText;
-    els.nav6.textContent = d.topologyLinkText;
+    els.nav6.textContent = d.navLabels[3];
+    els.nav7.textContent = d.navLabels[4];
 
     els.sidebarMeta.innerHTML = '';
     d.sidebarMeta.forEach(m=>{ const p=document.createElement('div'); p.textContent=m; els.sidebarMeta.appendChild(p); });
@@ -893,10 +959,22 @@ document.addEventListener('DOMContentLoaded', () => {
       els.domainRows.appendChild(row);
     });
 
+    els.coreTitle.textContent = d.coreTitle;
+    els.coreCards.innerHTML = '';
+    d.coreItems.forEach(item=>{
+      const card = document.createElement('div'); card.className = 'profile-card';
+      const kicker = document.createElement('div'); kicker.className = 'card-kicker'; kicker.textContent = item.label;
+      const title = document.createElement('div'); title.className = 'card-title'; title.textContent = item.title;
+      const text = document.createElement('div'); text.className = 'card-text'; text.textContent = item.text;
+      card.append(kicker, title, text);
+      els.coreCards.appendChild(card);
+    });
+
     els.experienceTitle.textContent = d.experienceTitle;
     activeExpIndex = 0;
     renderExpTabs(lang);
     renderExpPanel(lang, activeExpIndex);
+
 
     els.educationTitle.textContent = d.educationTitle;
     els.eduList.innerHTML = '';
@@ -969,7 +1047,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const d = content[currentLang];
       const cmds = [];
       d.navLabels.forEach((label, i)=>{
-        const targets = ['what-i-do','experience','education','connect'];
+        const targets = ['what-i-do','core-expertise','experience','education','connect'];
         cmds.push({ label: (currentLang==='tr' ? 'Git: ' : 'Go to: ') + label, icon:'nav', tag:'↵', action:()=>{
           document.getElementById(targets[i]).scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth'});
         }});
@@ -981,8 +1059,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }});
       cmds.push({ label:'LinkedIn', icon:'link', tag:'↗', action:()=>{ window.open('https://www.linkedin.com/in/coskun-parlar-411906137/', '_blank', 'noopener'); }});
       cmds.push({ label:'GitHub', icon:'link', tag:'↗', action:()=>{ window.open('https://github.com/coskunparlar', '_blank', 'noopener'); }});
-      cmds.push({ label: currentLang==='tr' ? 'Teknik Notlar' : 'Technical Notes', icon:'doc', tag:'↗', action:()=>{ window.location.href = 'notes.html'; }});
       cmds.push({ label: currentLang==='tr' ? 'Topoloji' : 'Topology', icon:'doc', tag:'↗', action:()=>{ window.location.href = 'topology.html'; }});
+      cmds.push({ label: currentLang==='tr' ? 'Teknik Notlar' : 'Technical Notes', icon:'doc', tag:'↗', action:()=>{ window.location.href = 'notes.html'; }});
       cmds.push({ label: currentLang==='tr' ? 'PDF olarak yazdır' : 'Print as PDF', icon:'print', tag:'⌘P', action: handlePrint });
       return cmds;
     }
