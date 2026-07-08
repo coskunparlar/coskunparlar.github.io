@@ -288,6 +288,7 @@
       <a href="#education" data-target="education"><span id="nav-3"></span></a>
       <a href="#connect" data-target="connect"><span id="nav-4"></span></a>
       <a href="notes.html"><span id="nav-5"></span></a>
+      <a href="topology.html"><span id="nav-6"></span></a>
     </nav>
     <div class="sidebar-meta" id="sidebar-meta"></div>
     <div class="sidebar-social" id="sidebar-social"></div>
@@ -551,6 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "connectTitle": "Bağlantılar",
         "connectLine": "",
         "notesLinkText": "Teknik Notlar",
+        "topologyLinkText": "Topoloji",
         "footerLine": "Coşkun Parlar — İstanbul"
     },
     "en": {
@@ -760,6 +762,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "connectTitle": "Connect",
         "connectLine": "",
         "notesLinkText": "Technical Notes",
+        "topologyLinkText": "Topology",
         "footerLine": "Coskun Parlar — Istanbul"
     }
 };
@@ -784,6 +787,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nav3: document.getElementById('nav-3'),
     nav4: document.getElementById('nav-4'),
     nav5: document.getElementById('nav-5'),
+    nav6: document.getElementById('nav-6'),
     sidebarMeta: document.getElementById('sidebar-meta'),
     sidebarSocial: document.getElementById('sidebar-social'),
     widTitle: document.getElementById('wid-title'),
@@ -868,6 +872,7 @@ document.addEventListener('DOMContentLoaded', () => {
     els.nav3.textContent = d.navLabels[2];
     els.nav4.textContent = d.navLabels[3];
     els.nav5.textContent = d.notesLinkText;
+    els.nav6.textContent = d.topologyLinkText;
 
     els.sidebarMeta.innerHTML = '';
     d.sidebarMeta.forEach(m=>{ const p=document.createElement('div'); p.textContent=m; els.sidebarMeta.appendChild(p); });
@@ -977,6 +982,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cmds.push({ label:'LinkedIn', icon:'link', tag:'↗', action:()=>{ window.open('https://www.linkedin.com/in/coskun-parlar-411906137/', '_blank', 'noopener'); }});
       cmds.push({ label:'GitHub', icon:'link', tag:'↗', action:()=>{ window.open('https://github.com/coskunparlar', '_blank', 'noopener'); }});
       cmds.push({ label: currentLang==='tr' ? 'Teknik Notlar' : 'Technical Notes', icon:'doc', tag:'↗', action:()=>{ window.location.href = 'notes.html'; }});
+      cmds.push({ label: currentLang==='tr' ? 'Topoloji' : 'Topology', icon:'doc', tag:'↗', action:()=>{ window.location.href = 'topology.html'; }});
       cmds.push({ label: currentLang==='tr' ? 'PDF olarak yazdır' : 'Print as PDF', icon:'print', tag:'⌘P', action: handlePrint });
       return cmds;
     }
