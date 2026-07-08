@@ -297,12 +297,11 @@
     <p class="sidebar-bio" id="sidebar-bio"></p>
     <nav class="sidebar-nav" id="sidebar-nav">
       <a href="#what-i-do" data-target="what-i-do"><span id="nav-1"></span></a>
-      <a href="#core-expertise" data-target="core-expertise"><span id="nav-2"></span></a>
-      <a href="#experience" data-target="experience"><span id="nav-3"></span></a>
-      <a href="topology.html" class="external-link"><span id="nav-4"></span><svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></a>
-      <a href="notes.html" class="external-link"><span id="nav-5"></span><svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></a>
-      <a href="#education" data-target="education"><span id="nav-6"></span></a>
-      <a href="#connect" data-target="connect"><span id="nav-7"></span></a>
+      <a href="#experience" data-target="experience"><span id="nav-2"></span></a>
+      <a href="topology.html" class="external-link"><span id="nav-3"></span><svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></a>
+      <a href="notes.html" class="external-link"><span id="nav-4"></span><svg class="external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M9 7h8v8"/></svg></a>
+      <a href="#education" data-target="education"><span id="nav-5"></span></a>
+      <a href="#connect" data-target="connect"><span id="nav-6"></span></a>
     </nav>
     <div class="sidebar-meta" id="sidebar-meta"></div>
     <div class="sidebar-social" id="sidebar-social"></div>
@@ -315,10 +314,6 @@
       <div id="domain-rows"></div>
     </section>
 
-    <section class="content-section animated-section" id="core-expertise">
-      <h2 class="section-title" id="core-title"></h2>
-      <div class="card-grid" id="core-cards"></div>
-    </section>
 
     <section class="content-section animated-section" id="experience">
       <h2 class="section-title" id="experience-title"></h2>
@@ -370,7 +365,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "sidebarBio": "Finans, telekom, bulut ve veri merkezi ortamlarında 14 yılı aşkın sistem, ağ, sanallaştırma ve trading platformu deneyimi.",
         "navLabels": [
             "Ne Yapıyorum",
-            "Temel Uzmanlık Alanları",
             "Deneyim",
             "Eğitim",
             "Bağlantılar"
@@ -400,23 +394,23 @@ document.addEventListener('DOMContentLoaded', () => {
         "domains": [
             {
                 "icon": "trading",
-                "label": "Trading Altyapısı",
-                "text": "MetaTrader 5 üretim ortamında platform servisleri, Windows/Linux sunucu katmanı, VM kaynakları, storage kapasitesi ve monitoring kapsamıyla uçtan uca teknik sahiplik. Sembol, grup, komisyon, swap, markup, tick size, session ve risk parametrelerinde kontrollü değişiklik yönetimi; FXCubic/LP bridge tarafında fiyat akışı, market depth (DOM), latency, rejection/fill davranışı ve order routing sürekliliği."
+                "label": "MetaTrader 5 Production Platform",
+                "text": "Trade, History, Access, Backup ve Manager servisleri; sembol, grup, session, markup, swap, margin, leverage ve stop-out parametreleriyle production ortam yönetimi."
+            },
+            {
+                "icon": "trading",
+                "label": "Bridge & Liquidity Provider Integrations",
+                "text": "FXCubic bridge, FIX bağlantıları, LP fiyat akışı, symbol mapping, aggregation/priority routing, DOM, latency ve trade/order akışlarının kontrolü."
             },
             {
                 "icon": "cloud",
-                "label": "Sanallaştırma & Bulut",
-                "text": "VMware vSphere, ESXi, vCenter, NSX, vROps, Hyper-V, Proxmox ve Nutanix ortamlarında host provisioning, datastore/LUN kullanımı, cluster kapasitesi, HA/DRS, snapshot/backup ön kontrolleri, migration ve resource placement deneyimi. Azure/AWS kurulumlarında maliyet, performans ve erişilebilirlik dengesi."
+                "label": "VMware, HA/DR ve Sunucu Altyapısı",
+                "text": "Fiziksel host, RAID/storage, ESXi, vCenter, HA/DRS, VM provisioning, datastore, backup/replication ve DR hazırlığı."
             },
             {
                 "icon": "shield",
-                "label": "Ağ & Güvenlik",
-                "text": "FortiGate, Mikrotik ve pfSense üzerinde firewall, NAT, IPsec site-to-site VPN ve client VPN mimarileri. VLAN, DNS, DHCP, NTP, endpoint security ve erişim kontrolü tarafında güvenli ve izlenebilir altyapı standardı."
-            },
-            {
-                "icon": "backup",
-                "label": "Yedekleme, DR & Operasyon",
-                "text": "Veeam, Acronis ve Arcserve ile backup, replikasyon, failover/failback ve RTO/RPO odaklı DR senaryoları. Zabbix, PRTG, SolarWinds, vROps ve OpManager ile host, VM, storage ve network metriklerinin merkezi izlenmesi."
+                "label": "Trading Operasyonu ve Regülasyon Uyumu",
+                "text": "SPK/TSPB uyumlu platform konfigürasyonu, MT5 pluginleri, transaction/reporting çıktıları, audit hazırlığı ve değişiklik kontrolü."
             }
         ],
         "experienceTitle": "Deneyim",
@@ -570,30 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "connectLine": "",
         "notesLinkText": "Teknik Notlar",
         "topologyLinkText": "Topoloji",
-        "footerLine": "",
-        "coreTitle": "Temel Uzmanlık Alanları",
-        "coreItems": [
-            {
-                "label": "Trading Platform",
-                "title": "MetaTrader 5 Production Platform",
-                "text": "Trade, History, Access, Backup ve Manager servisleri; sembol, grup, session, markup, swap, margin, leverage ve stop-out parametreleriyle production ortam yönetimi."
-            },
-            {
-                "label": "Liquidity & Bridge",
-                "title": "Bridge & Liquidity Provider Integrations",
-                "text": "FXCubic bridge, FIX bağlantıları, LP fiyat akışı, symbol mapping, aggregation/priority routing, DOM, latency ve trade/order testleri."
-            },
-            {
-                "label": "Infrastructure",
-                "title": "VMware, HA/DR ve Sunucu Altyapısı",
-                "text": "Fiziksel host, RAID/storage, ESXi, vCenter, HA/DRS, VM provisioning, datastore, backup/replication ve DR hazırlığı."
-            },
-            {
-                "label": "Operations & Compliance",
-                "title": "Trading Operasyonu ve Regülasyon Uyumu",
-                "text": "SPK/TSPB uyumlu platform konfigürasyonu, MT5 pluginleri, transaction/reporting çıktıları, audit hazırlığı ve değişiklik kontrolü."
-            }
-        ]
+        "footerLine": ""
     },
     "en": {
         "langBtn": "TR",
@@ -602,7 +573,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "sidebarBio": "Over fourteen years of experience across system, network, virtualization, cloud, data-center and trading-platform operations.",
         "navLabels": [
             "What I Do",
-            "Core Expertise",
             "Experience",
             "Education",
             "Connect"
@@ -632,23 +602,23 @@ document.addEventListener('DOMContentLoaded', () => {
         "domains": [
             {
                 "icon": "trading",
-                "label": "Trading Infrastructure",
-                "text": "End-to-end technical ownership of MetaTrader 5 production, including platform services, Windows/Linux server layer, VM resources, storage capacity, and monitoring scope. Controlled change management for symbols, groups, commissions, swaps, markups, tick sizes, sessions, and risk parameters; pricing, DOM, latency, rejection/fill behavior, and order-routing continuity across FXCubic/LP bridge integrations."
+                "label": "MetaTrader 5 Production Platform",
+                "text": "Production operations for Trade, History, Access, Backup and Manager services, including symbols, groups, sessions, markup, swaps, margin, leverage and stop-out parameters."
+            },
+            {
+                "icon": "trading",
+                "label": "Bridge & Liquidity Provider Integrations",
+                "text": "FXCubic bridge, FIX connectivity, LP pricing flow, symbol mapping, aggregation/priority routing, DOM, latency and trade/order flow validation."
             },
             {
                 "icon": "cloud",
-                "label": "Virtualization & Cloud",
-                "text": "Hands-on experience across VMware vSphere, ESXi, vCenter, NSX, vROps, Hyper-V, Proxmox, and Nutanix, covering host provisioning, datastore/LUN usage, cluster capacity, HA/DRS, snapshot/backup pre-checks, migrations, and resource placement. Azure/AWS builds shaped by cost, performance, and availability."
+                "label": "VMware, HA/DR and Server Infrastructure",
+                "text": "Physical hosts, RAID/storage, ESXi, vCenter, HA/DRS, VM provisioning, datastore, backup/replication and DR readiness."
             },
             {
                 "icon": "shield",
-                "label": "Network & Security",
-                "text": "Firewall, NAT, IPsec site-to-site VPN and client VPN architecture across FortiGate, Mikrotik and pfSense. Secure and observable infrastructure standards across VLAN, DNS, DHCP, NTP, endpoint security and access control."
-            },
-            {
-                "icon": "backup",
-                "label": "Backup, DR & Operations",
-                "text": "Backup, replication, failover/failback and RTO/RPO-driven DR scenarios with Veeam, Acronis and Arcserve. Central monitoring of host, VM, storage and network metrics with Zabbix, PRTG, SolarWinds, vROps and OpManager."
+                "label": "Trading Operations and Regulatory Compliance",
+                "text": "CMB/TSPB-compliant platform configuration, MT5 plugins, transaction/reporting outputs, audit readiness and controlled change management."
             }
         ],
         "experienceTitle": "Experience",
@@ -802,30 +772,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "connectLine": "",
         "notesLinkText": "Technical Notes",
         "topologyLinkText": "Topology",
-        "footerLine": "",
-        "coreTitle": "Core Expertise",
-        "coreItems": [
-            {
-                "label": "Trading Platform",
-                "title": "MetaTrader 5 Production Platform",
-                "text": "Production operations for Trade, History, Access, Backup and Manager services, including symbols, groups, sessions, markup, swaps, margin, leverage and stop-out parameters."
-            },
-            {
-                "label": "Liquidity & Bridge",
-                "title": "Bridge & Liquidity Provider Integrations",
-                "text": "FXCubic bridge, FIX connectivity, LP pricing flow, symbol mapping, aggregation/priority routing, DOM, latency and trade/order validation."
-            },
-            {
-                "label": "Infrastructure",
-                "title": "VMware, HA/DR and Server Infrastructure",
-                "text": "Physical hosts, RAID/storage, ESXi, vCenter, HA/DRS, VM provisioning, datastore, backup/replication and DR readiness."
-            },
-            {
-                "label": "Operations & Compliance",
-                "title": "Trading Operations and Regulatory Compliance",
-                "text": "CMB/TSPB-compliant platform configuration, MT5 plugins, transaction/reporting outputs, audit readiness and controlled change management."
-            }
-        ]
+        "footerLine": ""
     }
 };
 
@@ -850,13 +797,10 @@ document.addEventListener('DOMContentLoaded', () => {
     nav4: document.getElementById('nav-4'),
     nav5: document.getElementById('nav-5'),
     nav6: document.getElementById('nav-6'),
-    nav7: document.getElementById('nav-7'),
     sidebarMeta: document.getElementById('sidebar-meta'),
     sidebarSocial: document.getElementById('sidebar-social'),
     widTitle: document.getElementById('wid-title'),
     domainRows: document.getElementById('domain-rows'),
-    coreTitle: document.getElementById('core-title'),
-    coreCards: document.getElementById('core-cards'),
     experienceTitle: document.getElementById('experience-title'),
     expTabs: document.getElementById('exp-tabs'),
     expPanel: document.getElementById('exp-panel'),
@@ -934,11 +878,10 @@ document.addEventListener('DOMContentLoaded', () => {
     els.sidebarBio.textContent = d.sidebarBio;
     els.nav1.textContent = d.navLabels[0];
     els.nav2.textContent = d.navLabels[1];
-    els.nav3.textContent = d.navLabels[2];
-    els.nav4.textContent = d.topologyLinkText;
-    els.nav5.textContent = d.notesLinkText;
+    els.nav3.textContent = d.topologyLinkText;
+    els.nav4.textContent = d.notesLinkText;
+    els.nav5.textContent = d.navLabels[2];
     els.nav6.textContent = d.navLabels[3];
-    els.nav7.textContent = d.navLabels[4];
 
     els.sidebarMeta.innerHTML = '';
     d.sidebarMeta.forEach(m=>{ const p=document.createElement('div'); p.textContent=m; els.sidebarMeta.appendChild(p); });
@@ -959,16 +902,6 @@ document.addEventListener('DOMContentLoaded', () => {
       els.domainRows.appendChild(row);
     });
 
-    els.coreTitle.textContent = d.coreTitle;
-    els.coreCards.innerHTML = '';
-    d.coreItems.forEach(item=>{
-      const card = document.createElement('div'); card.className = 'profile-card';
-      const kicker = document.createElement('div'); kicker.className = 'card-kicker'; kicker.textContent = item.label;
-      const title = document.createElement('div'); title.className = 'card-title'; title.textContent = item.title;
-      const text = document.createElement('div'); text.className = 'card-text'; text.textContent = item.text;
-      card.append(kicker, title, text);
-      els.coreCards.appendChild(card);
-    });
 
     els.experienceTitle.textContent = d.experienceTitle;
     activeExpIndex = 0;
@@ -1047,7 +980,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const d = content[currentLang];
       const cmds = [];
       d.navLabels.forEach((label, i)=>{
-        const targets = ['what-i-do','core-expertise','experience','education','connect'];
+        const targets = ['what-i-do','experience','education','connect'];
         cmds.push({ label: (currentLang==='tr' ? 'Git: ' : 'Go to: ') + label, icon:'nav', tag:'↵', action:()=>{
           document.getElementById(targets[i]).scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth'});
         }});
