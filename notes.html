@@ -13,11 +13,11 @@
 <meta property="og:site_name" content="Coşkun Parlar" />
 <meta property="og:url" content="https://coskunparlar.github.io/notes.html" />
 <meta property="og:title" content="Teknik Notlar — Coşkun Parlar" />
-<meta property="og:description" content="Uçtan uca trading altyapısı kurulum notları: host, storage, sanallaştırma, MetaTrader, bridge/LP, DR ve risk kontrolleri." />
+<meta property="og:description" content="Uçtan uca trading altyapısı kurulum notları: host, storage, sanallaştırma, zaman senkronizasyonu, MetaTrader 5, bridge/FIX, DR, regülasyon ve risk kontrolleri." />
 <meta property="og:image" content="https://coskunparlar.github.io/img/photo.jpg" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Teknik Notlar — Coşkun Parlar" />
-<meta name="twitter:description" content="Uçtan uca trading altyapısı kurulum notları: host, storage, sanallaştırma, MetaTrader, bridge/LP, DR ve risk kontrolleri." />
+<meta name="twitter:description" content="Uçtan uca trading altyapısı kurulum notları: host, storage, sanallaştırma, zaman senkronizasyonu, MetaTrader 5, bridge/FIX, DR, regülasyon ve risk kontrolleri." />
 <meta name="twitter:image" content="https://coskunparlar.github.io/img/photo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,6 +25,8 @@
 <style>
   :root{
     --ink:        #0a0c10;
+    --panel:      #11151c;
+    --panel-2:    #161b24;
     --border:     #232a35;
     --border-2:   #2c3441;
     --text:       #e9e6dd;
@@ -35,11 +37,13 @@
     --font-display:'Inter',Arial,Helvetica,sans-serif;
     --font-body:'Inter',Arial,Helvetica,sans-serif;
     --font-mono:'IBM Plex Mono',monospace;
-    --container: 780px;
+    --container: 840px;
     --ease: cubic-bezier(.22,.7,.2,1);
   }
   body.light-mode{
     --ink:        #f6f4ee;
+    --panel:      #ffffff;
+    --panel-2:    #f0ede5;
     --border:     #ddd8cb;
     --border-2:   #c9c3b3;
     --text:       #16181c;
@@ -48,8 +52,24 @@
     --amber:      #b3690f;
     --amber-dim:  #8f5309;
   }
+
+  /* ---- tone accents (match topology l1..l5 + risk) ---- */
+  .tone-1{--accent:#f0a940}
+  .tone-2{--accent:#c98bff}
+  .tone-3{--accent:#4da3ff}
+  .tone-4{--accent:#2fd4c4}
+  .tone-5{--accent:#4bd07f}
+  .tone-6{--accent:#ff9166}
+  body.light-mode .tone-1{--accent:#b97a13}
+  body.light-mode .tone-2{--accent:#7d3fc4}
+  body.light-mode .tone-3{--accent:#1d6fd1}
+  body.light-mode .tone-4{--accent:#0f8a80}
+  body.light-mode .tone-5{--accent:#178a4e}
+  body.light-mode .tone-6{--accent:#c2410c}
+
   *,*::before,*::after{box-sizing:border-box}
   @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important} }
+  html{scroll-behavior:smooth}
   html,body{margin:0;padding:0}
   body{background:var(--ink);color:var(--text);font-family:var(--font-body);-webkit-font-smoothing:antialiased;transition:background .35s var(--ease),color .35s var(--ease)}
   a{color:inherit;text-decoration:none}
@@ -59,6 +79,9 @@
   .wrap{max-width:var(--container);margin:0 auto;padding:0 28px}
   ::selection{background:var(--amber);color:var(--ink)}
   :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+
+  /* scroll progress */
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--amber),var(--amber-dim));z-index:200;transition:width .12s linear}
 
   .corner-controls{
     position:fixed;top:18px;right:18px;z-index:100;display:flex;gap:6px;
@@ -73,36 +96,102 @@
   .ctrl-btn:hover{color:var(--amber);background:var(--border)}
   .ctrl-btn svg{width:15px;height:15px}
 
-  header.top{padding:90px 0 50px}
+  header.top{padding:90px 0 40px}
   .back-link{
     display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:.78rem;
     color:var(--text-mute);margin-bottom:28px;transition:color .2s var(--ease);
   }
   .back-link:hover{color:var(--amber)}
-  .kicker{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-dim);margin-bottom:16px}
+  .kicker{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber-dim);margin-bottom:16px}
+  .kicker::after{content:'';height:1px;width:52px;background:var(--amber-dim);opacity:.5}
   h1.title{font-size:clamp(2rem,4.4vw,2.8rem);font-weight:700;line-height:1.1;margin-bottom:18px}
-  .lede{font-size:1.05rem;line-height:1.75;color:var(--text-dim);max-width:60ch}
+  .lede{font-size:1.05rem;line-height:1.75;color:var(--text-dim);max-width:66ch}
 
-  main{padding-bottom:100px}
-  .note{padding:44px 0;border-top:1px solid var(--border)}
-  .note:first-child{border-top:1px solid var(--border)}
-  .note-num{font-family:var(--font-mono);font-size:.74rem;color:var(--text-mute);margin-bottom:10px}
-  .note h2{font-size:1.3rem;font-weight:600;margin-bottom:16px}
-  .note p{color:var(--text-dim);font-size:.98rem;line-height:1.8;margin-bottom:14px}
-  .note p:last-child{margin-bottom:0}
+  /* hero meta row */
+  .hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-top:26px}
+  .hero-count{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-mute);white-space:nowrap}
+  .hero-sep{width:1px;height:14px;background:var(--border-2)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px}
+  .legend-item{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:.66rem;color:var(--text-dim);background:transparent;border:1px solid var(--border);border-radius:999px;padding:5px 11px;cursor:pointer;transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+  .legend-item:hover,.legend-item:focus-visible{border-color:var(--accent);color:var(--text);background:color-mix(in srgb,var(--accent) 9%,transparent)}
+  .legend-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
 
-  footer{padding:30px 0 50px;border-top:1px solid var(--border)}
+  main{padding-bottom:90px}
+
+  /* ---------- timeline ---------- */
+  .timeline{position:relative;margin-top:10px}
+  .phase{scroll-margin-top:22px}
+  .phase-label{display:flex;align-items:center;gap:12px;margin:42px 0 20px;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .phase:first-child .phase-label{margin-top:6px}
+  .phase-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent);flex:none}
+  .phase-name{white-space:nowrap}
+  .phase-line{flex:1;height:1px;min-width:20px;background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 55%,transparent),transparent)}
+  .phase-range{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;color:var(--text-mute);flex:none}
+
+  .step{position:relative;display:grid;grid-template-columns:44px 1fr;column-gap:20px;padding:0 0 24px}
+  .step-rail{position:relative;display:flex;justify-content:center}
+  .step-rail::before{content:'';position:absolute;top:46px;bottom:-24px;left:50%;transform:translateX(-50%);width:1.5px;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 38%,var(--border-2)),var(--border-2))}
+  .phase .step:last-child .step-rail::before{display:none}
+  .node-ico{position:relative;z-index:1;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 34%,transparent);background:color-mix(in srgb,var(--accent) 9%,transparent);transition:transform .2s var(--ease),background .2s var(--ease),box-shadow .2s var(--ease)}
+  .node-ico svg{width:21px;height:21px}
+  .step:hover .node-ico{transform:scale(1.05);background:color-mix(in srgb,var(--accent) 16%,transparent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 10%,transparent)}
+
+  .step-card{position:relative;border:1px solid var(--border);border-radius:14px;background:color-mix(in srgb,var(--panel) 55%,transparent);padding:15px 20px 17px;overflow:hidden;transition:border-color .25s var(--ease),transform .25s var(--ease),background .25s var(--ease)}
+  .step-card::before{content:'';position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,var(--accent),transparent 82%);opacity:.9}
+  .step:hover .step-card{border-color:color-mix(in srgb,var(--accent) 45%,var(--border));transform:translateY(-2px);background:color-mix(in srgb,var(--panel) 78%,transparent)}
+  .step-top{display:flex;align-items:center;gap:11px;margin-bottom:10px;flex-wrap:wrap}
+  .step-idx{font-family:var(--font-mono);font-size:.64rem;font-weight:600;color:var(--accent);letter-spacing:.05em;padding:2px 8px;border:1px solid color-mix(in srgb,var(--accent) 38%,transparent);border-radius:6px;background:color-mix(in srgb,var(--accent) 8%,transparent);white-space:nowrap}
+  .step-title{font-family:var(--font-display);font-size:1.06rem;font-weight:600;letter-spacing:-.01em;line-height:1.35;color:var(--text)}
+  .step-text{color:var(--text-dim);font-size:.96rem;line-height:1.8}
+  .step-text + .step-text{margin-top:12px}
+
+  /* key values strip */
+  .specs{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:15px;padding-top:14px;border-top:1px dashed var(--border)}
+  .spec{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);line-height:1.4}
+  .spec::before{content:'';width:5px;height:5px;border-radius:1.5px;background:var(--accent);opacity:.7;flex:none}
+  .spec-k{color:var(--text-mute);font-size:.58rem;letter-spacing:.09em;text-transform:uppercase}
+  .spec-v{color:var(--text);font-size:.69rem;font-weight:500}
+
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+  .chip{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.02em;color:var(--text-mute);border:1px solid var(--border-2);border-radius:999px;padding:4px 10px;background:color-mix(in srgb,var(--panel-2) 55%,transparent);transition:color .2s var(--ease),border-color .2s var(--ease)}
+  .step:hover .chip{color:var(--text-dim)}
+  .chip:hover{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 50%,transparent)}
+
+  /* ---------- closing ---------- */
+  .closing{position:relative;margin-top:20px;border:1px solid color-mix(in srgb,var(--amber) 32%,var(--border));border-radius:16px;
+    background:
+      radial-gradient(130% 120% at 0% 0%, color-mix(in srgb,var(--amber) 11%,transparent), transparent 58%),
+      color-mix(in srgb,var(--panel) 62%,transparent);
+    padding:26px 28px 28px;overflow:hidden}
+  .closing::before{content:'';position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,var(--amber),transparent 82%)}
+  .closing-top{display:flex;align-items:center;gap:13px;margin-bottom:13px}
+  .closing-ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--amber);border:1px solid color-mix(in srgb,var(--amber) 42%,transparent);background:color-mix(in srgb,var(--amber) 12%,transparent);flex:none}
+  .closing-ico svg{width:23px;height:23px}
+  .closing-label{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:3px}
+  .closing-title{font-family:var(--font-display);font-size:1.22rem;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+  .closing-text{color:var(--text-dim);font-size:1.02rem;line-height:1.85}
+  .closing .chips{margin-top:17px}
+
+  footer{padding:34px 0 54px;border-top:1px solid var(--border)}
   .footer-line{font-family:var(--font-mono);font-size:.72rem;color:var(--text-mute)}
 
   @media print{
-    .corner-controls,.back-link{display:none !important}
-    body.dark-mode,body.light-mode{--ink:#fff;--text:#000;--text-dim:#333;--text-mute:#555;--border:#bbb;--border-2:#999;--amber:#8a5500;--amber-dim:#8a5500}
+    .corner-controls,.back-link,.progress,.legend{display:none !important}
+    body.dark-mode,body.light-mode{--ink:#fff;--panel:#fff;--panel-2:#fff;--text:#000;--text-dim:#333;--text-mute:#555;--border:#bbb;--border-2:#999;--amber:#8a5500;--amber-dim:#8a5500}
     body{background:#fff !important;color:#000 !important}
+    .step{break-inside:avoid}
+    .step-rail::before{background:#999}
   }
 
   @media (max-width:640px){
     .wrap{padding:0 20px}
-    header.top{padding:78px 0 36px}
+    header.top{padding:76px 0 30px}
+    .step{grid-template-columns:38px 1fr;column-gap:14px;padding-bottom:22px}
+    .node-ico{width:38px;height:38px;border-radius:10px}
+    .node-ico svg{width:18px;height:18px}
+    .step-rail::before{top:40px}
+    .step-card{padding:14px 15px 15px}
+    .closing{padding:20px 18px 22px}
   }
 </style>
 </head>
@@ -119,6 +208,8 @@
 })();
 </script>
 
+<div class="progress" id="progress" aria-hidden="true"></div>
+
 <div class="corner-controls">
   <button id="lang-toggle" class="ctrl-btn" title="Dili değiştir / Switch language"><span id="lang-text">EN</span></button>
   <button id="theme-toggle" class="ctrl-btn" title="Tema değiştir">
@@ -133,10 +224,17 @@
     <div class="kicker" id="kicker"></div>
     <h1 class="title" id="page-title"></h1>
     <p class="lede" id="page-lede"></p>
+    <div class="hero-meta" id="hero-meta">
+      <span class="hero-count" id="hero-count"></span>
+      <span class="hero-sep" aria-hidden="true"></span>
+      <div class="legend" id="legend" role="list"></div>
+    </div>
   </header>
 </div>
 
-<main class="wrap" id="notes-container"></main>
+<main class="wrap">
+  <div class="timeline" id="timeline"></div>
+</main>
 
 <footer>
   <div class="wrap footer-line" id="footer-line"></div>
@@ -148,242 +246,395 @@ document.addEventListener('DOMContentLoaded', () => {
     get(k){ try { return localStorage.getItem(k); } catch (e) { return null; } },
     set(k, v){ try { localStorage.setItem(k, v); } catch (e) {} }
   };
+
+  const ICONS = {
+    host:'<rect x="3" y="3.5" width="14" height="5" rx="1.3"/><rect x="3" y="11.5" width="14" height="5" rx="1.3"/><path d="M6 6h.01M6 14h.01"/>',
+    storage:'<ellipse cx="10" cy="5" rx="6" ry="2.3"/><path d="M4 5v10c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V5"/><path d="M4 10c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3"/>',
+    esxi:'<path d="M10 2.5 3 6l7 3.5L17 6z"/><path d="M3.2 10 10 13.5 16.8 10"/><path d="M3.2 13.8 10 17.3l6.8-3.5"/>',
+    cluster:'<rect x="7.5" y="2.5" width="5" height="4.2" rx="1"/><rect x="2.3" y="13.3" width="5" height="4.2" rx="1"/><rect x="12.7" y="13.3" width="5" height="4.2" rx="1"/><path d="M10 6.7v3.6M4.8 13.3v-1.9h10.4v1.9"/>',
+    vm:'<rect x="3" y="3" width="6" height="6" rx="1.3"/><rect x="11" y="3" width="6" height="6" rx="1.3"/><rect x="3" y="11" width="6" height="6" rx="1.3"/><rect x="11" y="11" width="6" height="6" rx="1.3"/>',
+    shield:'<path d="M10 2.5l6 2.2v4.6c0 3.4-2.5 5.6-6 6.7-3.5-1.1-6-3.3-6-6.7V4.7z"/><path d="M7.4 10l1.7 1.7 3.2-3.5"/>',
+    clock:'<circle cx="10" cy="10" r="7.3"/><path d="M10 5.7V10l3 1.8"/>',
+    activity:'<path d="M2.5 10.5h3.2l2.3-5.5 3.6 10 2.2-4.5h3.7"/>',
+    mt:'<path d="M3 16.5h14"/><rect x="5" y="7.5" width="2.6" height="5.5" rx=".6"/><path d="M6.3 5.5v2M6.3 13v1.8"/><rect x="11.6" y="5" width="2.6" height="5.5" rx=".6"/><path d="M12.9 3.2v1.8M12.9 10.5v1.8"/>',
+    api:'<path d="M7.5 5 3.8 10l3.7 5M12.5 5l3.7 5-3.7 5"/>',
+    dr:'<path d="M15.6 7A6.5 6.5 0 0 0 4.2 8.2"/><path d="M4.4 13A6.5 6.5 0 0 0 15.8 11.8"/><path d="M15.4 4v3.2h-3.2M4.6 16v-3.2h3.2"/>',
+    bridge:'<circle cx="5" cy="5" r="1.9"/><circle cx="5" cy="15" r="1.9"/><circle cx="15" cy="10" r="1.9"/><path d="M5 6.9v6.2M6.8 4.6h3.4A2.9 2.9 0 0 1 13.1 8M6.8 15.4h3.4A2.9 2.9 0 0 0 13.1 12"/>',
+    link:'<path d="M8.3 11.7 11.7 8.3"/><path d="M7.6 13.2 6.2 14.6a2.6 2.6 0 0 1-3.7-3.7l1.9-1.9a2.6 2.6 0 0 1 3.7 0"/><path d="M12.4 6.8l1.4-1.4a2.6 2.6 0 0 1 3.7 3.7l-1.9 1.9a2.6 2.6 0 0 1-3.7 0"/>',
+    split:'<path d="M2.5 10h4.5l3-3.6h7"/><path d="M7 10l3 3.6h7"/><path d="M13.8 3.4 17 6.4l-3.2 3"/><path d="M13.8 10.6 17 13.6l-3.2 3"/>',
+    symbol:'<path d="M7.2 3 5.4 17M14.6 3l-1.8 14M3.5 7.4h13M3 12.6h13"/>',
+    sliders:'<path d="M4 6h7.5M15.5 6h.7M4 10h.7M8.5 10h7.7M4 14h4.5M12.5 14h3.7"/><circle cx="13" cy="6" r="1.7"/><circle cx="6" cy="10" r="1.7"/><circle cx="10.5" cy="14" r="1.7"/>',
+    change:'<rect x="4.5" y="3.8" width="11" height="13.4" rx="1.5"/><path d="M7.6 3.8V2.6h4.8v1.2"/><path d="M7.6 9.2l1.5 1.5 3.3-3.4M7.6 13.6h4.8"/>',
+    scale:'<path d="M10 3.2v13.6M5.5 16.8h9"/><path d="M4 7.5h12M10 4.6 4.4 7.4m5.6-2.8 5.6 2.8"/><path d="M4 7.5 1.9 11.8a2.1 2.1 0 0 0 4.2 0z"/><path d="M16 7.5l-2.1 4.3a2.1 2.1 0 0 0 4.2 0z"/>',
+    risk:'<rect x="4.3" y="8.6" width="11.4" height="8.1" rx="1.6"/><path d="M7 8.6V6.1a3 3 0 0 1 6 0v2.5"/><circle cx="10" cy="12.6" r="1.15"/>',
+    flag:'<circle cx="10" cy="10" r="7.4"/><path d="M6.6 10.2l2.3 2.3 4.6-4.9"/>'
+  };
+
   const content = {
     "tr": {
-        "langBtn": "EN",
-        "uiTheme": "Temayı değiştir",
-        "uiLangSwitch": "Switch to English",
-        "backLink": "← CV'ye dön",
-        "kicker": "Teknik Notlar",
-        "pageTitle": "Uçtan Uca Trading Altyapısı Kurulum Notları",
-        "pageLede": "",
-        "notes": [
-            {
-                "title": "Host Sunucu: Kapasiteyi Sadece CPU/RAM Olarak Görmemek",
-                "paragraphs": [
-                    "Kurulumun ilk noktası fiziksel host tasarımıdır. CPU, RAM ve disk alanı kadar NIC sayısı, HBA kartları, PSU yedekliliği, firmware/driver uyumu ve iLO/iDRAC üzerinden out-of-band management erişimi de canlı ortam için kritiktir. Trading sistemlerinde kapasite, mevcut yükü çalıştırmak için değil; host kaybı veya bakım senaryosunda servisleri başka node üzerinde güvenli şekilde taşıyabilecek N+1 rezervle planlanmalıdır."
-                ]
-            },
-            {
-                "title": "Storage Tasarımı: Performans, Güvenlik ve Rebuild Riski",
-                "paragraphs": [
-                    "Storage tarafında RAID seviyesi, disk tipi, datastore ayrımı ve latency alarm eşikleri doğrudan platform stabilitesini etkiler. Büyük kapasiteli disklerde rebuild süresi uzadığı için kritik iş yüklerinde RAID 5 yerine RAID 6 veya yüksek IOPS gereken servislerde RAID 10 tercih ederim. Buradaki hedef yalnızca veri kaybını önlemek değil; rebuild, snapshot veya backup anında trading VM'lerinin I/O gecikmesini kontrol altında tutmaktır."
-                ]
-            },
-            {
-                "title": "ESXi Kurulumu: Network ve Multipath Ayrımı",
-                "paragraphs": [
-                    "ESXi kurulumunda management, vMotion, storage ve production trafiği ayrı VLAN/port group yapısıyla tasarlanmalıdır. NIC teaming, MTU ve storage multipathing ayarlarında varsayılan değerlere güvenmem; PSP/SATP seçimi storage vendor önerisine göre doğrulanır. Yanlış path policy veya hatalı network ayrımı, storage tarafındaki kısa bir problemi VM outage seviyesine taşıyabilir."
-                ]
-            },
-            {
-                "title": "vCenter & HA/DRS: Kapasite, Placement ve Failover Kontrolü",
-                "paragraphs": [
-                    "vCenter kurulumunda HA, DRS, admission control ve anti-affinity kuralları birlikte düşünülmelidir. Özellikle birbirinin yedeği olan trading node'lar aynı fiziksel host üzerinde konumlanmamalıdır. HA'nın amacı yalnızca VM'i yeniden başlatmak değil; host kaybında yeterli kapasite, doğru network erişimi ve doğru placement ile servisin kontrollü şekilde devam etmesini sağlamaktır."
-                ]
-            },
-            {
-                "title": "VM Kurulumları: Rol Bazlı Ayrım ve Standartlaştırma",
-                "paragraphs": [
-                    "VM kurulumunda her sunucunun rolü baştan net olmalıdır: Trade, History, Access, Backup/DR, bridge, monitoring veya integration gibi. Disk yapısı, VLAN, DNS, NTP, hostname, IP planı, OS hardening ve servis hesabı standardize edilirse canlı ortamda arıza analizi hızlanır. Envanter ve konfigürasyon standardı yoksa hangi servisin nerede, hangi bağımlılıkla çalıştığını tespit etmek operasyonel riske dönüşür."
-                ]
-            },
-            {
-                "title": "Ağ, Güvenlik ve İzleme: Sessiz Hataları Erken Yakalamak",
-                "paragraphs": [
-                    "Trading altyapısında firewall, VPN, DNS/DHCP, NTP, sertifika ve endpoint güvenliği uygulama kadar kritiktir. FortiGate, pfSense veya Mikrotik tarafında erişim kuralları sade, izlenebilir ve segment bazlı olmalı; management, LP, client ve internal servis trafiği birbirinden ayrılmalıdır. İzleme tarafında yalnızca up/down yeterli değildir; latency, packet loss, disk queue, servis durumu, log büyümesi, backup job sonucu, sertifika süresi ve hatalı login denemeleri de alarm kapsamına alınmalıdır."
-                ]
-            },
-            {
-                "title": "MetaTrader Kurulumu: Bileşenleri Doğru Konumlandırmak",
-                "paragraphs": [
-                    "MetaTrader tarafında kritik konu bileşenleri doğru role ve doğru lokasyona dağıtmaktır. Trade Server, History Server, Access Server ve Backup/DR yapısı network gecikmesi, disk I/O, log büyümesi ve erişim güvenliği dikkate alınarak konumlandırılmalıdır. Build, plugin ve bridge versiyon uyumluluğu test ortamında doğrulanmalı; canlı geçişte bakım penceresi, config backup ve rollback planı hazır olmalıdır."
-                ]
-            },
-            {
-                "title": "DR / DRC: Kurulu Olması Yetmez, Test Edilmesi Gerekir",
-                "paragraphs": [
-                    "DR/DRC tarafında amaç yalnızca yedek sunucu bulundurmak değildir. Olay anında hangi servis hangi sırayla ayağa kalkacak, IP/DNS değişikliği nasıl yapılacak, kullanıcılar hangi access üzerinden bağlanacak ve veri senkronizasyonu hangi noktada olacak önceden belirlenmelidir. RTO/RPO hedefleri, failover runbook'u ve periyodik test olmadan DR yapısı operasyonel güvence sağlamaz."
-                ]
-            },
-            {
-                "title": "Bridge & FxCubic: LP Bağlantısı, Routing ve İzleme",
-                "paragraphs": [
-                    "FxCubic gibi bridge katmanında LP bağlantıları, FIX session durumları, sembol mapping, fiyat filtreleri ve emir yönlendirme kuralları yönetilir. Aggregation yapısında birden fazla LP'den gelen fiyatlar birleştirilerek en iyi bid/ask oluşturulur; priority yapısında ise birincil LP sorun yaşarsa akış sıradaki LP'ye yönlenir. Fill rate, rejection rate, latency, stale price ve fiyat sapması kontrolleri günlük operasyonun parçası olmalıdır."
-                ]
-            },
-            {
-                "title": "Sembol Yönetimi: Fiyat, Contract Size, Digits ve Session Saatleri",
-                "paragraphs": [
-                    "Sembol açmak yalnızca ismi eklemek değildir. Digits, contract size, tick size, swap, trading session, quote session, margin currency, profit currency ve LP mapping doğru değilse fiyat doğru görünse bile teminat, P/L, grafik veya emir sonucu hatalı olabilir. Vadeli ürünlerde rollover, eski kontratın kapatılması, yeni kontratın test edilmesi ve chart history sürekliliği ayrıca takip edilmelidir."
-                ]
-            },
-            {
-                "title": "Spread, Komisyon ve Grup Ayarları",
-                "paragraphs": [
-                    "MetaTrader'da müşteri deneyimi ve kurum gelir modeli büyük ölçüde group ayarlarıyla belirlenir. Spread markup, lot başı komisyon, minimum/maximum lot, lot step, execution, swap ve sembol izinleri grup bazında net tanımlanmalıdır. VIP, standart, demo ve kurumsal gruplar aynı kurallarla çalışmamalıdır; her grubun ticari modeli, risk profili ve raporlama ihtiyacı ayrı değerlendirilmelidir."
-                ]
-            },
-            {
-                "title": "Değişiklik Yönetimi ve Regülasyon Uyumu",
-                "paragraphs": [
-                    "Canlı MetaTrader ortamında küçük görünen bir sembol, grup, komisyon, kaldıraç veya session değişikliği doğrudan müşteri işlemini ve regülasyon uyumunu etkileyebilir. Bu yüzden değişiklikler test ortamında doğrulanmalı, canlıya alınmadan önce mevcut/yeni değerler kayıt altına alınmalı ve geri dönüş planı hazırlanmalıdır. SPK/TSPB kapsamındaki raporlama, erişim yetkileri, işlem koşulları ve audit kayıtları izlenebilir olduğunda operasyon hem denetime hem de olay analizine hazır olur."
-                ]
-            },
-            {
-                "title": "Risk ve Erişim Kontrolü: Leverage, Margin Call, Stop-Out ve 2FA",
-                "paragraphs": [
-                    "Leverage, margin call ve stop-out ayarları doğrudan kurum riskini etkiler. Kaldıraç ürün, grup veya equity seviyesine göre kademeli tanımlanmalı; margin call uyarı, stop-out ise zorunlu kapama eşiği olarak doğru seviyeye konumlandırılmalıdır. 2FA/TOTP, manager yetkileri ve kullanıcı erişimleri aynı risk çerçevesinin parçasıdır; yetki matrisi net değilse teknik güvenlik açığı doğrudan operasyonel riske dönüşür."
-                ]
-            },
-            {
-                "title": "Uçtan Uca Trading Altyapısı",
-                "paragraphs": [
-                    "Uçtan uca trading altyapısında amaç; stabil, izlenebilir ve kesintisiz çalışan; gerektiğinde geri alınabilir, regülasyonla uyumlu, failover senaryoları test edilmiş ve günlük operasyonda sürdürülebilir bir platform oluşturmaktır."
-                ]
-            }
-        ]
+      "langBtn": "EN",
+      "uiTheme": "Temayı değiştir",
+      "uiLangSwitch": "Switch to English",
+      "backLink": "← CV'ye dön",
+      "kicker": "Teknik Notlar",
+      "pageTitle": "Uçtan Uca Trading Altyapısı Kurulum Notları",
+      "pageLede": "Bir trading platformunu fiziksel host'tan LP bağlantısına kadar kuran ve doğrulayan saha notları. Her not; altyapı, ağ, platform, likidite, ürün ve risk katmanında tek bir kararı somut parametreler, eşikler ve doğrulama kriterleriyle anlatır — VMware, MetaTrader 5, FIX ve MiFID II / ESMA-SPK pratiğine dayanır.",
+      "metaCount": "6 AŞAMA · 19 NOT",
+      "phases": [
+        { "id": "infra", "tone": "tone-1", "name": "ALTYAPI", "notes": [
+          { "icon": "host", "title": "Host Sunucu Tasarımı: Donanım, Yedeklilik ve Güç Profili",
+            "paragraphs": ["Fiziksel host tasarımı; CPU ve RAM'in yanında NIC ve HBA sayısı, PSU/fan yedekliliği, firmware-driver uyumu ve iLO/iDRAC üzerinden out-of-band yönetimi kapsar. Trading yükü latency-hassas olduğu için BIOS güç profilini High Performance'a sabitler, C-state/P-state ve Energy-Efficient Turbo'yu kapatır, Node Interleaving'i devre dışı bırakırım; böylece çekirdek frekansı dalgalanmaz ve jitter düşer. Kapasite, bir host kaybı veya bakım senaryosunda servisleri komşu node'a taşıyacak N+1 rezervi hedefler; NUMA sınırları baştan planlanır ki kritik VM'ler tek düğümde kalsın."],
+            "specs": [["BIOS","High Performance"],["C-/P-state","kapalı"],["Rezerv","N+1"],["Yönetim","iLO/iDRAC"]],
+            "tags": ["N+1","iLO/iDRAC","HBA","C-state kapalı","NUMA"] },
+          { "icon": "storage", "title": "Storage Tasarımı: Performans, Koruma ve Rebuild Riski",
+            "paragraphs": ["RAID seviyesi, disk tipi, datastore ayrımı ve latency eşikleri stabiliteyi doğrudan belirler. Büyük disklerde rebuild penceresi uzadığı için kritik yüklerde RAID 5 yerine RAID 6, yüksek IOPS isteyen Trade/DB rollerinde RAID 10 kullanırım; log, veritabanı ve yedek trafiğini ayrı datastore'lara bölerim ki biri diğerinin I/O'sunu boğmasın. Buradaki hedef, veri kaybını önlemenin yanında; rebuild, snapshot ve backup anında trading VM'lerinin disk gecikmesini eşik altında (tipik olarak tek haneli ms) tutmak, kuyruk derinliği ve multipath dengesini izlemektir."],
+            "specs": [["Kritik yük","RAID 6"],["Yüksek IOPS","RAID 10"],["Latency","<~10 ms"],["Ayrım","log/DB/backup"]],
+            "tags": ["RAID 6","RAID 10","IOPS","datastore ayrımı","multipath"] },
+          { "icon": "esxi", "title": "ESXi Kurulumu: Ağ Ayrımı, Multipath ve Low-Latency Ayarı",
+            "paragraphs": ["ESXi'de management, vMotion, storage ve production trafiğini ayrı VLAN/port group'a bölerim; NIC teaming, MTU ve multipath'te varsayılana güvenmem, PSP/SATP'yi storage vendor önerisine göre doğrularım. Latency-hassas trading VM'lerinde VMware'in resmî reçetesini uygularım: Latency Sensitivity = High (vCPU'ya özel pCPU, scheduler bypass, VMXNET3 interrupt coalescing kapalı), tam CPU reservation (taban frekans × vCPU) ve tüm guest belleğinin kilitli olduğu reservation, vCPU ile bellek tek NUMA düğümünde. Yaklaşık 50k paket/sn üstünde VMXNET3 yerine SR-IOV/DirectPath'e geçerim (vMotion'dan feragat pahasına) ve hipervizör ile I/O için 4-8 çekirdeği VM'lere vermeden ayırırım."],
+            "specs": [["Latency Sensitivity","High"],["CPU/RAM","tam reservation"],["NUMA","tek düğüm"],[">50k pps","SR-IOV"]],
+            "tags": ["Latency Sensitivity=High","CPU reservation","NUMA locality","VMXNET3/SR-IOV","PSP/SATP"] },
+          { "icon": "cluster", "title": "vCenter & HA/DRS: Kapasite, Placement ve Failover Kontrolü",
+            "paragraphs": ["HA, DRS, admission control ve anti-affinity birlikte kurgulanır. Birbirinin yedeği olan Trade node'ları anti-affinity ile aynı fiziksel host'a düşmez; admission control, bir host kaybında yeniden başlatma için yeterli kapasiteyi garanti eder ve bu, host katmanındaki N+1 rezerviyle tutarlıdır. Latency-hassas VM'lerde CPU affinity'yi bozmamak için DRS'i bu VM'lerde manuel/partially-automated tutar ya da ayrı bir küme kullanırım; HA doğru yerleşim, ağ erişimi ve kapasiteyle servisin host kaybı sonrası kontrollü sürmesini sağlar."],
+            "specs": [["HA","admission control"],["Yedek node","anti-affinity"],["Latency VM","manuel DRS"]],
+            "tags": ["HA","DRS","admission control","anti-affinity"] },
+          { "icon": "vm", "title": "VM Kurulumları: Rol Bazlı Ayrım ve Standartlaştırma",
+            "paragraphs": ["Her VM'in rolü baştan nettir: Trade, History, Access, Backup/DR, bridge, monitoring, integration. Disk düzeni, VLAN, DNS, NTP, hostname, IP planı, OS hardening ve servis hesabı bir golden template üzerinden standardize edilir; böylece arıza analizi ve yeni kurulum hızlanır, konfigürasyon sapması (drift) engellenir. Envanter ve bağımlılık haritası yoksa hangi servisin nerede, hangi bağımlılıkla koştuğunu tespit etmek canlıda operasyonel riske döner."],
+            "specs": [["Şablon","golden image"],["Zaman","NTP"],["Sertleştirme","OS baseline"],["Kayıt","envanter"]],
+            "tags": ["golden template","OS hardening","DNS/NTP","IP planı","drift kontrolü"] }
+        ]},
+        { "id": "network", "tone": "tone-2", "name": "AĞ, GÜVENLİK & ZAMAN", "notes": [
+          { "icon": "shield", "title": "Ağ, Güvenlik ve Segmentasyon",
+            "paragraphs": ["Firewall, VPN, DNS/DHCP, sertifika ve endpoint güvenliği en az uygulama kadar kritiktir. FortiGate, pfSense veya Mikrotik'te kurallar sade, izlenebilir ve segment bazlıdır; management, LP, client ve internal trafik ayrı segmentlerde tutulur, LP/FIX bağlantıları yalnızca beyaz-liste IP ve adanmış hatlarla açılır. Saldırı yüzeyini daraltmak için yönetim arayüzleri asla internete bakmaz; uzaktan erişim VPN ile 2FA arkasındadır."],
+            "specs": [["Segment","mgmt/LP/client/internal"],["LP","IP whitelist"],["Uzak erişim","VPN + 2FA"]],
+            "tags": ["FortiGate","pfSense","Mikrotik","segmentasyon","IP whitelist"] },
+          { "icon": "clock", "title": "Zaman Senkronizasyonu: NTP/PTP ve UTC İzlenebilirliği",
+            "paragraphs": ["Zaman, trading altyapısının sessiz omurgasıdır: emir/tik zaman damgaları, log korelasyonu, sertifikalar ve TOTP hepsi doğru saate bağlıdır. Tüm sunucular ortak bir kaynağa hizalanır — GPS/PTP grandmaster ya da katmanlı NTP; MiFID II RTS 25, UTC'ye izlenebilirlik ve azami sapma sınırı ister: yüksek frekanslı akışta ≤100 µs (1 µs granülarite), diğer işlemlerde ≤1 ms. Yüksek hassasiyette donanım damgalı PTP (alt-mikrosaniye) NTP'ye tercih edilir; sapma ve holdover sürekli izlenir, çünkü kayan bir saat delil değeri taşıyan logları da geçersiz kılar."],
+            "specs": [["Standart","MiFID II RTS 25"],["HFT sapma","≤100 µs"],["Diğer","≤1 ms"],["Kaynak","PTP/NTP · UTC"]],
+            "tags": ["NTP","PTP","UTC izlenebilirliği","RTS 25","GPS grandmaster"] },
+          { "icon": "activity", "title": "İzleme ve Observability: Golden Signals ve Alarm Eşikleri",
+            "paragraphs": ["Etkili izleme golden signals'ı temel alır: gecikme, trafik/throughput, hata oranı ve doygunluk (saturation) her katmanda toplanır. Alarm kapsamı latency, packet loss, disk kuyruğu, servis durumu, log büyümesi, backup job sonucu, sertifika süresi, hatalı login ve LP/FIX oturum kopmalarını içerir. Metrikler zaman-serisi ve merkezî log (SIEM/syslog) olarak saklanır, eşikler statik sayılar yerine temel-çizgiye (baseline) göre kurulur; amaç arızayı müşteri fark etmeden, henüz sessizken yakalamaktır."],
+            "specs": [["Model","golden signals"],["Log","SIEM/syslog"],["Eşik","baseline"],["Kapsam","FIX oturum + cert"]],
+            "tags": ["golden signals","packet loss","disk queue","SIEM","cert expiry"] }
+        ]},
+        { "id": "platform", "tone": "tone-3", "name": "PLATFORM & SÜREKLİLİK", "notes": [
+          { "icon": "mt", "title": "MetaTrader 5 Çekirdeği: Trade, History ve Access Server",
+            "paragraphs": ["MT5 dağıtık ve şifreli bir mimaridir; ölçek sunucu ekleyerek büyür. Trade Server emir/hesap/risk çekirdeğidir — borsa enstrümanlarında netting, Forex'te hedging modeli; History Server tik/bar geçmişini ve (reverse) split'i yönetir; Backup ile veritabanı şifrelemesi veri sürekliliğini sağlar. Access Server istemci bağlantılarını karşılayan proxy ve platform firewall'ıdır: yetkilendirme isteklerini paketleyip Trade Server'a taşır, antiflood ile aşırı yük/saldırıyı süzer, history/DOM/haber verisini cache'leyip History Server yükünü azaltır. En kritik faydası ana sunucu IP'lerini dış dünyadan gizlemesidir — DDoS'ta yalnızca Access IP'leri hedef olur, çekirdek erişilemez kalır; birden çok Access Server coğrafi dağıtılıp gecikme, yük ve önceliğe göre otomatik seçilir."],
+            "specs": [["Trade","netting/hedging"],["Access","proxy + antiflood"],["Ana IP","gizli"],["Access","coğrafi LB"]],
+            "tags": ["Trade/History/Backup","Access Server","antiflood","IP gizleme","geo load-balancing"] },
+          { "icon": "api", "title": "Yönetim, API ve Gateway Katmanı",
+            "paragraphs": ["MT5'in kontrol düzlemi rol-bazlı Manager/Admin yetkileriyle yönetilir — muhasebe, dealer, risk yöneticisi ve yönetici rolleri ayrı yetki setleriyle tanımlanır. Platform beş API ile genişler: Report API (raporlama), Server API (Trade/History fonksiyonları), Gateway API (dış sistem/LP entegrasyonu), Manager API (özel yönetim araçları) ve Web API (web entegrasyonu). Gateway'ler borsa ve likidite sağlayıcılara köprüdür ve müşteri riskinin anlık STP ile hedge edilmesini sağlar; her eklenti/gateway'in versiyon uyumu ayrı doğrulanır, çünkü çekirdekle uyumsuz bir plugin canlıda emir akışını durdurabilir."],
+            "specs": [["Roller","muhasebe/dealer/risk"],["API","5 (Report…Web)"],["Gateway","STP hedge"]],
+            "tags": ["Manager/Admin","Report/Server/Gateway/Manager/Web API","STP","plugin uyumu"] },
+          { "icon": "dr", "title": "DR / DRC: RTO/RPO, Runbook ve Failover Testi",
+            "paragraphs": ["DR; olay anında hangi servisin hangi sırayla ayağa kalkacağını, IP/DNS değişikliğini, kullanıcıların hangi Access üzerinden bağlanacağını ve verinin hangi noktaya kadar senkron olacağını runbook'ta önceden tanımlar. RTO/RPO hedefleri ölçülebilir olmalı; yedekler 3-2-1 kuralıyla (3 kopya, 2 farklı ortam, 1 saha dışı) ve fidye yazılımına karşı immutable/air-gap tutulmalıdır. Periyodik failover/failback tatbikatı ve restore doğrulaması yapılmadıkça yapı operasyonel güvence vermez; bu yüzden DR düzenli olarak test edilir."],
+            "specs": [["Hedef","RTO/RPO"],["Yedek","3-2-1"],["Koruma","immutable/air-gap"],["Test","periyodik failover"]],
+            "tags": ["RTO/RPO","3-2-1","immutable backup","failover runbook","restore testi"] }
+        ]},
+        { "id": "liquidity", "tone": "tone-4", "name": "LİKİDİTE", "notes": [
+          { "icon": "bridge", "title": "Bridge & FxCubic: LP Bağlantısı, Aggregation ve Routing",
+            "paragraphs": ["Bridge, trading platformu ile likidite sağlayıcıları arasındaki köprüdür (FxCubic gibi); MT4/MT5 veya cTrader'ı kendi FIX API'si üzerinden LP'lere bağlar. Aggregation'da birden çok LP'nin derinliği birleştirilerek en iyi bid/ask ve VWAP oluşur; priority/fallback'te birincil LP sorun yaşarsa akış sıradaki LP'ye kayar. Fiyat filtreleri bayat ve spike quote'ları eler, markup (ör. FxCubic'in gerçek-zamanlı markup API'si) hesap/grup/sembol bazında uygulanır. Fill rate, rejection rate, latency, slippage ve last-look davranışı günlük operasyonun ölçülen metrikleridir."],
+            "specs": [["Aggregation","en iyi bid/ask"],["Yedek","priority/fallback"],["Fiyat","filtre + markup"],["Metrik","fill/reject/slippage"]],
+            "tags": ["FxCubic","aggregation","priority/fallback","markup","last look","slippage"] },
+          { "icon": "link", "title": "FIX Bağlantısı ve Oturum Yönetimi",
+            "paragraphs": ["LP bağlantıları FIX protokolü üzerinden kurulur ve iki katman ayrı düşünülür. Oturum katmanı bağlantının sağlığıdır: Logon/Logout, Heartbeat ve TestRequest ile canlılık; sıra numaraları (MsgSeqNum) ve gap-fill ile kayıp mesaj tespiti ve telafisi. Uygulama katmanı işin kendisidir: fiyat için MarketDataRequest/Snapshot, emir için NewOrderSingle → ExecutionReport akışı; fiyat (quote) ve emir (trade) genelde ayrı oturumlarda taşınır. Oturum kopması, yanlış sıra numarası ya da tıkanan resend kuyruğu doğrudan fiyatsızlık veya askıda emir demektir; bu yüzden her oturumun durumu ve gecikmesi ayrı izlenir."],
+            "specs": [["Oturum","Heartbeat/seq/gap-fill"],["Emir","NewOrderSingle→ExecReport"],["Fiyat","MarketData"],["Ayrım","quote/trade oturumu"]],
+            "tags": ["FIX 4.4","heartbeat","sequence/gap-fill","NewOrderSingle","ExecutionReport"] },
+          { "icon": "split", "title": "Emir Yönlendirme Modelleri: A-book / B-book / Hybrid",
+            "paragraphs": ["Emir yönlendirme hem icra hem de risk-iştahı kararıdır. A-book (STP) emri LP'ye taşır — kurum spread/komisyon kazanır, piyasa riskini taşımaz; B-book emri kurum içinde karşılar — müşteri PnL'i kurumun karşı pozisyonudur ve sermaye ile risk yönetimi gerektirir. Hybrid, hesap/grup/sembol/hacim ve müşteri kârlılığı gibi kurallarla akışı ikisi arasında paylaştırır (ör. tutarlı kazanan akışı A-book'a yönlendirmek). Doğru kurgu net risk maruziyeti, hedge maliyeti, LP fill kalitesi ve regülasyon/çıkar-çatışması sınırlarını birlikte gözetir ve sürekli ölçülür."],
+            "specs": [["A-book","STP, risk yok"],["B-book","içeride, risk var"],["Hybrid","kural bazlı"],["Ölçüt","net exposure"]],
+            "tags": ["A-book/STP","B-book","hybrid","risk yönetimi","exposure"] }
+        ]},
+        { "id": "product", "tone": "tone-5", "name": "ÜRÜN YAPISI", "notes": [
+          { "icon": "symbol", "title": "Sembol Yönetimi: Fiyat, Contract Size, Digits, İcra Modu",
+            "paragraphs": ["Bir sembolde digits, contract size, tick size/value, swap (ve üçlü-swap günü), trading/quote session, margin ve profit currency ile LP mapping baştan doğru tanımlanmalıdır; aksi hâlde fiyat doğru görünse bile teminat, P/L, grafik veya emir sonucu yanlış olur. MT5 icra modu (Market/Instant/Request/Exchange) ve fill policy (FOK/IOC/Return) sembolün işleyişini belirler; yanlış eşleşme requote, red veya beklenmedik kayma üretir. Vadeli üründe rollover, eski kontratın kapatılması, yeni kontratın testi ve chart-history sürekliliği ayrıca yönetilir."],
+            "specs": [["Sözleşme","digits/contract/tick"],["İcra","Market/Instant/Request"],["Fill","FOK/IOC/Return"],["Vadeli","rollover"]],
+            "tags": ["digits","contract size","tick value","execution mode","fill policy","rollover"] },
+          { "icon": "sliders", "title": "Spread, Komisyon ve Grup Ayarları",
+            "paragraphs": ["MT5'te müşteri deneyimi ve kurum gelir modeli büyük ölçüde grup ayarlarıyla belirlenir. Spread markup, lot başı komisyon, min/max lot, lot step, execution, swap ve sembol izinleri grup bazında net tanımlanır; markup'ın bridge'de mi yoksa grup spread'inde mi uygulanacağı bilinçli seçilir ki çifte markup olmasın. VIP, standart, demo ve kurumsal gruplar aynı kural setiyle çalışmaz — her grubun ticari modeli, risk profili, swap-free ihtiyacı ve raporlaması ayrı kurgulanır."],
+            "specs": [["Kontrol","grup bazında"],["Markup","bridge vs grup"],["Parametre","komisyon/lot/swap"]],
+            "tags": ["spread markup","komisyon","lot step","execution","grup"] }
+        ]},
+        { "id": "ops", "tone": "tone-6", "name": "OPERASYON & RİSK", "notes": [
+          { "icon": "change", "title": "Değişiklik Yönetimi ve Regülasyon Uyumu",
+            "paragraphs": ["Canlı MT5'te küçük görünen bir sembol/grup/komisyon/kaldıraç/session değişikliği müşteri işlemini ve regülasyon uyumunu doğrudan etkiler; bu yüzden her değişiklik test ortamında doğrulanır, mevcut/yeni değer kayıt altına alınır (maker-checker) ve rollback hazır tutulur. Kaldıraç rejimleri coğrafyaya göre değişir: SPK, Türkiye'de bireysel kaldıracı 10:1 ile sınırlar (2017); ESMA ise varlık sınıfına göre kademeler — majör FX 30:1, majör olmayan/altın/endeks 20:1, diğer emtia 10:1, hisse 5:1, kripto 2:1 — ayrıca %50 margin close-out ve negatif bakiye koruması uygular. SPK/TSPB kapsamında raporlama, yetki ve audit kayıtları izlenebilir olduğunda operasyon hem denetime hem de olay analizine hazırdır."],
+            "specs": [["Süreç","maker-checker + rollback"],["SPK","10:1"],["ESMA","30/20/10/5/2:1"],["Close-out","%50"]],
+            "tags": ["maker-checker","SPK 10:1","ESMA kademeleri","close-out %50","negatif bakiye koruması","audit"] },
+          { "icon": "scale", "title": "En İyi İcra ve Şeffaflık",
+            "paragraphs": ["En iyi icra (best execution), müşteri emrini fiyat, maliyet, hız ve gerçekleşme olasılığı açısından tutarlı biçimde en iyi sonuca yönlendirme yükümlülüğüdür. Slippage simetrik olmalı — lehte ve aleyhte kaymalar aynı eşikle uygulanmalı; requote/red oranları, ortalama icra süresi ve gerçekleşen spread ölçülüp raporlanmalıdır. MiFID II bunu RTS 27/28 ile icra kalitesi ve icra mekânı raporlarına bağlar; şeffaf metrikler icra politikasını hem regülasyon hem de müşteri güveni için denetlenebilir kılar."],
+            "specs": [["İlke","fiyat/maliyet/hız"],["Slippage","simetrik"],["Rapor","RTS 27/28"],["Metrik","requote/red"]],
+            "tags": ["best execution","slippage simetrisi","RTS 27/28","icra kalitesi"] },
+          { "icon": "risk", "title": "Risk ve Erişim Kontrolü: Leverage, Margin Call, Stop-Out, 2FA",
+            "paragraphs": ["Leverage, margin call ve stop-out kurum riskini doğrudan belirler. Kaldıraç ürün/grup/equity seviyesine göre kademelenir; margin call uyarı eşiği, stop-out ise zorunlu kapama eşiğidir (ör. margin level %100 uyarı / %50 stop-out gibi seviyeler bilinçli konumlanır). Toplam maruziyet ve sembol bazlı pozisyon limitleri, dealer limitleri ve gerektiğinde kill-switch tanımlıdır. 2FA/TOTP, manager yetkileri ve kullanıcı erişimleri aynı risk çerçevesindedir; yetki matrisi net değilse teknik açık doğrudan operasyonel riske döner."],
+            "specs": [["Kaldıraç","kademeli"],["Stop-out","eşik %"],["Limit","exposure/dealer"],["Erişim","2FA + yetki matrisi"]],
+            "tags": ["leverage","margin call","stop-out","kill switch","2FA/TOTP","exposure limit"] }
+        ]}
+      ],
+      "closing": {
+        "icon": "flag",
+        "label": "SONUÇ",
+        "title": "Uçtan Uca Trading Altyapısı",
+        "paragraphs": ["Uçtan uca trading altyapısında amaç; stabil, izlenebilir ve kesintisiz çalışan; gerektiğinde geri alınabilir, regülasyonla uyumlu, failover senaryoları test edilmiş ve günlük operasyonda sürdürülebilir bir platform kurmaktır. Bu notlar, o platformu host'tan LP'ye kadar ölçülebilir ve savunulabilir kılan kararların özetidir."],
+        "tags": ["stabil","izlenebilir","geri alınabilir","regülasyon uyumlu","test edilmiş"]
+      }
     },
     "en": {
-        "langBtn": "TR",
-        "uiTheme": "Toggle theme",
-        "uiLangSwitch": "Türkçeye geç",
-        "backLink": "← Back to CV",
-        "kicker": "Technical Notes",
-        "pageTitle": "End-to-End Trading Infrastructure Setup Notes",
-        "pageLede": "",
-        "notes": [
-            {
-                "title": "Host Servers: Capacity Is More Than CPU and RAM",
-                "paragraphs": [
-                    "The first layer is physical host design. CPU, memory and disk capacity matter, but so do NIC count, HBA cards, PSU redundancy, firmware/driver compatibility and out-of-band management access through iLO/iDRAC. In a trading environment, capacity should not be planned only for the current workload; it must include N+1 headroom so services can move safely to another node during host failure or maintenance."
-                ]
-            },
-            {
-                "title": "Storage Design: Performance, Protection and Rebuild Risk",
-                "paragraphs": [
-                    "RAID level, disk type, datastore separation and latency thresholds directly affect platform stability. On large disks, rebuild windows can be long, so I avoid RAID 5 for critical workloads and prefer RAID 6 or RAID 10 for high-IOPS services. The goal is not only to prevent data loss, but also to keep I/O latency under control during rebuild, snapshot or backup activity."
-                ]
-            },
-            {
-                "title": "ESXi Setup: Network Separation and Multipathing",
-                "paragraphs": [
-                    "In ESXi, management, vMotion, storage and production traffic should be separated through dedicated VLANs and port groups. I do not rely blindly on defaults for NIC teaming, MTU or storage multipathing; PSP/SATP settings must match the storage vendor's recommendation. A wrong path policy or weak network separation can turn a short storage issue into a VM-level outage."
-                ]
-            },
-            {
-                "title": "vCenter & HA/DRS: Capacity, Placement and Failover Control",
-                "paragraphs": [
-                    "vCenter design requires HA, DRS, admission control and anti-affinity rules to be planned together. Redundant trading nodes should not end up on the same physical host. HA is not only about restarting a VM; it must provide enough capacity, network reachability and correct placement so services can continue in a controlled way after a host failure."
-                ]
-            },
-            {
-                "title": "VM Provisioning: Role-Based and Standardized",
-                "paragraphs": [
-                    "Each VM should have a clear role from the beginning: Trade, History, Access, Backup/DR, bridge, monitoring or integration. Disk layout, VLAN, DNS, NTP, hostname, IP plan, OS hardening and service accounts should be standardized to speed up production troubleshooting. Without configuration inventory, identifying which service runs where and with which dependency becomes an operational risk."
-                ]
-            },
-            {
-                "title": "Network, Security and Monitoring: Catching Silent Failures Early",
-                "paragraphs": [
-                    "In trading infrastructure, firewall, VPN, DNS/DHCP, NTP, certificate and endpoint security are as critical as the application itself. Access rules on FortiGate, pfSense or Mikrotik should be simple, traceable and segment-based; management, LP, client and internal service traffic must be separated. Monitoring must go beyond up/down state: latency, packet loss, disk queue, service status, log growth, backup job results, certificate expiry and failed login attempts should also trigger alerts."
-                ]
-            },
-            {
-                "title": "MetaTrader Deployment: Correct Component Placement",
-                "paragraphs": [
-                    "The critical part is placing each MetaTrader component on the right role and location. Trade Server, History Server, Access Server and Backup/DR roles must be positioned with latency, disk I/O, log growth and access security in mind. Build, plugin and bridge-version compatibility should be validated in test; production release should include a maintenance window, configuration backup and rollback plan."
-                ]
-            },
-            {
-                "title": "DR / DRC: It Must Be Tested",
-                "paragraphs": [
-                    "DR/DRC is not only about having a backup server. The failover order, IP/DNS changes, access routing and data synchronization point must be defined before an incident. Without RTO/RPO targets, a failover runbook and periodic testing, the DR environment does not provide operational assurance."
-                ]
-            },
-            {
-                "title": "Bridge & FxCubic: LP Connectivity, Routing and Monitoring",
-                "paragraphs": [
-                    "At the bridge layer, tools such as FxCubic manage LP connectivity, FIX sessions, symbol mapping, price filters and order-routing rules. With aggregation, quotes from multiple LPs are combined into a best bid/ask; with priority routing, flow can move to the next LP when the primary LP has issues. Fill rate, rejection rate, latency, stale-price and price-deviation checks should be part of daily operations."
-                ]
-            },
-            {
-                "title": "Symbol Management: Pricing, Contract Size, Digits and Sessions",
-                "paragraphs": [
-                    "Adding a symbol is not just adding a name. Digits, contract size, tick size, swap, trading sessions, quote sessions, margin currency, profit currency and LP mapping must be correct. Otherwise the price may look right while margin, P/L, chart data or order results are wrong. For futures, rollover, contract closure, new-contract testing and chart-history continuity must be tracked separately."
-                ]
-            },
-            {
-                "title": "Spread, Commission and Group Configuration",
-                "paragraphs": [
-                    "In MetaTrader, client experience and broker revenue model are largely controlled at group level. Spread markup, per-lot commission, min/max lot, lot step, execution, swap and symbol permissions must be defined clearly per group. VIP, standard, demo and institutional groups should not share the same rule set; each group needs its own commercial model, risk profile and reporting requirement."
-                ]
-            },
-            {
-                "title": "Change Management and Regulatory Alignment",
-                "paragraphs": [
-                    "In a live MetaTrader environment, even a small symbol, group, commission, leverage or session change can directly affect client trading and regulatory alignment. Changes should be validated in test, current and target values should be recorded before production release, and a rollback plan should be ready. When CMB/TSPB reporting, access permissions, trading conditions and audit records are traceable, the operation is prepared for both audits and incident analysis."
-                ]
-            },
-            {
-                "title": "Risk and Access Control: Leverage, Margin Call, Stop-Out and 2FA",
-                "paragraphs": [
-                    "Leverage, margin call and stop-out settings directly affect broker risk. Leverage should be tiered by product, group or equity level; margin call is the warning threshold, while stop-out is the forced-liquidation threshold. 2FA/TOTP, manager permissions and user access belong to the same risk framework; if the permission matrix is unclear, a technical security gap becomes an operational risk."
-                ]
-            },
-            {
-                "title": "End-to-End Trading Infrastructure",
-                "paragraphs": [
-                    "The goal of end-to-end trading infrastructure is to build a platform that runs with stability, observability and continuity; remains reversible when needed, aligned with regulation, tested through failover scenarios and sustainable in daily operations."
-                ]
-            }
-        ]
+      "langBtn": "TR",
+      "uiTheme": "Toggle theme",
+      "uiLangSwitch": "Türkçeye geç",
+      "backLink": "← Back to CV",
+      "kicker": "Technical Notes",
+      "pageTitle": "End-to-End Trading Infrastructure Setup Notes",
+      "pageLede": "Field notes for building and validating a trading platform from bare-metal host to LP connectivity. Each note captures one decision — with concrete parameters, thresholds and checks — across infrastructure, network, platform, liquidity, product and risk, grounded in VMware, MetaTrader 5, FIX and MiFID II / ESMA-SPK practice.",
+      "metaCount": "6 PHASES · 19 NOTES",
+      "phases": [
+        { "id": "infra", "tone": "tone-1", "name": "INFRASTRUCTURE", "notes": [
+          { "icon": "host", "title": "Host Server Design: Hardware, Redundancy and Power Profile",
+            "paragraphs": ["Physical host design covers, alongside CPU and RAM, NIC and HBA count, PSU/fan redundancy, firmware-driver alignment and out-of-band management via iLO/iDRAC. Because the trading load is latency-sensitive, I pin the BIOS power profile to High Performance, disable C-/P-states and Energy-Efficient Turbo and turn off Node Interleaving so core frequency stays flat and jitter drops. Capacity targets N+1 headroom — enough to move services to a neighbouring node on host loss or maintenance — and NUMA boundaries are planned up front so critical VMs stay inside a single node."],
+            "specs": [["BIOS","High Performance"],["C-/P-state","off"],["Headroom","N+1"],["Mgmt","iLO/iDRAC"]],
+            "tags": ["N+1","iLO/iDRAC","HBA","C-states off","NUMA"] },
+          { "icon": "storage", "title": "Storage Design: Performance, Protection and Rebuild Risk",
+            "paragraphs": ["RAID level, disk type, datastore separation and latency thresholds set stability directly. Because rebuild windows grow on large disks, I use RAID 6 over RAID 5 for critical workloads and RAID 10 for high-IOPS Trade/DB roles, and I split log, database and backup traffic across separate datastores so none starves another. Beyond preventing data loss, the goal is to keep trading-VM disk latency under threshold (typically single-digit milliseconds) during rebuild, snapshot and backup, while watching queue depth and multipath balance."],
+            "specs": [["Critical","RAID 6"],["High IOPS","RAID 10"],["Latency","<~10 ms"],["Split","log/DB/backup"]],
+            "tags": ["RAID 6","RAID 10","IOPS","datastore split","multipath"] },
+          { "icon": "esxi", "title": "ESXi Setup: Network Separation, Multipathing and Low Latency",
+            "paragraphs": ["In ESXi I separate management, vMotion, storage and production onto their own VLANs/port groups, and never trust defaults for NIC teaming, MTU or multipathing — PSP/SATP is validated against the storage vendor. For latency-sensitive trading VMs I apply VMware's own recipe: Latency Sensitivity = High (exclusive pCPU per vCPU, scheduler bypass, VMXNET3 interrupt-coalescing off), full CPU reservation (base freq × vCPU) and full memory reservation with all guest memory locked, keeping vCPU and memory inside a single NUMA node. Beyond roughly 50k packets/s I move from VMXNET3 to SR-IOV/DirectPath (giving up vMotion), and I reserve 4–8 cores for the hypervisor and I/O rather than handing them to VMs."],
+            "specs": [["Latency Sens.","High"],["CPU/RAM","full reservation"],["NUMA","single node"],[">50k pps","SR-IOV"]],
+            "tags": ["Latency Sensitivity=High","CPU reservation","NUMA locality","VMXNET3/SR-IOV","PSP/SATP"] },
+          { "icon": "cluster", "title": "vCenter & HA/DRS: Capacity, Placement and Failover Control",
+            "paragraphs": ["HA, DRS, admission control and anti-affinity are designed together. Redundant Trade nodes are kept off the same physical host by anti-affinity, and admission control guarantees enough spare capacity to restart VMs after a host loss — consistent with the N+1 headroom at the host layer. To avoid breaking CPU affinity on latency-sensitive VMs I keep DRS manual/partially-automated for them or use a dedicated cluster; HA continues the service after a host loss with the right placement, network reachability and capacity."],
+            "specs": [["HA","admission control"],["Redundant","anti-affinity"],["Latency VM","manual DRS"]],
+            "tags": ["HA","DRS","admission control","anti-affinity"] },
+          { "icon": "vm", "title": "VM Provisioning: Role-Based and Standardized",
+            "paragraphs": ["Every VM has a clear role from the start: Trade, History, Access, Backup/DR, bridge, monitoring, integration. Disk layout, VLAN, DNS, NTP, hostname, IP plan, OS hardening and service accounts are standardized from a golden template, so troubleshooting and new builds are fast and configuration drift is prevented. Without an inventory and dependency map, finding which service runs where and on what it depends becomes an operational risk in production."],
+            "specs": [["Template","golden image"],["Time","NTP"],["Hardening","OS baseline"],["Record","inventory"]],
+            "tags": ["golden template","OS hardening","DNS/NTP","IP plan","drift control"] }
+        ]},
+        { "id": "network", "tone": "tone-2", "name": "NETWORK, SECURITY & TIME", "notes": [
+          { "icon": "shield", "title": "Network, Security and Segmentation",
+            "paragraphs": ["Firewall, VPN, DNS/DHCP, certificate and endpoint security are as critical as the application. Rules on FortiGate, pfSense or Mikrotik stay simple, traceable and segment-based; management, LP, client and internal traffic sit in separate segments, and LP/FIX links are opened only over whitelisted IPs and dedicated lines. To shrink the attack surface, management interfaces never face the internet and remote access sits behind VPN with 2FA."],
+            "specs": [["Segments","mgmt/LP/client/internal"],["LP","IP whitelist"],["Remote","VPN + 2FA"]],
+            "tags": ["FortiGate","pfSense","Mikrotik","segmentation","IP whitelist"] },
+          { "icon": "clock", "title": "Time Synchronization: NTP/PTP and UTC Traceability",
+            "paragraphs": ["Time is the silent backbone: order/tick timestamps, log correlation, certificates and TOTP all depend on a correct clock. Every server aligns to a common source — a GPS/PTP grandmaster or layered NTP; MiFID II RTS 25 demands traceability to UTC and a maximum divergence: ≤100 µs (1 µs granularity) for high-frequency flow and ≤1 ms for other trading. Where precision matters, hardware-timestamped PTP (sub-microsecond) beats NTP; divergence and holdover are monitored continuously, because a drifting clock invalidates the very logs you rely on as evidence."],
+            "specs": [["Standard","MiFID II RTS 25"],["HFT drift","≤100 µs"],["Other","≤1 ms"],["Source","PTP/NTP · UTC"]],
+            "tags": ["NTP","PTP","UTC traceability","RTS 25","GPS grandmaster"] },
+          { "icon": "activity", "title": "Monitoring and Observability: Golden Signals and Alert Thresholds",
+            "paragraphs": ["Effective monitoring is built on the golden signals: latency, traffic/throughput, error rate and saturation are collected at every layer. Alert coverage spans latency, packet loss, disk queue, service state, log growth, backup-job results, certificate expiry, failed logins and LP/FIX session drops. Metrics are kept as time series with centralized logs (SIEM/syslog), and thresholds are set against a baseline rather than fixed numbers — the aim is to catch a fault while it is still silent, before a client notices."],
+            "specs": [["Model","golden signals"],["Logs","SIEM/syslog"],["Thresholds","baseline"],["Scope","FIX + certs"]],
+            "tags": ["golden signals","packet loss","disk queue","SIEM","cert expiry"] }
+        ]},
+        { "id": "platform", "tone": "tone-3", "name": "PLATFORM & CONTINUITY", "notes": [
+          { "icon": "mt", "title": "MetaTrader 5 Core: Trade, History and Access Servers",
+            "paragraphs": ["MT5 is a distributed, encrypted architecture that scales by adding servers. The Trade Server is the order/account/risk core (netting for exchange instruments, hedging for Forex); the History Server holds tick/bar history and handles (reverse) splits; Backup plus database encryption keep data continuous. The Access Server is the client-facing proxy and platform firewall: it packs authorization requests to the Trade Server, filters overload/attacks with antiflood, and caches history/DOM/news to offload the History Server. Its key benefit is hiding the core server IPs from the outside — under DDoS only the Access IPs are hit while the core stays unreachable — and multiple Access Servers are distributed geographically and chosen automatically by latency, load and priority."],
+            "specs": [["Trade","netting/hedging"],["Access","proxy + antiflood"],["Core IP","hidden"],["Access","geo LB"]],
+            "tags": ["Trade/History/Backup","Access Server","antiflood","IP hiding","geo load-balancing"] },
+          { "icon": "api", "title": "Management, API and Gateway Layer",
+            "paragraphs": ["MT5's control plane runs on role-based Manager/Admin rights — accountant, dealer, risk manager and administrator each defined with a distinct permission set. The platform extends through five APIs: Report API (reporting), Server API (Trade/History functions), Gateway API (external/LP integration), Manager API (custom admin tools) and Web API (web integration). Gateways bridge to exchanges and liquidity providers and let client risk be hedged instantly via STP; every plugin/gateway version is validated separately, because a plugin incompatible with the core can stall the live order flow."],
+            "specs": [["Roles","accountant/dealer/risk"],["APIs","5 (Report…Web)"],["Gateway","STP hedge"]],
+            "tags": ["Manager/Admin","Report/Server/Gateway/Manager/Web API","STP","plugin compatibility"] },
+          { "icon": "dr", "title": "DR / DRC: RTO/RPO, Runbook and Failover Testing",
+            "paragraphs": ["DR defines in advance, in a runbook, which service comes up in what order, how IP/DNS changes, which Access clients reconnect through, and to what point data is synchronized. RTO/RPO targets must be measurable; backups follow the 3-2-1 rule (3 copies, 2 media, 1 off-site) and are kept immutable/air-gapped against ransomware. Without periodic failover/failback drills and restore validation the setup gives no operational assurance, so DR is tested on a regular schedule."],
+            "specs": [["Targets","RTO/RPO"],["Backup","3-2-1"],["Protection","immutable/air-gap"],["Test","periodic failover"]],
+            "tags": ["RTO/RPO","3-2-1","immutable backup","failover runbook","restore test"] }
+        ]},
+        { "id": "liquidity", "tone": "tone-4", "name": "LIQUIDITY", "notes": [
+          { "icon": "bridge", "title": "Bridge & FxCubic: LP Connectivity, Aggregation and Routing",
+            "paragraphs": ["The bridge is the link between the trading platform and liquidity providers (tools such as FxCubic) — connecting MT4/MT5 or cTrader to LPs over its own FIX API. With aggregation the depth of several LPs is combined into a best bid/ask and VWAP; with priority/fallback, flow moves to the next LP when the primary has issues. Price filters reject stale and spike quotes, and markup (e.g. FxCubic's real-time markup API) is applied per account/group/symbol. Fill rate, rejection rate, latency, slippage and last-look behaviour are the measured metrics of daily operations."],
+            "specs": [["Aggregation","best bid/ask"],["Failover","priority/fallback"],["Price","filter + markup"],["Metrics","fill/reject/slippage"]],
+            "tags": ["FxCubic","aggregation","priority/fallback","markup","last look","slippage"] },
+          { "icon": "link", "title": "FIX Connectivity and Session Management",
+            "paragraphs": ["LP connectivity runs over FIX, and its two layers are treated separately. The session layer is the health of the link: Logon/Logout, Heartbeat and TestRequest for liveness; sequence numbers (MsgSeqNum) and gap-fill to detect and recover lost messages. The application layer is the business: MarketDataRequest/Snapshot for prices, NewOrderSingle → ExecutionReport for orders, with quotes and trades usually carried on separate sessions. A dropped session, a wrong sequence number or a stuck resend queue means no price or a hung order — so each session's state and latency is monitored on its own."],
+            "specs": [["Session","Heartbeat/seq/gap-fill"],["Order","NewOrderSingle→ExecReport"],["Price","MarketData"],["Split","quote/trade session"]],
+            "tags": ["FIX 4.4","heartbeat","sequence/gap-fill","NewOrderSingle","ExecutionReport"] },
+          { "icon": "split", "title": "Order Routing Models: A-book / B-book / Hybrid",
+            "paragraphs": ["Order routing is both an execution and a risk-appetite decision. A-book (STP) passes the order to an LP — the firm earns spread/commission and carries no market risk; B-book internalizes it — client PnL is the firm's opposite position, requiring capital and risk management. Hybrid splits flow between the two by rules on account/group/symbol/size and client profitability (e.g. routing consistently winning flow to A-book). A sound setup weighs net exposure, hedging cost, LP fill quality and regulatory/conflict-of-interest limits together, and measures them continuously."],
+            "specs": [["A-book","STP, no risk"],["B-book","internal, risk"],["Hybrid","rule-based"],["Metric","net exposure"]],
+            "tags": ["A-book/STP","B-book","hybrid","risk management","exposure"] }
+        ]},
+        { "id": "product", "tone": "tone-5", "name": "PRODUCT SETUP", "notes": [
+          { "icon": "symbol", "title": "Symbol Management: Pricing, Contract Size, Digits, Execution Mode",
+            "paragraphs": ["A symbol must have its digits, contract size, tick size/value, swap (and the triple-swap day), trading/quote sessions, margin and profit currency and LP mapping defined correctly from the start; otherwise margin, P/L, charts or order results can be wrong even when the price looks right. The MT5 execution mode (Market/Instant/Request/Exchange) and fill policy (FOK/IOC/Return) define how the symbol behaves; a mismatch produces requotes, rejects or unexpected slippage. For futures, rollover, closing the old contract, testing the new one and chart-history continuity are managed separately."],
+            "specs": [["Contract","digits/size/tick"],["Execution","Market/Instant/Request"],["Fill","FOK/IOC/Return"],["Futures","rollover"]],
+            "tags": ["digits","contract size","tick value","execution mode","fill policy","rollover"] },
+          { "icon": "sliders", "title": "Spread, Commission and Group Configuration",
+            "paragraphs": ["In MT5, client experience and the revenue model are largely set by group configuration. Spread markup, per-lot commission, min/max lot, lot step, execution, swap and symbol permissions are defined clearly per group, and whether markup is applied at the bridge or in the group spread is chosen deliberately to avoid double markup. VIP, standard, demo and institutional groups do not share one rule set — each needs its own commercial model, risk profile, swap-free handling and reporting."],
+            "specs": [["Control","per group"],["Markup","bridge vs group"],["Params","commission/lot/swap"]],
+            "tags": ["spread markup","commission","lot step","execution","group"] }
+        ]},
+        { "id": "ops", "tone": "tone-6", "name": "OPERATIONS & RISK", "notes": [
+          { "icon": "change", "title": "Change Management and Regulatory Alignment",
+            "paragraphs": ["In a live MT5 environment a small symbol/group/commission/leverage/session change directly affects client trading and regulatory alignment, so every change is validated in test, current/target values are recorded (maker-checker) and a rollback is ready. Leverage regimes differ by jurisdiction: SPK caps retail leverage in Turkey at 10:1 (2017), while ESMA tiers it by asset class — major FX 30:1, non-major/gold/indices 20:1, other commodities 10:1, equities 5:1, crypto 2:1 — with a 50% margin close-out and negative balance protection. When SPK/TSPB reporting, permissions and audit records are traceable, the operation is ready for both audit and incident analysis."],
+            "specs": [["Process","maker-checker + rollback"],["SPK","10:1"],["ESMA","30/20/10/5/2:1"],["Close-out","50%"]],
+            "tags": ["maker-checker","SPK 10:1","ESMA tiers","close-out 50%","negative balance protection","audit"] },
+          { "icon": "scale", "title": "Best Execution and Transparency",
+            "paragraphs": ["Best execution is the duty to route a client order to consistently the best result across price, cost, speed and likelihood of execution. Slippage should be symmetric — favourable and adverse moves applied at the same threshold; requote/reject rates, average execution time and realized spread should be measured and reported. MiFID II ties this to execution-quality and venue reports (RTS 27/28); transparent metrics keep the execution policy auditable, for regulation and client trust alike."],
+            "specs": [["Principle","price/cost/speed"],["Slippage","symmetric"],["Reports","RTS 27/28"],["Metric","requote/reject"]],
+            "tags": ["best execution","symmetric slippage","RTS 27/28","execution quality"] },
+          { "icon": "risk", "title": "Risk and Access Control: Leverage, Margin Call, Stop-Out, 2FA",
+            "paragraphs": ["Leverage, margin call and stop-out set the firm's risk directly. Leverage is tiered by product/group/equity; margin call is the warning threshold and stop-out the forced-liquidation threshold (e.g. margin level 100% warning / 50% stop-out placed deliberately). Total exposure and per-symbol position limits, dealer limits and, when needed, a kill switch are defined. 2FA/TOTP, manager rights and user access belong to the same risk frame; if the permission matrix is unclear, a technical gap turns straight into operational risk."],
+            "specs": [["Leverage","tiered"],["Stop-out","level %"],["Limits","exposure/dealer"],["Access","2FA + matrix"]],
+            "tags": ["leverage","margin call","stop-out","kill switch","2FA/TOTP","exposure limit"] }
+        ]}
+      ],
+      "closing": {
+        "icon": "flag",
+        "label": "SUMMARY",
+        "title": "End-to-End Trading Infrastructure",
+        "paragraphs": ["The goal of end-to-end trading infrastructure is a platform that runs with stability, observability and continuity; reversible when needed, aligned with regulation, tested through failover and sustainable in daily operations. These notes are the decisions that make that platform measurable and defensible — from host to LP."],
+        "tags": ["stable","observable","reversible","regulation-aligned","tested"]
+      }
     }
-};
-
-  const els = {
-    langText: document.getElementById('lang-text'),
-    backLink: document.getElementById('back-link'),
-    kicker: document.getElementById('kicker'),
-    pageTitle: document.getElementById('page-title'),
-    pageLede: document.getElementById('page-lede'),
-    container: document.getElementById('notes-container'),
-    footerLine: document.getElementById('footer-line'),
   };
+
+  const $ = (id) => document.getElementById(id);
+  const body = document.body;
+  const langToggleBtn = $('lang-toggle');
+  const themeToggleBtn = $('theme-toggle');
+  const iconSun = $('icon-sun');
+  const iconMoon = $('icon-moon');
+  const timelineEl = $('timeline');
+  const legendEl = $('legend');
+
+  function svgIcon(key){
+    return '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + (ICONS[key] || '') + '</svg>';
+  }
+  function pad(n){ return String(n).padStart(2, '0'); }
+
+  function buildCard(note){
+    const card = document.createElement('div');
+    card.className = 'step-card';
+
+    note.paragraphs.forEach((par) => {
+      const p = document.createElement('p');
+      p.className = 'step-text';
+      p.textContent = par;
+      card.appendChild(p);
+    });
+
+    if (note.specs && note.specs.length){
+      const sp = document.createElement('div');
+      sp.className = 'specs';
+      note.specs.forEach(([k, v]) => {
+        const s = document.createElement('span'); s.className = 'spec';
+        const kk = document.createElement('span'); kk.className = 'spec-k'; kk.textContent = k;
+        const vv = document.createElement('span'); vv.className = 'spec-v'; vv.textContent = v;
+        s.append(kk, vv);
+        sp.appendChild(s);
+      });
+      card.appendChild(sp);
+    }
+
+    return card;
+  }
+
+  function renderTimeline(d){
+    timelineEl.innerHTML = '';
+    legendEl.innerHTML = '';
+
+    const total = d.phases.reduce((a, p) => a + p.notes.length, 0);
+    let idx = 0;
+
+    d.phases.forEach((phase) => {
+      const li = document.createElement('button');
+      li.className = 'legend-item ' + phase.tone;
+      li.setAttribute('role', 'listitem');
+      li.type = 'button';
+      li.innerHTML = '<span class="legend-dot"></span>' + phase.name;
+      li.addEventListener('click', () => {
+        const target = document.getElementById('phase-' + phase.id);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      legendEl.appendChild(li);
+
+      const wrap = document.createElement('section');
+      wrap.className = 'phase ' + phase.tone;
+      wrap.id = 'phase-' + phase.id;
+
+      const label = document.createElement('div');
+      label.className = 'phase-label';
+      const start = idx + 1;
+      const end = idx + phase.notes.length;
+      label.innerHTML =
+        '<span class="phase-dot"></span>' +
+        '<span class="phase-name">' + phase.name + '</span>' +
+        '<span class="phase-line"></span>' +
+        '<span class="phase-range">' + pad(start) + (end > start ? '–' + pad(end) : '') + '</span>';
+      wrap.appendChild(label);
+
+      phase.notes.forEach((note) => {
+        idx++;
+        const step = document.createElement('div');
+        step.className = 'step';
+
+        const rail = document.createElement('div');
+        rail.className = 'step-rail';
+        const nico = document.createElement('div');
+        nico.className = 'node-ico';
+        nico.innerHTML = svgIcon(note.icon);
+        rail.appendChild(nico);
+
+        const card = buildCard(note);
+        const top = document.createElement('div');
+        top.className = 'step-top';
+        const bidx = document.createElement('span');
+        bidx.className = 'step-idx';
+        bidx.textContent = pad(idx) + ' / ' + pad(total);
+        const title = document.createElement('span');
+        title.className = 'step-title';
+        title.textContent = note.title;
+        top.append(bidx, title);
+        card.insertBefore(top, card.firstChild);
+
+        step.append(rail, card);
+        wrap.appendChild(step);
+      });
+
+      timelineEl.appendChild(wrap);
+    });
+
+    // closing block
+    const c = d.closing;
+    const closing = document.createElement('section');
+    closing.className = 'closing';
+    const ctop = document.createElement('div');
+    ctop.className = 'closing-top';
+    const cico = document.createElement('div');
+    cico.className = 'closing-ico';
+    cico.innerHTML = svgIcon(c.icon);
+    const chead = document.createElement('div');
+    const clabel = document.createElement('span');
+    clabel.className = 'closing-label';
+    clabel.textContent = c.label;
+    const ctitle = document.createElement('h2');
+    ctitle.className = 'closing-title';
+    ctitle.textContent = c.title;
+    chead.append(clabel, ctitle);
+    ctop.append(cico, chead);
+    closing.appendChild(ctop);
+    c.paragraphs.forEach((par) => {
+      const p = document.createElement('p');
+      p.className = 'closing-text';
+      p.textContent = par;
+      closing.appendChild(p);
+    });
+    timelineEl.appendChild(closing);
+  }
 
   function updateUI(lang){
     const d = content[lang];
     document.documentElement.lang = lang;
     langToggleBtn.setAttribute('aria-label', d.uiLangSwitch); langToggleBtn.title = d.uiLangSwitch;
     themeToggleBtn.setAttribute('aria-label', d.uiTheme);     themeToggleBtn.title = d.uiTheme;
-    els.langText.textContent = d.langBtn;
-    els.backLink.textContent = d.backLink;
-    els.kicker.textContent = d.kicker;
-    els.pageTitle.textContent = d.pageTitle;
-    els.pageLede.textContent = d.pageLede;
-    els.pageLede.style.display = d.pageLede ? 'block' : 'none';
-
-    els.container.innerHTML = '';
-    d.notes.forEach((n, i)=>{
-      const sec = document.createElement('div'); sec.className = 'note';
-      const num = document.createElement('div'); num.className = 'note-num';
-      num.textContent = String(i+1).padStart(2,'0') + ' / ' + String(d.notes.length).padStart(2,'0');
-      const h2 = document.createElement('h2'); h2.textContent = n.title;
-      sec.append(num, h2);
-      n.paragraphs.forEach(par=>{
-        const p = document.createElement('p'); p.textContent = par; sec.appendChild(p);
-      });
-      els.container.appendChild(sec);
-    });
-
-    els.footerLine.textContent = '© ' + new Date().getFullYear() + ' Coşkun Parlar';
+    $('lang-text').textContent = d.langBtn;
+    $('back-link').textContent = d.backLink;
+    $('kicker').textContent = d.kicker;
+    $('page-title').textContent = d.pageTitle;
+    $('page-lede').textContent = d.pageLede;
+    $('hero-count').textContent = d.metaCount;
+    renderTimeline(d);
+    $('footer-line').textContent = '© ' + new Date().getFullYear() + ' Coşkun Parlar';
   }
-
-  const body = document.body;
-  const langToggleBtn = document.getElementById('lang-toggle');
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const iconSun = document.getElementById('icon-sun');
-  const iconMoon = document.getElementById('icon-moon');
 
   function setTheme(theme){
     body.classList.remove('dark-mode', 'light-mode');
@@ -393,20 +644,31 @@ document.addEventListener('DOMContentLoaded', () => {
     iconMoon.style.display = isLight ? 'block' : 'none';
   }
 
-  langToggleBtn.addEventListener('click', ()=>{
+  langToggleBtn.addEventListener('click', () => {
     const next = (document.documentElement.lang === 'tr') ? 'en' : 'tr';
     storage.set('lang', next);
     updateUI(next);
   });
-  themeToggleBtn.addEventListener('click', ()=>{
+  themeToggleBtn.addEventListener('click', () => {
     const next = body.classList.contains('light-mode') ? 'dark-mode' : 'light-mode';
     storage.set('theme', next);
     setTheme(next);
   });
 
+  const progress = $('progress');
+  function onScroll(){
+    const el = document.documentElement;
+    const max = el.scrollHeight - el.clientHeight;
+    const p = max > 0 ? Math.min(1, Math.max(0, el.scrollTop / max)) : 0;
+    progress.style.width = (p * 100).toFixed(2) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+
   const storedLang = storage.get('lang') || 'tr';
   updateUI(storedLang);
   setTheme(body.classList.contains('light-mode') ? 'light-mode' : 'dark-mode');
+  onScroll();
 });
 </script>
 </body>
