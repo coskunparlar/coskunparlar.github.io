@@ -6,7 +6,7 @@
 <meta name="description" content="Coşkun Parlar — Sistem, Ağ ve Trading Altyapısı Yöneticisi. MetaTrader 4/5 platform yönetimi, sanallaştırma, HA/DR ve LP entegrasyonları üzerine 14+ yıl deneyim." />
 <title>Coşkun Parlar — Sistem, Ağ ve Trading Altyapısı</title>
 <link rel="canonical" href="https://coskunparlar.github.io/" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'><rect%20width='64'%20height='64'%20rx='14'%20fill='%230a0c10'/><path%20d='M18%2020l12%2012-12%2012'%20stroke='%23f0a940'%20stroke-width='7'%20fill='none'%20stroke-linecap='round'%20stroke-linejoin='round'/><path%20d='M36%2044h12'%20stroke='%23e9e6dd'%20stroke-width='7'%20stroke-linecap='round'/></svg>" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'><rect%20width='64'%20height='64'%20rx='14'%20fill='%230a0c10'/><path%20d='M15%2043%2027%2031%2037%2039%2049%2021'%20fill='none'%20stroke='%23f0a940'%20stroke-width='3.5'%20stroke-linecap='round'%20stroke-linejoin='round'/><path%20d='M43%2021h6v6'%20fill='none'%20stroke='%23f0a940'%20stroke-width='3.5'%20stroke-linecap='round'%20stroke-linejoin='round'/><circle%20cx='15'%20cy='43'%20r='3.4'%20fill='%23e9e6dd'/><circle%20cx='27'%20cy='31'%20r='3.4'%20fill='%23e9e6dd'/><circle%20cx='37'%20cy='39'%20r='3.4'%20fill='%23e9e6dd'/></svg>" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0c10" />
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f4ee" />
 <meta property="og:type" content="website" />
@@ -103,6 +103,7 @@
   .wrap{max-width:var(--container);margin:0 auto;padding:0 32px}
   ::selection{background:var(--amber);color:var(--ink)}
   :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--amber),var(--amber-dim));z-index:200;transition:width .12s linear}
 
   /* corner controls */
   .corner-controls{
@@ -260,7 +261,7 @@
   .footer-line{font-family:var(--font-mono);font-size:.72rem;color:var(--text-mute)}
 
   @media print{
-    .corner-controls,.sidebar-nav,.sidebar-social{display:none !important}
+    .corner-controls,.sidebar-nav,.sidebar-social,.progress{display:none !important}
     body.dark-mode,body.light-mode{--ink:#fff;--text:#000;--text-dim:#333;--text-mute:#555;--border:#bbb;--border-2:#999;--amber:#8a5500;--amber-dim:#8a5500}
     body{background:#fff !important;color:#000 !important}
     .layout{grid-template-columns:1fr;padding:20px 0}
@@ -299,6 +300,8 @@
   document.body.className = t;
 })();
 </script>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <div class="corner-controls">
   <button id="cmdk-toggle" class="ctrl-btn" title="Hızlı gezinme">
@@ -1216,6 +1219,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   init();
+
+  (function(){ var pr=document.getElementById('progress'); if(!pr) return; function os(){ var el=document.documentElement; var mx=el.scrollHeight-el.clientHeight; var p=mx>0?Math.min(1,Math.max(0,(window.scrollY||el.scrollTop)/mx)):0; pr.style.width=(p*100).toFixed(2)+'%'; } window.addEventListener('scroll',os,{passive:true}); window.addEventListener('resize',os); os(); })();
 
   window.addEventListener('keydown', (e)=>{
     const isCmd = isMac ? e.metaKey : e.ctrlKey;
