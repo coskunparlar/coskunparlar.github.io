@@ -6,7 +6,7 @@
 <meta name="description" content="Coşkun Parlar — Uçtan uca trading altyapısı referans topolojisi ve kurulum-doğrulama akışı." />
 <title>Altyapı Topolojisi — Coşkun Parlar</title>
 <link rel="canonical" href="https://coskunparlar.github.io/topology.html" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'><rect%20width='64'%20height='64'%20rx='14'%20fill='%230a0c10'/><path%20d='M18%2020l12%2012-12%2012'%20stroke='%23f0a940'%20stroke-width='7'%20fill='none'%20stroke-linecap='round'%20stroke-linejoin='round'/><path%20d='M36%2044h12'%20stroke='%23e9e6dd'%20stroke-width='7'%20stroke-linecap='round'/></svg>" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'><rect%20width='64'%20height='64'%20rx='14'%20fill='%230a0c10'/><path%20d='M32%2030%2018%2019M32%2030%2046%2019M32%2030v17'%20stroke='%23f0a940'%20stroke-width='3'%20stroke-linecap='round'/><circle%20cx='18'%20cy='19'%20r='5.5'%20fill='%23f0a940'/><circle%20cx='46'%20cy='19'%20r='5.5'%20fill='%23f0a940'/><circle%20cx='32'%20cy='47'%20r='5.5'%20fill='%23f0a940'/><circle%20cx='32'%20cy='30'%20r='7'%20fill='%23e9e6dd'/></svg>" />
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0c10" />
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f4ee" />
 <meta property="og:type" content="website" />
@@ -53,6 +53,7 @@
   .ctrl-btn:hover{color:var(--amber);border-color:var(--amber-dim)}
   .ctrl-btn svg{width:14px;height:14px;stroke:currentColor}
   :focus-visible{outline:2px solid var(--amber);outline-offset:2px;border-radius:4px}
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--amber),var(--amber-dim));z-index:200;transition:width .12s linear}
 
   .wrap{max-width:1220px;margin:0 auto;padding:0 28px}
   header.top{padding:96px 0 30px}
@@ -176,7 +177,7 @@
   .footer-line{font-family:var(--font-mono);font-size:.66rem;color:var(--text-mute)}
 
   @media print{
-    .corner-controls,.back-link,.flow-toggles,.scroll-hint{display:none !important}
+    .corner-controls,.back-link,.flow-toggles,.scroll-hint,.progress{display:none !important}
     body.dark-mode,body.light-mode{--ink:#fff;--panel:#fff;--panel-2:#fff;--text:#000;--text-dim:#333;--text-mute:#555;--border:#bbb;--border-2:#999;--amber:#8a5500;--amber-dim:#8a5500;--blue:#1d4f8f;--green:#1e6e4e;--grid:transparent}
     body{background:#fff !important;color:#000 !important}
     .flow-price,.flow-order,.flow-repl{animation:none}
@@ -196,6 +197,8 @@
   document.body.className = t;
 })();
 </script>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <div class="corner-controls">
   <button id="theme-toggle" class="ctrl-btn" title="Temayı değiştir">
@@ -531,6 +534,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const storedLang = storage.get('lang') || 'tr';
   updateUI(storedLang);
   setTheme(body.classList.contains('light-mode') ? 'light-mode' : 'dark-mode');
+
+  (function(){ var pr=document.getElementById('progress'); if(!pr) return; function os(){ var el=document.documentElement; var mx=el.scrollHeight-el.clientHeight; var p=mx>0?Math.min(1,Math.max(0,(window.scrollY||el.scrollTop)/mx)):0; pr.style.width=(p*100).toFixed(2)+'%'; } window.addEventListener('scroll',os,{passive:true}); window.addEventListener('resize',os); os(); })();
 });
 </script>
 </body>
