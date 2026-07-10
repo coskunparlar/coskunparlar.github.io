@@ -103,12 +103,12 @@
   .hosted{stroke:var(--amber-dim);stroke-width:1.3;fill:none;stroke-dasharray:1 5;stroke-linecap:round;opacity:.6}
   .foundation{fill:color-mix(in srgb,var(--amber) 6%,transparent);stroke:var(--amber-dim);stroke-width:1;opacity:.5}
   .found-label{fill:var(--amber);font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;opacity:.65}
-  .flow{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-dasharray:5 7}
+  .flow{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-dasharray:5 7;stroke-dashoffset:0;will-change:stroke-dashoffset}
   .flow-price{stroke:var(--blue);marker-end:url(#arr-price)}
   .flow-order{stroke:var(--amber);marker-end:url(#arr-order)}
   .flow-repl{stroke:var(--green);stroke-width:1.5;stroke-dasharray:3 7;marker-end:url(#arr-repl)}
-  @keyframes dashmove{to{stroke-dashoffset:-24}}
-  @keyframes dashmove-slow{to{stroke-dashoffset:-20}}
+  @keyframes dashmove{from{stroke-dashoffset:0}to{stroke-dashoffset:-24}}
+  @keyframes dashmove-slow{from{stroke-dashoffset:0}to{stroke-dashoffset:-20}}
   .flow-price,.flow-order{animation:dashmove 1.1s linear infinite}
   .flow-repl{animation:dashmove-slow 2.4s linear infinite}
   .pulse{fill:var(--blue)}
@@ -118,7 +118,9 @@
   .hide-order .flow-order{display:none}
   .hide-repl  .flow-repl{display:none}
   @media (prefers-reduced-motion: reduce){
-    .flow-price,.flow-order,.flow-repl{animation:none}
+    /* Akış yönü bilgi taşıdığı için akış çizgileri bilinçli olarak açık bırakıldı
+       (bu satır kaldırılırsa "hareket azaltma" açık cihazlarda akış yeniden donar).
+       Sadece dekoratif nabız efekti ve anlık kaydırma sadeleştirildi. */
     .pulse circle:last-child{animation:none;opacity:0}
     html{scroll-behavior:auto}
   }
