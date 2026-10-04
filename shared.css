@@ -4,3 +4,4 @@ body.light-mode{--ink:#f6f4ee;--panel:#fff;--panel-2:#f0ede5;--border:#ddd8cb;--
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .ctrl-btn{min-width:44px;min-height:44px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+@media print{body.dark-mode,body.light-mode{--ink:#fff;--panel:#fff;--panel-2:#f4f4f4;--text:#000;--text-dim:#333;--text-mute:#555;--border:#bbb;--border-2:#999;--amber:#8a5500;--amber-dim:#8a5500}}
