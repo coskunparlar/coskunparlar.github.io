@@ -32,7 +32,7 @@
   "email": "mailto:parlarcoskun@gmail.com",
   "address": { "@type": "PostalAddress", "addressLocality": "Istanbul", "addressCountry": "TR" },
   "sameAs": [
-    "https://www.linkedin.com/in/coskun-parlar-411906137/",
+    "https://www.linkedin.com/in/coskun-parlar-3490c/",
     "https://github.com/coskunparlar"
   ]
 }
@@ -260,13 +260,20 @@
   .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
   .footer-line{font-family:var(--font-mono);font-size:.72rem;color:var(--text-mute)}
 
+  .print-experience{display:none}
   @media print{
     .corner-controls,.sidebar-nav,.sidebar-social,.progress{display:none !important}
     body.dark-mode,body.light-mode{--ink:#fff;--text:#000;--text-dim:#333;--text-mute:#555;--border:#bbb;--border-2:#999;--amber:#8a5500;--amber-dim:#8a5500}
     body{background:#fff !important;color:#000 !important}
     .layout{grid-template-columns:1fr;padding:20px 0}
     .sidebar{position:static}
-    .exp-layout{grid-template-columns:1fr}
+    .exp-layout{display:none !important}
+    .print-experience{display:block}
+    .animated-section,.animated-section.hidden{opacity:1 !important;transform:none !important}
+    .content-section{padding-bottom:24px}
+    .print-role{margin-bottom:28px}
+    .print-role-header{break-inside:avoid;break-after:avoid}
+    .print-role .exp-panel-duties li{break-inside:avoid}
   }
 
   @media (max-width:980px){
@@ -366,6 +373,7 @@
         <div class="exp-tabs" id="exp-tabs" role="tablist"></div>
         <div id="exp-panel" role="tabpanel"></div>
       </div>
+      <div id="print-experience" class="print-experience"></div>
     </section>
     <section class="content-section animated-section" id="education">
       <h2 class="section-title" id="education-title"></h2>
@@ -441,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 "label": "LinkedIn",
-                "href": "https://www.linkedin.com/in/coskun-parlar-411906137/",
+                "href": "https://www.linkedin.com/in/coskun-parlar-3490c/",
                 "icon": "linkedin"
             },
             {
@@ -453,6 +461,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "widTitle": "Ne Yapıyorum",
         "domains": [
             {
+                "icon": "cloud",
+                "label": "Sanallaştırma, HA/DR ve Sunucu Altyapısı",
+                "text": "Fiziksel host, RAID/storage, ESXi/vCenter, Hyper-V, Proxmox, Nutanix, VM provisioning, datastore, backup/replication ve DR hazırlığı."
+            },
+            {
                 "icon": "trading",
                 "label": "MetaTrader 4/5 Platform Yönetimi",
                 "text": "MT4/MT5 server ve manager bileşenleri; trade, history, access ve backup servisleri; sembol, grup, session, markup, swap, margin/leverage/stop-out ve build/plugin uyumluluğu."
@@ -461,11 +474,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 "icon": "trading",
                 "label": "Bridge & LP Entegrasyonları",
                 "text": "FXCubic bridge, FIX bağlantıları, LP fiyat akışı, symbol mapping, aggregation/priority routing, DOM, latency ve trade/order akışlarının kontrolü."
-            },
-            {
-                "icon": "cloud",
-                "label": "Sanallaştırma, HA/DR ve Sunucu Altyapısı",
-                "text": "Fiziksel host, RAID/storage, ESXi/vCenter, Hyper-V, Proxmox, Nutanix, VM provisioning, datastore, backup/replication ve DR hazırlığı."
             },
             {
                 "icon": "shield",
@@ -645,7 +653,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
                 "label": "LinkedIn",
-                "href": "https://www.linkedin.com/in/coskun-parlar-411906137/",
+                "href": "https://www.linkedin.com/in/coskun-parlar-3490c/",
                 "icon": "linkedin"
             },
             {
@@ -657,6 +665,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "widTitle": "What I Do",
         "domains": [
             {
+                "icon": "cloud",
+                "label": "Virtualization, HA/DR and Server Infrastructure",
+                "text": "Physical hosts, RAID/storage, ESXi/vCenter, Hyper-V, Proxmox, Nutanix, VM provisioning, datastore, backup/replication and DR readiness."
+            },
+            {
                 "icon": "trading",
                 "label": "MetaTrader 4/5 Platform Operations",
                 "text": "MT4/MT5 server and manager components; trade, history, access and backup services; symbols, groups, sessions, markups, swaps, margin/leverage/stop-out and build/plugin compatibility."
@@ -665,11 +678,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 "icon": "trading",
                 "label": "Bridge & LP Integrations",
                 "text": "FXCubic bridge, FIX connectivity, LP pricing flow, symbol mapping, aggregation/priority routing, DOM, latency and trade/order flow validation."
-            },
-            {
-                "icon": "cloud",
-                "label": "Virtualization, HA/DR and Server Infrastructure",
-                "text": "Physical hosts, RAID/storage, ESXi/vCenter, Hyper-V, Proxmox, Nutanix, VM provisioning, datastore, backup/replication and DR readiness."
             },
             {
                 "icon": "shield",
@@ -876,6 +884,24 @@ document.addEventListener('DOMContentLoaded', () => {
     els.expPanel.append(title, company, dates, ul);
   }
 
+  function renderPrintExperience(lang){
+    const d = content[lang];
+    const container = document.getElementById('print-experience');
+    container.replaceChildren();
+    d.experienceItems.forEach(exp=>{
+      const article = document.createElement('article'); article.className='print-role';
+      const header = document.createElement('div'); header.className='print-role-header';
+      const title = document.createElement('h3'); title.className='exp-panel-title'; title.textContent=exp.title;
+      const company = document.createElement('div'); company.className='exp-panel-company'; company.textContent=exp.company;
+      const dates = document.createElement('div'); dates.className='exp-panel-dates';
+      dates.textContent=`${fmt(exp.start,lang)} – ${exp.end ? fmt(exp.end,lang) : d.present}`;
+      header.append(title,company,dates);
+      const ul = document.createElement('ul'); ul.className='exp-panel-duties';
+      exp.duties.forEach(duty=>{ const li=document.createElement('li'); li.textContent=duty; ul.appendChild(li); });
+      article.append(header,ul); container.appendChild(article);
+    });
+  }
+
   function renderExpTabs(lang){
     const d = content[lang];
     els.expTabs.innerHTML = '';
@@ -984,6 +1010,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activeExpIndex = 0;
     renderExpTabs(lang);
     renderExpPanel(lang, activeExpIndex);
+    renderPrintExperience(lang);
 
 
     els.educationTitle.textContent = d.educationTitle;
@@ -1068,7 +1095,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cmds.push({ label: currentLang==='tr' ? 'E-postayı kopyala' : 'Copy email address', icon:'mail', tag:'parlarcoskun@gmail.com', action:()=>{
         navigator.clipboard && navigator.clipboard.writeText('parlarcoskun@gmail.com').catch(()=>{});
       }});
-      cmds.push({ label:'LinkedIn', icon:'link', tag:'↗', action:()=>{ window.open('https://www.linkedin.com/in/coskun-parlar-411906137/', '_blank', 'noopener'); }});
+      cmds.push({ label:'LinkedIn', icon:'link', tag:'↗', action:()=>{ window.open('https://www.linkedin.com/in/coskun-parlar-3490c/', '_blank', 'noopener'); }});
       cmds.push({ label:'GitHub', icon:'link', tag:'↗', action:()=>{ window.open('https://github.com/coskunparlar', '_blank', 'noopener'); }});
       cmds.push({ label: currentLang==='tr' ? 'Topoloji' : 'Topology', icon:'doc', tag:'↗', action:()=>{ window.location.href = 'topology.html'; }});
       cmds.push({ label: currentLang==='tr' ? 'Teknik Notlar' : 'Technical Notes', icon:'doc', tag:'↗', action:()=>{ window.location.href = 'notes.html'; }});
