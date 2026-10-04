@@ -1,0 +1,6 @@
+/* Shared portfolio foundation: typography, themes and keyboard/touch controls. */
+:root{--ink:#0a0c10;--panel:#11151c;--panel-2:#161b24;--border:#232a35;--border-2:#2c3441;--text:#e9e6dd;--text-dim:#a7aeb9;--text-mute:#79828f;--amber:#f0a940;--amber-dim:#c98a34;--font-display:Inter,Arial,Helvetica,sans-serif;--font-body:Inter,Arial,Helvetica,sans-serif;--font-mono:"IBM Plex Mono",Consolas,monospace;--font:var(--font-body);--ease:cubic-bezier(.22,.7,.2,1)}
+body.light-mode{--ink:#f6f4ee;--panel:#fff;--panel-2:#f0ede5;--border:#ddd8cb;--border-2:#c9c3b3;--text:#16181c;--text-dim:#4c5259;--text-mute:#676d74;--amber:#b3690f;--amber-dim:#8f5309}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.ctrl-btn{min-width:44px;min-height:44px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
